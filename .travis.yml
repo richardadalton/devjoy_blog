@@ -6,6 +6,7 @@ addons:
 
 # Clean and don't fail
 install:
+  - go get github.com/spf13/hugo
   - rm -rf public || exit 0
 
 # Build the website
