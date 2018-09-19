@@ -12,7 +12,7 @@ There are endless examples of using recursion to figure out Fibonacci numbers, o
 
 We’re going to teach F# to play the perfect game of Tic-Tac-Toe. The game is a favourite for kids, but it quickly becomes boring for adults. The reason for this is that it is relatively easy to look ahead a few moves and play a perfect game. Writing a program that can look ahead and play perfectly is a nice little programming challenge, so let’s get to it.
 
-## Modelling The Tic-Tac-Toe Board
+### Modelling The Tic-Tac-Toe Board
 The first question we need to address is how to represent the board. A nine item array? Perhaps with 1, -1 and 0 for X, O and Blank respectively. That works.
 
 Or we could just avoid modelling the board altogether. Instead of updating a “Board” to mark the squares occupied by the players, we could just keep two lists of the claimed squares.
@@ -40,7 +40,7 @@ X's Squares: [1;2;7]
 O's Squares: [5;3]
 {{< /highlight >}}
 
-## Some Helper Functions
+### Some Helper Functions
 
 Once we know how a positions are represented we can write functions to reason about them. From a given position we can find the list of squares that remain available.
 
@@ -62,7 +62,7 @@ That Contains function is another helper function, It’s just a cleaner way of 
 let Contains number = List.exists (fun n -> n = number)
 {{< /highlight >}}
 
-## Seeing A Win
+### Seeing A Win
 The next question is how to we know if a player has won. Each player’s squares are in their own list, so all we have to do is check their claimed squares and see if any three are connected.
 
 Yet again there are various ways of doing this, here’s a really simple way. There are only 8 sets of winning squares. The three rows, three columns and the two diagonals. If a players list of squares contains any of these 8 patterns then it’s a win.
@@ -97,7 +97,7 @@ A Draw is even easier to identify. If there are no squares left then it’s a dr
 let IsDraw player opponent = List.isEmpty (Available player opponent)
 {{< /highlight >}}
 
-## What’s a good move?
+### What’s a good move?
 So, we know how to tell if the board shows a win or a draw, but how can we make our program look at a given position and decide on a good move. Let’s start by imagining that we have a function that can assign a score to a position. If such a function existed we could just get a list of available moves and pick the one with the highest score. Like This.
 
 {{< highlight fsharp "style=tango" >}}
@@ -141,7 +141,7 @@ The key insight here is that while scoring the opponents position, the Score fun
 
 Notice that we’ve added ‘rec’ to the Score function to indicate that it will be called recursively.
 
-## Mutual Recursion
+### Mutual Recursion
 Notice also that the Score function calls the BestMove function, which is the function we started with and which in turn calls Score. This is mutual recursion, and it poses a particular problem in F#. A called function must defined be above the call to it. How can we do that when we have two functions that call each other?
 
 Well, like this…

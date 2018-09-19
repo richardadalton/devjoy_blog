@@ -6,7 +6,6 @@ categories = ["how to"]
 banner = "img/banners/fsharp.png"
 +++
 
-
 One session at NDC that really kicked my grasp of functional programming up a few notches was Vagif Abilov’s discussion of Conway’s Game Of Life using F#.
 
 I’m not going to rehash the rules of Game Of Life here, if you aren’t familiar with them then [read this](http://en.wikipedia.org/wiki/Conway's_Game_of_Life).
@@ -42,8 +41,7 @@ I came away from Vagif’s session understanding his approach in about as much d
 
 I thought a quick comparison of my results and Vagif’s original code might prove useful to someone learning F# hence, this post.
 
-Representing the “Board”
-------------------------
+### Representing the “Board”
 Let’s start with how we’ll represent the pattern of cells. The way Game of Life is generally described conjures up images of something akin to a chess board, perhaps for this reason it’s not uncommon to find concepts like ‘Board’ in the code, often in the form of a two dimensional array. I preferred to follow Vagif’s lead and went with a list of tuples representing (x, y) coordinates.
 
 We can have some fun here with how we lay out our code. Look at the following two lines, they are functionally identical, but the second one actually illustrates the relative positions of the coordinates we’re defining. We’ll see something similar to this a little later.
@@ -82,8 +80,7 @@ let isAlive pattern cell =
     pattern |> List.exists ((=) cell)
 {{< / highlight >}}
 
-Find The Neighbours
--------------------
+### Find The Neighbours
 A key part of The Game of Life is figuring out who are the neighbours of a given cell, and determining how many of those neighbours are alive. Let’s start with determining the neighbours for a specific cell. If you imagine the cell at the center of a 3X3 grid, you can see that any cell has 8 neighbours. Here’s my function for returning the 8 neighbours of a given cell.
 
 {{< highlight fsharp "style=tango" >}}

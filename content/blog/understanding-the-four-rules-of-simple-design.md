@@ -12,7 +12,7 @@ I have however just finished “Understanding the Four Rules of Simple Design”
 
 The “4 Rules” mentioned in the title are the XP Simplicity Rules:
 
-# Simple Design:
+### Simple Design:
 
 * Passes all tests
 * Expresses developer intent

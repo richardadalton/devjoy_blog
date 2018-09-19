@@ -35,7 +35,7 @@ The Colours are a discriminated union of the 5 colours that can be used in the c
 
 Each code consists of 4 pegs and colours can be duplicated. We don’t enforce that with types, in fact it’s quite easy to make the code work for arbitrary code lengths. There is one function in the current code that locks us into a code length of 4. I’ll discuss that towards the end of this post.
 
-## The Code Maker
+### The Code Maker
 Let’s start with a function that can compare a secret code with a guess and return the black/white pegs answer. I’ve put a worked example in the comments so you can follow what’s happening.
 
 {{< highlight fsharp "style=tango" >}}
@@ -95,12 +95,12 @@ The number of white pegs is calculated by taking the colours from the list of no
 
 Follow along with the comments in the code and it should be clear.
 
-## The Code Breaker
+### The Code Breaker
 On the face of it writing the code for the Code Breaker seems like it would be harder than for the Code Maker. It has to come up with guesses and then correlate the feedback from all the guesses to crack the code. We also can’t pass our secret code to the Code Breaker because that’s not information that it should have.
 
 What should we pass to the solve function? It should be able to come up with guesses by itself. The only thing it needs is a way of asking the Code Maker to check a guess against the code. So, it needs a way of calling the check function. But it can’t pass the secret code to the check function, it can only pass the guess.
 
-## Enter Partial Application.
+### Enter Partial Application.
 
 We can wrap a secret code up in a closure by partially applying the check function. This gives us a function that just accepts a guess and returns an answer. From the Code Breaker’s point of view that’s exactly how the Code Maker should work.
 
@@ -156,5 +156,5 @@ And what about those nested loops that produce all possible codes. How can be tu
 
 I’ll leave that for you as an exercise. If you look up the [‘Making Change’ example in Structure and Interpretation of Computer Programs](https://mitpress.mit.edu/sicp/full-text/book/book-Z-H-11.html#%_sec_1.2.2) here you’ll be in the right area, however instead of simply counting the number of possibilities, you need to actually capture and return them.
 
-#### Recommended Reading
+### Recommended Reading
 [The Structure and Interpretation of Computer Programs](https://mitpress.mit.edu/sicp/full-text/book/book.html)

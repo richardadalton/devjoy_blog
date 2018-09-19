@@ -7,14 +7,14 @@ categories = ["how to"]
 banner = "img/banners/stop-wait-sign.png"
 +++
 
-# The Problem
+### The Problem
 When you want to unit test a method it’s usually pretty simple. Call the method, pass it it’s parameters and assert against it’s return value, or some other property of the object that may have changed.
 
 What happens when a method doesn’t return a value, or update some property? What happens when it leads (perhaps after some delay) to an event firing, or a callback getting called?
 
 Events firing and callbacks getting called are very similar, but subtly different, so I’ll cover them both.
 
-# A Simple Callback
+### A Simple Callback
 
 Here’s the simplest scenario. You register a callback with a class when you create it, and you have a method that communicates back via that callback. Here’s our class.
 
@@ -50,7 +50,7 @@ public void TestCallback() {
 
 The anonymous function (s) => { actual = s; } has visibility of the variable ‘actual’ and so we can set it inside the callback and assert on it when we’re back in the scope of the test. This is a closure, a very common useful feature of programming with higher order functions.
 
-# A Delayed Callback
+### A Delayed Callback
 
 A more useful arrangement (and more difficult to test) is a method that returns control immediately and does it’s work in the background, eventually calling back when it’s done.
 
@@ -93,7 +93,7 @@ We can assert immediately after calling the method to check that it returned qui
 
 This idea was written up by [Anuraj P](https://dotnetthoughts.net/), but the original post seems to no longer exist.
 
-# Success or Failure
+### Success or Failure
 
 What if our long running method fails? it would be nice to provide Success and Failure callbacks and have the appropriate one fire.
 
@@ -156,7 +156,7 @@ public void TestEventualCallbackFailureWithTimeout() {
 }
 {{< / highlight >}}
 
-# Events
+### Events
 
 Events are very similar to Delegates, the big difference being the ability to add multiple handlers. First I’ll declare the event. It’s payload will be a string.
 

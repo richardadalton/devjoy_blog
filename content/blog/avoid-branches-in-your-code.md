@@ -11,7 +11,6 @@ This week at our FunctionalKats meetup in Dublin, we tackled a simple programmin
 
 I rattled off some code that worked, but I wasn’t at all happy with it. It implemented the problem as described. Partitioning the numbers into two groups and dealing with each group in turn.
 
-
 {{< highlight fsharp "style=tango" >}}
 let Luhn s =
     let double x = x*2

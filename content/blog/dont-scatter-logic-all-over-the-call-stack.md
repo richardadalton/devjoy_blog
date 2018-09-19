@@ -5,6 +5,7 @@ tags = ["code"]
 categories = ["how to"]
 banner = "img/banners/keep-tidy-sign.png"
 +++
+
 Here’s a problem I come across all the time in legacy code and I have been guilty of it myself in the past. This isn’t going to be rocket science, but, apparently, this stuff doesn’t go without saying. Normal caveats about this being a simplified contrived example apply.
 
 Take a look at this code
@@ -72,7 +73,7 @@ CashMovements are an aggregation of Transactions, which have a direction (Import
 
 We could go further and see where the transactions come from, but lets assume they are pulled from a DB.
 
-# Problems
+### Problems
 Oh code! how do I hate thee? Let me count the ways.
 
 We had to burrow down three levels deep just to see where the source data came from.

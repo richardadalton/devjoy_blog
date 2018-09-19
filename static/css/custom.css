@@ -22,3 +22,14 @@ body {
 .highlight {
   margin: 30px 0px
 }
+
+figure {
+  margin: 30px 0px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+figcaption {
+  margin: 0 auto; 
+}

@@ -25,10 +25,10 @@ When I see very smart C# devs unable to decipher what the F# code is doing, that
 Pete Smith very kindly did his own [rewrite](https://gist.github.com/beyond-code-github/8711794c4d516cb6941d47274884b248) of the C# version.
 
 
-## The F# Code
+### The F# Code
 The point of this post is to explain the original F# code a little bit, for C# devs who are curious, but find it hard to follow. It’s no reflection on either C# developers or the F# language that there’s confusion. This is a new paradigm. There are concepts in F# that simply don’t exist in C#. There are also concepts that look like C#, but behave differently.
 
-## The Types
+### The Types
 First we’ll look at the type definitions.
 
 {{< highlight fsharp "style=tango" >}}
@@ -98,7 +98,7 @@ That’s a debate for another day. But in this example at least the concept of Y
 
 Let’s move on.
 
-## The Functions
+### The Functions
 
 {{< highlight fsharp "style=tango" >}}
 let customerDiscount = function

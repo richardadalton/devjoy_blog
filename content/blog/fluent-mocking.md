@@ -12,8 +12,7 @@ After a couple of wizards the functionality became clear and I extracted it to i
 
 Two of the objects in my framework are ‘Wizard’ and ‘WizardStep’. A Wizard contains WizardSteps. You get the idea.
 
-Testing Our Framework
----------------------------
+### Testing Our Framework
 There are quite a few tests that we can write to make sure that navigation works. 
 
 * Moving next should increment the current step.
@@ -27,7 +26,6 @@ Let’s look at we can write these tests, and how we can use mocks and stubs.
 When the user clicks ‘Move Next’ the current step can decide whether it will allow the Move Next to happen. If it returns false, the Wizard will refuse to allow the user to move on.
 
 To test a feature like this we can do the following:
-
 
 1. Create a wizard with one step
 2. Use a stub for step1 that returns false from OKToMoveNext.

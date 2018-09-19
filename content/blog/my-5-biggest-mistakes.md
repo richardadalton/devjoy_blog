@@ -10,7 +10,7 @@ You can’t work in this business for very long before the hope, idealism and in
 
 If you’re new to this business there may still be time to save yourself. Go drive a truck, or learn a bit about your city and become a tour guide. On the off chance that you are determined to stay in software development here are my top 5 mistakes, maybe you can avoid some of them.
 
-## 5. Thinking that things I am unfamiliar with are Bad
+### 5. Thinking that things I am unfamiliar with are Bad
 Us software developers generally have a well cultivated sense of your own ability to reason about things without actually trying them. We are professional generalisers after all.
 
 “I don’t need to install Linux to know it’s shit”
@@ -27,15 +27,15 @@ This is different from the static vs dynamic types debate which is a whole other
 
 Before you reject something as useless or bad, make sure you get the point. Your preconceptions about why a technology exists might be a million miles from the reality.
 
-## 4. Thinking that things I am familiar with are Good
+### 4. Thinking that things I am familiar with are Good
 This is the flip side of the point above but in many ways it’s more damaging. We have a tendency to think the things we are familiar with are the solution to every problem. You can waste a lot of effort and creativity trying to figure out how to press flowers with a hammer because a hammer is what you know.
 
-## 3. Thinking there’s a right way
+### 3. Thinking there’s a right way
 When I started building software I was convinced there was a right way to do it. If I could figure it out I could carve out a nice career following my process.
 
 There is no right way. Give up on finding the best way to build software, or even dividing processes, tools, techniques into Good/Bad. It’s wasted effort. One persons good technique will sink another person’s project. One person’s horrible hack will save another person’s project.
 
-## 2. Thinking that I could learn software development from books
+### 2. Thinking that I could learn software development from books
 I spent wasted so much money on books. I recently threw a lot of them away. In my defense when I was learning this business the internet was in it’s infancy and there wasn’t a huge amount of curated material out there. Books were how it was done.
 
 Even still, I bought far too many.
@@ -48,17 +48,17 @@ You’re making this mistake right now. You think that maybe there’s some insi
 
 Hey, at least you didn’t spend 40 $/£/€ to be here.
 
-## 1. Thinking it all someone else’s fault.
+### 1. Thinking it all someone else’s fault.
 If you work as a software developer you will work on a lot of teams and unless you are really lucky, most of them will be terrible. At least they will be terrible from your perspective.
 
 Most software development is terrible. It’s frustrating, it’s unreliable. It’s difficult. It’s tedious.
 
 It’s easy to assume that this is all someone else’s fault. There are solutions if people would just adopt them.
 
-There really aren’t. Everyone including you is trying to figure out how to build software and make things less frustrating. The problem is that one person’s solution is the very thing that frustrates the hell out of you. And it works both ways. Do you have any idea how frustrating it must be for a project manager to have a coder tell them that estimates are useless.
+There really aren’t. Everyone including you is trying to figure out how to build software and make things less frustrating. The problem is that one person’s solution is the very thing that frustrates the hell out of you. And it works both ways. Do you have any idea how frustrating it must be for a project manager to have a coder tell them that estimates are useless?
 
 I’m fully conscious of how frustrating it must be to work with me.
 
-I don’t have any magic answer on this point other than to realize that none of us really have THE ANSWERS. It’s probably better to have a team full of people who know that then a team full of people with their own ideas, all of whom think they are right.
+I don’t have any magic answer on this point other than to realize that none of us really have THE ANSWERS. It’s probably better to have a team full of people who know that than a team full of people with their own ideas, all of whom think they are right.
 
 Of course there’s no point recognizing this fact if no one else on the team does, so you may have to take yourself out of that situation, and look elsewhere, but at least you’ll know what you’re looking for.

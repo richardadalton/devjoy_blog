@@ -8,10 +8,9 @@ banner = "img/banners/banner-1.jpg"
 
 It’s verging on heresy to even talk of Unit Tests and Comments as being in any way related. They serve different purposes, work in different ways, and have nothing in common.
 
-Except…
+Except
 
-Comments
---------
+### Comments
 * Document Interfaces, API’s etc.
 * Can drive development by writing pseudo code comments first.
 * Mark outstanding work using TODO comments.
@@ -20,8 +19,7 @@ Comments
 * Document expectations, side-effects etc.
 * Can get out of sync with the code.
 
-Unit Tests
-----------
+### Unit Tests
 * Document Interfaces, API’s etc.
 * Can drive development by writing tests first.
 * Mark outstanding work using failing tests.
@@ -32,8 +30,7 @@ Unit Tests
 
 OK, I’m using a little bit of poetic license here to highlight the similarities. You can find a handful of similarities between almost anything if you look hard enough. Nonetheless, there are similarities. Automated tests solve many problems that comments have used to tackle.
 
-From Mandatory to Code Smell
-----------------------------
+### From Mandatory to Code Smell
 Once upon a time comments were pretty much mandatory. Coding standards included rules and guidelines on how to write them. Every file would contain comments as a header.
 
 Today, there are mutterings of discontent about comments. There are some who go as far to describe them as a code smell. 
@@ -49,8 +46,7 @@ If you see comment explaining *why* code is like it is, that might be ok.
 
 If you see comments explaining *what* code does, or *how* it does it, that might be a code smell.
 
-Unit Tests as a Code Smell
---------------------------
+### Unit Tests as a Code Smell
 Can unit tests ever be a code smell? It almost seems like a ridiculous question. The big problem most of us seem to have with unit testing is not doing it enough. Is it beyond the pale that we should be doing less?
 
 There was a time when the only problem with comments was not having enough. The very idea of too many comments was laughable. But here we are.
@@ -65,8 +61,7 @@ Why is testing individual code ‘units’ considered a fundamental good? Aren�
 
 Aha! but TDD. Unit tests have a function in driving out the development of complicated functionality? But implicit in this is the idea that tests have their place. Much like comments. Finding tests somewhere that isn't "their place" may be a code smell.
 
-Keeping in sync
-------------------
+### Keeping in sync
 Whether tests come to be regarded as a code smell may hinge on how we keep them in sync with the code they test.
 
 The ease with which comments and code could diverge from each other is a serious problem.
@@ -77,8 +72,7 @@ However, while it might be easier to discover divergence, the holy grail is avoi
 
 The lower level the test, the more likely it is that changes to the code will mean changes to the test.
 
-Less is More
-------------
+### Less is More
 Tests are code. Generally speaking, if you can deliver the same value with less code, then that’s a good way to go. If we can get most of the benefits of unit tests, while writing less tests at higher levels, isn't that preferable?
 
 The question is can we? Are there inherent benefits of unit tests that can’t be either replicated by higher level tests? or mitigated by technology or techniques?

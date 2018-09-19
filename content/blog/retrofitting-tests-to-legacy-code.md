@@ -24,6 +24,6 @@ Here's a [Stack Overflow question](https://stackoverflow.com/questions/606811/td
 
 Robert Martin contributes an interesting Step By Step on how to add tests to existing code (in an kludgy way). He then explains how to refactor both the original code and the kludgy test handling.
 
-#### Recommended Reading
+### Recommended Reading
 [Working Effectively With Legacy Code - Michael Feathers](http://www.bookdepository.com/book/9780131177055/?a_aid=richardadalton)
 

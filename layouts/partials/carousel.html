@@ -11,7 +11,10 @@
                     <div class="row">
                         <div class="col-sm-5 right">
                             <h1>{{ .title }}</h1>
-                            {{ .description | safeHTML }}
+                            <ul class="list-style-none">
+                                <li>{{ .description }}</li>
+                                <li><a href="{{ .url }}" class="btn btn-template-main">{{ i18n "readMore" }}</a></li>
+                            </ul>
                         </div>
                         <div class="col-sm-7">
                             <img class="img-responsive" src="{{ .image }}" alt="">
