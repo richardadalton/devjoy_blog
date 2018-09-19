@@ -1,5 +1,3 @@
-baseurl = "https://richardadalton.github.io/devjoy_blog/"
-title = "devjoy"
 languageCode = "en-us"
 
 # Site language. Available translations in the theme's `/i18n` directory.
@@ -106,8 +104,8 @@ paginate = 10
     latitude = "-12.043333"
     longitude = "-77.028333"
 
-[Permalinks]
-    blog = "/blog/:year/:month/:day/:filename/"
+#[Permalinks]
+#    blog = "/blog/:year/:month/:day/:filename/"
 
 # Enable or disable top bar with social icons
 [params.topbar]

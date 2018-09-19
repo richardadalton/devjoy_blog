@@ -10,7 +10,7 @@ install:
 
 # Build the website
 script:
-  - binaries/hugo
+  - binaries/hugo --config config-base.toml,config-prod.toml 
 
 # Deploy to GitHub pages
 deploy:
