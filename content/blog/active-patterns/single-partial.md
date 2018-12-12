@@ -4,6 +4,8 @@ title = "Single Partial (|A|_|)"
 tags = ["functional programming", "f#"]
 categories = ["how to"]
 banner = "img/banners/fsharp.png" 
+series = ["F-Sharp Active Patterns"]
+series_weight = 04
 +++
 
 I’ve referred to all of the Active Patterns we have seen so far in this series as ‘Single Total’. It’s time to look at the distinction between ‘Total’ and ‘Partial’ Active Patterns.

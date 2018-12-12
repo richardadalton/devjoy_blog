@@ -12,6 +12,12 @@ googleAnalytics = ""
 # Define the number of posts per page
 paginate = 10
 
+[taxonomies]
+  category = "categories"
+  tag = "tags"
+  series = "series"
+
+
 [menu]
 
 # Main menu
@@ -110,6 +116,7 @@ paginate = 10
     categories = true
     tags = true
     search = true
+	series = true
 
 [params.carousel]
     enable = true
@@ -157,4 +164,9 @@ paginate = 10
 [params.recent_posts]
     enable = true
     title = "Recent Posts"
+    subtitle = ""
+	
+[params.series]
+    enable = true
+    title = "Series"
     subtitle = ""

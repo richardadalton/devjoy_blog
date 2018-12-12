@@ -4,6 +4,8 @@ title = "Single Partial With Params (|A|_|) x"
 tags = ["functional programming", "f#"]
 categories = ["how to"]
 banner = "img/banners/fsharp.png" 
+series = ["F-Sharp Active Patterns"]
+series_weight = 05
 +++
 
 We close out the discussion of Single Active Patterns by adding parameters to the partial active pattern. If you’ve read the post on adding parameters to the Single Total Active Pattern then there is absolutely nothing new here, it works in exactly the same way.

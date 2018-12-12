@@ -4,6 +4,8 @@ title = "Partial Application"
 tags = ["functional programming", "f#"]
 categories = ["how to"]
 banner = "img/banners/fsharp.png" 
+series = ["F-Sharp Active Patterns"]
+series_weight = 03
 +++
 
 This post was supposed to be about Partial Active Patterns, but before we get to that, I want to take a small diversion to cover Partial Application of Active Patterns (which is a completely different thing). Confused? Don’t worry. Read on.
