@@ -114,7 +114,7 @@ paginate = 10
 [params.hero]
 	enable = true
 	title = "devjoy"
-	subtitle = "learn dev stuff and whatnot"
+	description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin sagittis nisi vitae ligula tincidunt fringilla. Integer nec aliquet nisi. Donec auctor neque nulla, mattis consectetur nibh tincidunt a."
 	image = "img/devjoyballoon.svg"
 	
 [params.carousel]
