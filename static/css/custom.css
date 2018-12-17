@@ -33,3 +33,34 @@ figure {
 figcaption {
   margin: 0 auto; 
 }
+
+#hero {
+  background: url('../img/texture-bw.png') center center repeat;
+  padding: 20px 0;
+  height: 100%;
+}
+#hero h1 {
+  color: #333333;
+  font-size: 60px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+}
+#hero h2 {
+  color: #333333;
+  font-size: 30px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  font-style: italic;
+}
+@media (max-width: 991px) {
+  #hero h1, h2 {
+    text-align: center;
+  }
+}
+.hero-text {
+
+}
+.hero-image {
+  margin-left: auto;
+  margin-right: auto;
+}
