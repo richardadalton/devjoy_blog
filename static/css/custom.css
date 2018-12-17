@@ -41,16 +41,15 @@ figcaption {
 }
 #hero h1 {
   color: #333333;
-  font-size: 60px;
-  font-weight: 700;
+  font-size: 50px;
+  font-weight: 400;
   letter-spacing: 0.08em;
 }
 #hero h2 {
   color: #333333;
   font-size: 30px;
-  font-weight: 700;
+  font-weight: 300;
   letter-spacing: 0.08em;
-  font-style: italic;
 }
 @media (max-width: 991px) {
   #hero h1, h2 {

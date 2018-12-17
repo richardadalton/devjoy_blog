@@ -3,7 +3,9 @@ date = "2013-02-01T00:00:00Z"
 title = "Iterating, Incrementing, and Accumulating"
 tags = ["functional programming", "f#"]
 categories = ["how to"]
-banner = "img/banners/fsharp.png" 
+banner = "img/banners/fsharp.png"
+series = ["Thinking Functionally"]
+series_weight = 02
 +++
 
 
