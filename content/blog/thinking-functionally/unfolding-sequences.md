@@ -4,6 +4,8 @@ title = "Unfolding Sequences"
 tags = ["functional programming", "f#"]
 categories = ["how to"]
 banner = "img/banners/fsharp.png"
+series = ["Thinking Functionally"]
+series_weight = 03
 +++
 
 

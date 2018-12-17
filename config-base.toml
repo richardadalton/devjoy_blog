@@ -120,12 +120,12 @@ paginate = 10
 
 [params.hero]
 	enable = true
-	title = "devjoy"
+	title = "what is devjoy?"
 	description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin sagittis nisi vitae ligula tincidunt fringilla. Integer nec aliquet nisi. Donec auctor neque nulla, mattis consectetur nibh tincidunt a."
 	image = "img/devjoyballoon.svg"
 	
 [params.carousel]
-    enable = true
+    enable = false
     # All carousel items are defined in their own files. You can find example items
     # at 'exampleSite/data/carousel'.
     # For more informtion take a look at the README.
