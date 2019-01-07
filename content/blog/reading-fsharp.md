@@ -5,6 +5,9 @@ abstract="Even experienced C# developers can struggle to understand F# code. In 
 tags = ["code", "c#", "f#"]
 categories = ["how to"]
 banner = "img/banners/fsharp.png"
+aliases = [
+    "/2017/02/reading-f/",
+]
 +++
 
 A tweet about some C# code rewritten in F# got me interested yesterday.
