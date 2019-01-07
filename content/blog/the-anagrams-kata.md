@@ -4,6 +4,9 @@ title = "The Anagrams Kata"
 tags = ["testing", "tdd", "c#"]
 categories = ["how to"]
 banner = "img/banners/permutations.png"
+aliases = [
+    "/2012/11/the-anagrams-kata/",
+]
 +++
 
 The following is my C# implementation of the Anagrams Kata as described on cyber-dojo.com

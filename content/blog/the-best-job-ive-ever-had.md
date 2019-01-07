@@ -4,6 +4,9 @@ title = "The Best Job I've Ever Had"
 tags = ["teams"]
 categories = ["thoughts"]
 banner = "img/banners/ticcamp.png"
+aliases = [
+    "/2014/10/the-best-job-ive-ever-had/",
+]
 +++
 
 Still the best job I’ve ever had and I’ve given up hoping there’ll ever be a better one. My first year at TIC was my first time in the US. Karen picked me up at the airport. On the drive to her house I mentioned Visual Basic, and there and then she decided. We would be teaching Visual Basic. That’s how things worked at TIC.

@@ -5,6 +5,9 @@ abstract="How do you unit test C# events and callbacks? Here's how."
 tags = ["testing", "c#", "code"]
 categories = ["how to"]
 banner = "img/banners/stop-wait-sign.png"
+aliases = [
+    "/2015/08/unit-testing-events-and-callbacks-in-c/",
+]
 +++
 
 ### The Problem

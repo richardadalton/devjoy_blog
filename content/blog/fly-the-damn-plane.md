@@ -4,6 +4,9 @@ title = "Fly The Damn Plane"
 tags = ["agile"]
 categories = ["thoughts"]
 banner = "img/banners/plane.png"
+aliases = [
+    "/2014/07/stop-focusing-on-agile-and-fly-the-damn-plane/",
+]
 +++
 
 ![Car](/img/plane.png)

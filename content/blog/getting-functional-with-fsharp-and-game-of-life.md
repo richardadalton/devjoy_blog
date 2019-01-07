@@ -4,6 +4,9 @@ title = "Getting Functional with F# and The Game Of Life"
 tags = ["code", "functional programming", "f#"]
 categories = ["how to"]
 banner = "img/banners/fsharp.png"
+aliases = [
+    "/2012/07/getting-functional-with-f-and-the-game-of-life/",
+]
 +++
 
 One session at NDC that really kicked my grasp of functional programming up a few notches was Vagif Abilov’s discussion of Conway’s Game Of Life using F#.

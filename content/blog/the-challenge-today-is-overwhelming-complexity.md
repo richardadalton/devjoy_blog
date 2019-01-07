@@ -4,6 +4,9 @@ title = "The Challenge Today Is Overwhelming Complexity"
 tags = ["complexity"]
 categories = ["thoughts"]
 banner = "img/banners/complexity.png"
+aliases = [
+    "/2014/08/the-challenge-today-is-overwhelming-complexity/",
+]
 +++
 
 Here’s a really great [post](http://blog.moertel.com/posts/2013-12-14-great-old-timey-game-programming-hack.html) by [Tom Moertel](https://plus.google.com/+TomMoertel) on squeezing every last ounce of performance out of machines back in the day.

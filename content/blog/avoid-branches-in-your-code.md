@@ -5,6 +5,9 @@ abstract="An if statement creates a branch in your code and increases it's compl
 tags = ["code"]
 categories = ["how to"]
 banner = "img/banners/t-junction-sign.png"
+aliases = [
+    "/2015/01/minimize-mental-overhead-for-code-readers/",
+]
 +++
 
 This week at our FunctionalKats meetup in Dublin, we tackled a simple programming task the Luhn checksum algorithm. The challenge was to try and make the code readable.

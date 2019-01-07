@@ -4,6 +4,9 @@ title = "Unfolding Sequences"
 tags = ["functional programming", "f#"]
 categories = ["how to"]
 banner = "img/banners/fsharp.png"
+aliases = [
+    "/2013/02/learning-to-think-functionally-unfolding-sequences/",
+]
 +++
 
 

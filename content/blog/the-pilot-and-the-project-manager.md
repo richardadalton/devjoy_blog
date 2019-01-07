@@ -4,8 +4,10 @@ title = "The Pilot and the Project Manager"
 tags = ["agile"]
 categories = ["thoughts"]
 banner = "img/banners/cessna-landing.png"
+aliases = [
+    "/2012/11/landing-a-plane-vs-managing-a-project/",
+]
 +++
-
 
 To land a plane you need to line up with the runway, figure out the right rate of descent and airspeed, then monitor and manage those, all the way down to the ground.
 

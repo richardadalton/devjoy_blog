@@ -4,6 +4,9 @@ title = "Recursion"
 tags = ["functional programming", "f#"]
 categories = ["how to"]
 banner = "img/banners/fsharp.png"
+aliases = [
+    "/2014/06/learning-to-think-functionally-recursion/",
+]
 +++
 
 This post looks at a hugely important part of functional programming, Recursion. In simple terms this means writing a function that calls itself.

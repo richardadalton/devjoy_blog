@@ -4,6 +4,9 @@ title = "Pattern Matching"
 tags = ["functional programming", "f#"]
 categories = ["how to"]
 banner = "img/banners/fsharp.png"
+aliases = [
+    "/2014/08/pattern-matching/",
+]
 +++
 
 This is the first in a series of posts explaining Active Patterns, a very cool feature of F#. This post will lay the groundwork by covering pattern matching, and introducing the concept of active patterns. Subsequent posts will cover the various types of active pattern in detail.

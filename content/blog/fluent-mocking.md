@@ -4,6 +4,9 @@ title = "Fluent Mocking"
 tags = ["testing", "c#"]
 categories = ["how to"]
 banner = "img/banners/facade.png"
+aliases = [
+    "/2011/06/fluent-mocking/",
+]
 +++
 
 Here’s a scenario (for once not a hypothetical scenario, this is a real system I worked on). I was building a wizard based app. To be more accurate I was building lots of wizard based apps.

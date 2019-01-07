@@ -5,6 +5,9 @@ abstract="Mastermind is a classic game of permutations and code breaking. It als
 tags = ["code", "f#"]
 categories = ["how to"]
 banner = "img/banners/mastermind.png"
+aliases = [
+    "/2015/01/mastermind/",
+]
 +++
 
 ![Mastermind](/img/mastermind.png)

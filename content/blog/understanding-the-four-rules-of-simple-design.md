@@ -4,6 +4,9 @@ title = "Understanding The Four Rules Of Simple Design"
 tags = ["design"]
 categories = ["reviews"]
 banner = "img/banners/4simplerules.png"
+aliases = [
+    "/2014/04/understanding-the-four-rules-of-simple-design/",
+]
 +++
 
 I don’t normally review books, mainly because when it comes to technical books I rarely manage to read them in their entirety.

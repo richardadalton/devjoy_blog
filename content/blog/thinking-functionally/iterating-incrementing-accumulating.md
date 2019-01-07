@@ -4,6 +4,9 @@ title = "Iterating, Incrementing, and Accumulating"
 tags = ["functional programming", "f#"]
 categories = ["how to"]
 banner = "img/banners/fsharp.png" 
+aliases = [
+    "/2013/02/learning-to-think-functionally-iterating-incrementing-and-accumulating/",
+]
 +++
 
 
