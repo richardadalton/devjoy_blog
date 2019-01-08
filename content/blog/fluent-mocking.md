@@ -15,7 +15,7 @@ After a couple of wizards the functionality became clear and I extracted it to i
 
 Two of the objects in my framework are ‘Wizard’ and ‘WizardStep’. A Wizard contains WizardSteps. You get the idea.
 
-### Testing Our Framework
+### Testing Our Framework
 There are quite a few tests that we can write to make sure that navigation works. 
 
 * Moving next should increment the current step.

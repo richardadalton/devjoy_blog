@@ -44,7 +44,7 @@ I came away from Vagif’s session understanding his approach in about as much d
 
 I thought a quick comparison of my results and Vagif’s original code might prove useful to someone learning F# hence, this post.
 
-### Representing the “Board”
+### Representing the “Board”
 Let’s start with how we’ll represent the pattern of cells. The way Game of Life is generally described conjures up images of something akin to a chess board, perhaps for this reason it’s not uncommon to find concepts like ‘Board’ in the code, often in the form of a two dimensional array. I preferred to follow Vagif’s lead and went with a list of tuples representing (x, y) coordinates.
 
 We can have some fun here with how we lay out our code. Look at the following two lines, they are functionally identical, but the second one actually illustrates the relative positions of the coordinates we’re defining. We’ll see something similar to this a little later.

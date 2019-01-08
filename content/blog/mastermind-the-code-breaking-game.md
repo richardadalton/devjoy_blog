@@ -10,8 +10,6 @@ aliases = [
 ]
 +++
 
-![Mastermind](/img/mastermind.png)
-
 Mastermind, is a code breaking game for two players.
 
 A “Code Maker” creates a secret sequence of colour pegs. A “Code Breaker” must break the code by taking guesses and working with the feedback from the Code Maker. Feedback is given using Black and White Pegs.
@@ -83,8 +81,6 @@ let check code guess =
 {{< /highlight >}}
 
 The Code Maker has visibility of the Secret Code (because it create it) and the guess (because the Code Breaker asks to have a guess checked). This will be more interesting when we look at the signature for the solve function.
-
-![Mastermind Secret](/img/mastermind-secret.png)
 
 Let’s not get ahead of ourselves. How to we check a guess against a secret code and calculate the number of Black and White pegs?
 

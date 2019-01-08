@@ -9,8 +9,6 @@ aliases = [
 ]
 +++
 
-![Car](/img/car.png)
-
 Why do cars have brakes?
 
 I noticed this question on [Jon Jagger’s blog](http://jonjagger.blogspot.ie/2011/07/why-do-cars-have-brakes.html) and I was delighted with myself that I managed to get the “right” answer without peeking.

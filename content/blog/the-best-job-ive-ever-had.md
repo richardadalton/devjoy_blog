@@ -11,8 +11,6 @@ aliases = [
 
 Still the best job I’ve ever had and I’ve given up hoping there’ll ever be a better one. My first year at TIC was my first time in the US. Karen picked me up at the airport. On the drive to her house I mentioned Visual Basic, and there and then she decided. We would be teaching Visual Basic. That’s how things worked at TIC.
 
-![TIC Camp](/img/ticcamp.png)
-
 During my second year I suggested we split computing and multi-media. Each should have it’s own director. Done. No arguing, no meetings, no debate. If you suggested something and Karen couldn’t see a good reason not to, she trusted the people she hired. For the Summer of ’96, there were two directors, and I was one of them.
 
 And the campers, the amazing campers. I still recall teaching the Pythagorean theorem to a junior camper.  He needed to figure out if his wrestlers could hit each other. 

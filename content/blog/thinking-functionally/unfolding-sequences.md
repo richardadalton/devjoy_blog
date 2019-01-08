@@ -56,7 +56,7 @@ The following is a very quick, incomplete, and probably inaccurate description o
 ### Range
 A Range Expression is simply a notation for defining a series of numbers from a low value to a high value. By default the increment is 1, but the Range notation also allows us to define a step size. For the purpose of this blog post we’re interested in using Range expressions to define the contents of Lists and Sequences.
 
-### List
+### List
 A List is an ordered series of elements. Lists are immutable, and finite. To put it bluntly, lists actually contain stuff. All the elements in a list will be of the same type, but that can be pretty much anything. Numbers, words, tuples, types, or even other lists.
 
 There are numerous ways of specifying the contents of a list. You can explicitly say what it contains…
@@ -77,7 +77,7 @@ If you want to change the increment size you can. The following range runs from 
 let skipList = [ 0..5..100 ]
 {{< / highlight >}}
 
-### Sequences
+### Sequences
 A Sequence is similar to a list. We can enumerate the items in the sequence, apply aggregate functions, etc. Sequences can be created using Range Expressions in much the same way that Lists can.
 
 {{< highlight fsharp "style=tango" >}}
@@ -88,7 +88,7 @@ Note, that the only difference from Lists is that we use braces {} instead of th
 
 The killer feature of Sequence is that the terms of the sequence are generated on an “as needed” basis. So, if a sequence defines a potential range of 1,000,000 items, but a particular function only accesses the first 10 terms, then only the 10 terms are generated. This allows for potentially infinite sequences.
 
-### Unfolding Sequences
+### Unfolding Sequences
 And, with that very quick primer, we go back to the code from Ross and another much more interesting way to generate a Sequence, Unfolding.
 
 Unfolding a sequence is actually a very simple notion. We use a function to generate the next term in the sequence based on the current term. An example is worth a thousand words, so let’s have one.
