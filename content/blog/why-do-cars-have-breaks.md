@@ -4,9 +4,10 @@ title = "Why Do Cars Have Breaks?"
 tags = ["agile"]
 categories = ["thoughts"]
 banner = "img/banners/try-your-brakes-sign.png"
+aliases = [
+    "/2013/02/why-do-cars-have-brakes/",
+]
 +++
-
-![Car](/img/car.png)
 
 Why do cars have brakes?
 

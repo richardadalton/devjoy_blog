@@ -4,6 +4,9 @@ title = "Don't Scatter Logic All Over The Call Stack"
 tags = ["code"]
 categories = ["how to"]
 banner = "img/banners/keep-tidy-sign.png"
+aliases = [
+    "/2013/10/dont-scatter-logic-all-over-the-call-stack/",
+]
 +++
 
 Here’s a problem I come across all the time in legacy code and I have been guilty of it myself in the past. This isn’t going to be rocket science, but, apparently, this stuff doesn’t go without saying. Normal caveats about this being a simplified contrived example apply.

@@ -4,6 +4,9 @@ title = "C# Is Too Damn Noisy"
 tags = ["code", "c#"]
 categories = ["thoughts"]
 banner = "img/banners/banner-1.jpg"
+aliases = [
+    "/2013/04/c-is-too-damn-noisy/",
+]
 +++
 
 I am growing increasingly frustrated with C#. I think the reason for that may be my exposure to languages like F#. In many ways my feelings for C# are quite similar to feelings I had about VB.Net when I was first exposed to C#.

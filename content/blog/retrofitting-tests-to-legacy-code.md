@@ -4,6 +4,9 @@ title = "Retrofitting Tests To Legacy Code"
 tags = ["testing"]
 categories = ["thoughts"]
 banner = "img/banners/temple-stilts.jpg"
+aliases = [
+    "/2011/06/retro-fitting-unit-tests-to-legacy-code/",
+]
 +++
 
 One problem with TDD is that those who try it, often begin by writing a few trivial tests to get the lie of the land. Then instead of using TDD to write new code they do something much much harder. 

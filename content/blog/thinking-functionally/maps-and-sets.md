@@ -6,6 +6,9 @@ categories = ["how to"]
 banner = "img/banners/fsharp.png"
 series = ["Thinking Functionally"]
 series_weight = 06
+aliases = [
+    "/2014/07/learning-to-think-functionally-types-maps-and-sets/",
+]
 +++
 
 In the most recent post in this series I implemented Tic-Tac-Toe using recursion to find the best moves. The point of that post was the recursion and I took the simplest approach I could think of to represent the actual board and moves.

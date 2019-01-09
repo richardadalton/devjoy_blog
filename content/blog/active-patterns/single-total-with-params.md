@@ -6,6 +6,9 @@ categories = ["how to"]
 banner = "img/banners/fsharp.png"
 series = ["F-Sharp Active Patterns"]
 series_weight = 05
+aliases = [
+    "/2014/08/active-patterns-single-total-with-params-a-x/",
+]
 +++
 
 We move on to the next in our series on Active Patterns, but this time we’re really just covering a slight modification to the Single Total pattern that we covered in the [last post]({{< ref "single-total.md" >}}).

@@ -6,6 +6,9 @@ categories = ["how to"]
 banner = "img/banners/fsharp.png"
 series = ["Thinking Functionally"]
 series_weight = 01
+aliases = [
+    "/2013/01/learning-to-think-functionally-currying/",
+]
 +++
 
 Warning, novice functional thinker here. If you know your stuff, what follows may cause distress.
@@ -33,8 +36,7 @@ I played with the ‘even’ function for a while. Clearly I needed to replace t
 
 I was missing the point. The filter predicate takes one argument, a member of the list being filtered. There is, to the best of my knowledge, no way of adding extra parameters. You need to take a different (more functional) approach.
 
-Partially Applying Functions
-----------------------------
+### Partially Applying Functions
 What we need to do is create a function that accepts an item from the list and checks if it’s a multiple of a variable, without passing that variable into the function. In other words, we need to lock the variable in when the function is created. What we’re talking about here is partial application, which is something I thought I understood, but as with any new concept, reading about it is one thing, having it pop into your mind automatically when you need it is another matter entirely.
 
 When the partial application idea had made it’s way into my mind coming up with something that works was relatively easy (that’s progress I suppose).

@@ -5,9 +5,10 @@ abstract="Mastermind is a classic game of permutations and code breaking. It als
 tags = ["code", "f#"]
 categories = ["how to"]
 banner = "img/banners/mastermind.png"
+aliases = [
+    "/2015/01/mastermind/",
+]
 +++
-
-![Mastermind](/img/mastermind.png)
 
 Mastermind, is a code breaking game for two players.
 
@@ -80,8 +81,6 @@ let check code guess =
 {{< /highlight >}}
 
 The Code Maker has visibility of the Secret Code (because it create it) and the guess (because the Code Breaker asks to have a guess checked). This will be more interesting when we look at the signature for the solve function.
-
-![Mastermind Secret](/img/mastermind-secret.png)
 
 Let’s not get ahead of ourselves. How to we check a guess against a secret code and calculate the number of Black and White pegs?
 

@@ -4,6 +4,9 @@ title = "The Happy Path"
 tags = ["agile"]
 categories = ["thoughts"]
 banner = "img/banners/happy-path-sign.png"
+aliases = [
+    "/2014/02/the-happy-path-model-of-software-development/",
+]
 +++
 
 Every movement needs an enemy, it galvanises followers, gives a community a sense of some shared identity. Even if Group A aspire to nothing more than to not be like Group B that is at least something to rally around.

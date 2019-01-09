@@ -6,6 +6,9 @@ categories = ["how to"]
 banner = "img/banners/fsharp.png"
 series = ["F-Sharp Active Patterns"]
 series_weight = 02
+aliases = [
+    "/2014/08/active-patterns-single-total-a/",
+]
 +++
 
 [Part 1]({{< ref "pattern-matching.md" >}}) of this series was mainly sharpening the axe by covering some basics like Pattern matching. I also gave a general sense of what active patterns are (functions that can be used when pattern matching, such as in match expressions). Now it’s time to dig into the details.

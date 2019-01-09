@@ -6,6 +6,9 @@ categories = ["how to"]
 banner = "img/banners/fsharp.png" 
 series = ["F-Sharp Active Patterns"]
 series_weight = 07
+aliases = [
+    "/2014/08/active-patterns-choices-and-nesting/",
+]
 +++
 
 And so, we arrive at the last post of the series. I’ll show you the F# ‘Choice’ type and show how it relates to active patterns. I’ll explain how to add additional parameters to a multi-case active pattern, and introduce some complex pattern matching using nested active patterns.

@@ -3,9 +3,12 @@ date = "2014-08-09T00:00:00Z"
 title = "Partial Application"
 tags = ["functional programming", "f#"]
 categories = ["how to"]
-banner = "img/banners/fsharp.png" 
+banner = "img/banners/fsharp.png"
 series = ["F-Sharp Active Patterns"]
 series_weight = 03
+aliases = [
+    "/2014/08/active-patterns-currying/",
+]
 +++
 
 This post was supposed to be about Partial Active Patterns, but before we get to that, I want to take a small diversion to cover Partial Application of Active Patterns (which is a completely different thing). Confused? Don’t worry. Read on.

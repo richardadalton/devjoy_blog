@@ -4,8 +4,10 @@ title = "The Pilot and the Project Manager"
 tags = ["agile"]
 categories = ["thoughts"]
 banner = "img/banners/cessna-landing.png"
+aliases = [
+    "/2012/11/landing-a-plane-vs-managing-a-project/",
+]
 +++
-
 
 To land a plane you need to line up with the runway, figure out the right rate of descent and airspeed, then monitor and manage those, all the way down to the ground.
 
@@ -15,7 +17,7 @@ Simple?
 
 Well, not so much.
 
-### How not to land a plane
+### How not to land a plane
 If you drop the average person with no experience of flying into the captain’s seat, and ask them to land a plane, they will almost certainly get into trouble very quickly. Even if you line them up with the runway and tell them the rate of descent and airspeed they need to maintain, they will probably still lose control of the aircraft.
 
 What inevitably goes wrong is that a layman assumes that you should use the throttle to control airspeed, and you should use forward and backward movement of the yolk or joystick to control the rate of descent. That’s understandable. A plane is just a three dimensional car, and in a car we control speed with the gas peddle, and direction with the steering wheel.
@@ -24,7 +26,7 @@ With a plane things are reversed. If your rate of descent is too fast, increase 
 
 While getting back on the correct rate of descent with the throttle, you control the airspeed by pulling back on the yolk to raise the nose, which slows the plane. If the plane is too slow, pushing the nose down will speed it up.
 
-### Landing your first project
+### Landing your first project
 Training for new project managers is often either non existent, or amounts to a one or two day course.
 
 Contrast this with the on the ground, theoretical training required by a pilot. For a sense of what a pilot goes through in ground school, take a look [here](http://www.free-online-private-pilot-ground-school.com/)
@@ -35,7 +37,7 @@ We seem permanently stuck, like amateur pilots using levers that are intuitive, 
 
 Throwing more bodies at a late project, Calling extra meetings, demanding more status reports, introducing or abandoning tools or practices, cutting corners in QA, Version Control, Deployment. Shipping more features with more bugs, rather than less features with less bugs.
 
-### Lessons
+### Lessons
 The pilots teach us a number of lessons that we can apply to projects.
 
 Few people have an automatic ability to fly planes, or manage project. These are skills that need to be learned.

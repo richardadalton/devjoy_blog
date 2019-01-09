@@ -4,6 +4,9 @@ title = "Fluent Mocking"
 tags = ["testing", "c#"]
 categories = ["how to"]
 banner = "img/banners/facade.png"
+aliases = [
+    "/2011/06/fluent-mocking/",
+]
 +++
 
 Here’s a scenario (for once not a hypothetical scenario, this is a real system I worked on). I was building a wizard based app. To be more accurate I was building lots of wizard based apps.
@@ -12,7 +15,7 @@ After a couple of wizards the functionality became clear and I extracted it to i
 
 Two of the objects in my framework are ‘Wizard’ and ‘WizardStep’. A Wizard contains WizardSteps. You get the idea.
 
-### Testing Our Framework
+### Testing Our Framework
 There are quite a few tests that we can write to make sure that navigation works. 
 
 * Moving next should increment the current step.

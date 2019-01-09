@@ -4,10 +4,10 @@ languageCode = "en-us"
 defaultContentLanguage = "en"
 
 # Enable comments by entering your Disqus shortname
-disqusShortname = "devcows"
+disqusShortname = "devjoycom"
 
 # Enable Google Analytics by entering your tracking code
-googleAnalytics = ""
+googleAnalytics = "UA-131889453-1"
 
 # Define the number of posts per page
 paginate = 10

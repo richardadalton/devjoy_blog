@@ -4,6 +4,9 @@ title = "Are Unit Tests the new Comments?"
 tags = ["testing"]
 categories = ["thoughts"]
 banner = "img/banners/banner-1.jpg"
+aliases = [
+    "/2012/10/are-unit-tests-the-new-comments/",
+]
 +++
 
 It’s verging on heresy to even talk of Unit Tests and Comments as being in any way related. They serve different purposes, work in different ways, and have nothing in common.

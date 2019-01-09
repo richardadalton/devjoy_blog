@@ -4,6 +4,9 @@ title = "Simplicity"
 tags = ["complexity"]
 categories = ["thoughts"]
 banner = "img/banners/keep-it-simple.png"
+aliases = [
+    "/2013/10/simplicity/",
+]
 +++
 
 Ladies and Gentlemen of the class of ‘14
