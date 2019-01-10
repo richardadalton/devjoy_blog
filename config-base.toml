@@ -121,7 +121,7 @@ paginate = 10
 [params.hero]
 	enable = true
 	title = "what is devjoy?"
-	description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin sagittis nisi vitae ligula tincidunt fringilla. Integer nec aliquet nisi. Donec auctor neque nulla, mattis consectetur nibh tincidunt a."
+	description = "devjoy is a software development, training and consulting company. We are passionate about learning, teaching, and enjoying software development."
 	image = "img/devjoyballoon.svg"
 	
 [params.carousel]

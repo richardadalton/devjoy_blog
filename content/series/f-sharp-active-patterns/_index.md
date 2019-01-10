@@ -1,7 +1,7 @@
 +++
 title = "F# Active Patterns"
 banner = "img/banners/fsharp.png" 
-abstract = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin sagittis nisi vitae ligula tincidunt fringilla. "
+abstract = "Active Patterns are one of the killer features of F#. They can be a little confusing at first. This series of posts will help you to master them."
 +++
 
 bvcgcgfcgfc

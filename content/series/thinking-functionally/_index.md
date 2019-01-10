@@ -1,7 +1,7 @@
 +++
 title = "Thinking Functionally"
 banner = "img/banners/fsharp.png" 
-abstract = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin sagittis nisi vitae ligula tincidunt fringilla. "
+abstract = "I wrote these posts while first learning about functional programming. The posts are simple to follow because I didn't know enough to make them complicated."
 +++
 
 bvcgcgfcgfc
