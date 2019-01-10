@@ -4,6 +4,8 @@ title = "Partial Application"
 tags = ["functional programming", "f#"]
 categories = ["how to"]
 banner = "img/banners/fsharp.png"
+series = ["Thinking Functionally"]
+series_weight = 01
 aliases = [
     "/2013/01/learning-to-think-functionally-currying/",
 ]

@@ -4,6 +4,8 @@ title = "Recursion"
 tags = ["functional programming", "f#"]
 categories = ["how to"]
 banner = "img/banners/fsharp.png"
+series = ["Thinking Functionally"]
+series_weight = 05
 aliases = [
     "/2014/06/learning-to-think-functionally-recursion/",
 ]

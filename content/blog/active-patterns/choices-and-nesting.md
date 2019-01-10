@@ -4,6 +4,8 @@ title = "Choices And Nesting"
 tags = ["functional programming", "f#"]
 categories = ["how to"]
 banner = "img/banners/fsharp.png" 
+series = ["F-Sharp Active Patterns"]
+series_weight = 07
 aliases = [
     "/2014/08/active-patterns-choices-and-nesting/",
 ]

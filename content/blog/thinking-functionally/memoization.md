@@ -4,6 +4,8 @@ title = "Memoization"
 tags = ["functional programming", "f#"]
 categories = ["how to"]
 banner = "img/banners/fsharp.png"
+series = ["Thinking Functionally"]
+series_weight = 04
 aliases = [
     "/2013/05/learning-to-think-functionally-memoization/",
 ]

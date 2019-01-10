@@ -4,6 +4,8 @@ title = "Single Partial (|A|_|)"
 tags = ["functional programming", "f#"]
 categories = ["how to"]
 banner = "img/banners/fsharp.png" 
+series = ["F-Sharp Active Patterns"]
+series_weight = 04
 aliases = [
     "/2014/08/active-patterns-single-partial-a_/",
 ]

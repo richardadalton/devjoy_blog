@@ -3,7 +3,9 @@ date = "2014-08-14T00:00:00Z"
 title = "Multi Case (|A|B|)"
 tags = ["functional programming", "f#"]
 categories = ["how to"]
-banner = "img/banners/fsharp.png" 
+banner = "img/banners/fsharp.png"
+series = ["F-Sharp Active Patterns"]
+series_weight = 06
 +++
 
 Playing Cards are a commonly used example of discriminated unions in F#. I’m not presuming that you already understand Discriminated Unions, but I’m also not going to explain them. You should be able to follow along and get a sense of how they work. If you’d like to read up on them try here.

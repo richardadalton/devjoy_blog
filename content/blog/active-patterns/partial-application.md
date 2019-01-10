@@ -3,7 +3,9 @@ date = "2014-08-09T00:00:00Z"
 title = "Partial Application"
 tags = ["functional programming", "f#"]
 categories = ["how to"]
-banner = "img/banners/fsharp.png" 
+banner = "img/banners/fsharp.png"
+series = ["F-Sharp Active Patterns"]
+series_weight = 03
 aliases = [
     "/2014/08/active-patterns-currying/",
 ]

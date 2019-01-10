@@ -4,6 +4,8 @@ title = "Maps and Sets"
 tags = ["functional programming", "f#"]
 categories = ["how to"]
 banner = "img/banners/fsharp.png"
+series = ["Thinking Functionally"]
+series_weight = 06
 aliases = [
     "/2014/07/learning-to-think-functionally-types-maps-and-sets/",
 ]

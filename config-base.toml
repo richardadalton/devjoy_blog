@@ -12,6 +12,12 @@ googleAnalytics = "UA-131889453-1"
 # Define the number of posts per page
 paginate = 10
 
+[taxonomies]
+  category = "categories"
+  tag = "tags"
+  series = "series"
+
+
 [menu]
 
 # Main menu
@@ -104,15 +110,22 @@ paginate = 10
       <a href="#" data-animate-hover="pulse"><i class="fa fa-envelope"></i></a>
       </p>
       """
-
+	  
 # Enable and disable widgets for the right sidebar
 [params.widgets]
     categories = true
     tags = true
     search = true
+	series = true
 
+[params.hero]
+	enable = true
+	title = "what is devjoy?"
+	description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin sagittis nisi vitae ligula tincidunt fringilla. Integer nec aliquet nisi. Donec auctor neque nulla, mattis consectetur nibh tincidunt a."
+	image = "img/devjoyballoon.svg"
+	
 [params.carousel]
-    enable = true
+    enable = false
     # All carousel items are defined in their own files. You can find example items
     # at 'exampleSite/data/carousel'.
     # For more informtion take a look at the README.
@@ -157,4 +170,9 @@ paginate = 10
 [params.recent_posts]
     enable = true
     title = "Recent Posts"
+    subtitle = ""
+	
+[params.series]
+    enable = true
+    title = "Series"
     subtitle = ""
