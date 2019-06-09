@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Learning on devjoy</title>
+    <link>https://www.devjoy.com/tags/learning/</link>
+    <description>Recent content in Learning on devjoy</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 22 Jul 2014 17:43:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://www.devjoy.com/tags/learning/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>My 5 Biggest Mistakes</title>
+      <link>https://www.devjoy.com/blog/my-5-biggest-mistakes/</link>
+      <pubDate>Tue, 22 Jul 2014 17:43:00 +0000</pubDate>
+      
+      <guid>https://www.devjoy.com/blog/my-5-biggest-mistakes/</guid>
+      <description>You can’t work in this business for very long before the hope, idealism and intellectual curiosity is beaten out of you and replaced with TPS Sheets, and 15 different tools for telling your colleagues how to configure IIS so that your app will actually run on their machine.
+If you’re new to this business there may still be time to save yourself. Go drive a truck, or learn a bit about your city and become a tour guide.</description>
+    </item>
+    
+  </channel>
+</rss>

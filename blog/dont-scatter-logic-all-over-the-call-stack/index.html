@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+  <head>
+  <meta charset="utf-8">
+  <meta name="robots" content="all,follow">
+  <meta name="googlebot" content="index,follow,snippet,archive">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Don&#39;t Scatter Logic All Over The Call Stack</title>
+  <meta name="author" content="" />
+
+  
+  <meta name="keywords" content="devows, hugo, go">	
+  
+
+  
+  <meta name="description" content="Site template made by devcows using hugo">	
+  
+
+  <meta name="generator" content="Hugo 0.48" />
+
+  <link href='//fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300italic,500,700,800' rel='stylesheet' type='text/css'>
+
+  
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+  
+  <link href="/css/animate.css" rel="stylesheet">
+
+  
+  
+    <link href="/css/style.blue.css" rel="stylesheet" id="theme-stylesheet">
+  
+
+
+  
+  <link href="/css/custom.css" rel="stylesheet">
+
+  
+  
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  
+
+  
+  <link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon" />
+  <link rel="apple-touch-icon" href="/img/apple-touch-icon.png" />
+  
+
+  <link href="/css/owl.carousel.css" rel="stylesheet">
+  <link href="/css/owl.theme.css" rel="stylesheet">
+
+  <link rel="alternate" href="https://www.devjoy.com/index.xml" type="application/rss+xml" title="devjoy">
+
+  
+  <meta property="og:title" content="Don&#39;t Scatter Logic All Over The Call Stack" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="/blog/dont-scatter-logic-all-over-the-call-stack//" />
+  <meta property="og:image" content="img/logo.png" />
+
+</head>
+
+
+  <body>
+    <div id="all">
+
+        <header>
+
+          <div class="navbar-affixed-top" data-spy="affix" data-offset-top="200">
+
+    <div class="navbar navbar-default yamm" role="navigation" id="navbar">
+
+        <div class="container">
+            <div class="navbar-header">
+                <a class="navbar-brand home" href="https://www.devjoy.com/">
+                    <img src="https://www.devjoy.com/img/logo.png" alt="Don&#39;t Scatter Logic All Over The Call Stack logo" class="hidden-xs hidden-sm">
+                    <img src="https://www.devjoy.com/img/logo-small.png" alt="Don&#39;t Scatter Logic All Over The Call Stack logo" class="visible-xs visible-sm">
+                    <span class="sr-only">Don&#39;t Scatter Logic All Over The Call Stack - go to homepage</span>
+                </a>
+                <div class="navbar-buttons">
+                    <button type="button" class="navbar-toggle btn-template-main" data-toggle="collapse" data-target="#navigation">
+                      <span class="sr-only">Toggle Navigation</span>
+                        <i class="fa fa-align-justify"></i>
+                    </button>
+                </div>
+            </div>
+            
+
+            <div class="navbar-collapse collapse" id="navigation">
+                <ul class="nav navbar-nav navbar-right">
+                  
+                  <li class="dropdown">
+                    
+                    <a href="/">Home</a>
+                    
+                  </li>
+                  
+                  <li class="dropdown">
+                    
+                    <a href="/blog/">Blog</a>
+                    
+                  </li>
+                  
+                  <li class="dropdown">
+                    
+                    <a href="/contact/">Contact</a>
+                    
+                  </li>
+                  
+                </ul>
+            </div>
+            
+
+            <div class="collapse clearfix" id="search">
+
+                <form class="navbar-form" role="search">
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Search">
+                        <span class="input-group-btn">
+
+                    <button type="submit" class="btn btn-template-main"><i class="fa fa-search"></i></button>
+
+                </span>
+                    </div>
+                </form>
+
+            </div>
+            
+
+        </div>
+    </div>
+    
+
+</div>
+
+
+
+
+        </header>
+
+        <div id="heading-breadcrumbs">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h1>Don&#39;t Scatter Logic All Over The Call Stack</h1>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+        <div id="content">
+            <div class="container">
+
+                <div class="row">
+
+                    
+
+                    <div class="col-md-9" id="blog-post">
+
+                        <p class="text-muted text-uppercase mb-small text-right">October 23, 2013</p>
+
+                        <div id="post-content">
+                          
+
+<p>Here’s a problem I come across all the time in legacy code and I have been guilty of it myself in the past. This isn’t going to be rocket science, but, apparently, this stuff doesn’t go without saying. Normal caveats about this being a simplified contrived example apply.</p>
+
+<p>Take a look at this code</p>
+
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fsharp" data-lang="fsharp"><span style="color:#204a87;font-weight:bold">static</span> <span style="color:#204a87;font-weight:bold">void</span> <span style="color:#000">Main</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#204a87;font-weight:bold">string</span><span style="color:#3465a4">[]</span> <span style="color:#000">args</span><span style="color:#ce5c00;font-weight:bold">)</span>
+<span style="color:#ce5c00;font-weight:bold">{</span>
+    <span style="color:#000">PrintTradeBalance</span><span style="color:#3465a4">()</span><span style="color:#ce5c00;font-weight:bold">;</span>
+    <span style="color:#000">Console</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">ReadKey</span><span style="color:#3465a4">()</span><span style="color:#ce5c00;font-weight:bold">;</span>
+<span style="color:#ce5c00;font-weight:bold">}</span></code></pre></div>
+
+<p>Oh! to have code this simple right? It’s pretty clear what it does, it prints a trade balance, whatever that is. Let’s not break out the bunting and brass band yet. What does this code ACTUALLY do. Let’s dig into the function.</p>
+
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fsharp" data-lang="fsharp"><span style="color:#204a87;font-weight:bold">private</span> <span style="color:#204a87;font-weight:bold">static</span> <span style="color:#204a87;font-weight:bold">void</span> <span style="color:#000">PrintTradeBalance</span><span style="color:#3465a4">()</span>
+<span style="color:#ce5c00;font-weight:bold">{</span>
+    <span style="color:#000">var</span> <span style="color:#000">results</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">GetTradeBalance</span><span style="color:#3465a4">()</span><span style="color:#ce5c00;font-weight:bold">;</span>
+
+    <span style="color:#000">foreach</span> <span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">var</span> <span style="color:#000">result</span> <span style="color:#204a87;font-weight:bold">in</span> <span style="color:#000">results</span><span style="color:#ce5c00;font-weight:bold">)</span>
+        <span style="color:#000">Console</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">Write</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#4e9a06">&#34;Country {0}, Value {1}</span><span style="color:#4e9a06">\n</span><span style="color:#4e9a06">&#34;</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">result</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">Country</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">result</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">Value</span><span style="color:#ce5c00;font-weight:bold">);</span>
+<span style="color:#ce5c00;font-weight:bold">}</span></code></pre></div>
+
+<p>Well it turns out a TradeBalance isn’t a thing it’s a collection, each country has one. Let’s leave the function name aside for a moment. We see the function GETS the trade balances, then prints them. It’s still not really clear what a trade balance is or where it comes from. Lets’ keep digging.</p>
+
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fsharp" data-lang="fsharp"><span style="color:#204a87;font-weight:bold">private</span> <span style="color:#204a87;font-weight:bold">static</span> <span style="color:#000">IEnumerable</span><span style="color:#ce5c00;font-weight:bold">&lt;</span><span style="color:#000">Result</span><span style="color:#ce5c00;font-weight:bold">&gt;</span> <span style="color:#000">GetTradeBalance</span><span style="color:#3465a4">()</span>
+<span style="color:#ce5c00;font-weight:bold">{</span>
+    <span style="color:#000">var</span> <span style="color:#000">cashMovements</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">GetCashMovements</span><span style="color:#3465a4">()</span><span style="color:#ce5c00;font-weight:bold">;</span>
+
+    <span style="color:#000">var</span> <span style="color:#000">results</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">cashMovements</span>
+        <span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">GroupBy</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">i</span> <span style="color:#ce5c00;font-weight:bold">=&gt;</span> <span style="color:#000">i</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">Country</span><span style="color:#ce5c00;font-weight:bold">)</span>
+        <span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">Select</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">r</span> <span style="color:#ce5c00;font-weight:bold">=&gt;</span> <span style="color:#204a87;font-weight:bold">new</span> <span style="color:#000">Result</span>
+        <span style="color:#ce5c00;font-weight:bold">{</span>
+            <span style="color:#000">Country</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">r</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">Key</span><span style="color:#ce5c00;font-weight:bold">,</span>
+            <span style="color:#000">Value</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">r</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">Sum</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">c</span> <span style="color:#ce5c00;font-weight:bold">=&gt;</span> <span style="color:#000">c</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">ValueIn</span> <span style="color:#ce5c00;font-weight:bold">-</span> <span style="color:#000">c</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">ValueOut</span><span style="color:#ce5c00;font-weight:bold">)</span>
+        <span style="color:#ce5c00;font-weight:bold">});</span>
+
+    <span style="color:#204a87;font-weight:bold">return</span> <span style="color:#000">results</span><span style="color:#ce5c00;font-weight:bold">;</span>
+<span style="color:#ce5c00;font-weight:bold">}</span></code></pre></div>
+
+<p>Now we’re getting somewhere. We get CashMovements and aggregate them by Country, Netting the ValueIn against the ValueOut. But what are CashMovements? Where do they come from?</p>
+
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fsharp" data-lang="fsharp"><span style="color:#204a87;font-weight:bold">private</span> <span style="color:#204a87;font-weight:bold">static</span> <span style="color:#000">IEnumerable</span><span style="color:#ce5c00;font-weight:bold">&lt;</span><span style="color:#000">CashMovement</span><span style="color:#ce5c00;font-weight:bold">&gt;</span> <span style="color:#000">GetCashMovements</span><span style="color:#3465a4">()</span>
+<span style="color:#ce5c00;font-weight:bold">{</span>
+    <span style="color:#000">var</span> <span style="color:#000">transactions</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">GetTransactions</span><span style="color:#3465a4">()</span><span style="color:#ce5c00;font-weight:bold">;</span>
+
+    <span style="color:#000">var</span> <span style="color:#000">movements</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">transactions</span>
+        <span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">GroupBy</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">i</span><span style="color:#ce5c00;font-weight:bold">=&gt;</span><span style="color:#204a87;font-weight:bold">new</span> <span style="color:#ce5c00;font-weight:bold">{</span> <span style="color:#000">i</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">Country</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">i</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">Direction</span> <span style="color:#ce5c00;font-weight:bold">})</span>
+        <span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">Select</span> <span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">m</span><span style="color:#ce5c00;font-weight:bold">=&gt;</span><span style="color:#204a87;font-weight:bold">new</span> <span style="color:#000">CashMovement</span>
+        <span style="color:#ce5c00;font-weight:bold">{</span>
+            <span style="color:#000">Country</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">m</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">Key</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">Country</span><span style="color:#ce5c00;font-weight:bold">,</span>
+            <span style="color:#000">ValueIn</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">m</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">Where</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">x</span> <span style="color:#ce5c00;font-weight:bold">=&gt;</span> <span style="color:#000">x</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">Direction</span> <span style="color:#ce5c00;font-weight:bold">==</span> <span style="color:#4e9a06">&#34;Export&#34;</span><span style="color:#ce5c00;font-weight:bold">).</span><span style="color:#000">Sum</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">c</span> <span style="color:#ce5c00;font-weight:bold">=&gt;</span> <span style="color:#000">c</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">Price</span> <span style="color:#ce5c00;font-weight:bold">*</span> <span style="color:#000">c</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">Quantity</span><span style="color:#ce5c00;font-weight:bold">),</span>
+            <span style="color:#000">ValueOut</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">m</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">Where</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">x</span> <span style="color:#ce5c00;font-weight:bold">=&gt;</span> <span style="color:#000">x</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">Direction</span> <span style="color:#ce5c00;font-weight:bold">==</span> <span style="color:#4e9a06">&#34;Import&#34;</span><span style="color:#ce5c00;font-weight:bold">).</span><span style="color:#000">Sum</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">c</span> <span style="color:#ce5c00;font-weight:bold">=&gt;</span> <span style="color:#000">c</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">Price</span> <span style="color:#ce5c00;font-weight:bold">*</span> <span style="color:#000">c</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">Quantity</span><span style="color:#ce5c00;font-weight:bold">)</span>
+        <span style="color:#ce5c00;font-weight:bold">});</span>
+
+    <span style="color:#204a87;font-weight:bold">return</span> <span style="color:#000">movements</span><span style="color:#ce5c00;font-weight:bold">;</span>
+<span style="color:#ce5c00;font-weight:bold">}</span></code></pre></div>
+
+<p>CashMovements are an aggregation of Transactions, which have a direction (Import/Export) a price and a Quantity.</p>
+
+<p>We could go further and see where the transactions come from, but lets assume they are pulled from a DB.</p>
+
+<h3 id="problems">Problems</h3>
+
+<p>Oh code! how do I hate thee? Let me count the ways.</p>
+
+<p>We had to burrow down three levels deep just to see where the source data came from.
+The transformation of the data was spread over those functions we drilled into.
+We encountered the steps of the transformation in reverse order as we drilled down.
+Does any of this matter?</p>
+
+<p>Yes. I think it does.</p>
+
+<p>First let’s address one concern you might have. Yes, the aggregation that’s going on here is relatively simple and could probably be done in one function. That’s not really the point. In practice these kinds of transformations, aggregations and enrichment are far more complicated and this drilling down deeper and deeper into functions calls is not uncommon.</p>
+
+<p>Having to burrow down into a function should mean we are going into more detail, a lower lever of abstraction. In this case that’s not really what’s happening, we are simply drilling down into the NEXT step of the overall algorithm. All of these steps are essentially at the same level of abstraction.</p>
+
+<p>We lose any sense of the overall transformation by stringing together function calls like this. Worse, as mentioned above, the algorithm is actually upside down. We drill down 3 levels to get the source data and then transform it on the way back up the call stack. We could hardly find a less intuitive way of describing the algorithm if we tried.</p>
+
+<p>We’ve also coupled each function to the next. Each of these functions does something useful to data, but we don’t provide the data, The functions pull it out of the next function, which means they need to be aware of the next step in the chain. This is a fundamentally flawed way of thinking about functions, it makes life needlessly complicated. The code is harder to test, harder to understand, harder to maintain.</p>
+
+<p>So, why is this kind of code so common?</p>
+
+<p>I believe it may be a problem in the way we teach programming. We tell students to decompose problems from the top down, pushing complexity down into lower level functions. The result is code like that described above.</p>
+
+<p>There are two kinds of complexity and I don’t think students of programming are adequately taught to understand and handle the different kinds.</p>
+
+<p>The first kind of complexity is domain complexity, the problem at hand. The seemingly arbitrary business rules and edge cases that seem to keep popping up. This kind of complexity is vitally important. This is the stuff your client will ask you to explain, ask you to change, ask you to validate. This sort of complexity shouldn’t be pushed down, it should be pulled out, highlighted.</p>
+
+<p>The transformation of transactions into Trade Balances is a Use Case of our system. The logic needs to be easily accessible and future developers need to be able to grasp what’s happening quickly and change it with confidence.</p>
+
+<p>The other kind of complexity is implementation details. You need to go through a Web Service to get the transactions? That’s an implementation issue. You pull the data from a Database and map it to structs or classes? that’s an implementation issue. These sorts of complexity should be pushed down, hidden, abstracted away so that the business logic stands out.</p>
+
+<p>In the code above we shouldn’t be pushing logic down to lower and lower functions. Spreading the algorithm over the call stack by “pushing down” is nuts. We should be pulling the algorithm up, embracing it, making it jump off the screen when someone opens our code.</p>
+
+<p>This isn’t a rant about functional programming, it doesn’t matter whether you use functional, OO or procedural code the principle here is the same.</p>
+
+<p>The following modified code isn’t astonishing or revolutionary or even beautiful, but it’s better, a little better, and if we could all just get a little better life would be so much easier, legacy code would be a much smaller problem. The changes aren’t even difficult. This is just a question of internalising a very simple idea and you’ll never write code like the code above again.</p>
+
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fsharp" data-lang="fsharp"><span style="color:#204a87;font-weight:bold">static</span> <span style="color:#204a87;font-weight:bold">void</span> <span style="color:#000">Main</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#204a87;font-weight:bold">string</span><span style="color:#3465a4">[]</span> <span style="color:#000">args</span><span style="color:#ce5c00;font-weight:bold">)</span>
+<span style="color:#ce5c00;font-weight:bold">{</span>
+    <span style="color:#000">var</span> <span style="color:#000">transactions</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">GetTransactions</span><span style="color:#3465a4">()</span><span style="color:#ce5c00;font-weight:bold">;</span>
+    <span style="color:#000">var</span> <span style="color:#000">cashMovements</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">GetCashMovements</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">transactions</span><span style="color:#ce5c00;font-weight:bold">);</span>
+    <span style="color:#000">var</span> <span style="color:#000">tradeBalances</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">GetTradeBalances</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">cashMovements</span><span style="color:#ce5c00;font-weight:bold">);</span>
+    <span style="color:#000">PrintTradeBalances</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">tradeBalances</span><span style="color:#ce5c00;font-weight:bold">);</span>
+    <span style="color:#000">Console</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">ReadKey</span><span style="color:#3465a4">()</span><span style="color:#ce5c00;font-weight:bold">;</span>
+<span style="color:#ce5c00;font-weight:bold">}</span></code></pre></div>
+
+<p>We get Transactions, turn them into CashMovements, and turn those into TradeBalances and print them.
+We can now drill down meaningfully into any of those steps to see how each is done. That is valid use
+of drill down, we are going to a lower level of abstraction.</p>
+
+<p>The algorithm also reads the right way around. We start with Transactions and end with TradeBalances.</p>
+
+<p>The only change to the functions is that instead of each calling the next function in the change, each is passed the data that it operates on as a parameter.</p>
+
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fsharp" data-lang="fsharp"><span style="color:#204a87;font-weight:bold">private</span> <span style="color:#204a87;font-weight:bold">static</span> <span style="color:#000">IEnumerable</span><span style="color:#ce5c00;font-weight:bold">&lt;</span><span style="color:#000">CashMovement</span><span style="color:#ce5c00;font-weight:bold">&gt;</span> <span style="color:#000">GetCashMovements</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">IEnumerable</span><span style="color:#ce5c00;font-weight:bold">&lt;</span><span style="color:#000">Transaction</span><span style="color:#ce5c00;font-weight:bold">&gt;</span> <span style="color:#000">transactions</span><span style="color:#ce5c00;font-weight:bold">)</span>
+<span style="color:#ce5c00;font-weight:bold">{</span>
+    <span style="color:#000">var</span> <span style="color:#000">movements</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">transactions</span>
+        <span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">GroupBy</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">i</span> <span style="color:#ce5c00;font-weight:bold">=&gt;</span> <span style="color:#204a87;font-weight:bold">new</span> <span style="color:#ce5c00;font-weight:bold">{</span> <span style="color:#000">i</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">Country</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">i</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">Direction</span> <span style="color:#ce5c00;font-weight:bold">})</span>
+        <span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">Select</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">m</span> <span style="color:#ce5c00;font-weight:bold">=&gt;</span> <span style="color:#204a87;font-weight:bold">new</span> <span style="color:#000">CashMovement</span>
+        <span style="color:#ce5c00;font-weight:bold">{</span>
+            <span style="color:#000">Country</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">m</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">Key</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">Country</span><span style="color:#ce5c00;font-weight:bold">,</span>
+            <span style="color:#000">ValueIn</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">m</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">Where</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">x</span> <span style="color:#ce5c00;font-weight:bold">=&gt;</span> <span style="color:#000">x</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">Direction</span> <span style="color:#ce5c00;font-weight:bold">==</span> <span style="color:#4e9a06">&#34;Export&#34;</span><span style="color:#ce5c00;font-weight:bold">).</span><span style="color:#000">Sum</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">c</span> <span style="color:#ce5c00;font-weight:bold">=&gt;</span> <span style="color:#000">c</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">Price</span> <span style="color:#ce5c00;font-weight:bold">*</span> <span style="color:#000">c</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">Quantity</span><span style="color:#ce5c00;font-weight:bold">),</span>
+            <span style="color:#000">ValueOut</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">m</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">Where</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">x</span> <span style="color:#ce5c00;font-weight:bold">=&gt;</span> <span style="color:#000">x</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">Direction</span> <span style="color:#ce5c00;font-weight:bold">==</span> <span style="color:#4e9a06">&#34;Import&#34;</span><span style="color:#ce5c00;font-weight:bold">).</span><span style="color:#000">Sum</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">c</span> <span style="color:#ce5c00;font-weight:bold">=&gt;</span> <span style="color:#000">c</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">Price</span> <span style="color:#ce5c00;font-weight:bold">*</span> <span style="color:#000">c</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">Quantity</span><span style="color:#ce5c00;font-weight:bold">)</span>
+        <span style="color:#ce5c00;font-weight:bold">});</span>
+
+        <span style="color:#204a87;font-weight:bold">return</span> <span style="color:#000">movements</span><span style="color:#ce5c00;font-weight:bold">;</span>
+<span style="color:#ce5c00;font-weight:bold">}</span>
+
+<span style="color:#204a87;font-weight:bold">private</span> <span style="color:#204a87;font-weight:bold">static</span> <span style="color:#000">IEnumerable</span><span style="color:#ce5c00;font-weight:bold">&lt;</span><span style="color:#000">TradeBalance</span><span style="color:#ce5c00;font-weight:bold">&gt;</span> <span style="color:#000">GetTradeBalances</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">IEnumerable</span><span style="color:#ce5c00;font-weight:bold">&lt;</span><span style="color:#000">CashMovement</span><span style="color:#ce5c00;font-weight:bold">&gt;</span> <span style="color:#000">cashMovements</span><span style="color:#ce5c00;font-weight:bold">)</span>
+<span style="color:#ce5c00;font-weight:bold">{</span>
+    <span style="color:#000">var</span> <span style="color:#000">tradeBalances</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">cashMovements</span>
+        <span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">GroupBy</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">i</span> <span style="color:#ce5c00;font-weight:bold">=&gt;</span> <span style="color:#000">i</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">Country</span><span style="color:#ce5c00;font-weight:bold">)</span>
+        <span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">Select</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">r</span> <span style="color:#ce5c00;font-weight:bold">=&gt;</span> <span style="color:#204a87;font-weight:bold">new</span> <span style="color:#000">TradeBalance</span>
+        <span style="color:#ce5c00;font-weight:bold">{</span>
+            <span style="color:#000">Country</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">r</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">Key</span><span style="color:#ce5c00;font-weight:bold">,</span>
+            <span style="color:#000">Value</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">r</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">Sum</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">c</span> <span style="color:#ce5c00;font-weight:bold">=&gt;</span> <span style="color:#000">c</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">ValueIn</span> <span style="color:#ce5c00;font-weight:bold">-</span> <span style="color:#000">c</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">ValueOut</span><span style="color:#ce5c00;font-weight:bold">)</span>  
+        <span style="color:#ce5c00;font-weight:bold">});</span>
+
+        <span style="color:#204a87;font-weight:bold">return</span> <span style="color:#000">tradeBalances</span><span style="color:#ce5c00;font-weight:bold">;</span>
+<span style="color:#ce5c00;font-weight:bold">}</span>
+
+<span style="color:#204a87;font-weight:bold">private</span> <span style="color:#204a87;font-weight:bold">static</span> <span style="color:#204a87;font-weight:bold">void</span> <span style="color:#000">PrintTradeBalances</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">IEnumerable</span><span style="color:#ce5c00;font-weight:bold">&lt;</span><span style="color:#000">TradeBalance</span><span style="color:#ce5c00;font-weight:bold">&gt;</span> <span style="color:#000">tradeBalances</span><span style="color:#ce5c00;font-weight:bold">)</span>
+<span style="color:#ce5c00;font-weight:bold">{</span>
+    <span style="color:#000">foreach</span> <span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">var</span> <span style="color:#000">tradeBalance</span> <span style="color:#204a87;font-weight:bold">in</span> <span style="color:#000">tradeBalances</span><span style="color:#ce5c00;font-weight:bold">)</span>
+        <span style="color:#000">Console</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">Write</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#4e9a06">&#34;Country {0}, Value {1}</span><span style="color:#4e9a06">\n</span><span style="color:#4e9a06">&#34;</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">tradeBalance</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">Country</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">tradeBalance</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">Value</span><span style="color:#ce5c00;font-weight:bold">);</span>
+<span style="color:#ce5c00;font-weight:bold">}</span></code></pre></div>
+
+                        </div>
+                        
+                        
+                        <div id="comments">
+                            <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "devjoycom" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+                        </div>
+                        
+
+                    </div>
+                    
+
+                    
+
+                    
+
+                    <div class="col-md-3">
+
+                        
+
+                        
+
+<div class="panel panel-default sidebar-menu">
+
+    <div class="panel-heading">
+      <h3 class="panel-title">Search</h3>
+    </div>
+
+    <div class="panel-body">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" role="search">
+            <div class="input-group">
+                <input type="search" name="q" class="form-control" placeholder="Search">
+                <input type="hidden" name="sitesearch" value="https://www.devjoy.com/">
+                <span class="input-group-btn">
+                    <button type="submit" class="btn btn-template-main"><i class="fa fa-search"></i></button>
+                </span>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+
+
+
+
+
+<div class="panel panel-default sidebar-menu">
+
+    <div class="panel-heading">
+      <h3 class="panel-title">Categories</h3>
+    </div>
+
+    <div class="panel-body">
+        <ul class="nav nav-pills nav-stacked">
+            
+            <li><a href="https://www.devjoy.com/categories/how-to">how-to (22)</a>
+            </li>
+            
+            <li><a href="https://www.devjoy.com/categories/reviews">reviews (1)</a>
+            </li>
+            
+            <li><a href="https://www.devjoy.com/categories/thoughts">thoughts (15)</a>
+            </li>
+            
+        </ul>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+<div class="panel panel-default sidebar-menu">
+
+    <div class="panel-heading">
+      <h3 class="panel-title">Series</h3>
+    </div>
+
+    <div class="panel-body">
+        <ul class="nav nav-pills nav-stacked">
+            
+            <li><a href="https://www.devjoy.com/series/f-sharp-active-patterns">f-sharp-active-patterns (8)</a>
+            </li>
+            
+            <li><a href="https://www.devjoy.com/series/thinking-functionally">thinking-functionally (6)</a>
+            </li>
+            
+        </ul>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+<div class="panel sidebar-menu">
+    <div class="panel-heading">
+      <h3 class="panel-title">Tags</h3>
+    </div>
+
+    <div class="panel-body">
+        <ul class="tag-cloud">
+            
+            <li><a href="https://www.devjoy.com/tags/agile"><i class="fa fa-tags"></i> agile</a>
+            </li>
+            
+            <li><a href="https://www.devjoy.com/tags/c"><i class="fa fa-tags"></i> c#</a>
+            </li>
+            
+            <li><a href="https://www.devjoy.com/tags/code"><i class="fa fa-tags"></i> code</a>
+            </li>
+            
+            <li><a href="https://www.devjoy.com/tags/coding"><i class="fa fa-tags"></i> coding</a>
+            </li>
+            
+            <li><a href="https://www.devjoy.com/tags/complexity"><i class="fa fa-tags"></i> complexity</a>
+            </li>
+            
+            <li><a href="https://www.devjoy.com/tags/design"><i class="fa fa-tags"></i> design</a>
+            </li>
+            
+            <li><a href="https://www.devjoy.com/tags/f"><i class="fa fa-tags"></i> f#</a>
+            </li>
+            
+            <li><a href="https://www.devjoy.com/tags/functional-programming"><i class="fa fa-tags"></i> functional-programming</a>
+            </li>
+            
+            <li><a href="https://www.devjoy.com/tags/learning"><i class="fa fa-tags"></i> learning</a>
+            </li>
+            
+            <li><a href="https://www.devjoy.com/tags/tdd"><i class="fa fa-tags"></i> tdd</a>
+            </li>
+            
+            <li><a href="https://www.devjoy.com/tags/teams"><i class="fa fa-tags"></i> teams</a>
+            </li>
+            
+            <li><a href="https://www.devjoy.com/tags/technical-debt"><i class="fa fa-tags"></i> technical-debt</a>
+            </li>
+            
+            <li><a href="https://www.devjoy.com/tags/testing"><i class="fa fa-tags"></i> testing</a>
+            </li>
+            
+        </ul>
+    </div>
+</div>
+
+
+
+
+
+
+                        
+
+                    </div>
+                    
+
+                    
+
+                </div>
+                
+
+            </div>
+            
+        </div>
+        
+
+        
+
+
+
+
+<div id="copyright">
+    <div class="container">
+        <div class="col-md-12">
+            
+            <p class="pull-left">Copyright (c) 2018, Devjoy Ltd.</p>
+            
+            <p class="pull-right">
+              Template by <a href="http://bootstrapious.com/free-templates">Bootstrapious</a>.
+              
+
+              Ported to Hugo by <a href="https://github.com/devcows/hugo-universal-theme">DevCows</a>
+            </p>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+    </div>
+    
+
+    
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-131889453-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+
+<script src="//code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.1/jquery.waypoints.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/Counter-Up/1.0/jquery.counterup.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery-parallax/1.1.3/jquery-parallax.js"></script>
+<script src="https://www.devjoy.com/js/front.js"></script>
+
+
+<script src="https://www.devjoy.com/js/owl.carousel.min.js"></script>
+
+
+  </body>
+</html>

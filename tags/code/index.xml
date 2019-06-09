@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Code on devjoy</title>
+    <link>https://www.devjoy.com/tags/code/</link>
+    <description>Recent content in Code on devjoy</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 06 Feb 2017 17:43:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://www.devjoy.com/tags/code/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Reading F#</title>
+      <link>https://www.devjoy.com/blog/reading-fsharp/</link>
+      <pubDate>Mon, 06 Feb 2017 17:43:00 +0000</pubDate>
+      
+      <guid>https://www.devjoy.com/blog/reading-fsharp/</guid>
+      <description>A tweet about some C# code rewritten in F# got me interested yesterday.
+&amp;quot;An F# rewrite of a fully refactored C# Clean Code example&amp;quot;. Amazing. https://t.co/mplbbH1knb
+&amp;mdash; Jon Harrop (@jonharrop) January 25, 2017 
+If you know a little F# it’s easy get sucked into thinking that having much fewer lines of code, and less noise generally makes F# code automatically better, cleaner, easier to read than C#. But, of course, that’s only true for people who know enough F# to read it.</description>
+    </item>
+    
+    <item>
+      <title>Unit Testing Events And Callbacks In C#</title>
+      <link>https://www.devjoy.com/blog/unit-testing-events-and-callbacks-in-csharp/</link>
+      <pubDate>Fri, 07 Aug 2015 17:43:00 +0000</pubDate>
+      
+      <guid>https://www.devjoy.com/blog/unit-testing-events-and-callbacks-in-csharp/</guid>
+      <description>The Problem When you want to unit test a method it’s usually pretty simple. Call the method, pass it it’s parameters and assert against it’s return value, or some other property of the object that may have changed.
+What happens when a method doesn’t return a value, or update some property? What happens when it leads (perhaps after some delay) to an event firing, or a callback getting called?</description>
+    </item>
+    
+    <item>
+      <title>Avoid Branches In Your Code</title>
+      <link>https://www.devjoy.com/blog/avoid-branches-in-your-code/</link>
+      <pubDate>Sat, 24 Jan 2015 17:43:00 +0000</pubDate>
+      
+      <guid>https://www.devjoy.com/blog/avoid-branches-in-your-code/</guid>
+      <description>This week at our FunctionalKats meetup in Dublin, we tackled a simple programming task the Luhn checksum algorithm. The challenge was to try and make the code readable.
+I rattled off some code that worked, but I wasn’t at all happy with it. It implemented the problem as described. Partitioning the numbers into two groups and dealing with each group in turn.
+let Luhn s = let double x = x*2 let sumDigits = function | 18 -&amp;gt; 9 | n when n &amp;gt; 9 -&amp;gt; n%9 | n -&amp;gt; n let odds, evens = s |&amp;gt; Seq.</description>
+    </item>
+    
+    <item>
+      <title>Mastermind: The Code Breaking Game</title>
+      <link>https://www.devjoy.com/blog/mastermind-the-code-breaking-game/</link>
+      <pubDate>Wed, 07 Jan 2015 17:43:00 +0000</pubDate>
+      
+      <guid>https://www.devjoy.com/blog/mastermind-the-code-breaking-game/</guid>
+      <description>Mastermind, is a code breaking game for two players.
+A “Code Maker” creates a secret sequence of colour pegs. A “Code Breaker” must break the code by taking guesses and working with the feedback from the Code Maker. Feedback is given using Black and White Pegs.
+A correct colour in the correct position is acknowledged with a Black Peg A correct colour in the wrong position is acknowledged with a White Peg The position of these pegs is not significant.</description>
+    </item>
+    
+    <item>
+      <title>Don&#39;t Scatter Logic All Over The Call Stack</title>
+      <link>https://www.devjoy.com/blog/dont-scatter-logic-all-over-the-call-stack/</link>
+      <pubDate>Wed, 23 Oct 2013 12:00:00 +0000</pubDate>
+      
+      <guid>https://www.devjoy.com/blog/dont-scatter-logic-all-over-the-call-stack/</guid>
+      <description>Here’s a problem I come across all the time in legacy code and I have been guilty of it myself in the past. This isn’t going to be rocket science, but, apparently, this stuff doesn’t go without saying. Normal caveats about this being a simplified contrived example apply.
+Take a look at this code
+static void Main(string[] args) { PrintTradeBalance(); Console.ReadKey(); } Oh! to have code this simple right? It’s pretty clear what it does, it prints a trade balance, whatever that is.</description>
+    </item>
+    
+    <item>
+      <title>C# Is Too Damn Noisy</title>
+      <link>https://www.devjoy.com/blog/csharp-is-too-damn-noisy/</link>
+      <pubDate>Fri, 12 Apr 2013 17:43:00 +0000</pubDate>
+      
+      <guid>https://www.devjoy.com/blog/csharp-is-too-damn-noisy/</guid>
+      <description>I am growing increasingly frustrated with C#. I think the reason for that may be my exposure to languages like F#. In many ways my feelings for C# are quite similar to feelings I had about VB.Net when I was first exposed to C#.
+It’s taken me a while to figure out what it is that I find irritating about C# and I think I’m ready to call it. The problem with C# is exactly the same problem I had with VB.</description>
+    </item>
+    
+    <item>
+      <title>Legacy Code Katas</title>
+      <link>https://www.devjoy.com/blog/legacy-code-katas/</link>
+      <pubDate>Fri, 18 Jan 2013 12:00:00 +0000</pubDate>
+      
+      <guid>https://www.devjoy.com/blog/legacy-code-katas/</guid>
+      <description>I like Kata’s, I’ve get a lot out of them, but if I’m truly honest, they don’t really address one area of programming where I think I need practice, and that is in working with Legacy Code. In pondering this problem I came to the conclusion that I need a way of doing deliberate practice for legacy code work, and some variation of the Kata idea seems like it might work.</description>
+    </item>
+    
+    <item>
+      <title>I is for Interface</title>
+      <link>https://www.devjoy.com/blog/i-is-for-interface/</link>
+      <pubDate>Sun, 13 Jan 2013 12:00:00 +0000</pubDate>
+      
+      <guid>https://www.devjoy.com/blog/i-is-for-interface/</guid>
+      <description>Back in 1995 I sat in a large ballroom to listen to politicians from the North and South of Ireland talk about the peace process, which at that time was far from a sure thing.
+A story, told by one of the Unionists stuck in my head. He told of how he had been involved in selling a ceasefire to loyalist paramilitaries and one of the questions that he was faced with was.</description>
+    </item>
+    
+    <item>
+      <title>Getting Functional with F# and The Game Of Life</title>
+      <link>https://www.devjoy.com/blog/getting-functional-with-fsharp-and-game-of-life/</link>
+      <pubDate>Sun, 15 Jul 2012 16:00:00 +0000</pubDate>
+      
+      <guid>https://www.devjoy.com/blog/getting-functional-with-fsharp-and-game-of-life/</guid>
+      <description>One session at NDC that really kicked my grasp of functional programming up a few notches was Vagif Abilov’s discussion of Conway’s Game Of Life using F#.
+I’m not going to rehash the rules of Game Of Life here, if you aren’t familiar with them then read this.
+Vagif’s source code is on github and his slides are on slideshare. His stuff is well worth a look, but don’t look yet.</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Thoughts on devjoy</title>
+    <link>https://www.devjoy.com/categories/thoughts/</link>
+    <description>Recent content in Thoughts on devjoy</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 23 Oct 2014 17:43:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://www.devjoy.com/categories/thoughts/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>The Best Job I&#39;ve Ever Had</title>
+      <link>https://www.devjoy.com/blog/the-best-job-ive-ever-had/</link>
+      <pubDate>Thu, 23 Oct 2014 17:43:00 +0000</pubDate>
+      
+      <guid>https://www.devjoy.com/blog/the-best-job-ive-ever-had/</guid>
+      <description>Still the best job I’ve ever had and I’ve given up hoping there’ll ever be a better one. My first year at TIC was my first time in the US. Karen picked me up at the airport. On the drive to her house I mentioned Visual Basic, and there and then she decided. We would be teaching Visual Basic. That’s how things worked at TIC.
+During my second year I suggested we split computing and multi-media.</description>
+    </item>
+    
+    <item>
+      <title>The Challenge Today Is Overwhelming Complexity</title>
+      <link>https://www.devjoy.com/blog/the-challenge-today-is-overwhelming-complexity/</link>
+      <pubDate>Mon, 18 Aug 2014 17:43:00 +0000</pubDate>
+      
+      <guid>https://www.devjoy.com/blog/the-challenge-today-is-overwhelming-complexity/</guid>
+      <description>Here’s a really great post by Tom Moertel on squeezing every last ounce of performance out of machines back in the day.
+It was a time when unrolling a loop to save the few clock cycles or seeing a unique way to use the registers of a chip could take a game from clunky to classic.
+Stories of making machines do the impossible are the stuff of legend. The closest we mere mortals came was rejigging our config.</description>
+    </item>
+    
+    <item>
+      <title>My 5 Biggest Mistakes</title>
+      <link>https://www.devjoy.com/blog/my-5-biggest-mistakes/</link>
+      <pubDate>Tue, 22 Jul 2014 17:43:00 +0000</pubDate>
+      
+      <guid>https://www.devjoy.com/blog/my-5-biggest-mistakes/</guid>
+      <description>You can’t work in this business for very long before the hope, idealism and intellectual curiosity is beaten out of you and replaced with TPS Sheets, and 15 different tools for telling your colleagues how to configure IIS so that your app will actually run on their machine.
+If you’re new to this business there may still be time to save yourself. Go drive a truck, or learn a bit about your city and become a tour guide.</description>
+    </item>
+    
+    <item>
+      <title>Fly The Damn Plane</title>
+      <link>https://www.devjoy.com/blog/fly-the-damn-plane/</link>
+      <pubDate>Wed, 09 Jul 2014 17:43:00 +0000</pubDate>
+      
+      <guid>https://www.devjoy.com/blog/fly-the-damn-plane/</guid>
+      <description>Constant Learning Being a software developer means constant learning. The technical landscape is always shifting. We have to run to stand still. We know this. We accept it. For some it’s the very thing that attracts them to the profession.
+I’ve learned lots about software development in the last few years.
+How to automate builds How to automate tests Object Oriented Programming/Design Functional Programming/Design Operating Systems Programming Languages Frameworks Version Contol Systems I’ve tried to embrace Agile, hell I’m even a certified Scrum Master.</description>
+    </item>
+    
+    <item>
+      <title>The Happy Path</title>
+      <link>https://www.devjoy.com/blog/the-happy-path/</link>
+      <pubDate>Mon, 10 Feb 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.devjoy.com/blog/the-happy-path/</guid>
+      <description>Every movement needs an enemy, it galvanises followers, gives a community a sense of some shared identity. Even if Group A aspire to nothing more than to not be like Group B that is at least something to rally around.
+“The Waterfall” is increasingly becoming an Alamo for those who aren’t or don’t want to be convinced by talk of “Agile”.
+For the Agile community the designated enemy seems to be “The Waterfall Model” and the command and control project management techniques that usually go hand in hand with it.</description>
+    </item>
+    
+    <item>
+      <title>Simplicity</title>
+      <link>https://www.devjoy.com/blog/simplicity/</link>
+      <pubDate>Thu, 03 Oct 2013 12:00:00 +0000</pubDate>
+      
+      <guid>https://www.devjoy.com/blog/simplicity/</guid>
+      <description>Ladies and Gentlemen of the class of ‘14
+If I could offer you only one tip for the future, simplicity would be it. The long term benefits of simplicity have been proven by Rich Hickey whereas the rest of my advice has no basis more reliable than my own meandering experience. I will dispense this advice now.
+Beware the over engineered complexity of your code; oh nevermind; you will not understand the over engineered complexity of your code until it bites you in the ass.</description>
+    </item>
+    
+    <item>
+      <title>When Can You Start?</title>
+      <link>https://www.devjoy.com/blog/when-can-you-start/</link>
+      <pubDate>Wed, 17 Apr 2013 17:43:00 +0000</pubDate>
+      
+      <guid>https://www.devjoy.com/blog/when-can-you-start/</guid>
+      <description>He sat in the large bay window observing the potential candidates as they approached the house. His mind was made up about each of them before they rang the bell.
+“I’m here about the gardener job”
+“Sorry, the position is filled.”
+“Already? OK, thanks, bye”
+Again and again all the same. No good. Then…aha! this one.
+“I’m here about the gardener job”
+“When can you start?”
+“You don’t want to ask me any questions?</description>
+    </item>
+    
+    <item>
+      <title>C# Is Too Damn Noisy</title>
+      <link>https://www.devjoy.com/blog/csharp-is-too-damn-noisy/</link>
+      <pubDate>Fri, 12 Apr 2013 17:43:00 +0000</pubDate>
+      
+      <guid>https://www.devjoy.com/blog/csharp-is-too-damn-noisy/</guid>
+      <description>I am growing increasingly frustrated with C#. I think the reason for that may be my exposure to languages like F#. In many ways my feelings for C# are quite similar to feelings I had about VB.Net when I was first exposed to C#.
+It’s taken me a while to figure out what it is that I find irritating about C# and I think I’m ready to call it. The problem with C# is exactly the same problem I had with VB.</description>
+    </item>
+    
+    <item>
+      <title>Why Do Cars Have Breaks?</title>
+      <link>https://www.devjoy.com/blog/why-do-cars-have-breaks/</link>
+      <pubDate>Tue, 12 Feb 2013 19:00:00 +0000</pubDate>
+      
+      <guid>https://www.devjoy.com/blog/why-do-cars-have-breaks/</guid>
+      <description>Why do cars have brakes?
+I noticed this question on Jon Jagger’s blog and I was delighted with myself that I managed to get the “right” answer without peeking.
+Stop reading right now, have a think about it, then head on over to Jon’s blog to see what he has to say on the topic.
+Then, if you want, read on&amp;hellip;
+How would you drive if your car didn’t have brakes?</description>
+    </item>
+    
+    <item>
+      <title>Legacy Code Katas</title>
+      <link>https://www.devjoy.com/blog/legacy-code-katas/</link>
+      <pubDate>Fri, 18 Jan 2013 12:00:00 +0000</pubDate>
+      
+      <guid>https://www.devjoy.com/blog/legacy-code-katas/</guid>
+      <description>I like Kata’s, I’ve get a lot out of them, but if I’m truly honest, they don’t really address one area of programming where I think I need practice, and that is in working with Legacy Code. In pondering this problem I came to the conclusion that I need a way of doing deliberate practice for legacy code work, and some variation of the Kata idea seems like it might work.</description>
+    </item>
+    
+    <item>
+      <title>I is for Interface</title>
+      <link>https://www.devjoy.com/blog/i-is-for-interface/</link>
+      <pubDate>Sun, 13 Jan 2013 12:00:00 +0000</pubDate>
+      
+      <guid>https://www.devjoy.com/blog/i-is-for-interface/</guid>
+      <description>Back in 1995 I sat in a large ballroom to listen to politicians from the North and South of Ireland talk about the peace process, which at that time was far from a sure thing.
+A story, told by one of the Unionists stuck in my head. He told of how he had been involved in selling a ceasefire to loyalist paramilitaries and one of the questions that he was faced with was.</description>
+    </item>
+    
+    <item>
+      <title>The Pilot and the Project Manager</title>
+      <link>https://www.devjoy.com/blog/the-pilot-and-the-project-manager/</link>
+      <pubDate>Fri, 09 Nov 2012 12:00:00 +0000</pubDate>
+      
+      <guid>https://www.devjoy.com/blog/the-pilot-and-the-project-manager/</guid>
+      <description>To land a plane you need to line up with the runway, figure out the right rate of descent and airspeed, then monitor and manage those, all the way down to the ground.
+Your goal is to touch down on the runway, rather than before or after it, while travelling fast enough that the plane doesn’t stall and fall out of the sky, but slow enough that the wheels stay attached when they hit the ground, and you can stop within the amount of runway you have at your disposal.</description>
+    </item>
+    
+    <item>
+      <title>Are Unit Tests the new Comments?</title>
+      <link>https://www.devjoy.com/blog/are-unit-tests-the-new-comments/</link>
+      <pubDate>Sun, 28 Oct 2012 17:43:00 +0000</pubDate>
+      
+      <guid>https://www.devjoy.com/blog/are-unit-tests-the-new-comments/</guid>
+      <description>It’s verging on heresy to even talk of Unit Tests and Comments as being in any way related. They serve different purposes, work in different ways, and have nothing in common.
+Except
+Comments  Document Interfaces, API’s etc. Can drive development by writing pseudo code comments first. Mark outstanding work using TODO comments. Explain particularly complicated pieces of code. Context to help future developers avoid breaking the code. Document expectations, side-effects etc.</description>
+    </item>
+    
+    <item>
+      <title>You&#39;re Not Gonna Fix It</title>
+      <link>https://www.devjoy.com/blog/youre-not-gonna-fix-it/</link>
+      <pubDate>Tue, 17 Jan 2012 02:00:00 +0000</pubDate>
+      
+      <guid>https://www.devjoy.com/blog/youre-not-gonna-fix-it/</guid>
+      <description>I’m not going to justify kludges, or apologise for kludges. I don’t need help figuring out how to avoid them. Kludges don’t usually come about because we don’t know how to avoid them. They usually exist because we make a judgement call. We decide that a kludge is not worth avoiding. Dress it up any way you like, but it comes down to a decision.
+This post starts from the premise that in all liklihood there will always be kludges.</description>
+    </item>
+    
+    <item>
+      <title>Retrofitting Tests To Legacy Code</title>
+      <link>https://www.devjoy.com/blog/retrofitting-tests-to-legacy-code/</link>
+      <pubDate>Mon, 13 Jun 2011 12:00:00 +0000</pubDate>
+      
+      <guid>https://www.devjoy.com/blog/retrofitting-tests-to-legacy-code/</guid>
+      <description>One problem with TDD is that those who try it, often begin by writing a few trivial tests to get the lie of the land. Then instead of using TDD to write new code they do something much much harder.
+They do what I did, they start out by trying to write some unit tests for existing code. Either a past project, or more likely the project they are currently working on.</description>
+    </item>
+    
+  </channel>
+</rss>

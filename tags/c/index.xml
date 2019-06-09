@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>C# on devjoy</title>
+    <link>https://www.devjoy.com/tags/c/</link>
+    <description>Recent content in C# on devjoy</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 06 Feb 2017 17:43:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://www.devjoy.com/tags/c/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Reading F#</title>
+      <link>https://www.devjoy.com/blog/reading-fsharp/</link>
+      <pubDate>Mon, 06 Feb 2017 17:43:00 +0000</pubDate>
+      
+      <guid>https://www.devjoy.com/blog/reading-fsharp/</guid>
+      <description>A tweet about some C# code rewritten in F# got me interested yesterday.
+&amp;quot;An F# rewrite of a fully refactored C# Clean Code example&amp;quot;. Amazing. https://t.co/mplbbH1knb
+&amp;mdash; Jon Harrop (@jonharrop) January 25, 2017 
+If you know a little F# it’s easy get sucked into thinking that having much fewer lines of code, and less noise generally makes F# code automatically better, cleaner, easier to read than C#. But, of course, that’s only true for people who know enough F# to read it.</description>
+    </item>
+    
+    <item>
+      <title>Unit Testing Events And Callbacks In C#</title>
+      <link>https://www.devjoy.com/blog/unit-testing-events-and-callbacks-in-csharp/</link>
+      <pubDate>Fri, 07 Aug 2015 17:43:00 +0000</pubDate>
+      
+      <guid>https://www.devjoy.com/blog/unit-testing-events-and-callbacks-in-csharp/</guid>
+      <description>The Problem When you want to unit test a method it’s usually pretty simple. Call the method, pass it it’s parameters and assert against it’s return value, or some other property of the object that may have changed.
+What happens when a method doesn’t return a value, or update some property? What happens when it leads (perhaps after some delay) to an event firing, or a callback getting called?</description>
+    </item>
+    
+    <item>
+      <title>C# Is Too Damn Noisy</title>
+      <link>https://www.devjoy.com/blog/csharp-is-too-damn-noisy/</link>
+      <pubDate>Fri, 12 Apr 2013 17:43:00 +0000</pubDate>
+      
+      <guid>https://www.devjoy.com/blog/csharp-is-too-damn-noisy/</guid>
+      <description>I am growing increasingly frustrated with C#. I think the reason for that may be my exposure to languages like F#. In many ways my feelings for C# are quite similar to feelings I had about VB.Net when I was first exposed to C#.
+It’s taken me a while to figure out what it is that I find irritating about C# and I think I’m ready to call it. The problem with C# is exactly the same problem I had with VB.</description>
+    </item>
+    
+    <item>
+      <title>I is for Interface</title>
+      <link>https://www.devjoy.com/blog/i-is-for-interface/</link>
+      <pubDate>Sun, 13 Jan 2013 12:00:00 +0000</pubDate>
+      
+      <guid>https://www.devjoy.com/blog/i-is-for-interface/</guid>
+      <description>Back in 1995 I sat in a large ballroom to listen to politicians from the North and South of Ireland talk about the peace process, which at that time was far from a sure thing.
+A story, told by one of the Unionists stuck in my head. He told of how he had been involved in selling a ceasefire to loyalist paramilitaries and one of the questions that he was faced with was.</description>
+    </item>
+    
+    <item>
+      <title>The Anagrams Kata</title>
+      <link>https://www.devjoy.com/blog/the-anagrams-kata/</link>
+      <pubDate>Sun, 11 Nov 2012 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.devjoy.com/blog/the-anagrams-kata/</guid>
+      <description>The following is my C# implementation of the Anagrams Kata as described on cyber-dojo.com
+Write a program to generate all potential anagrams of an input string.
+For example, the potential anagrams of “biro” are
+biro bior brio broi boir bori ibro ibor irbo irob iobr iorb rbio rboi ribo riob roib robi obir obri oibr oirb orbi orib Let’s write a test.
+[Test] public void NoCharacters() { var expected = new List&amp;lt;string&amp;gt; {&amp;#34;&amp;#34;}; Assert.</description>
+    </item>
+    
+    <item>
+      <title>Fluent Mocking</title>
+      <link>https://www.devjoy.com/blog/fluent-mocking/</link>
+      <pubDate>Wed, 22 Jun 2011 17:43:00 +0000</pubDate>
+      
+      <guid>https://www.devjoy.com/blog/fluent-mocking/</guid>
+      <description>Here’s a scenario (for once not a hypothetical scenario, this is a real system I worked on). I was building a wizard based app. To be more accurate I was building lots of wizard based apps.
+After a couple of wizards the functionality became clear and I extracted it to it&amp;rsquo;s own framework. My apps could then focus on actual bread and butter functionality.
+Two of the objects in my framework are ‘Wizard’ and ‘WizardStep’.</description>
+    </item>
+    
+  </channel>
+</rss>

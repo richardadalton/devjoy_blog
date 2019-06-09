@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+  <head>
+  <meta charset="utf-8">
+  <meta name="robots" content="all,follow">
+  <meta name="googlebot" content="index,follow,snippet,archive">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Pattern Matching</title>
+  <meta name="author" content="" />
+
+  
+  <meta name="keywords" content="devows, hugo, go">	
+  
+
+  
+  <meta name="description" content="Site template made by devcows using hugo">	
+  
+
+  <meta name="generator" content="Hugo 0.48" />
+
+  <link href='//fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300italic,500,700,800' rel='stylesheet' type='text/css'>
+
+  
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+  
+  <link href="/css/animate.css" rel="stylesheet">
+
+  
+  
+    <link href="/css/style.blue.css" rel="stylesheet" id="theme-stylesheet">
+  
+
+
+  
+  <link href="/css/custom.css" rel="stylesheet">
+
+  
+  
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  
+
+  
+  <link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon" />
+  <link rel="apple-touch-icon" href="/img/apple-touch-icon.png" />
+  
+
+  <link href="/css/owl.carousel.css" rel="stylesheet">
+  <link href="/css/owl.theme.css" rel="stylesheet">
+
+  <link rel="alternate" href="https://www.devjoy.com/index.xml" type="application/rss+xml" title="devjoy">
+
+  
+  <meta property="og:title" content="Pattern Matching" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="/blog/active-patterns/pattern-matching//" />
+  <meta property="og:image" content="img/logo.png" />
+
+</head>
+
+
+  <body>
+    <div id="all">
+
+        <header>
+
+          <div class="navbar-affixed-top" data-spy="affix" data-offset-top="200">
+
+    <div class="navbar navbar-default yamm" role="navigation" id="navbar">
+
+        <div class="container">
+            <div class="navbar-header">
+                <a class="navbar-brand home" href="https://www.devjoy.com/">
+                    <img src="https://www.devjoy.com/img/logo.png" alt="Pattern Matching logo" class="hidden-xs hidden-sm">
+                    <img src="https://www.devjoy.com/img/logo-small.png" alt="Pattern Matching logo" class="visible-xs visible-sm">
+                    <span class="sr-only">Pattern Matching - go to homepage</span>
+                </a>
+                <div class="navbar-buttons">
+                    <button type="button" class="navbar-toggle btn-template-main" data-toggle="collapse" data-target="#navigation">
+                      <span class="sr-only">Toggle Navigation</span>
+                        <i class="fa fa-align-justify"></i>
+                    </button>
+                </div>
+            </div>
+            
+
+            <div class="navbar-collapse collapse" id="navigation">
+                <ul class="nav navbar-nav navbar-right">
+                  
+                  <li class="dropdown">
+                    
+                    <a href="/">Home</a>
+                    
+                  </li>
+                  
+                  <li class="dropdown">
+                    
+                    <a href="/blog/">Blog</a>
+                    
+                  </li>
+                  
+                  <li class="dropdown">
+                    
+                    <a href="/contact/">Contact</a>
+                    
+                  </li>
+                  
+                </ul>
+            </div>
+            
+
+            <div class="collapse clearfix" id="search">
+
+                <form class="navbar-form" role="search">
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Search">
+                        <span class="input-group-btn">
+
+                    <button type="submit" class="btn btn-template-main"><i class="fa fa-search"></i></button>
+
+                </span>
+                    </div>
+                </form>
+
+            </div>
+            
+
+        </div>
+    </div>
+    
+
+</div>
+
+
+
+
+        </header>
+
+        <div id="heading-breadcrumbs">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h1>Pattern Matching</h1>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+        <div id="content">
+            <div class="container">
+
+                <div class="row">
+
+                    
+
+                    <div class="col-md-9" id="blog-post">
+
+                        <p class="text-muted text-uppercase mb-small text-right">August 7, 2014</p>
+
+                        <div id="post-content">
+                          
+
+<p>This is the first in a series of posts explaining Active Patterns, a very cool feature of F#. This post will lay the groundwork by covering pattern matching, and introducing the concept of active patterns. Subsequent posts will cover the various types of active pattern in detail.</p>
+
+<h3 id="destructuring-assignment">Destructuring Assignment</h3>
+
+<p>Thanks to <a href="https://twitter.com/richardadalton/status/497350991331618816">Miles McGuire</a> for setting me straight on the name.</p>
+
+<p>F# is full of little nice ideas that you appreciate when you come from a C# background, and destructuring assignment is one of them. Take a look at the following.</p>
+
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fsharp" data-lang="fsharp"><span style="color:#204a87;font-weight:bold">let</span> <span style="color:#000">date</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">21</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">8</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">2014</span><span style="color:#ce5c00;font-weight:bold">)</span>
+
+<span style="color:#204a87;font-weight:bold">let</span> <span style="color:#000">d</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">m</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">y</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">date</span>
+<span style="color:#204a87;font-weight:bold">val</span> <span style="color:#000">y</span> <span style="color:#ce5c00;font-weight:bold">:</span> <span style="color:#000">int</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">2014</span>
+<span style="color:#204a87;font-weight:bold">val</span> <span style="color:#000">m</span> <span style="color:#ce5c00;font-weight:bold">:</span> <span style="color:#000">int</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">8</span>
+<span style="color:#204a87;font-weight:bold">val</span> <span style="color:#000">d</span> <span style="color:#ce5c00;font-weight:bold">:</span> <span style="color:#000">int</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">21</span>
+
+<span style="color:#204a87;font-weight:bold">let</span> <span style="color:#000">_</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">month</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">year</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">date</span>
+<span style="color:#204a87;font-weight:bold">val</span> <span style="color:#000">year</span> <span style="color:#ce5c00;font-weight:bold">:</span> <span style="color:#000">int</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">2014</span>
+<span style="color:#204a87;font-weight:bold">val</span> <span style="color:#000">month</span> <span style="color:#ce5c00;font-weight:bold">:</span> <span style="color:#000">int</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">8</span></code></pre></div>
+
+<p>That’s a tuple representing a date. To extract values from the tuple and assign them to the three variables d, m and y we can do a single assignment. The tuple gets deconstructed (think constructor in reverse).</p>
+
+<p>In the second assignment we use the _ to indicate that we don’t care about the first value in the tuple. It will create two variables month and year.</p>
+
+<p>That alone is pretty nice, but it gets better.</p>
+
+<h3 id="pattern-matching">Pattern Matching</h3>
+
+<p>Destructuring assignment is really a form of Pattern Matching, which is common in Functional Programming languages. In FSharp the match expression allows us to match against quite elaborate data structures.</p>
+
+<p>First let’s take a look at a match expression that does little more than the assignment above.</p>
+
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fsharp" data-lang="fsharp"><span style="color:#204a87;font-weight:bold">let</span> <span style="color:#000">patternMatch</span> <span style="color:#000">date</span> <span style="color:#ce5c00;font-weight:bold">=</span>
+    <span style="color:#204a87;font-weight:bold">match</span> <span style="color:#000">date</span> <span style="color:#204a87;font-weight:bold">with</span>
+    <span style="color:#ce5c00;font-weight:bold">|</span> <span style="color:#000">d</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">m</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">y</span> <span style="color:#ce5c00;font-weight:bold">-&gt;</span> <span style="color:#000">sprintf</span> <span style="color:#4e9a06">&#34;Day [%d], Month [%d], Year [%d]&#34;</span> <span style="color:#000">d</span> <span style="color:#000">m</span> <span style="color:#000">y</span>   </code></pre></div>
+
+<p>With Pattern matching we can deconstruct the date just as we did in the assignment. The match expression allows us to create multiple match clauses, with the value of the overall expression being decided by the first clause that matches.</p>
+
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fsharp" data-lang="fsharp"><span style="color:#204a87;font-weight:bold">let</span> <span style="color:#000">partialPatternMatch</span> <span style="color:#000">date</span> <span style="color:#ce5c00;font-weight:bold">=</span>
+    <span style="color:#204a87;font-weight:bold">match</span> <span style="color:#000">date</span> <span style="color:#204a87;font-weight:bold">with</span>
+    <span style="color:#ce5c00;font-weight:bold">|</span> <span style="color:#ce5c00;font-weight:bold">_,</span> <span style="color:#ce5c00;font-weight:bold">_,</span> <span style="color:#000">y</span> <span style="color:#204a87;font-weight:bold">when</span> <span style="color:#000">y</span> <span style="color:#ce5c00;font-weight:bold">&lt;</span> <span style="color:#000">1960</span> <span style="color:#ce5c00;font-weight:bold">-&gt;</span> <span style="color:#4e9a06">&#34;Nothing before the 60&#39;s matters&#34;</span>
+    <span style="color:#ce5c00;font-weight:bold">|</span> <span style="color:#ce5c00;font-weight:bold">_,</span> <span style="color:#000">m</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">1960</span> <span style="color:#ce5c00;font-weight:bold">-&gt;</span> <span style="color:#000">sprintf</span> <span style="color:#4e9a06">&#34;Ah the month was %d, the 60&#39;s were just beginning&#34;</span> <span style="color:#000">m</span>
+    <span style="color:#ce5c00;font-weight:bold">|</span> <span style="color:#ce5c00;font-weight:bold">_,</span> <span style="color:#000">12</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">y</span> <span style="color:#ce5c00;font-weight:bold">-&gt;</span> <span style="color:#000">sprintf</span> <span style="color:#4e9a06">&#34;It was Christmas, %d&#34;</span> <span style="color:#000">y</span>
+    <span style="color:#ce5c00;font-weight:bold">|</span> <span style="color:#000">d</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">m</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">y</span> <span style="color:#ce5c00;font-weight:bold">-&gt;</span> <span style="color:#000">sprintf</span> <span style="color:#4e9a06">&#34;Day [%d], Month [%d], Year [%d]&#34;</span> <span style="color:#000">d</span> <span style="color:#000">m</span> <span style="color:#000">y</span></code></pre></div>
+
+<p>Clauses can match based on a ‘when’ guard as in the first example above. We can also insert literal values into the pattern as with the year 1960 in the second case and the month 12 in the third. In both of those examples we match with any day because we use the underscore to indicate that we don’t care what the day is. Also in those examples we match the month and year respectively to variables (m and y) which can be used in the results.</p>
+
+<p>In the final clause we are guaranteed to match any date that fails to match on any of the first three clauses. There are no literal values or when guards that could cause the last case to fail, we just get the day month and year, whatever they may be and can use them in the result.</p>
+
+<h3 id="match-against-abstractions">Match Against Abstractions</h3>
+
+<p>As exciting as all that is, you’ll notice that like the assignment earlier, the pattern matching in a match expression really only matches against and/or extracts data that’s already there. We’re matching here on the raw numbers that are the underlying representation of the date. It would be nice to match on things like</p>
+
+<ul>
+<li>May</li>
+<li>First Quarter</li>
+<li>Summer</li>
+<li>Month End</li>
+<li>Saturday</li>
+<li>Holiday</li>
+</ul>
+
+<p>These are all abstractions that should be independent of how the date is implemented. Active Patterns allow us to pattern match against these kinds of abstraction, rather than the underlying data.</p>
+
+<h3 id="active-patterns">Active Patterns</h3>
+
+<p>What we need is pattern matching&rsquo;s ability to extract and match against data, but with the added ability to transform the data we’re working with.</p>
+
+<p>We already have a really good general purpose way of transforming data, namely functions, so it shouldn’t come as any surprise that Active Patterns are special kind of function with some extra powers that make them useful in pattern matching.</p>
+
+<p>Active Patterns come in a few varieties so, the next couple of posts will describe the various options. Don’t worry too much about the notation below. All will become clear as you read through the examples.</p>
+
+<ul>
+<li>Single Total: (|A|)</li>
+<li>Single Total with Params: (|A|) x</li>
+<li>Single Partial: (|A|_|)</li>
+<li>Single Partial with Params: (|A|_|) x</li>
+<li>Multiple Total: (|A|B|)</li>
+</ul>
+
+<p>OK, I haven’t explained what Total and Partial means yet. All in good time, but if you’re a little OCD like me you’ll notice that list doesn’t look quite complete, there is no “Multiple Partial”. The reason for that is very simple, the language designers haven’t added them yet, and may not add them at all.</p>
+
+<blockquote>
+<p>“For completeness our specification includes structured names with multiple cases, e.g, (|ParseInt|ParseFloat|_|). However we have yet to detect any practical benefit in doing so.”[1]</p>
+</blockquote>
+
+<p>We’re getting ahead of ourselves. The <a href="https://www.devjoy.com/blog/active-patterns/single-total/">next post</a> will explanation the first of our Active Patterns, Single Total.</p>
+
+                        </div>
+                        
+                        
+                        <div id="comments">
+                            <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "devjoycom" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+                        </div>
+                        
+
+                    </div>
+                    
+
+                    
+
+                    
+
+                    <div class="col-md-3">
+
+                        
+
+                        
+
+<div class="panel panel-default sidebar-menu">
+
+    <div class="panel-heading">
+      <h3 class="panel-title">Search</h3>
+    </div>
+
+    <div class="panel-body">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" role="search">
+            <div class="input-group">
+                <input type="search" name="q" class="form-control" placeholder="Search">
+                <input type="hidden" name="sitesearch" value="https://www.devjoy.com/">
+                <span class="input-group-btn">
+                    <button type="submit" class="btn btn-template-main"><i class="fa fa-search"></i></button>
+                </span>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+
+
+
+
+
+<div class="panel panel-default sidebar-menu">
+
+    <div class="panel-heading">
+      <h3 class="panel-title">Categories</h3>
+    </div>
+
+    <div class="panel-body">
+        <ul class="nav nav-pills nav-stacked">
+            
+            <li><a href="https://www.devjoy.com/categories/how-to">how-to (22)</a>
+            </li>
+            
+            <li><a href="https://www.devjoy.com/categories/reviews">reviews (1)</a>
+            </li>
+            
+            <li><a href="https://www.devjoy.com/categories/thoughts">thoughts (15)</a>
+            </li>
+            
+        </ul>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+<div class="panel panel-default sidebar-menu">
+
+    <div class="panel-heading">
+      <h3 class="panel-title">Series</h3>
+    </div>
+
+    <div class="panel-body">
+        <ul class="nav nav-pills nav-stacked">
+            
+            <li><a href="https://www.devjoy.com/series/f-sharp-active-patterns">f-sharp-active-patterns (8)</a>
+            </li>
+            
+            <li><a href="https://www.devjoy.com/series/thinking-functionally">thinking-functionally (6)</a>
+            </li>
+            
+        </ul>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+<div class="panel sidebar-menu">
+    <div class="panel-heading">
+      <h3 class="panel-title">Tags</h3>
+    </div>
+
+    <div class="panel-body">
+        <ul class="tag-cloud">
+            
+            <li><a href="https://www.devjoy.com/tags/agile"><i class="fa fa-tags"></i> agile</a>
+            </li>
+            
+            <li><a href="https://www.devjoy.com/tags/c"><i class="fa fa-tags"></i> c#</a>
+            </li>
+            
+            <li><a href="https://www.devjoy.com/tags/code"><i class="fa fa-tags"></i> code</a>
+            </li>
+            
+            <li><a href="https://www.devjoy.com/tags/coding"><i class="fa fa-tags"></i> coding</a>
+            </li>
+            
+            <li><a href="https://www.devjoy.com/tags/complexity"><i class="fa fa-tags"></i> complexity</a>
+            </li>
+            
+            <li><a href="https://www.devjoy.com/tags/design"><i class="fa fa-tags"></i> design</a>
+            </li>
+            
+            <li><a href="https://www.devjoy.com/tags/f"><i class="fa fa-tags"></i> f#</a>
+            </li>
+            
+            <li><a href="https://www.devjoy.com/tags/functional-programming"><i class="fa fa-tags"></i> functional-programming</a>
+            </li>
+            
+            <li><a href="https://www.devjoy.com/tags/learning"><i class="fa fa-tags"></i> learning</a>
+            </li>
+            
+            <li><a href="https://www.devjoy.com/tags/tdd"><i class="fa fa-tags"></i> tdd</a>
+            </li>
+            
+            <li><a href="https://www.devjoy.com/tags/teams"><i class="fa fa-tags"></i> teams</a>
+            </li>
+            
+            <li><a href="https://www.devjoy.com/tags/technical-debt"><i class="fa fa-tags"></i> technical-debt</a>
+            </li>
+            
+            <li><a href="https://www.devjoy.com/tags/testing"><i class="fa fa-tags"></i> testing</a>
+            </li>
+            
+        </ul>
+    </div>
+</div>
+
+
+
+
+
+
+                        
+
+                    </div>
+                    
+
+                    
+
+                </div>
+                
+
+            </div>
+            
+        </div>
+        
+
+        
+
+
+
+
+<div id="copyright">
+    <div class="container">
+        <div class="col-md-12">
+            
+            <p class="pull-left">Copyright (c) 2018, Devjoy Ltd.</p>
+            
+            <p class="pull-right">
+              Template by <a href="http://bootstrapious.com/free-templates">Bootstrapious</a>.
+              
+
+              Ported to Hugo by <a href="https://github.com/devcows/hugo-universal-theme">DevCows</a>
+            </p>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+    </div>
+    
+
+    
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-131889453-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+
+<script src="//code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.1/jquery.waypoints.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/Counter-Up/1.0/jquery.counterup.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery-parallax/1.1.3/jquery-parallax.js"></script>
+<script src="https://www.devjoy.com/js/front.js"></script>
+
+
+<script src="https://www.devjoy.com/js/owl.carousel.min.js"></script>
+
+
+  </body>
+</html>

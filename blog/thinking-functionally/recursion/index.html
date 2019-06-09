@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+  <head>
+  <meta charset="utf-8">
+  <meta name="robots" content="all,follow">
+  <meta name="googlebot" content="index,follow,snippet,archive">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Recursion</title>
+  <meta name="author" content="" />
+
+  
+  <meta name="keywords" content="devows, hugo, go">	
+  
+
+  
+  <meta name="description" content="Site template made by devcows using hugo">	
+  
+
+  <meta name="generator" content="Hugo 0.48" />
+
+  <link href='//fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300italic,500,700,800' rel='stylesheet' type='text/css'>
+
+  
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+  
+  <link href="/css/animate.css" rel="stylesheet">
+
+  
+  
+    <link href="/css/style.blue.css" rel="stylesheet" id="theme-stylesheet">
+  
+
+
+  
+  <link href="/css/custom.css" rel="stylesheet">
+
+  
+  
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  
+
+  
+  <link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon" />
+  <link rel="apple-touch-icon" href="/img/apple-touch-icon.png" />
+  
+
+  <link href="/css/owl.carousel.css" rel="stylesheet">
+  <link href="/css/owl.theme.css" rel="stylesheet">
+
+  <link rel="alternate" href="https://www.devjoy.com/index.xml" type="application/rss+xml" title="devjoy">
+
+  
+  <meta property="og:title" content="Recursion" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="/blog/thinking-functionally/recursion//" />
+  <meta property="og:image" content="img/logo.png" />
+
+</head>
+
+
+  <body>
+    <div id="all">
+
+        <header>
+
+          <div class="navbar-affixed-top" data-spy="affix" data-offset-top="200">
+
+    <div class="navbar navbar-default yamm" role="navigation" id="navbar">
+
+        <div class="container">
+            <div class="navbar-header">
+                <a class="navbar-brand home" href="https://www.devjoy.com/">
+                    <img src="https://www.devjoy.com/img/logo.png" alt="Recursion logo" class="hidden-xs hidden-sm">
+                    <img src="https://www.devjoy.com/img/logo-small.png" alt="Recursion logo" class="visible-xs visible-sm">
+                    <span class="sr-only">Recursion - go to homepage</span>
+                </a>
+                <div class="navbar-buttons">
+                    <button type="button" class="navbar-toggle btn-template-main" data-toggle="collapse" data-target="#navigation">
+                      <span class="sr-only">Toggle Navigation</span>
+                        <i class="fa fa-align-justify"></i>
+                    </button>
+                </div>
+            </div>
+            
+
+            <div class="navbar-collapse collapse" id="navigation">
+                <ul class="nav navbar-nav navbar-right">
+                  
+                  <li class="dropdown">
+                    
+                    <a href="/">Home</a>
+                    
+                  </li>
+                  
+                  <li class="dropdown">
+                    
+                    <a href="/blog/">Blog</a>
+                    
+                  </li>
+                  
+                  <li class="dropdown">
+                    
+                    <a href="/contact/">Contact</a>
+                    
+                  </li>
+                  
+                </ul>
+            </div>
+            
+
+            <div class="collapse clearfix" id="search">
+
+                <form class="navbar-form" role="search">
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Search">
+                        <span class="input-group-btn">
+
+                    <button type="submit" class="btn btn-template-main"><i class="fa fa-search"></i></button>
+
+                </span>
+                    </div>
+                </form>
+
+            </div>
+            
+
+        </div>
+    </div>
+    
+
+</div>
+
+
+
+
+        </header>
+
+        <div id="heading-breadcrumbs">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h1>Recursion</h1>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+        <div id="content">
+            <div class="container">
+
+                <div class="row">
+
+                    
+
+                    <div class="col-md-9" id="blog-post">
+
+                        <p class="text-muted text-uppercase mb-small text-right">June 2, 2014</p>
+
+                        <div id="post-content">
+                          
+
+<p>This post looks at a hugely important part of functional programming, Recursion. In simple terms this means writing a function that calls itself.</p>
+
+<p>There are endless examples of using recursion to figure out Fibonacci numbers, or process lists. This post will be a little more complicated but hopefully is simple enough that you’ll be able to follow along.</p>
+
+<p>We’re going to teach F# to play the perfect game of Tic-Tac-Toe. The game is a favourite for kids, but it quickly becomes boring for adults. The reason for this is that it is relatively easy to look ahead a few moves and play a perfect game. Writing a program that can look ahead and play perfectly is a nice little programming challenge, so let’s get to it.</p>
+
+<h3 id="modelling-the-tic-tac-toe-board">Modelling The Tic-Tac-Toe Board</h3>
+
+<p>The first question we need to address is how to represent the board. A nine item array? Perhaps with 1, -1 and 0 for X, O and Blank respectively. That works.</p>
+
+<p>Or we could just avoid modelling the board altogether. Instead of updating a “Board” to mark the squares occupied by the players, we could just keep two lists of the claimed squares.</p>
+
+<p>If we imagine a board layout like this</p>
+
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-text" data-lang="text">1 2 3
+4 5 6
+7 8 9</code></pre></div>
+
+<p>Then the following game position</p>
+
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-text" data-lang="text">X X O
+. O .
+X . .</code></pre></div>
+
+<p>can be represented as</p>
+
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-text" data-lang="text">X&#39;s Squares: [1;2;7]  
+O&#39;s Squares: [5;3]</code></pre></div>
+
+<h3 id="some-helper-functions">Some Helper Functions</h3>
+
+<p>Once we know how a positions are represented we can write functions to reason about them. From a given position we can find the list of squares that remain available.</p>
+
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fsharp" data-lang="fsharp"><span style="color:#204a87;font-weight:bold">let</span> <span style="color:#000">Available</span> <span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">player</span><span style="color:#ce5c00;font-weight:bold">:</span> <span style="color:#000">int</span> <span style="color:#204a87;font-weight:bold">list</span><span style="color:#ce5c00;font-weight:bold">)</span> <span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">opponent</span><span style="color:#ce5c00;font-weight:bold">:</span> <span style="color:#000">int</span> <span style="color:#204a87;font-weight:bold">list</span><span style="color:#ce5c00;font-weight:bold">)</span> <span style="color:#ce5c00;font-weight:bold">=</span>
+    <span style="color:#ce5c00;font-weight:bold">[</span><span style="color:#000">1</span><span style="color:#ce5c00;font-weight:bold">..</span><span style="color:#000">9</span><span style="color:#ce5c00;font-weight:bold">]</span>
+    <span style="color:#ce5c00;font-weight:bold">|&gt;</span> <span style="color:#000">ExceptList</span> <span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">List</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">append</span> <span style="color:#000">player</span> <span style="color:#000">opponent</span><span style="color:#ce5c00;font-weight:bold">)</span>  </code></pre></div>
+
+<p>We combine the player and opponent lists into one list, then exclude that from the list [1..9]. What remains are the available squares. Simple. ExceptList is just a helper function that wraps a List.filter.</p>
+
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fsharp" data-lang="fsharp"><span style="color:#204a87;font-weight:bold">let</span> <span style="color:#000">ExceptList</span> <span style="color:#204a87;font-weight:bold">list</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">List</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">filter</span> <span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#204a87;font-weight:bold">fun</span> <span style="color:#000">n</span> <span style="color:#ce5c00;font-weight:bold">-&gt;</span> <span style="color:#204a87;font-weight:bold">not</span> <span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#204a87;font-weight:bold">list</span> <span style="color:#ce5c00;font-weight:bold">|&gt;</span> <span style="color:#000">Contains</span> <span style="color:#000">n</span><span style="color:#ce5c00;font-weight:bold">))</span></code></pre></div>
+
+<p>That Contains function is another helper function, It’s just a cleaner way of doing a List.exists.</p>
+
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fsharp" data-lang="fsharp"><span style="color:#204a87;font-weight:bold">let</span> <span style="color:#000">Contains</span> <span style="color:#000">number</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">List</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">exists</span> <span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#204a87;font-weight:bold">fun</span> <span style="color:#000">n</span> <span style="color:#ce5c00;font-weight:bold">-&gt;</span> <span style="color:#000">n</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">number</span><span style="color:#ce5c00;font-weight:bold">)</span></code></pre></div>
+
+<h3 id="seeing-a-win">Seeing A Win</h3>
+
+<p>The next question is how to we know if a player has won. Each player’s squares are in their own list, so all we have to do is check their claimed squares and see if any three are connected.</p>
+
+<p>Yet again there are various ways of doing this, here’s a really simple way. There are only 8 sets of winning squares. The three rows, three columns and the two diagonals. If a players list of squares contains any of these 8 patterns then it’s a win.</p>
+
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fsharp" data-lang="fsharp"><span style="color:#204a87;font-weight:bold">let</span> <span style="color:#000">wins</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#ce5c00;font-weight:bold">[[</span><span style="color:#000">1</span><span style="color:#ce5c00;font-weight:bold">;</span><span style="color:#000">2</span><span style="color:#ce5c00;font-weight:bold">;</span><span style="color:#000">3</span><span style="color:#ce5c00;font-weight:bold">];</span>
+            <span style="color:#ce5c00;font-weight:bold">[</span><span style="color:#000">4</span><span style="color:#ce5c00;font-weight:bold">;</span><span style="color:#000">5</span><span style="color:#ce5c00;font-weight:bold">;</span><span style="color:#000">6</span><span style="color:#ce5c00;font-weight:bold">];</span>
+            <span style="color:#ce5c00;font-weight:bold">[</span><span style="color:#000">7</span><span style="color:#ce5c00;font-weight:bold">;</span><span style="color:#000">8</span><span style="color:#ce5c00;font-weight:bold">;</span><span style="color:#000">9</span><span style="color:#ce5c00;font-weight:bold">];</span>
+            <span style="color:#ce5c00;font-weight:bold">[</span><span style="color:#000">1</span><span style="color:#ce5c00;font-weight:bold">;</span><span style="color:#000">4</span><span style="color:#ce5c00;font-weight:bold">;</span><span style="color:#000">7</span><span style="color:#ce5c00;font-weight:bold">];</span>
+            <span style="color:#ce5c00;font-weight:bold">[</span><span style="color:#000">2</span><span style="color:#ce5c00;font-weight:bold">;</span><span style="color:#000">5</span><span style="color:#ce5c00;font-weight:bold">;</span><span style="color:#000">8</span><span style="color:#ce5c00;font-weight:bold">];</span>
+            <span style="color:#ce5c00;font-weight:bold">[</span><span style="color:#000">3</span><span style="color:#ce5c00;font-weight:bold">;</span><span style="color:#000">6</span><span style="color:#ce5c00;font-weight:bold">;</span><span style="color:#000">9</span><span style="color:#ce5c00;font-weight:bold">];</span>
+            <span style="color:#ce5c00;font-weight:bold">[</span><span style="color:#000">1</span><span style="color:#ce5c00;font-weight:bold">;</span><span style="color:#000">5</span><span style="color:#ce5c00;font-weight:bold">;</span><span style="color:#000">9</span><span style="color:#ce5c00;font-weight:bold">];</span>
+            <span style="color:#ce5c00;font-weight:bold">[</span><span style="color:#000">3</span><span style="color:#ce5c00;font-weight:bold">;</span><span style="color:#000">5</span><span style="color:#ce5c00;font-weight:bold">;</span><span style="color:#000">7</span><span style="color:#ce5c00;font-weight:bold">]]</span></code></pre></div>
+
+<p>The IsWin function looks at each of the 8 win patterns and checks if any of them is contained in the players squares.</p>
+
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fsharp" data-lang="fsharp"><span style="color:#204a87;font-weight:bold">let</span> <span style="color:#000">IsWin</span> <span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">squares</span><span style="color:#ce5c00;font-weight:bold">:</span> <span style="color:#000">int</span> <span style="color:#204a87;font-weight:bold">list</span><span style="color:#ce5c00;font-weight:bold">)</span> <span style="color:#ce5c00;font-weight:bold">=</span> 
+    <span style="color:#000">wins</span> <span style="color:#ce5c00;font-weight:bold">|&gt;</span> <span style="color:#000">List</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">exists</span> <span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#204a87;font-weight:bold">fun</span> <span style="color:#000">w</span> <span style="color:#ce5c00;font-weight:bold">-&gt;</span> <span style="color:#000">ContainsList</span> <span style="color:#000">squares</span> <span style="color:#000">w</span><span style="color:#ce5c00;font-weight:bold">)</span></code></pre></div>
+
+<p>It uses another helper function ContainsList that checks if a list contains all of the elements of another list.</p>
+
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fsharp" data-lang="fsharp"><span style="color:#204a87;font-weight:bold">let</span> <span style="color:#000">ContainsList</span> <span style="color:#204a87;font-weight:bold">list</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">List</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">forall</span> <span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#204a87;font-weight:bold">fun</span> <span style="color:#000">n</span> <span style="color:#ce5c00;font-weight:bold">-&gt;</span> <span style="color:#204a87;font-weight:bold">list</span> <span style="color:#ce5c00;font-weight:bold">|&gt;</span> <span style="color:#000">Contains</span> <span style="color:#000">n</span><span style="color:#ce5c00;font-weight:bold">)</span></code></pre></div>
+
+<p>A Draw is even easier to identify. If there are no squares left then it’s a draw.</p>
+
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fsharp" data-lang="fsharp"><span style="color:#204a87;font-weight:bold">let</span> <span style="color:#000">IsDraw</span> <span style="color:#000">player</span> <span style="color:#000">opponent</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">List</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">isEmpty</span> <span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">Available</span> <span style="color:#000">player</span> <span style="color:#000">opponent</span><span style="color:#ce5c00;font-weight:bold">)</span></code></pre></div>
+
+<h3 id="what-s-a-good-move">What’s a good move?</h3>
+
+<p>So, we know how to tell if the board shows a win or a draw, but how can we make our program look at a given position and decide on a good move. Let’s start by imagining that we have a function that can assign a score to a position. If such a function existed we could just get a list of available moves and pick the one with the highest score. Like This.</p>
+
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fsharp" data-lang="fsharp"><span style="color:#204a87;font-weight:bold">let</span> <span style="color:#000">BestMove</span> <span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">player</span><span style="color:#ce5c00;font-weight:bold">:</span> <span style="color:#000">int</span> <span style="color:#204a87;font-weight:bold">list</span><span style="color:#ce5c00;font-weight:bold">)</span> <span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">opponent</span><span style="color:#ce5c00;font-weight:bold">:</span> <span style="color:#000">int</span> <span style="color:#204a87;font-weight:bold">list</span><span style="color:#ce5c00;font-weight:bold">)</span> <span style="color:#ce5c00;font-weight:bold">=</span>
+    <span style="color:#000">Available</span> <span style="color:#000">player</span> <span style="color:#000">opponent</span>
+    <span style="color:#ce5c00;font-weight:bold">|&gt;</span> <span style="color:#000">List</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">maxBy</span> <span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#204a87;font-weight:bold">fun</span> <span style="color:#000">m</span> <span style="color:#ce5c00;font-weight:bold">-&gt;</span> <span style="color:#000">Score</span> <span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">m</span><span style="color:#ce5c00;font-weight:bold">::</span><span style="color:#000">player</span><span style="color:#ce5c00;font-weight:bold">)</span> <span style="color:#000">opponent</span><span style="color:#ce5c00;font-weight:bold">)</span> </code></pre></div>
+
+<p>List.maxBy applies the given function to each item in the list, and selects the item that gives the largest result. Remember the list contains available squares. The function combines each available move with the players current position and gets the score for each.</p>
+
+<p>Now, what might the Score function look like?</p>
+
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fsharp" data-lang="fsharp"><span style="color:#204a87;font-weight:bold">let</span> <span style="color:#000">Score</span> <span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">player</span><span style="color:#ce5c00;font-weight:bold">:</span> <span style="color:#000">int</span> <span style="color:#204a87;font-weight:bold">list</span><span style="color:#ce5c00;font-weight:bold">)</span> <span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">opponent</span><span style="color:#ce5c00;font-weight:bold">:</span> <span style="color:#000">int</span> <span style="color:#204a87;font-weight:bold">list</span><span style="color:#ce5c00;font-weight:bold">)</span> <span style="color:#ce5c00;font-weight:bold">=</span>
+    <span style="color:#204a87;font-weight:bold">if</span> <span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">IsWin</span> <span style="color:#000">player</span><span style="color:#ce5c00;font-weight:bold">)</span> <span style="color:#204a87;font-weight:bold">then</span> <span style="color:#000">1</span>
+    <span style="color:#204a87;font-weight:bold">else</span> <span style="color:#204a87;font-weight:bold">if</span> <span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">IsDraw</span> <span style="color:#000">player</span> <span style="color:#000">opponent</span><span style="color:#ce5c00;font-weight:bold">)</span> <span style="color:#204a87;font-weight:bold">then</span> <span style="color:#000">0</span>
+    <span style="color:#204a87;font-weight:bold">else</span> <span style="color:#ce5c00;font-weight:bold">???</span></code></pre></div>
+
+<p>If the position is a win for the player we consider it to have a score of 1. For a draw we assign a score of 0. But, what if the game isn’t over yet? How can we score that position?</p>
+
+<p>This is where we get into the realm of recursion. If we assume that both players will play their best possible moves from this position forward, we can predict how the game will end, that end position can then be used to score the current position. Let’s see that in action.</p>
+
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fsharp" data-lang="fsharp"><span style="color:#204a87;font-weight:bold">let</span> <span style="color:#000">rec</span> <span style="color:#000">Score</span> <span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">player</span><span style="color:#ce5c00;font-weight:bold">:</span> <span style="color:#000">int</span> <span style="color:#204a87;font-weight:bold">list</span><span style="color:#ce5c00;font-weight:bold">)</span> <span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">opponent</span><span style="color:#ce5c00;font-weight:bold">:</span> <span style="color:#000">int</span> <span style="color:#204a87;font-weight:bold">list</span><span style="color:#ce5c00;font-weight:bold">)</span> <span style="color:#ce5c00;font-weight:bold">=</span>
+    <span style="color:#204a87;font-weight:bold">if</span> <span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">IsWin</span> <span style="color:#000">player</span><span style="color:#ce5c00;font-weight:bold">)</span> <span style="color:#204a87;font-weight:bold">then</span> <span style="color:#000">1</span>
+    <span style="color:#204a87;font-weight:bold">else</span> <span style="color:#204a87;font-weight:bold">if</span> <span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">IsDraw</span> <span style="color:#000">player</span> <span style="color:#000">opponent</span><span style="color:#ce5c00;font-weight:bold">)</span> <span style="color:#204a87;font-weight:bold">then</span> <span style="color:#000">0</span>
+    <span style="color:#204a87;font-weight:bold">else</span>
+        <span style="color:#204a87;font-weight:bold">let</span> <span style="color:#000">opponentsBestMove</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">BestMove</span> <span style="color:#000">opponent</span> <span style="color:#000">player</span>
+        <span style="color:#204a87;font-weight:bold">let</span> <span style="color:#000">opponentsNewPosition</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">opponentsBestMove</span><span style="color:#ce5c00;font-weight:bold">::</span><span style="color:#000">opponent</span>
+        <span style="color:#ce5c00;font-weight:bold">-</span><span style="color:#000">Score</span> <span style="color:#000">opponentsNewPosition</span> <span style="color:#000">player</span></code></pre></div>
+
+<p>There are a few things going on here so let’s take them in turn. We need to figure out the best move for the opponent. We already have a function for that, the BestMove function that we started with. If we flip the opponent and player lists of squares around, we can use BestMove to find the best move from the opponents perspective.</p>
+
+<p>Knowing the best move for the opponent we can add it to their current position. Now, we have a new position to score. It may be that the opponents move won them the game, or gives a draw. Or it may be that the game is still not finished. We have a function that can score those various options, in fact it’s the function we’re writing (Score), so we simply call it, passing it the opponents potential new position.</p>
+
+<p>Note that if the Score function finds a win for our opponent it will return a score of 1. We negate that because a win for our opponent is a loss for us.</p>
+
+<p>The key insight here is that while scoring the opponents position, the Score function will go back and forth between moves for the player and moves for the opponent. In parallel to the moves going back and forth, that negate operation means the score will go back and forth between 1 and -1.</p>
+
+<p>Notice that we’ve added ‘rec’ to the Score function to indicate that it will be called recursively.</p>
+
+<h3 id="mutual-recursion">Mutual Recursion</h3>
+
+<p>Notice also that the Score function calls the BestMove function, which is the function we started with and which in turn calls Score. This is mutual recursion, and it poses a particular problem in F#. A called function must defined be above the call to it. How can we do that when we have two functions that call each other?</p>
+
+<p>Well, like this…</p>
+
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fsharp" data-lang="fsharp"><span style="color:#204a87;font-weight:bold">let</span> <span style="color:#000">rec</span> <span style="color:#000">Score</span> <span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">player</span><span style="color:#ce5c00;font-weight:bold">:</span> <span style="color:#000">int</span> <span style="color:#204a87;font-weight:bold">list</span><span style="color:#ce5c00;font-weight:bold">)</span> <span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">opponent</span><span style="color:#ce5c00;font-weight:bold">:</span> <span style="color:#000">int</span> <span style="color:#204a87;font-weight:bold">list</span><span style="color:#ce5c00;font-weight:bold">)</span> <span style="color:#ce5c00;font-weight:bold">=</span>
+    <span style="color:#204a87;font-weight:bold">if</span> <span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">IsWin</span> <span style="color:#000">player</span><span style="color:#ce5c00;font-weight:bold">)</span> <span style="color:#204a87;font-weight:bold">then</span> <span style="color:#000">1</span>
+    <span style="color:#204a87;font-weight:bold">else</span> <span style="color:#204a87;font-weight:bold">if</span> <span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">IsDraw</span> <span style="color:#000">player</span> <span style="color:#000">opponent</span><span style="color:#ce5c00;font-weight:bold">)</span> <span style="color:#204a87;font-weight:bold">then</span> <span style="color:#000">0</span>
+    <span style="color:#204a87;font-weight:bold">else</span>
+        <span style="color:#204a87;font-weight:bold">let</span> <span style="color:#000">opponentsBestMove</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">BestMove</span> <span style="color:#000">opponent</span> <span style="color:#000">player</span>
+        <span style="color:#204a87;font-weight:bold">let</span> <span style="color:#000">opponentsNewPosition</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">opponentsBestMove</span><span style="color:#ce5c00;font-weight:bold">::</span><span style="color:#000">opponent</span>
+        <span style="color:#ce5c00;font-weight:bold">-</span><span style="color:#000">Score</span> <span style="color:#000">opponentsNewPosition</span> <span style="color:#000">player</span>
+
+<span style="color:#204a87;font-weight:bold">and</span> <span style="color:#000">BestMove</span> <span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">player</span><span style="color:#ce5c00;font-weight:bold">:</span> <span style="color:#000">int</span> <span style="color:#204a87;font-weight:bold">list</span><span style="color:#ce5c00;font-weight:bold">)</span> <span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">opponent</span><span style="color:#ce5c00;font-weight:bold">:</span> <span style="color:#000">int</span> <span style="color:#204a87;font-weight:bold">list</span><span style="color:#ce5c00;font-weight:bold">)</span> <span style="color:#ce5c00;font-weight:bold">=</span>
+    <span style="color:#000">Available</span> <span style="color:#000">player</span> <span style="color:#000">opponent</span>
+    <span style="color:#ce5c00;font-weight:bold">|&gt;</span> <span style="color:#000">List</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">maxBy</span> <span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#204a87;font-weight:bold">fun</span> <span style="color:#000">m</span> <span style="color:#ce5c00;font-weight:bold">-&gt;</span> <span style="color:#000">Score</span> <span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">m</span><span style="color:#ce5c00;font-weight:bold">::</span><span style="color:#000">player</span><span style="color:#ce5c00;font-weight:bold">)</span> <span style="color:#000">opponent</span><span style="color:#ce5c00;font-weight:bold">)</span> </code></pre></div>
+
+<p>The ‘and’ keyword allows us to define mutually recursive function. So, here’s the finished code.</p>
+
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fsharp" data-lang="fsharp"><span style="color:#204a87;font-weight:bold">let</span> <span style="color:#000">wins</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#ce5c00;font-weight:bold">[[</span><span style="color:#000">1</span><span style="color:#ce5c00;font-weight:bold">;</span><span style="color:#000">2</span><span style="color:#ce5c00;font-weight:bold">;</span><span style="color:#000">3</span><span style="color:#ce5c00;font-weight:bold">];</span>
+            <span style="color:#ce5c00;font-weight:bold">[</span><span style="color:#000">4</span><span style="color:#ce5c00;font-weight:bold">;</span><span style="color:#000">5</span><span style="color:#ce5c00;font-weight:bold">;</span><span style="color:#000">6</span><span style="color:#ce5c00;font-weight:bold">];</span>
+            <span style="color:#ce5c00;font-weight:bold">[</span><span style="color:#000">7</span><span style="color:#ce5c00;font-weight:bold">;</span><span style="color:#000">8</span><span style="color:#ce5c00;font-weight:bold">;</span><span style="color:#000">9</span><span style="color:#ce5c00;font-weight:bold">];</span>
+            <span style="color:#ce5c00;font-weight:bold">[</span><span style="color:#000">1</span><span style="color:#ce5c00;font-weight:bold">;</span><span style="color:#000">4</span><span style="color:#ce5c00;font-weight:bold">;</span><span style="color:#000">7</span><span style="color:#ce5c00;font-weight:bold">];</span>
+            <span style="color:#ce5c00;font-weight:bold">[</span><span style="color:#000">2</span><span style="color:#ce5c00;font-weight:bold">;</span><span style="color:#000">5</span><span style="color:#ce5c00;font-weight:bold">;</span><span style="color:#000">8</span><span style="color:#ce5c00;font-weight:bold">];</span>
+            <span style="color:#ce5c00;font-weight:bold">[</span><span style="color:#000">3</span><span style="color:#ce5c00;font-weight:bold">;</span><span style="color:#000">6</span><span style="color:#ce5c00;font-weight:bold">;</span><span style="color:#000">9</span><span style="color:#ce5c00;font-weight:bold">];</span>
+            <span style="color:#ce5c00;font-weight:bold">[</span><span style="color:#000">1</span><span style="color:#ce5c00;font-weight:bold">;</span><span style="color:#000">5</span><span style="color:#ce5c00;font-weight:bold">;</span><span style="color:#000">9</span><span style="color:#ce5c00;font-weight:bold">];</span>
+            <span style="color:#ce5c00;font-weight:bold">[</span><span style="color:#000">3</span><span style="color:#ce5c00;font-weight:bold">;</span><span style="color:#000">5</span><span style="color:#ce5c00;font-weight:bold">;</span><span style="color:#000">7</span><span style="color:#ce5c00;font-weight:bold">]]</span>
+
+<span style="color:#204a87;font-weight:bold">let</span> <span style="color:#000">Contains</span> <span style="color:#000">number</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">List</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">exists</span> <span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#204a87;font-weight:bold">fun</span> <span style="color:#000">n</span> <span style="color:#ce5c00;font-weight:bold">-&gt;</span> <span style="color:#000">n</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">number</span><span style="color:#ce5c00;font-weight:bold">)</span>
+
+<span style="color:#204a87;font-weight:bold">let</span> <span style="color:#000">ContainsList</span> <span style="color:#204a87;font-weight:bold">list</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">List</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">forall</span> <span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#204a87;font-weight:bold">fun</span> <span style="color:#000">n</span> <span style="color:#ce5c00;font-weight:bold">-&gt;</span> <span style="color:#204a87;font-weight:bold">list</span> <span style="color:#ce5c00;font-weight:bold">|&gt;</span> <span style="color:#000">Contains</span> <span style="color:#000">n</span><span style="color:#ce5c00;font-weight:bold">)</span>
+
+<span style="color:#204a87;font-weight:bold">let</span> <span style="color:#000">ExceptList</span> <span style="color:#204a87;font-weight:bold">list</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">List</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">filter</span> <span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#204a87;font-weight:bold">fun</span> <span style="color:#000">n</span> <span style="color:#ce5c00;font-weight:bold">-&gt;</span> <span style="color:#204a87;font-weight:bold">not</span> <span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#204a87;font-weight:bold">list</span> <span style="color:#ce5c00;font-weight:bold">|&gt;</span> <span style="color:#000">Contains</span> <span style="color:#000">n</span><span style="color:#ce5c00;font-weight:bold">))</span>
+
+<span style="color:#204a87;font-weight:bold">let</span> <span style="color:#000">Available</span> <span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">player</span><span style="color:#ce5c00;font-weight:bold">:</span> <span style="color:#000">int</span> <span style="color:#204a87;font-weight:bold">list</span><span style="color:#ce5c00;font-weight:bold">)</span> <span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">opponent</span><span style="color:#ce5c00;font-weight:bold">:</span> <span style="color:#000">int</span> <span style="color:#204a87;font-weight:bold">list</span><span style="color:#ce5c00;font-weight:bold">)</span> <span style="color:#ce5c00;font-weight:bold">=</span>
+    <span style="color:#ce5c00;font-weight:bold">[</span><span style="color:#000">1</span><span style="color:#ce5c00;font-weight:bold">..</span><span style="color:#000">9</span><span style="color:#ce5c00;font-weight:bold">]</span>
+    <span style="color:#ce5c00;font-weight:bold">|&gt;</span> <span style="color:#000">ExceptList</span> <span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">List</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">append</span> <span style="color:#000">player</span> <span style="color:#000">opponent</span><span style="color:#ce5c00;font-weight:bold">)</span>  
+
+<span style="color:#204a87;font-weight:bold">let</span> <span style="color:#000">IsWin</span> <span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">squares</span><span style="color:#ce5c00;font-weight:bold">:</span> <span style="color:#000">int</span> <span style="color:#204a87;font-weight:bold">list</span><span style="color:#ce5c00;font-weight:bold">)</span> <span style="color:#ce5c00;font-weight:bold">=</span> 
+    <span style="color:#000">wins</span> <span style="color:#ce5c00;font-weight:bold">|&gt;</span> <span style="color:#000">List</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">exists</span> <span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#204a87;font-weight:bold">fun</span> <span style="color:#000">w</span> <span style="color:#ce5c00;font-weight:bold">-&gt;</span> <span style="color:#000">ContainsList</span> <span style="color:#000">squares</span> <span style="color:#000">w</span><span style="color:#ce5c00;font-weight:bold">)</span>
+ 
+<span style="color:#204a87;font-weight:bold">let</span> <span style="color:#000">IsDraw</span> <span style="color:#000">player</span> <span style="color:#000">opponent</span> <span style="color:#ce5c00;font-weight:bold">=</span>
+    <span style="color:#000">List</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">isEmpty</span> <span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">Available</span> <span style="color:#000">player</span> <span style="color:#000">opponent</span><span style="color:#ce5c00;font-weight:bold">)</span>
+
+<span style="color:#204a87;font-weight:bold">let</span> <span style="color:#000">rec</span> <span style="color:#000">Score</span> <span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">player</span><span style="color:#ce5c00;font-weight:bold">:</span> <span style="color:#000">int</span> <span style="color:#204a87;font-weight:bold">list</span><span style="color:#ce5c00;font-weight:bold">)</span> <span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">opponent</span><span style="color:#ce5c00;font-weight:bold">:</span> <span style="color:#000">int</span> <span style="color:#204a87;font-weight:bold">list</span><span style="color:#ce5c00;font-weight:bold">)</span> <span style="color:#ce5c00;font-weight:bold">=</span>
+    <span style="color:#204a87;font-weight:bold">if</span> <span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">IsWin</span> <span style="color:#000">player</span><span style="color:#ce5c00;font-weight:bold">)</span> <span style="color:#204a87;font-weight:bold">then</span> <span style="color:#000">1</span>
+    <span style="color:#204a87;font-weight:bold">else</span> <span style="color:#204a87;font-weight:bold">if</span> <span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">IsDraw</span> <span style="color:#000">player</span> <span style="color:#000">opponent</span><span style="color:#ce5c00;font-weight:bold">)</span> <span style="color:#204a87;font-weight:bold">then</span> <span style="color:#000">0</span>
+    <span style="color:#204a87;font-weight:bold">else</span>
+        <span style="color:#204a87;font-weight:bold">let</span> <span style="color:#000">opponentsBestMove</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">BestMove</span> <span style="color:#000">opponent</span> <span style="color:#000">player</span>
+        <span style="color:#204a87;font-weight:bold">let</span> <span style="color:#000">opponentsNewPosition</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">opponentsBestMove</span><span style="color:#ce5c00;font-weight:bold">::</span><span style="color:#000">opponent</span>
+        <span style="color:#ce5c00;font-weight:bold">-</span><span style="color:#000">Score</span> <span style="color:#000">opponentsNewPosition</span> <span style="color:#000">player</span>
+
+<span style="color:#204a87;font-weight:bold">and</span> <span style="color:#000">BestMove</span> <span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">player</span><span style="color:#ce5c00;font-weight:bold">:</span> <span style="color:#000">int</span> <span style="color:#204a87;font-weight:bold">list</span><span style="color:#ce5c00;font-weight:bold">)</span> <span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">opponent</span><span style="color:#ce5c00;font-weight:bold">:</span> <span style="color:#000">int</span> <span style="color:#204a87;font-weight:bold">list</span><span style="color:#ce5c00;font-weight:bold">)</span> <span style="color:#ce5c00;font-weight:bold">=</span>
+    <span style="color:#000">Available</span> <span style="color:#000">player</span> <span style="color:#000">opponent</span>
+    <span style="color:#ce5c00;font-weight:bold">|&gt;</span> <span style="color:#000">List</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">maxBy</span> <span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#204a87;font-weight:bold">fun</span> <span style="color:#000">m</span> <span style="color:#ce5c00;font-weight:bold">-&gt;</span> <span style="color:#000">Score</span> <span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">m</span><span style="color:#ce5c00;font-weight:bold">::</span><span style="color:#000">player</span><span style="color:#ce5c00;font-weight:bold">)</span> <span style="color:#000">opponent</span><span style="color:#ce5c00;font-weight:bold">)</span> </code></pre></div>
+
+<p>There you have it, 37 lines of code to create the perfect Tic-Tac-Toe brain. To run the code simply call the BestMove function, passing it the two lists representing the player’s squares. For the first move those lists will be empty.</p>
+
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fsharp" data-lang="fsharp"><span style="color:#ce5c00;font-weight:bold">&gt;</span> <span style="color:#000">BestMove</span> <span style="color:#3465a4">[]</span> <span style="color:#3465a4">[]</span><span style="color:#ce5c00;font-weight:bold">;;</span>
+<span style="color:#204a87;font-weight:bold">val</span> <span style="color:#000">it</span> <span style="color:#ce5c00;font-weight:bold">:</span> <span style="color:#000">int</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">1</span></code></pre></div>
+
+<p>Remember that the first list passed to BestMove is the squares occupied by the player that is about to move, the second are the opponent’s squares. So, to find the best response to the move above, you would do the following.</p>
+
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fsharp" data-lang="fsharp"><span style="color:#ce5c00;font-weight:bold">&gt;</span> <span style="color:#000">BestMove</span> <span style="color:#3465a4">[]</span> <span style="color:#ce5c00;font-weight:bold">[</span><span style="color:#000">1</span><span style="color:#ce5c00;font-weight:bold">];;</span>
+<span style="color:#204a87;font-weight:bold">val</span> <span style="color:#000">it</span> <span style="color:#ce5c00;font-weight:bold">:</span> <span style="color:#000">int</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">5</span></code></pre></div>
+
+<p>The first move may take up to 30 seconds to find a move, it has to search the complete game tree. Subsequent moves will be significantly faster as the options get narrowed down.</p>
+
+                        </div>
+                        
+                        
+                        <div id="comments">
+                            <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "devjoycom" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+                        </div>
+                        
+
+                    </div>
+                    
+
+                    
+
+                    
+
+                    <div class="col-md-3">
+
+                        
+
+                        
+
+<div class="panel panel-default sidebar-menu">
+
+    <div class="panel-heading">
+      <h3 class="panel-title">Search</h3>
+    </div>
+
+    <div class="panel-body">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" role="search">
+            <div class="input-group">
+                <input type="search" name="q" class="form-control" placeholder="Search">
+                <input type="hidden" name="sitesearch" value="https://www.devjoy.com/">
+                <span class="input-group-btn">
+                    <button type="submit" class="btn btn-template-main"><i class="fa fa-search"></i></button>
+                </span>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+
+
+
+
+
+<div class="panel panel-default sidebar-menu">
+
+    <div class="panel-heading">
+      <h3 class="panel-title">Categories</h3>
+    </div>
+
+    <div class="panel-body">
+        <ul class="nav nav-pills nav-stacked">
+            
+            <li><a href="https://www.devjoy.com/categories/how-to">how-to (22)</a>
+            </li>
+            
+            <li><a href="https://www.devjoy.com/categories/reviews">reviews (1)</a>
+            </li>
+            
+            <li><a href="https://www.devjoy.com/categories/thoughts">thoughts (15)</a>
+            </li>
+            
+        </ul>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+<div class="panel panel-default sidebar-menu">
+
+    <div class="panel-heading">
+      <h3 class="panel-title">Series</h3>
+    </div>
+
+    <div class="panel-body">
+        <ul class="nav nav-pills nav-stacked">
+            
+            <li><a href="https://www.devjoy.com/series/f-sharp-active-patterns">f-sharp-active-patterns (8)</a>
+            </li>
+            
+            <li><a href="https://www.devjoy.com/series/thinking-functionally">thinking-functionally (6)</a>
+            </li>
+            
+        </ul>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+<div class="panel sidebar-menu">
+    <div class="panel-heading">
+      <h3 class="panel-title">Tags</h3>
+    </div>
+
+    <div class="panel-body">
+        <ul class="tag-cloud">
+            
+            <li><a href="https://www.devjoy.com/tags/agile"><i class="fa fa-tags"></i> agile</a>
+            </li>
+            
+            <li><a href="https://www.devjoy.com/tags/c"><i class="fa fa-tags"></i> c#</a>
+            </li>
+            
+            <li><a href="https://www.devjoy.com/tags/code"><i class="fa fa-tags"></i> code</a>
+            </li>
+            
+            <li><a href="https://www.devjoy.com/tags/coding"><i class="fa fa-tags"></i> coding</a>
+            </li>
+            
+            <li><a href="https://www.devjoy.com/tags/complexity"><i class="fa fa-tags"></i> complexity</a>
+            </li>
+            
+            <li><a href="https://www.devjoy.com/tags/design"><i class="fa fa-tags"></i> design</a>
+            </li>
+            
+            <li><a href="https://www.devjoy.com/tags/f"><i class="fa fa-tags"></i> f#</a>
+            </li>
+            
+            <li><a href="https://www.devjoy.com/tags/functional-programming"><i class="fa fa-tags"></i> functional-programming</a>
+            </li>
+            
+            <li><a href="https://www.devjoy.com/tags/learning"><i class="fa fa-tags"></i> learning</a>
+            </li>
+            
+            <li><a href="https://www.devjoy.com/tags/tdd"><i class="fa fa-tags"></i> tdd</a>
+            </li>
+            
+            <li><a href="https://www.devjoy.com/tags/teams"><i class="fa fa-tags"></i> teams</a>
+            </li>
+            
+            <li><a href="https://www.devjoy.com/tags/technical-debt"><i class="fa fa-tags"></i> technical-debt</a>
+            </li>
+            
+            <li><a href="https://www.devjoy.com/tags/testing"><i class="fa fa-tags"></i> testing</a>
+            </li>
+            
+        </ul>
+    </div>
+</div>
+
+
+
+
+
+
+                        
+
+                    </div>
+                    
+
+                    
+
+                </div>
+                
+
+            </div>
+            
+        </div>
+        
+
+        
+
+
+
+
+<div id="copyright">
+    <div class="container">
+        <div class="col-md-12">
+            
+            <p class="pull-left">Copyright (c) 2018, Devjoy Ltd.</p>
+            
+            <p class="pull-right">
+              Template by <a href="http://bootstrapious.com/free-templates">Bootstrapious</a>.
+              
+
+              Ported to Hugo by <a href="https://github.com/devcows/hugo-universal-theme">DevCows</a>
+            </p>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+    </div>
+    
+
+    
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-131889453-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+
+<script src="//code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.1/jquery.waypoints.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/Counter-Up/1.0/jquery.counterup.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery-parallax/1.1.3/jquery-parallax.js"></script>
+<script src="https://www.devjoy.com/js/front.js"></script>
+
+
+<script src="https://www.devjoy.com/js/owl.carousel.min.js"></script>
+
+
+  </body>
+</html>

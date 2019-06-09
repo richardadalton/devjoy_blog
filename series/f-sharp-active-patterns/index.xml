@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>F# Active Patterns on devjoy</title>
+    <link>https://www.devjoy.com/series/f-sharp-active-patterns/</link>
+    <description>Recent content in F# Active Patterns on devjoy</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 07 Aug 2014 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://www.devjoy.com/series/f-sharp-active-patterns/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Pattern Matching</title>
+      <link>https://www.devjoy.com/blog/active-patterns/pattern-matching/</link>
+      <pubDate>Thu, 07 Aug 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.devjoy.com/blog/active-patterns/pattern-matching/</guid>
+      <description>This is the first in a series of posts explaining Active Patterns, a very cool feature of F#. This post will lay the groundwork by covering pattern matching, and introducing the concept of active patterns. Subsequent posts will cover the various types of active pattern in detail.
+Destructuring Assignment Thanks to Miles McGuire for setting me straight on the name.
+F# is full of little nice ideas that you appreciate when you come from a C# background, and destructuring assignment is one of them.</description>
+    </item>
+    
+    <item>
+      <title>Single Total (|A|)</title>
+      <link>https://www.devjoy.com/blog/active-patterns/single-total/</link>
+      <pubDate>Tue, 01 Jul 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.devjoy.com/blog/active-patterns/single-total/</guid>
+      <description>Part 1 of this series was mainly sharpening the axe by covering some basics like Pattern matching. I also gave a general sense of what active patterns are (functions that can be used when pattern matching, such as in match expressions). Now it’s time to dig into the details.
+As I mentioned previously there are arguably 5 variations of active patterns. This post will cover the first of those, the Single Total Active Pattern.</description>
+    </item>
+    
+    <item>
+      <title>Partial Application</title>
+      <link>https://www.devjoy.com/blog/active-patterns/partial-application/</link>
+      <pubDate>Sat, 09 Aug 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.devjoy.com/blog/active-patterns/partial-application/</guid>
+      <description>This post was supposed to be about Partial Active Patterns, but before we get to that, I want to take a small diversion to cover Partial Application of Active Patterns (which is a completely different thing). Confused? Don’t worry. Read on.
+Partial Application I’ve described Partial Application in detail here and here, so I’m going to assume that you know how it works for regular functions. Please read those two posts if you are in any doubt.</description>
+    </item>
+    
+    <item>
+      <title>Single Partial (|A|_|)</title>
+      <link>https://www.devjoy.com/blog/active-patterns/single-partial/</link>
+      <pubDate>Mon, 11 Aug 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.devjoy.com/blog/active-patterns/single-partial/</guid>
+      <description>I’ve referred to all of the Active Patterns we have seen so far in this series as ‘Single Total’. It’s time to look at the distinction between ‘Total’ and ‘Partial’ Active Patterns.
+To understand Partial Active Patterns you need to have some understanding of Option Types’. If they are new to you, I’d encourage you to read up on them before continuing. A great place for reading about this, and F# generally is FSharpForFunAndProfit.</description>
+    </item>
+    
+    <item>
+      <title>Single Partial With Params (|A|_|) x</title>
+      <link>https://www.devjoy.com/blog/active-patterns/single-partial-with-params/</link>
+      <pubDate>Mon, 11 Aug 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.devjoy.com/blog/active-patterns/single-partial-with-params/</guid>
+      <description>We close out the discussion of Single Active Patterns by adding parameters to the partial active pattern. If you’ve read the post on adding parameters to the Single Total Active Pattern then there is absolutely nothing new here, it works in exactly the same way.
+For that reason I’m not going to use this post to explain how to do it, I’m just going to work through an example and leave it at that.</description>
+    </item>
+    
+    <item>
+      <title>Single Total With Params (|A|) x</title>
+      <link>https://www.devjoy.com/blog/active-patterns/single-total-with-params/</link>
+      <pubDate>Thu, 07 Aug 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.devjoy.com/blog/active-patterns/single-total-with-params/</guid>
+      <description>We move on to the next in our series on Active Patterns, but this time we’re really just covering a slight modification to the Single Total pattern that we covered in the last post.
+All the same rules apply, we’re just adding the ability to add parameters to the Active Pattern.
+I say ‘parameters’ but in reality I mean ‘additional parameters’. Every Active Pattern has at least one parameter. The ‘x’ in ‘match x with’ has to go somewhere.</description>
+    </item>
+    
+    <item>
+      <title>Multi Case (|A|B|)</title>
+      <link>https://www.devjoy.com/blog/active-patterns/multi-case/</link>
+      <pubDate>Thu, 14 Aug 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.devjoy.com/blog/active-patterns/multi-case/</guid>
+      <description>Playing Cards are a commonly used example of discriminated unions in F#. I’m not presuming that you already understand Discriminated Unions, but I’m also not going to explain them. You should be able to follow along and get a sense of how they work. If you’d like to read up on them try here.
+A Rank is something that can have one of 13 values Ace through King. A Suit can have one of 4 values Hearts, Clubs, Diamonds or Spades.</description>
+    </item>
+    
+    <item>
+      <title>Choices And Nesting</title>
+      <link>https://www.devjoy.com/blog/active-patterns/choices-and-nesting/</link>
+      <pubDate>Mon, 18 Aug 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.devjoy.com/blog/active-patterns/choices-and-nesting/</guid>
+      <description>And so, we arrive at the last post of the series. I’ll show you the F# ‘Choice’ type and show how it relates to active patterns. I’ll explain how to add additional parameters to a multi-case active pattern, and introduce some complex pattern matching using nested active patterns.
+Look Ma! No Params In the previous post I mentioned that Multi-Case active patterns can’t accept additional arguments beyond the one that all active patterns must accept.</description>
+    </item>
+    
+  </channel>
+</rss>

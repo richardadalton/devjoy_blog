@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+  <head>
+  <meta charset="utf-8">
+  <meta name="robots" content="all,follow">
+  <meta name="googlebot" content="index,follow,snippet,archive">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Fluent Mocking</title>
+  <meta name="author" content="" />
+
+  
+  <meta name="keywords" content="devows, hugo, go">	
+  
+
+  
+  <meta name="description" content="Site template made by devcows using hugo">	
+  
+
+  <meta name="generator" content="Hugo 0.48" />
+
+  <link href='//fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300italic,500,700,800' rel='stylesheet' type='text/css'>
+
+  
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+  
+  <link href="/css/animate.css" rel="stylesheet">
+
+  
+  
+    <link href="/css/style.blue.css" rel="stylesheet" id="theme-stylesheet">
+  
+
+
+  
+  <link href="/css/custom.css" rel="stylesheet">
+
+  
+  
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  
+
+  
+  <link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon" />
+  <link rel="apple-touch-icon" href="/img/apple-touch-icon.png" />
+  
+
+  <link href="/css/owl.carousel.css" rel="stylesheet">
+  <link href="/css/owl.theme.css" rel="stylesheet">
+
+  <link rel="alternate" href="https://www.devjoy.com/index.xml" type="application/rss+xml" title="devjoy">
+
+  
+  <meta property="og:title" content="Fluent Mocking" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="/blog/fluent-mocking//" />
+  <meta property="og:image" content="img/logo.png" />
+
+</head>
+
+
+  <body>
+    <div id="all">
+
+        <header>
+
+          <div class="navbar-affixed-top" data-spy="affix" data-offset-top="200">
+
+    <div class="navbar navbar-default yamm" role="navigation" id="navbar">
+
+        <div class="container">
+            <div class="navbar-header">
+                <a class="navbar-brand home" href="https://www.devjoy.com/">
+                    <img src="https://www.devjoy.com/img/logo.png" alt="Fluent Mocking logo" class="hidden-xs hidden-sm">
+                    <img src="https://www.devjoy.com/img/logo-small.png" alt="Fluent Mocking logo" class="visible-xs visible-sm">
+                    <span class="sr-only">Fluent Mocking - go to homepage</span>
+                </a>
+                <div class="navbar-buttons">
+                    <button type="button" class="navbar-toggle btn-template-main" data-toggle="collapse" data-target="#navigation">
+                      <span class="sr-only">Toggle Navigation</span>
+                        <i class="fa fa-align-justify"></i>
+                    </button>
+                </div>
+            </div>
+            
+
+            <div class="navbar-collapse collapse" id="navigation">
+                <ul class="nav navbar-nav navbar-right">
+                  
+                  <li class="dropdown">
+                    
+                    <a href="/">Home</a>
+                    
+                  </li>
+                  
+                  <li class="dropdown">
+                    
+                    <a href="/blog/">Blog</a>
+                    
+                  </li>
+                  
+                  <li class="dropdown">
+                    
+                    <a href="/contact/">Contact</a>
+                    
+                  </li>
+                  
+                </ul>
+            </div>
+            
+
+            <div class="collapse clearfix" id="search">
+
+                <form class="navbar-form" role="search">
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Search">
+                        <span class="input-group-btn">
+
+                    <button type="submit" class="btn btn-template-main"><i class="fa fa-search"></i></button>
+
+                </span>
+                    </div>
+                </form>
+
+            </div>
+            
+
+        </div>
+    </div>
+    
+
+</div>
+
+
+
+
+        </header>
+
+        <div id="heading-breadcrumbs">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h1>Fluent Mocking</h1>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+        <div id="content">
+            <div class="container">
+
+                <div class="row">
+
+                    
+
+                    <div class="col-md-9" id="blog-post">
+
+                        <p class="text-muted text-uppercase mb-small text-right">June 22, 2011</p>
+
+                        <div id="post-content">
+                          
+
+<p>Here’s a scenario (for once not a hypothetical scenario, this is a real system I worked on). I was building a wizard based app. To be more accurate I was building lots of wizard based apps.</p>
+
+<p>After a couple of wizards the functionality became clear and I extracted it to it&rsquo;s own framework. My apps could then focus on actual bread and butter functionality.</p>
+
+<p>Two of the objects in my framework are ‘Wizard’ and ‘WizardStep’. A Wizard contains WizardSteps. You get the idea.</p>
+
+<h3 id="testing-our-framework">Testing Our Framework</h3>
+
+<p>There are quite a few tests that we can write to make sure that navigation works.</p>
+
+<ul>
+<li>Moving next should increment the current step.</li>
+<li>Moving previous should decrement the current step.</li>
+<li>Moving next from the last step causes the Wizard to finish.</li>
+<li>You can&rsquo;t move previous from the first step.</li>
+<li>A step can enforce a check to decide whether to allow a move.</li>
+</ul>
+
+<p>Let’s look at we can write these tests, and how we can use mocks and stubs.</p>
+
+<p>When the user clicks ‘Move Next’ the current step can decide whether it will allow the Move Next to happen. If it returns false, the Wizard will refuse to allow the user to move on.</p>
+
+<p>To test a feature like this we can do the following:</p>
+
+<ol>
+<li>Create a wizard with one step</li>
+<li>Use a stub for step1 that returns false from OKToMoveNext.</li>
+<li>Start the wizard</li>
+<li>Assert that we’re on the first step</li>
+<li>Attempt to move next</li>
+<li>Assert that we’re still on the first step</li>
+</ol>
+
+<p>We should still be on step1 because step1 returns false when asked if it&rsquo;s ok to move next.</p>
+
+<p>We can write the test in various ways. A key issue is how to write the stub for step1. The only thing we care about is that it&rsquo;s OKToMoveNext method returns False.</p>
+
+<p>Here’s one example, using the Moq Framework:</p>
+
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp"><span style="color:#c4a000">[Test()]</span>
+<span style="color:#204a87;font-weight:bold">public</span> <span style="color:#204a87;font-weight:bold">void</span> <span style="color:#000">Validation_CanPrevent_MoveNext</span><span style="color:#000;font-weight:bold">()</span>
+<span style="color:#000;font-weight:bold">{</span>
+<span style="display:block;width:100%;background-color:#dfdfdf">    <span style="color:#000">Mock</span><span style="color:#000;font-weight:bold">&lt;</span><span style="color:#000">IWizardStep</span><span style="color:#000;font-weight:bold">&gt;</span> <span style="color:#000">step1</span> <span style="color:#000;font-weight:bold">=</span> <span style="color:#204a87;font-weight:bold">new</span> <span style="color:#000">Mock</span><span style="color:#000;font-weight:bold">&lt;</span><span style="color:#000">IWizardStep</span><span style="color:#000;font-weight:bold">&gt;();</span>
+</span><span style="display:block;width:100%;background-color:#dfdfdf">    <span style="color:#000">step1</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">Setup</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">s</span> <span style="color:#000;font-weight:bold">=&gt;</span> <span style="color:#000">s</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">OKToMoveNext</span><span style="color:#000;font-weight:bold">()).</span><span style="color:#000">Returns</span><span style="color:#000;font-weight:bold">(</span><span style="color:#204a87;font-weight:bold">false</span><span style="color:#000;font-weight:bold">);</span>
+</span>
+    <span style="color:#000">Wizard</span> <span style="color:#000">wizard</span> <span style="color:#000;font-weight:bold">=</span> <span style="color:#204a87;font-weight:bold">new</span> <span style="color:#000">Wizard</span><span style="color:#000;font-weight:bold">()</span>
+        <span style="color:#000;font-weight:bold">.</span><span style="color:#000">AddStep</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">step1</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">Object</span><span style="color:#000;font-weight:bold">)</span>
+        <span style="color:#000;font-weight:bold">.</span><span style="color:#000">Start</span><span style="color:#000;font-weight:bold">();</span>
+
+    <span style="color:#000">Assert</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">AreEqual</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">step1</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">Object</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">wizard</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">CurrentStep</span><span style="color:#000;font-weight:bold">);</span>
+    <span style="color:#000">wizard</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">MoveNext</span><span style="color:#000;font-weight:bold">();</span>
+    <span style="color:#000">Assert</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">AreEqual</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">step1</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">Object</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">wizard</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">CurrentStep</span><span style="color:#000;font-weight:bold">);</span>
+<span style="color:#000;font-weight:bold">}</span></code></pre></div>
+
+<p>I don’t like this code. It’s too busy. There’s too much “stuff” that’s related to the mocking framework. The intent of the test might be discernible, but only just. The shaded lines in particular need a second or third glance to make sure you’re reading them right. Our intent is to create a stub wizard step that can’t move next. Our test should be screaming that intent so clearly that it cant be missed by someone reading the code.</p>
+
+<p>Scenarios like this may be why <a href="https://serialseb.com/blog/2016/09/13/what-is-so-wrong-with-mocking-libs/">some developers</a> dislike mocking frameworks. The same test using hand-coded classes is much simpler and its intent is clearer:</p>
+
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp"><span style="color:#c4a000">    [Test()]</span>
+    <span style="color:#204a87;font-weight:bold">public</span> <span style="color:#204a87;font-weight:bold">void</span> <span style="color:#000">HM_Validation_CanPrevent_MoveNext</span><span style="color:#000;font-weight:bold">()</span>
+    <span style="color:#000;font-weight:bold">{</span>
+<span style="display:block;width:100%;background-color:#dfdfdf">        <span style="color:#000">IWizardStep</span> <span style="color:#000">step1</span> <span style="color:#000;font-weight:bold">=</span> <span style="color:#204a87;font-weight:bold">new</span> <span style="color:#000">WizardStepThatIsNotOKToMoveNext</span><span style="color:#000;font-weight:bold">();</span>
+</span> 
+        <span style="color:#000">Wizard</span> <span style="color:#000">wizard</span> <span style="color:#000;font-weight:bold">=</span> <span style="color:#204a87;font-weight:bold">new</span> <span style="color:#000">Wizard</span><span style="color:#000;font-weight:bold">()</span>
+                                <span style="color:#000;font-weight:bold">.</span><span style="color:#000">AddStep</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">step1</span><span style="color:#000;font-weight:bold">)</span>
+                                <span style="color:#000;font-weight:bold">.</span><span style="color:#000">Start</span><span style="color:#000;font-weight:bold">();</span>
+ 
+        <span style="color:#000">Assert</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">That</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">wizard</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">CurrentStep</span> <span style="color:#000;font-weight:bold">==</span> <span style="color:#000">step1</span><span style="color:#000;font-weight:bold">);</span>
+ 
+        <span style="color:#000">wizard</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">MoveNext</span><span style="color:#000;font-weight:bold">();</span>
+ 
+        <span style="color:#000">Assert</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">That</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">wizard</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">CurrentStep</span> <span style="color:#000;font-weight:bold">==</span> <span style="color:#000">step1</span><span style="color:#000;font-weight:bold">);</span>
+    <span style="color:#000;font-weight:bold">}</span></code></pre></div>
+
+<p>The shaded code tells most of the story. Because we’re creating a simple class for a specific purpose, we can be very explicit with our naming.</p>
+
+<p>Although listing 2 is an improvement over the code we produced using the Moq mocking framework, it’s not without problems of its own.</p>
+
+<p>Our suite of tests is going to need a lot of different mocked WizardSteps to cover the various scenarios. Many will be very similar, or will have parts that are identical to parts of others.</p>
+
+<p>We could have a dozen versions of the class that need to prevent a user Moving Next, but each may need to do that in conjuction with some other different behaviour.</p>
+
+<p>We could try to make our Handmade mocks more intelligent, but that’s a slippery slope. Adding logic into our hand rolled mocks leads to questions about to test our mocks.</p>
+
+<p>One interesting option is to go back to using our Mocking Framework, but hide the messiness of it behind a nicer abstraction. Imagine being able to write a test like the one in Listing 3:</p>
+
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp"><span style="color:#c4a000">    [Test()]</span>
+    <span style="color:#204a87;font-weight:bold">public</span> <span style="color:#204a87;font-weight:bold">void</span> <span style="color:#000">step_can_stop_move_next</span><span style="color:#000;font-weight:bold">()</span>
+    <span style="color:#000;font-weight:bold">{</span>
+<span style="display:block;width:100%;background-color:#dfdfdf">        <span style="color:#000">IWizardStep</span> <span style="color:#000">step1</span> <span style="color:#000;font-weight:bold">=</span> <span style="color:#204a87;font-weight:bold">new</span> <span style="color:#000">MockWizardStep</span><span style="color:#000;font-weight:bold">()</span>
+</span><span style="display:block;width:100%;background-color:#dfdfdf">                                <span style="color:#000;font-weight:bold">.</span><span style="color:#000">ThatCannot</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">MoveNext</span>
+</span><span style="display:block;width:100%;background-color:#dfdfdf">                                <span style="color:#000;font-weight:bold">.</span><span style="color:#000">Object</span><span style="color:#000;font-weight:bold">();</span>
+</span> 
+        <span style="color:#000">Wizard</span> <span style="color:#000">wizard</span> <span style="color:#000;font-weight:bold">=</span> <span style="color:#204a87;font-weight:bold">new</span> <span style="color:#000">Wizard</span><span style="color:#000;font-weight:bold">()</span>
+                                <span style="color:#000;font-weight:bold">.</span><span style="color:#000">AddStep</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">step1</span><span style="color:#000;font-weight:bold">)</span>
+                                <span style="color:#000;font-weight:bold">.</span><span style="color:#000">Start</span><span style="color:#000;font-weight:bold">();</span>
+ 
+        <span style="color:#000">Assert</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">AreEqual</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">step1</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">wizard</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">CurrentStep</span><span style="color:#000;font-weight:bold">);</span>
+ 
+        <span style="color:#000">wizard</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">MoveNext</span><span style="color:#000;font-weight:bold">();</span>
+ 
+        <span style="color:#000">Assert</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">AreEqual</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">step1</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">wizard</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">CurrentStep</span><span style="color:#000;font-weight:bold">);</span>
+    <span style="color:#000;font-weight:bold">}</span></code></pre></div>
+
+<p>This is a fluent style interface, but behind the scenes it’s doing all the same stuff that our first test did.</p>
+
+<p>Once you’ve written the Factory, you can use it to spit out other variations of the mocked object.</p>
+
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp">        <span style="color:#000">IWizardStep</span> <span style="color:#000">step1</span> <span style="color:#000;font-weight:bold">=</span> <span style="color:#204a87;font-weight:bold">new</span> <span style="color:#000">MockWizardStep</span><span style="color:#000;font-weight:bold">()</span>
+                                <span style="color:#000;font-weight:bold">.</span><span style="color:#000">ThatCan</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">MoveNext</span>
+                                <span style="color:#000;font-weight:bold">.</span><span style="color:#000">Object</span><span style="color:#000;font-weight:bold">();</span>
+ 
+        <span style="color:#000">IWizardStep</span> <span style="color:#000">step1</span> <span style="color:#000;font-weight:bold">=</span> <span style="color:#204a87;font-weight:bold">new</span> <span style="color:#000">MockWizardStep</span><span style="color:#000;font-weight:bold">()</span>
+                                <span style="color:#000;font-weight:bold">.</span><span style="color:#000">ThatCan</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">MoveNext</span>
+                                <span style="color:#000;font-weight:bold">.</span><span style="color:#000">ThatCannot</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">MovePrevious</span>
+                                <span style="color:#000;font-weight:bold">.</span><span style="color:#000">Object</span><span style="color:#000;font-weight:bold">();</span></code></pre></div>
+
+<p>The fluent interface in place it gets a lot easier to create exactly the right mock for the scenario you want to test.</p>
+
+<p>The test becomes clearer, and to a certain extent you’ve abstracted your tests away from the specific mocking framework that you are using.</p>
+
+<p>Of course, you have to actually build the fluent interface. A fluent interface by it’s nature is a Domain Specific Language. You base the language on the properties of the objects you’ll be mocking.</p>
+
+<p>Creating the Fluent Interface isn’t a particularly complicated task, but there&rsquo;s a knack to it.</p>
+
+<p>Look again at the shaded code in Listing 5. It appears to be a readonly property, modifying fields within the class. What madness is this?</p>
+
+<p>This is a trick used in fluent interfaces to avoid parenthesis after every term in a statement.</p>
+
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp"><span style="color:#204a87;font-weight:bold">public</span> <span style="color:#204a87;font-weight:bold">class</span> <span style="color:#000">MockWizardStep</span>
+<span style="color:#000;font-weight:bold">{</span>
+    <span style="color:#204a87;font-weight:bold">private</span> <span style="color:#000">Mock</span><span style="color:#000;font-weight:bold">&lt;</span><span style="color:#000">IWizardStep</span><span style="color:#000;font-weight:bold">&gt;</span> <span style="color:#000">_step</span><span style="color:#000;font-weight:bold">;</span>
+    <span style="color:#204a87;font-weight:bold">private</span> <span style="color:#204a87;font-weight:bold">bool</span> <span style="color:#000">_thatCan</span> <span style="color:#000;font-weight:bold">=</span> <span style="color:#204a87;font-weight:bold">true</span><span style="color:#000;font-weight:bold">;</span>
+ 
+    <span style="color:#204a87;font-weight:bold">public</span> <span style="color:#000">MockWizardStep</span><span style="color:#000;font-weight:bold">()</span>
+    <span style="color:#000;font-weight:bold">{</span>
+        <span style="color:#000">_step</span> <span style="color:#000;font-weight:bold">=</span> <span style="color:#204a87;font-weight:bold">new</span> <span style="color:#000">Mock</span><span style="color:#000;font-weight:bold">&lt;</span><span style="color:#000">IWizardStep</span><span style="color:#000;font-weight:bold">&gt;();</span>
+    <span style="color:#000;font-weight:bold">}</span>
+ 
+<span style="display:block;width:100%;background-color:#dfdfdf">    <span style="color:#204a87;font-weight:bold">public</span> <span style="color:#000">MockWizardStep</span> <span style="color:#000">ThatCan</span>
+</span><span style="display:block;width:100%;background-color:#dfdfdf">    <span style="color:#000;font-weight:bold">{</span>
+</span><span style="display:block;width:100%;background-color:#dfdfdf">        <span style="color:#204a87;font-weight:bold">get</span>
+</span><span style="display:block;width:100%;background-color:#dfdfdf">        <span style="color:#000;font-weight:bold">{</span>
+</span><span style="display:block;width:100%;background-color:#dfdfdf">            <span style="color:#000">_thatCan</span> <span style="color:#000;font-weight:bold">=</span> <span style="color:#204a87;font-weight:bold">true</span><span style="color:#000;font-weight:bold">;</span>
+</span><span style="display:block;width:100%;background-color:#dfdfdf">            <span style="color:#204a87;font-weight:bold">return</span> <span style="color:#204a87;font-weight:bold">this</span><span style="color:#000;font-weight:bold">;</span>
+</span><span style="display:block;width:100%;background-color:#dfdfdf">        <span style="color:#000;font-weight:bold">}</span>
+</span><span style="display:block;width:100%;background-color:#dfdfdf">    <span style="color:#000;font-weight:bold">}</span>
+</span> 
+    <span style="color:#204a87;font-weight:bold">public</span> <span style="color:#000">MockWizardStep</span> <span style="color:#000">ThatCannot</span>
+    <span style="color:#000;font-weight:bold">{</span>
+        <span style="color:#204a87;font-weight:bold">get</span>
+        <span style="color:#000;font-weight:bold">{</span>
+            <span style="color:#000">_thatCan</span> <span style="color:#000;font-weight:bold">=</span> <span style="color:#204a87;font-weight:bold">false</span><span style="color:#000;font-weight:bold">;</span>
+            <span style="color:#204a87;font-weight:bold">return</span> <span style="color:#204a87;font-weight:bold">this</span><span style="color:#000;font-weight:bold">;</span>
+        <span style="color:#000;font-weight:bold">}</span>
+    <span style="color:#000;font-weight:bold">}</span>
+ 
+ 
+    <span style="color:#204a87;font-weight:bold">public</span> <span style="color:#000">MockWizardStep</span> <span style="color:#000">MoveNext</span>
+    <span style="color:#000;font-weight:bold">{</span>
+        <span style="color:#204a87;font-weight:bold">get</span>
+        <span style="color:#000;font-weight:bold">{</span>
+            <span style="color:#000">_step</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">Setup</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">v</span> <span style="color:#000;font-weight:bold">=&gt;</span> <span style="color:#000">v</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">OKToMoveNext</span><span style="color:#000;font-weight:bold">()).</span><span style="color:#000">Returns</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">_thatCan</span><span style="color:#000;font-weight:bold">);</span>
+            <span style="color:#204a87;font-weight:bold">return</span> <span style="color:#204a87;font-weight:bold">this</span><span style="color:#000;font-weight:bold">;</span>
+        <span style="color:#000;font-weight:bold">}</span>
+    <span style="color:#000;font-weight:bold">}</span>
+ 
+    <span style="color:#204a87;font-weight:bold">public</span> <span style="color:#000">MockWizardStep</span> <span style="color:#000">MovePrevious</span>
+    <span style="color:#000;font-weight:bold">{</span>
+        <span style="color:#204a87;font-weight:bold">get</span>
+        <span style="color:#000;font-weight:bold">{</span>
+            <span style="color:#000">_step</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">Setup</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">v</span> <span style="color:#000;font-weight:bold">=&gt;</span> <span style="color:#000">v</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">OKToMovePrevious</span><span style="color:#000;font-weight:bold">()).</span><span style="color:#000">Returns</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">_thatCan</span><span style="color:#000;font-weight:bold">);</span>
+            <span style="color:#204a87;font-weight:bold">return</span> <span style="color:#204a87;font-weight:bold">this</span><span style="color:#000;font-weight:bold">;</span>
+        <span style="color:#000;font-weight:bold">}</span>
+    <span style="color:#000;font-weight:bold">}</span>
+ 
+    <span style="color:#204a87;font-weight:bold">public</span> <span style="color:#000">IWizardStep</span> <span style="color:#000">Object</span><span style="color:#000;font-weight:bold">()</span>
+    <span style="color:#000;font-weight:bold">{</span>
+        <span style="color:#204a87;font-weight:bold">return</span> <span style="color:#000">_step</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">Object</span><span style="color:#000;font-weight:bold">;</span>
+    <span style="color:#000;font-weight:bold">}</span>
+ 
+    <span style="color:#204a87;font-weight:bold">public</span> <span style="color:#000">Mock</span><span style="color:#000;font-weight:bold">&lt;</span><span style="color:#000">IWizardStep</span><span style="color:#000;font-weight:bold">&gt;</span> <span style="color:#000">Mock</span><span style="color:#000;font-weight:bold">()</span>
+    <span style="color:#000;font-weight:bold">{</span>
+        <span style="color:#204a87;font-weight:bold">return</span> <span style="color:#000">_step</span><span style="color:#000;font-weight:bold">;</span>
+    <span style="color:#000;font-weight:bold">}</span>
+<span style="color:#000;font-weight:bold">}</span></code></pre></div>
+
+<p>So, where does that leave us? Are mocking frameworks saved from those who hate them?</p>
+
+<p>Perhaps not, here’s one way to abstract your tests from your mocking framework, and maybe write clearer tests.</p>
+
+                        </div>
+                        
+                        
+                        <div id="comments">
+                            <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "devjoycom" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+                        </div>
+                        
+
+                    </div>
+                    
+
+                    
+
+                    
+
+                    <div class="col-md-3">
+
+                        
+
+                        
+
+<div class="panel panel-default sidebar-menu">
+
+    <div class="panel-heading">
+      <h3 class="panel-title">Search</h3>
+    </div>
+
+    <div class="panel-body">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" role="search">
+            <div class="input-group">
+                <input type="search" name="q" class="form-control" placeholder="Search">
+                <input type="hidden" name="sitesearch" value="https://www.devjoy.com/">
+                <span class="input-group-btn">
+                    <button type="submit" class="btn btn-template-main"><i class="fa fa-search"></i></button>
+                </span>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+
+
+
+
+
+<div class="panel panel-default sidebar-menu">
+
+    <div class="panel-heading">
+      <h3 class="panel-title">Categories</h3>
+    </div>
+
+    <div class="panel-body">
+        <ul class="nav nav-pills nav-stacked">
+            
+            <li><a href="https://www.devjoy.com/categories/how-to">how-to (22)</a>
+            </li>
+            
+            <li><a href="https://www.devjoy.com/categories/reviews">reviews (1)</a>
+            </li>
+            
+            <li><a href="https://www.devjoy.com/categories/thoughts">thoughts (15)</a>
+            </li>
+            
+        </ul>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+<div class="panel panel-default sidebar-menu">
+
+    <div class="panel-heading">
+      <h3 class="panel-title">Series</h3>
+    </div>
+
+    <div class="panel-body">
+        <ul class="nav nav-pills nav-stacked">
+            
+            <li><a href="https://www.devjoy.com/series/f-sharp-active-patterns">f-sharp-active-patterns (8)</a>
+            </li>
+            
+            <li><a href="https://www.devjoy.com/series/thinking-functionally">thinking-functionally (6)</a>
+            </li>
+            
+        </ul>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+<div class="panel sidebar-menu">
+    <div class="panel-heading">
+      <h3 class="panel-title">Tags</h3>
+    </div>
+
+    <div class="panel-body">
+        <ul class="tag-cloud">
+            
+            <li><a href="https://www.devjoy.com/tags/agile"><i class="fa fa-tags"></i> agile</a>
+            </li>
+            
+            <li><a href="https://www.devjoy.com/tags/c"><i class="fa fa-tags"></i> c#</a>
+            </li>
+            
+            <li><a href="https://www.devjoy.com/tags/code"><i class="fa fa-tags"></i> code</a>
+            </li>
+            
+            <li><a href="https://www.devjoy.com/tags/coding"><i class="fa fa-tags"></i> coding</a>
+            </li>
+            
+            <li><a href="https://www.devjoy.com/tags/complexity"><i class="fa fa-tags"></i> complexity</a>
+            </li>
+            
+            <li><a href="https://www.devjoy.com/tags/design"><i class="fa fa-tags"></i> design</a>
+            </li>
+            
+            <li><a href="https://www.devjoy.com/tags/f"><i class="fa fa-tags"></i> f#</a>
+            </li>
+            
+            <li><a href="https://www.devjoy.com/tags/functional-programming"><i class="fa fa-tags"></i> functional-programming</a>
+            </li>
+            
+            <li><a href="https://www.devjoy.com/tags/learning"><i class="fa fa-tags"></i> learning</a>
+            </li>
+            
+            <li><a href="https://www.devjoy.com/tags/tdd"><i class="fa fa-tags"></i> tdd</a>
+            </li>
+            
+            <li><a href="https://www.devjoy.com/tags/teams"><i class="fa fa-tags"></i> teams</a>
+            </li>
+            
+            <li><a href="https://www.devjoy.com/tags/technical-debt"><i class="fa fa-tags"></i> technical-debt</a>
+            </li>
+            
+            <li><a href="https://www.devjoy.com/tags/testing"><i class="fa fa-tags"></i> testing</a>
+            </li>
+            
+        </ul>
+    </div>
+</div>
+
+
+
+
+
+
+                        
+
+                    </div>
+                    
+
+                    
+
+                </div>
+                
+
+            </div>
+            
+        </div>
+        
+
+        
+
+
+
+
+<div id="copyright">
+    <div class="container">
+        <div class="col-md-12">
+            
+            <p class="pull-left">Copyright (c) 2018, Devjoy Ltd.</p>
+            
+            <p class="pull-right">
+              Template by <a href="http://bootstrapious.com/free-templates">Bootstrapious</a>.
+              
+
+              Ported to Hugo by <a href="https://github.com/devcows/hugo-universal-theme">DevCows</a>
+            </p>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+    </div>
+    
+
+    
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-131889453-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+
+<script src="//code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.1/jquery.waypoints.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/Counter-Up/1.0/jquery.counterup.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery-parallax/1.1.3/jquery-parallax.js"></script>
+<script src="https://www.devjoy.com/js/front.js"></script>
+
+
+<script src="https://www.devjoy.com/js/owl.carousel.min.js"></script>
+
+
+  </body>
+</html>

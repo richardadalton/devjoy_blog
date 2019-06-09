@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Coding on devjoy</title>
+    <link>https://www.devjoy.com/tags/coding/</link>
+    <description>Recent content in Coding on devjoy</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 17 Jan 2012 02:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://www.devjoy.com/tags/coding/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>You&#39;re Not Gonna Fix It</title>
+      <link>https://www.devjoy.com/blog/youre-not-gonna-fix-it/</link>
+      <pubDate>Tue, 17 Jan 2012 02:00:00 +0000</pubDate>
+      
+      <guid>https://www.devjoy.com/blog/youre-not-gonna-fix-it/</guid>
+      <description>I’m not going to justify kludges, or apologise for kludges. I don’t need help figuring out how to avoid them. Kludges don’t usually come about because we don’t know how to avoid them. They usually exist because we make a judgement call. We decide that a kludge is not worth avoiding. Dress it up any way you like, but it comes down to a decision.
+This post starts from the premise that in all liklihood there will always be kludges.</description>
+    </item>
+    
+  </channel>
+</rss>

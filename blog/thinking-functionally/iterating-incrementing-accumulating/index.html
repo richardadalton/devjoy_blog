@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+  <head>
+  <meta charset="utf-8">
+  <meta name="robots" content="all,follow">
+  <meta name="googlebot" content="index,follow,snippet,archive">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Iterating, Incrementing, and Accumulating</title>
+  <meta name="author" content="" />
+
+  
+  <meta name="keywords" content="devows, hugo, go">	
+  
+
+  
+  <meta name="description" content="Site template made by devcows using hugo">	
+  
+
+  <meta name="generator" content="Hugo 0.48" />
+
+  <link href='//fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300italic,500,700,800' rel='stylesheet' type='text/css'>
+
+  
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+  
+  <link href="/css/animate.css" rel="stylesheet">
+
+  
+  
+    <link href="/css/style.blue.css" rel="stylesheet" id="theme-stylesheet">
+  
+
+
+  
+  <link href="/css/custom.css" rel="stylesheet">
+
+  
+  
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  
+
+  
+  <link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon" />
+  <link rel="apple-touch-icon" href="/img/apple-touch-icon.png" />
+  
+
+  <link href="/css/owl.carousel.css" rel="stylesheet">
+  <link href="/css/owl.theme.css" rel="stylesheet">
+
+  <link rel="alternate" href="https://www.devjoy.com/index.xml" type="application/rss+xml" title="devjoy">
+
+  
+  <meta property="og:title" content="Iterating, Incrementing, and Accumulating" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="/blog/thinking-functionally/iterating-incrementing-accumulating//" />
+  <meta property="og:image" content="img/logo.png" />
+
+</head>
+
+
+  <body>
+    <div id="all">
+
+        <header>
+
+          <div class="navbar-affixed-top" data-spy="affix" data-offset-top="200">
+
+    <div class="navbar navbar-default yamm" role="navigation" id="navbar">
+
+        <div class="container">
+            <div class="navbar-header">
+                <a class="navbar-brand home" href="https://www.devjoy.com/">
+                    <img src="https://www.devjoy.com/img/logo.png" alt="Iterating, Incrementing, and Accumulating logo" class="hidden-xs hidden-sm">
+                    <img src="https://www.devjoy.com/img/logo-small.png" alt="Iterating, Incrementing, and Accumulating logo" class="visible-xs visible-sm">
+                    <span class="sr-only">Iterating, Incrementing, and Accumulating - go to homepage</span>
+                </a>
+                <div class="navbar-buttons">
+                    <button type="button" class="navbar-toggle btn-template-main" data-toggle="collapse" data-target="#navigation">
+                      <span class="sr-only">Toggle Navigation</span>
+                        <i class="fa fa-align-justify"></i>
+                    </button>
+                </div>
+            </div>
+            
+
+            <div class="navbar-collapse collapse" id="navigation">
+                <ul class="nav navbar-nav navbar-right">
+                  
+                  <li class="dropdown">
+                    
+                    <a href="/">Home</a>
+                    
+                  </li>
+                  
+                  <li class="dropdown">
+                    
+                    <a href="/blog/">Blog</a>
+                    
+                  </li>
+                  
+                  <li class="dropdown">
+                    
+                    <a href="/contact/">Contact</a>
+                    
+                  </li>
+                  
+                </ul>
+            </div>
+            
+
+            <div class="collapse clearfix" id="search">
+
+                <form class="navbar-form" role="search">
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Search">
+                        <span class="input-group-btn">
+
+                    <button type="submit" class="btn btn-template-main"><i class="fa fa-search"></i></button>
+
+                </span>
+                    </div>
+                </form>
+
+            </div>
+            
+
+        </div>
+    </div>
+    
+
+</div>
+
+
+
+
+        </header>
+
+        <div id="heading-breadcrumbs">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h1>Iterating, Incrementing, and Accumulating</h1>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+        <div id="content">
+            <div class="container">
+
+                <div class="row">
+
+                    
+
+                    <div class="col-md-9" id="blog-post">
+
+                        <p class="text-muted text-uppercase mb-small text-right">February 1, 2013</p>
+
+                        <div id="post-content">
+                          <p>Another F# session this evening and some more deliberate practice of Functional Thinking. To be fair, this post isn’t really about anything new. If you’ve ever used recursion, even in non-functional languages, this will be old news. If you are new to Functional Programming and/or recursion then this may be useful.</p>
+
+<p>Here’s a really simple function. It accepts a number n and sums all the numbers from 1 to n.</p>
+
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fsharp" data-lang="fsharp"><span style="color:#204a87;font-weight:bold">let</span> <span style="color:#000">SumUpToValue</span> <span style="color:#000">n</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#ce5c00;font-weight:bold">[</span><span style="color:#000">1</span><span style="color:#ce5c00;font-weight:bold">..</span><span style="color:#000">n</span><span style="color:#ce5c00;font-weight:bold">]</span> <span style="color:#ce5c00;font-weight:bold">|&gt;</span> <span style="color:#000">List</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">sum</span></code></pre></div>
+
+<p>I create a range up to n and then it’s a simple matter to sum the numbers in the range.</p>
+
+<p>What if I wanted to start from a target value, and work back to the range of numbers?</p>
+
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fsharp" data-lang="fsharp"><span style="color:#ce5c00;font-weight:bold">&gt;</span> <span style="color:#000">SumTo</span> <span style="color:#000">10</span><span style="color:#ce5c00;font-weight:bold">;;</span>
+<span style="color:#204a87;font-weight:bold">val</span> <span style="color:#000">it</span> <span style="color:#ce5c00;font-weight:bold">:</span> <span style="color:#000">int</span> <span style="color:#204a87;font-weight:bold">list</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#ce5c00;font-weight:bold">[</span><span style="color:#000">1</span><span style="color:#ce5c00;font-weight:bold">;</span> <span style="color:#000">2</span><span style="color:#ce5c00;font-weight:bold">;</span> <span style="color:#000">3</span><span style="color:#ce5c00;font-weight:bold">;</span> <span style="color:#000">4</span><span style="color:#ce5c00;font-weight:bold">]</span></code></pre></div>
+
+<p>Let’s agree one little ground rule here. Not every target number can be reached exactly by summing a range. Our function will get us as close as possible to the target without exceeding it.</p>
+
+<p>If I was back in Imperativeland I’d create a loop starting from 1 and add to an accumulator until I reach the target. But here in Functionalville that’s apparently not how things are done. So, how are things done? How can I implement this function without iterating over a series of numbers, summing them, and using a loop guard so I know when to stop?</p>
+
+<p>It turns out I can’t. That’s not to say it can’t be done, but the most “functional” solution I could come up with is basically the same solution as the loop described above, albeit with a cunning disguise.</p>
+
+<p>Here was my first attempt</p>
+
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fsharp" data-lang="fsharp"><span style="color:#204a87;font-weight:bold">let</span> <span style="color:#000">rec</span> <span style="color:#000">DoSumTo</span> <span style="color:#000">t</span> <span style="color:#000">nums</span> <span style="color:#ce5c00;font-weight:bold">=</span>
+    <span style="color:#204a87;font-weight:bold">let</span> <span style="color:#000">currentSum</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">List</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">sum</span> <span style="color:#000">nums</span>
+    <span style="color:#204a87;font-weight:bold">let</span> <span style="color:#000">nextNumber</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">nums</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">Head</span> <span style="color:#ce5c00;font-weight:bold">+</span> <span style="color:#000">1</span>
+    <span style="color:#204a87;font-weight:bold">match</span> <span style="color:#000">currentSum</span> <span style="color:#ce5c00;font-weight:bold">+</span> <span style="color:#000">nextNumber</span> <span style="color:#ce5c00;font-weight:bold">&gt;</span> <span style="color:#000">t</span> <span style="color:#204a87;font-weight:bold">with</span>
+    <span style="color:#ce5c00;font-weight:bold">|</span> <span style="color:#204a87;font-weight:bold">true</span> <span style="color:#ce5c00;font-weight:bold">-&gt;</span> <span style="color:#000">nums</span>
+    <span style="color:#ce5c00;font-weight:bold">|</span> <span style="color:#204a87;font-weight:bold">false</span> <span style="color:#ce5c00;font-weight:bold">-&gt;</span> <span style="color:#000">DoSumTo</span> <span style="color:#000">t</span> <span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">nextNumber</span><span style="color:#ce5c00;font-weight:bold">::</span><span style="color:#000">nums</span><span style="color:#ce5c00;font-weight:bold">)</span>
+ 
+<span style="color:#204a87;font-weight:bold">let</span> <span style="color:#000">SumTo</span> <span style="color:#000">target</span> <span style="color:#ce5c00;font-weight:bold">=</span>
+    <span style="color:#000">DoSumTo</span> <span style="color:#000">target</span> <span style="color:#ce5c00;font-weight:bold">[</span><span style="color:#000">1</span><span style="color:#ce5c00;font-weight:bold">]</span>
+
+<span style="color:#ce5c00;font-weight:bold">&gt;</span> <span style="color:#000">SumTo</span> <span style="color:#000">21</span><span style="color:#ce5c00;font-weight:bold">;;</span>
+<span style="color:#000">13</span>
+<span style="color:#204a87;font-weight:bold">val</span> <span style="color:#000">it</span> <span style="color:#ce5c00;font-weight:bold">:</span> <span style="color:#000">int</span> <span style="color:#204a87;font-weight:bold">list</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#ce5c00;font-weight:bold">[</span><span style="color:#000">6</span><span style="color:#ce5c00;font-weight:bold">;</span> <span style="color:#000">5</span><span style="color:#ce5c00;font-weight:bold">;</span> <span style="color:#000">4</span><span style="color:#ce5c00;font-weight:bold">;</span> <span style="color:#000">3</span><span style="color:#ce5c00;font-weight:bold">;</span> <span style="color:#000">2</span><span style="color:#ce5c00;font-weight:bold">;</span> <span style="color:#000">1</span><span style="color:#ce5c00;font-weight:bold">]</span></code></pre></div>
+
+<p>‘DoSumTo’ is a recursive function that is passed the target value (t), and the list of numbers found so far (nums). The list of numbers provides us with two useful pieces of information. Adding one to the number at the head of he list gives us the next number that we need to add. So, the list is actually doubling up as the variable we would normally use as a loop counter.</p>
+
+<p>Summing the contents of the list allows us to check if we’ve reached the target value yet, so the list is also doubling as the accumulator we would use if we were writing this using imperative code with mutable variables.</p>
+
+<p>The function checks whether adding the next number to the list would cause us to exceed the target. If it would, we return the list as it currently stands, and that’s our answer. If adding the next number doesn’t exceed the target, the function recursively calls itself to try the next number.</p>
+
+<p>The only reason I’m using pattern matching here rather than if..else is that as part of my practice I’m trying to avoid using If statements and While statements.</p>
+
+<p>When ‘DoSumTo’ calls itself recursively it passes the target (t) unchanged, but it creates a new list consisting of the next number as the head, and the existing list of numbers as the tail. In other words, each new number is added at the head of the list.</p>
+
+<p>This of course means that the resulting list of numbers is in reverse order. I don’t really care about this. The numbers are correct and reversing the list is trivial.</p>
+
+<p>There is one potentially big problem with this code. Every call to ‘DoSumTo’ causes the list of numbers to be summed. That’s quite wasteful, and easily fixed. Let’s take another stab at this.</p>
+
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fsharp" data-lang="fsharp"><span style="color:#204a87;font-weight:bold">let</span> <span style="color:#000">rec</span> <span style="color:#000">DoSumTo</span> <span style="color:#000">t</span> <span style="color:#000">nums</span> <span style="color:#000">currentSum</span> <span style="color:#ce5c00;font-weight:bold">=</span>
+    <span style="color:#204a87;font-weight:bold">let</span> <span style="color:#000">nextNumber</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">nums</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">Head</span> <span style="color:#ce5c00;font-weight:bold">+</span> <span style="color:#000">1</span>
+    <span style="color:#204a87;font-weight:bold">match</span> <span style="color:#000">currentSum</span> <span style="color:#ce5c00;font-weight:bold">+</span> <span style="color:#000">nextNumber</span> <span style="color:#ce5c00;font-weight:bold">&gt;</span> <span style="color:#000">t</span> <span style="color:#204a87;font-weight:bold">with</span>
+    <span style="color:#ce5c00;font-weight:bold">|</span> <span style="color:#204a87;font-weight:bold">false</span> <span style="color:#ce5c00;font-weight:bold">-&gt;</span> <span style="color:#000">DoSumTo</span> <span style="color:#000">t</span> <span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">nextNumber</span><span style="color:#ce5c00;font-weight:bold">::</span><span style="color:#000">nums</span><span style="color:#ce5c00;font-weight:bold">)</span> <span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">currentSum</span> <span style="color:#ce5c00;font-weight:bold">+</span> <span style="color:#000">nextNumber</span><span style="color:#ce5c00;font-weight:bold">)</span>
+    <span style="color:#ce5c00;font-weight:bold">|</span> <span style="color:#204a87;font-weight:bold">true</span> <span style="color:#ce5c00;font-weight:bold">-&gt;</span> <span style="color:#000">nums</span>
+
+<span style="color:#204a87;font-weight:bold">let</span> <span style="color:#000">SumTo</span> <span style="color:#000">target</span> <span style="color:#ce5c00;font-weight:bold">=</span>
+    <span style="color:#000">DoSumTo</span> <span style="color:#000">target</span> <span style="color:#ce5c00;font-weight:bold">[</span><span style="color:#000">1</span><span style="color:#ce5c00;font-weight:bold">]</span> <span style="color:#000">1</span></code></pre></div>
+
+<p>We’ve eliminated the summing of the whole list for each new number, by passing the currentSum as a parameter. Each run of the function increases the currentSum for the next run creating an accumulator.</p>
+
+<p>We can go further. We don’t even need to pass the full list of numbers. The function uses the head of the list to keep track of what the next number should be, but we don’t use the full list until we’ve reached the target. Manipulating a full list when we don’t need to is wasteful.</p>
+
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fsharp" data-lang="fsharp"><span style="color:#204a87;font-weight:bold">let</span> <span style="color:#000">rec</span> <span style="color:#000">DoSumTo</span> <span style="color:#000">t</span> <span style="color:#000">currentNum</span> <span style="color:#000">currentSum</span> <span style="color:#ce5c00;font-weight:bold">=</span>
+    <span style="color:#204a87;font-weight:bold">let</span> <span style="color:#000">nextNum</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">currentNum</span> <span style="color:#ce5c00;font-weight:bold">+</span> <span style="color:#000">1</span>
+    <span style="color:#204a87;font-weight:bold">match</span> <span style="color:#000">currentSum</span> <span style="color:#ce5c00;font-weight:bold">+</span> <span style="color:#000">nextNum</span> <span style="color:#ce5c00;font-weight:bold">&gt;</span> <span style="color:#000">t</span> <span style="color:#204a87;font-weight:bold">with</span>
+    <span style="color:#ce5c00;font-weight:bold">|</span> <span style="color:#204a87;font-weight:bold">false</span> <span style="color:#ce5c00;font-weight:bold">-&gt;</span> <span style="color:#000">DoSumTo</span> <span style="color:#000">t</span> <span style="color:#000">nextNum</span> <span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">currentSum</span> <span style="color:#ce5c00;font-weight:bold">+</span> <span style="color:#000">nextNum</span><span style="color:#ce5c00;font-weight:bold">)</span>
+    <span style="color:#ce5c00;font-weight:bold">|</span> <span style="color:#204a87;font-weight:bold">true</span> <span style="color:#ce5c00;font-weight:bold">-&gt;</span> <span style="color:#ce5c00;font-weight:bold">[</span><span style="color:#000">1</span><span style="color:#ce5c00;font-weight:bold">..</span><span style="color:#000">currentNum</span><span style="color:#ce5c00;font-weight:bold">]</span>
+ 
+<span style="color:#204a87;font-weight:bold">let</span> <span style="color:#000">SumTo</span> <span style="color:#000">target</span> <span style="color:#ce5c00;font-weight:bold">=</span>
+    <span style="color:#000">DoSumTo</span> <span style="color:#000">target</span> <span style="color:#000">1</span> <span style="color:#000">1</span></code></pre></div>
+
+<p>Now, instead of passing the full list, we just pass the number we’ve reached as we count up from 1. We also pass the target and the current sum of numbers up to that point. Now instead of using the head of the list of numbers, we just use currentNum.</p>
+
+<p>The only other change is that when we reach the target number, we need to create a range for numbers from 1 to currentNum. This has the added bonus that the resulting list of numbers happens to be in the right order.</p>
+
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fsharp" data-lang="fsharp"><span style="color:#ce5c00;font-weight:bold">&gt;</span> <span style="color:#000">SumTo</span> <span style="color:#000">28</span><span style="color:#ce5c00;font-weight:bold">;;</span>
+<span style="color:#204a87;font-weight:bold">val</span> <span style="color:#000">it</span> <span style="color:#ce5c00;font-weight:bold">:</span> <span style="color:#000">int</span> <span style="color:#204a87;font-weight:bold">list</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#ce5c00;font-weight:bold">[</span><span style="color:#000">1</span><span style="color:#ce5c00;font-weight:bold">;</span> <span style="color:#000">2</span><span style="color:#ce5c00;font-weight:bold">;</span> <span style="color:#000">3</span><span style="color:#ce5c00;font-weight:bold">;</span> <span style="color:#000">4</span><span style="color:#ce5c00;font-weight:bold">;</span> <span style="color:#000">5</span><span style="color:#ce5c00;font-weight:bold">;</span> <span style="color:#000">6</span><span style="color:#ce5c00;font-weight:bold">;</span> <span style="color:#000">7</span><span style="color:#ce5c00;font-weight:bold">]</span></code></pre></div>
+
+                        </div>
+                        
+                        
+                        <div id="comments">
+                            <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "devjoycom" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+                        </div>
+                        
+
+                    </div>
+                    
+
+                    
+
+                    
+
+                    <div class="col-md-3">
+
+                        
+
+                        
+
+<div class="panel panel-default sidebar-menu">
+
+    <div class="panel-heading">
+      <h3 class="panel-title">Search</h3>
+    </div>
+
+    <div class="panel-body">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" role="search">
+            <div class="input-group">
+                <input type="search" name="q" class="form-control" placeholder="Search">
+                <input type="hidden" name="sitesearch" value="https://www.devjoy.com/">
+                <span class="input-group-btn">
+                    <button type="submit" class="btn btn-template-main"><i class="fa fa-search"></i></button>
+                </span>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+
+
+
+
+
+<div class="panel panel-default sidebar-menu">
+
+    <div class="panel-heading">
+      <h3 class="panel-title">Categories</h3>
+    </div>
+
+    <div class="panel-body">
+        <ul class="nav nav-pills nav-stacked">
+            
+            <li><a href="https://www.devjoy.com/categories/how-to">how-to (22)</a>
+            </li>
+            
+            <li><a href="https://www.devjoy.com/categories/reviews">reviews (1)</a>
+            </li>
+            
+            <li><a href="https://www.devjoy.com/categories/thoughts">thoughts (15)</a>
+            </li>
+            
+        </ul>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+<div class="panel panel-default sidebar-menu">
+
+    <div class="panel-heading">
+      <h3 class="panel-title">Series</h3>
+    </div>
+
+    <div class="panel-body">
+        <ul class="nav nav-pills nav-stacked">
+            
+            <li><a href="https://www.devjoy.com/series/f-sharp-active-patterns">f-sharp-active-patterns (8)</a>
+            </li>
+            
+            <li><a href="https://www.devjoy.com/series/thinking-functionally">thinking-functionally (6)</a>
+            </li>
+            
+        </ul>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+<div class="panel sidebar-menu">
+    <div class="panel-heading">
+      <h3 class="panel-title">Tags</h3>
+    </div>
+
+    <div class="panel-body">
+        <ul class="tag-cloud">
+            
+            <li><a href="https://www.devjoy.com/tags/agile"><i class="fa fa-tags"></i> agile</a>
+            </li>
+            
+            <li><a href="https://www.devjoy.com/tags/c"><i class="fa fa-tags"></i> c#</a>
+            </li>
+            
+            <li><a href="https://www.devjoy.com/tags/code"><i class="fa fa-tags"></i> code</a>
+            </li>
+            
+            <li><a href="https://www.devjoy.com/tags/coding"><i class="fa fa-tags"></i> coding</a>
+            </li>
+            
+            <li><a href="https://www.devjoy.com/tags/complexity"><i class="fa fa-tags"></i> complexity</a>
+            </li>
+            
+            <li><a href="https://www.devjoy.com/tags/design"><i class="fa fa-tags"></i> design</a>
+            </li>
+            
+            <li><a href="https://www.devjoy.com/tags/f"><i class="fa fa-tags"></i> f#</a>
+            </li>
+            
+            <li><a href="https://www.devjoy.com/tags/functional-programming"><i class="fa fa-tags"></i> functional-programming</a>
+            </li>
+            
+            <li><a href="https://www.devjoy.com/tags/learning"><i class="fa fa-tags"></i> learning</a>
+            </li>
+            
+            <li><a href="https://www.devjoy.com/tags/tdd"><i class="fa fa-tags"></i> tdd</a>
+            </li>
+            
+            <li><a href="https://www.devjoy.com/tags/teams"><i class="fa fa-tags"></i> teams</a>
+            </li>
+            
+            <li><a href="https://www.devjoy.com/tags/technical-debt"><i class="fa fa-tags"></i> technical-debt</a>
+            </li>
+            
+            <li><a href="https://www.devjoy.com/tags/testing"><i class="fa fa-tags"></i> testing</a>
+            </li>
+            
+        </ul>
+    </div>
+</div>
+
+
+
+
+
+
+                        
+
+                    </div>
+                    
+
+                    
+
+                </div>
+                
+
+            </div>
+            
+        </div>
+        
+
+        
+
+
+
+
+<div id="copyright">
+    <div class="container">
+        <div class="col-md-12">
+            
+            <p class="pull-left">Copyright (c) 2018, Devjoy Ltd.</p>
+            
+            <p class="pull-right">
+              Template by <a href="http://bootstrapious.com/free-templates">Bootstrapious</a>.
+              
+
+              Ported to Hugo by <a href="https://github.com/devcows/hugo-universal-theme">DevCows</a>
+            </p>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+    </div>
+    
+
+    
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-131889453-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+
+<script src="//code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.1/jquery.waypoints.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/Counter-Up/1.0/jquery.counterup.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery-parallax/1.1.3/jquery-parallax.js"></script>
+<script src="https://www.devjoy.com/js/front.js"></script>
+
+
+<script src="https://www.devjoy.com/js/owl.carousel.min.js"></script>
+
+
+  </body>
+</html>

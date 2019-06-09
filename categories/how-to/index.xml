@@ -1,0 +1,249 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>How To on devjoy</title>
+    <link>https://www.devjoy.com/categories/how-to/</link>
+    <description>Recent content in How To on devjoy</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 06 Feb 2017 17:43:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://www.devjoy.com/categories/how-to/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Reading F#</title>
+      <link>https://www.devjoy.com/blog/reading-fsharp/</link>
+      <pubDate>Mon, 06 Feb 2017 17:43:00 +0000</pubDate>
+      
+      <guid>https://www.devjoy.com/blog/reading-fsharp/</guid>
+      <description>A tweet about some C# code rewritten in F# got me interested yesterday.
+&amp;quot;An F# rewrite of a fully refactored C# Clean Code example&amp;quot;. Amazing. https://t.co/mplbbH1knb
+&amp;mdash; Jon Harrop (@jonharrop) January 25, 2017 
+If you know a little F# it’s easy get sucked into thinking that having much fewer lines of code, and less noise generally makes F# code automatically better, cleaner, easier to read than C#. But, of course, that’s only true for people who know enough F# to read it.</description>
+    </item>
+    
+    <item>
+      <title>Unit Testing Events And Callbacks In C#</title>
+      <link>https://www.devjoy.com/blog/unit-testing-events-and-callbacks-in-csharp/</link>
+      <pubDate>Fri, 07 Aug 2015 17:43:00 +0000</pubDate>
+      
+      <guid>https://www.devjoy.com/blog/unit-testing-events-and-callbacks-in-csharp/</guid>
+      <description>The Problem When you want to unit test a method it’s usually pretty simple. Call the method, pass it it’s parameters and assert against it’s return value, or some other property of the object that may have changed.
+What happens when a method doesn’t return a value, or update some property? What happens when it leads (perhaps after some delay) to an event firing, or a callback getting called?</description>
+    </item>
+    
+    <item>
+      <title>Avoid Branches In Your Code</title>
+      <link>https://www.devjoy.com/blog/avoid-branches-in-your-code/</link>
+      <pubDate>Sat, 24 Jan 2015 17:43:00 +0000</pubDate>
+      
+      <guid>https://www.devjoy.com/blog/avoid-branches-in-your-code/</guid>
+      <description>This week at our FunctionalKats meetup in Dublin, we tackled a simple programming task the Luhn checksum algorithm. The challenge was to try and make the code readable.
+I rattled off some code that worked, but I wasn’t at all happy with it. It implemented the problem as described. Partitioning the numbers into two groups and dealing with each group in turn.
+let Luhn s = let double x = x*2 let sumDigits = function | 18 -&amp;gt; 9 | n when n &amp;gt; 9 -&amp;gt; n%9 | n -&amp;gt; n let odds, evens = s |&amp;gt; Seq.</description>
+    </item>
+    
+    <item>
+      <title>Mastermind: The Code Breaking Game</title>
+      <link>https://www.devjoy.com/blog/mastermind-the-code-breaking-game/</link>
+      <pubDate>Wed, 07 Jan 2015 17:43:00 +0000</pubDate>
+      
+      <guid>https://www.devjoy.com/blog/mastermind-the-code-breaking-game/</guid>
+      <description>Mastermind, is a code breaking game for two players.
+A “Code Maker” creates a secret sequence of colour pegs. A “Code Breaker” must break the code by taking guesses and working with the feedback from the Code Maker. Feedback is given using Black and White Pegs.
+A correct colour in the correct position is acknowledged with a Black Peg A correct colour in the wrong position is acknowledged with a White Peg The position of these pegs is not significant.</description>
+    </item>
+    
+    <item>
+      <title>Choices And Nesting</title>
+      <link>https://www.devjoy.com/blog/active-patterns/choices-and-nesting/</link>
+      <pubDate>Mon, 18 Aug 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.devjoy.com/blog/active-patterns/choices-and-nesting/</guid>
+      <description>And so, we arrive at the last post of the series. I’ll show you the F# ‘Choice’ type and show how it relates to active patterns. I’ll explain how to add additional parameters to a multi-case active pattern, and introduce some complex pattern matching using nested active patterns.
+Look Ma! No Params In the previous post I mentioned that Multi-Case active patterns can’t accept additional arguments beyond the one that all active patterns must accept.</description>
+    </item>
+    
+    <item>
+      <title>Multi Case (|A|B|)</title>
+      <link>https://www.devjoy.com/blog/active-patterns/multi-case/</link>
+      <pubDate>Thu, 14 Aug 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.devjoy.com/blog/active-patterns/multi-case/</guid>
+      <description>Playing Cards are a commonly used example of discriminated unions in F#. I’m not presuming that you already understand Discriminated Unions, but I’m also not going to explain them. You should be able to follow along and get a sense of how they work. If you’d like to read up on them try here.
+A Rank is something that can have one of 13 values Ace through King. A Suit can have one of 4 values Hearts, Clubs, Diamonds or Spades.</description>
+    </item>
+    
+    <item>
+      <title>Single Partial (|A|_|)</title>
+      <link>https://www.devjoy.com/blog/active-patterns/single-partial/</link>
+      <pubDate>Mon, 11 Aug 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.devjoy.com/blog/active-patterns/single-partial/</guid>
+      <description>I’ve referred to all of the Active Patterns we have seen so far in this series as ‘Single Total’. It’s time to look at the distinction between ‘Total’ and ‘Partial’ Active Patterns.
+To understand Partial Active Patterns you need to have some understanding of Option Types’. If they are new to you, I’d encourage you to read up on them before continuing. A great place for reading about this, and F# generally is FSharpForFunAndProfit.</description>
+    </item>
+    
+    <item>
+      <title>Single Partial With Params (|A|_|) x</title>
+      <link>https://www.devjoy.com/blog/active-patterns/single-partial-with-params/</link>
+      <pubDate>Mon, 11 Aug 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.devjoy.com/blog/active-patterns/single-partial-with-params/</guid>
+      <description>We close out the discussion of Single Active Patterns by adding parameters to the partial active pattern. If you’ve read the post on adding parameters to the Single Total Active Pattern then there is absolutely nothing new here, it works in exactly the same way.
+For that reason I’m not going to use this post to explain how to do it, I’m just going to work through an example and leave it at that.</description>
+    </item>
+    
+    <item>
+      <title>Partial Application</title>
+      <link>https://www.devjoy.com/blog/active-patterns/partial-application/</link>
+      <pubDate>Sat, 09 Aug 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.devjoy.com/blog/active-patterns/partial-application/</guid>
+      <description>This post was supposed to be about Partial Active Patterns, but before we get to that, I want to take a small diversion to cover Partial Application of Active Patterns (which is a completely different thing). Confused? Don’t worry. Read on.
+Partial Application I’ve described Partial Application in detail here and here, so I’m going to assume that you know how it works for regular functions. Please read those two posts if you are in any doubt.</description>
+    </item>
+    
+    <item>
+      <title>Pattern Matching</title>
+      <link>https://www.devjoy.com/blog/active-patterns/pattern-matching/</link>
+      <pubDate>Thu, 07 Aug 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.devjoy.com/blog/active-patterns/pattern-matching/</guid>
+      <description>This is the first in a series of posts explaining Active Patterns, a very cool feature of F#. This post will lay the groundwork by covering pattern matching, and introducing the concept of active patterns. Subsequent posts will cover the various types of active pattern in detail.
+Destructuring Assignment Thanks to Miles McGuire for setting me straight on the name.
+F# is full of little nice ideas that you appreciate when you come from a C# background, and destructuring assignment is one of them.</description>
+    </item>
+    
+    <item>
+      <title>Single Total With Params (|A|) x</title>
+      <link>https://www.devjoy.com/blog/active-patterns/single-total-with-params/</link>
+      <pubDate>Thu, 07 Aug 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.devjoy.com/blog/active-patterns/single-total-with-params/</guid>
+      <description>We move on to the next in our series on Active Patterns, but this time we’re really just covering a slight modification to the Single Total pattern that we covered in the last post.
+All the same rules apply, we’re just adding the ability to add parameters to the Active Pattern.
+I say ‘parameters’ but in reality I mean ‘additional parameters’. Every Active Pattern has at least one parameter. The ‘x’ in ‘match x with’ has to go somewhere.</description>
+    </item>
+    
+    <item>
+      <title>Maps and Sets</title>
+      <link>https://www.devjoy.com/blog/thinking-functionally/maps-and-sets/</link>
+      <pubDate>Mon, 21 Jul 2014 17:43:00 +0000</pubDate>
+      
+      <guid>https://www.devjoy.com/blog/thinking-functionally/maps-and-sets/</guid>
+      <description>In the most recent post in this series I implemented Tic-Tac-Toe using recursion to find the best moves. The point of that post was the recursion and I took the simplest approach I could think of to represent the actual board and moves.
+I used two lists of ints, one for each player’s list of occupied squares. The board itself wasn’t explicitly represented at all, it could be inferred from the two lists.</description>
+    </item>
+    
+    <item>
+      <title>Single Total (|A|)</title>
+      <link>https://www.devjoy.com/blog/active-patterns/single-total/</link>
+      <pubDate>Tue, 01 Jul 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.devjoy.com/blog/active-patterns/single-total/</guid>
+      <description>Part 1 of this series was mainly sharpening the axe by covering some basics like Pattern matching. I also gave a general sense of what active patterns are (functions that can be used when pattern matching, such as in match expressions). Now it’s time to dig into the details.
+As I mentioned previously there are arguably 5 variations of active patterns. This post will cover the first of those, the Single Total Active Pattern.</description>
+    </item>
+    
+    <item>
+      <title>Recursion</title>
+      <link>https://www.devjoy.com/blog/thinking-functionally/recursion/</link>
+      <pubDate>Mon, 02 Jun 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.devjoy.com/blog/thinking-functionally/recursion/</guid>
+      <description>This post looks at a hugely important part of functional programming, Recursion. In simple terms this means writing a function that calls itself.
+There are endless examples of using recursion to figure out Fibonacci numbers, or process lists. This post will be a little more complicated but hopefully is simple enough that you’ll be able to follow along.
+We’re going to teach F# to play the perfect game of Tic-Tac-Toe.</description>
+    </item>
+    
+    <item>
+      <title>Don&#39;t Scatter Logic All Over The Call Stack</title>
+      <link>https://www.devjoy.com/blog/dont-scatter-logic-all-over-the-call-stack/</link>
+      <pubDate>Wed, 23 Oct 2013 12:00:00 +0000</pubDate>
+      
+      <guid>https://www.devjoy.com/blog/dont-scatter-logic-all-over-the-call-stack/</guid>
+      <description>Here’s a problem I come across all the time in legacy code and I have been guilty of it myself in the past. This isn’t going to be rocket science, but, apparently, this stuff doesn’t go without saying. Normal caveats about this being a simplified contrived example apply.
+Take a look at this code
+static void Main(string[] args) { PrintTradeBalance(); Console.ReadKey(); } Oh! to have code this simple right? It’s pretty clear what it does, it prints a trade balance, whatever that is.</description>
+    </item>
+    
+    <item>
+      <title>Memoization</title>
+      <link>https://www.devjoy.com/blog/thinking-functionally/memoization/</link>
+      <pubDate>Tue, 14 May 2013 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.devjoy.com/blog/thinking-functionally/memoization/</guid>
+      <description>Imagine you have a long running function that you’d like to avoid running unnecessarily. For the purposes of this post you’ll have to suspend disbelief and pretend that negating a number is an expensive task. This example prints out a message so you can see when it actually gets called.
+let Negate n = printfn &amp;#34;Negating &amp;#39;%A&amp;#39; this is hard work&amp;#34; n -n val Negate : int -&amp;gt; int &amp;gt; Negate 5;; Negating &amp;#39;5&amp;#39; this is hard work val it : int = -5 Now, let’s use that function when writing another.</description>
+    </item>
+    
+    <item>
+      <title>Unfolding Sequences</title>
+      <link>https://www.devjoy.com/blog/thinking-functionally/unfolding-sequences/</link>
+      <pubDate>Thu, 07 Feb 2013 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.devjoy.com/blog/thinking-functionally/unfolding-sequences/</guid>
+      <description>In my last post I worked through an example that finds the range of numbers that sum to a target value, or gets as close as possible without exceeding the target. I mentioned that the solution felt a little too like the loopy code I would have written in non-functional languages. I felt that there might be a more “functional” way of solving the problem, but I didn’t know what it was.</description>
+    </item>
+    
+    <item>
+      <title>Iterating, Incrementing, and Accumulating</title>
+      <link>https://www.devjoy.com/blog/thinking-functionally/iterating-incrementing-accumulating/</link>
+      <pubDate>Fri, 01 Feb 2013 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.devjoy.com/blog/thinking-functionally/iterating-incrementing-accumulating/</guid>
+      <description>Another F# session this evening and some more deliberate practice of Functional Thinking. To be fair, this post isn’t really about anything new. If you’ve ever used recursion, even in non-functional languages, this will be old news. If you are new to Functional Programming and/or recursion then this may be useful.
+Here’s a really simple function. It accepts a number n and sums all the numbers from 1 to n.</description>
+    </item>
+    
+    <item>
+      <title>Partial Application</title>
+      <link>https://www.devjoy.com/blog/thinking-functionally/partial-application/</link>
+      <pubDate>Sun, 27 Jan 2013 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.devjoy.com/blog/thinking-functionally/partial-application/</guid>
+      <description>Warning, novice functional thinker here. If you know your stuff, what follows may cause distress.
+I was messing with F# last night and I got a gentle reminder that I’m still a long way from thinking functionally, it still takes a lot of effort.
+I started with this
+let evens r = List.filter (fun x -&amp;gt; x % 2 = 0) r &amp;gt; evens [0..10];; val it : int list = [0; 2; 4; 6; 8; 10] Simple enough.</description>
+    </item>
+    
+    <item>
+      <title>The Anagrams Kata</title>
+      <link>https://www.devjoy.com/blog/the-anagrams-kata/</link>
+      <pubDate>Sun, 11 Nov 2012 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.devjoy.com/blog/the-anagrams-kata/</guid>
+      <description>The following is my C# implementation of the Anagrams Kata as described on cyber-dojo.com
+Write a program to generate all potential anagrams of an input string.
+For example, the potential anagrams of “biro” are
+biro bior brio broi boir bori ibro ibor irbo irob iobr iorb rbio rboi ribo riob roib robi obir obri oibr oirb orbi orib Let’s write a test.
+[Test] public void NoCharacters() { var expected = new List&amp;lt;string&amp;gt; {&amp;#34;&amp;#34;}; Assert.</description>
+    </item>
+    
+    <item>
+      <title>Getting Functional with F# and The Game Of Life</title>
+      <link>https://www.devjoy.com/blog/getting-functional-with-fsharp-and-game-of-life/</link>
+      <pubDate>Sun, 15 Jul 2012 16:00:00 +0000</pubDate>
+      
+      <guid>https://www.devjoy.com/blog/getting-functional-with-fsharp-and-game-of-life/</guid>
+      <description>One session at NDC that really kicked my grasp of functional programming up a few notches was Vagif Abilov’s discussion of Conway’s Game Of Life using F#.
+I’m not going to rehash the rules of Game Of Life here, if you aren’t familiar with them then read this.
+Vagif’s source code is on github and his slides are on slideshare. His stuff is well worth a look, but don’t look yet.</description>
+    </item>
+    
+    <item>
+      <title>Fluent Mocking</title>
+      <link>https://www.devjoy.com/blog/fluent-mocking/</link>
+      <pubDate>Wed, 22 Jun 2011 17:43:00 +0000</pubDate>
+      
+      <guid>https://www.devjoy.com/blog/fluent-mocking/</guid>
+      <description>Here’s a scenario (for once not a hypothetical scenario, this is a real system I worked on). I was building a wizard based app. To be more accurate I was building lots of wizard based apps.
+After a couple of wizards the functionality became clear and I extracted it to it&amp;rsquo;s own framework. My apps could then focus on actual bread and butter functionality.
+Two of the objects in my framework are ‘Wizard’ and ‘WizardStep’.</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Teams on devjoy</title>
+    <link>https://www.devjoy.com/tags/teams/</link>
+    <description>Recent content in Teams on devjoy</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 23 Oct 2014 17:43:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://www.devjoy.com/tags/teams/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>The Best Job I&#39;ve Ever Had</title>
+      <link>https://www.devjoy.com/blog/the-best-job-ive-ever-had/</link>
+      <pubDate>Thu, 23 Oct 2014 17:43:00 +0000</pubDate>
+      
+      <guid>https://www.devjoy.com/blog/the-best-job-ive-ever-had/</guid>
+      <description>Still the best job I’ve ever had and I’ve given up hoping there’ll ever be a better one. My first year at TIC was my first time in the US. Karen picked me up at the airport. On the drive to her house I mentioned Visual Basic, and there and then she decided. We would be teaching Visual Basic. That’s how things worked at TIC.
+During my second year I suggested we split computing and multi-media.</description>
+    </item>
+    
+    <item>
+      <title>When Can You Start?</title>
+      <link>https://www.devjoy.com/blog/when-can-you-start/</link>
+      <pubDate>Wed, 17 Apr 2013 17:43:00 +0000</pubDate>
+      
+      <guid>https://www.devjoy.com/blog/when-can-you-start/</guid>
+      <description>He sat in the large bay window observing the potential candidates as they approached the house. His mind was made up about each of them before they rang the bell.
+“I’m here about the gardener job”
+“Sorry, the position is filled.”
+“Already? OK, thanks, bye”
+Again and again all the same. No good. Then…aha! this one.
+“I’m here about the gardener job”
+“When can you start?”
+“You don’t want to ask me any questions?</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+  <head>
+  <meta charset="utf-8">
+  <meta name="robots" content="all,follow">
+  <meta name="googlebot" content="index,follow,snippet,archive">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Maps and Sets</title>
+  <meta name="author" content="" />
+
+  
+  <meta name="keywords" content="devows, hugo, go">	
+  
+
+  
+  <meta name="description" content="Site template made by devcows using hugo">	
+  
+
+  <meta name="generator" content="Hugo 0.48" />
+
+  <link href='//fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300italic,500,700,800' rel='stylesheet' type='text/css'>
+
+  
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+  
+  <link href="/css/animate.css" rel="stylesheet">
+
+  
+  
+    <link href="/css/style.blue.css" rel="stylesheet" id="theme-stylesheet">
+  
+
+
+  
+  <link href="/css/custom.css" rel="stylesheet">
+
+  
+  
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  
+
+  
+  <link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon" />
+  <link rel="apple-touch-icon" href="/img/apple-touch-icon.png" />
+  
+
+  <link href="/css/owl.carousel.css" rel="stylesheet">
+  <link href="/css/owl.theme.css" rel="stylesheet">
+
+  <link rel="alternate" href="https://www.devjoy.com/index.xml" type="application/rss+xml" title="devjoy">
+
+  
+  <meta property="og:title" content="Maps and Sets" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="/blog/thinking-functionally/maps-and-sets//" />
+  <meta property="og:image" content="img/logo.png" />
+
+</head>
+
+
+  <body>
+    <div id="all">
+
+        <header>
+
+          <div class="navbar-affixed-top" data-spy="affix" data-offset-top="200">
+
+    <div class="navbar navbar-default yamm" role="navigation" id="navbar">
+
+        <div class="container">
+            <div class="navbar-header">
+                <a class="navbar-brand home" href="https://www.devjoy.com/">
+                    <img src="https://www.devjoy.com/img/logo.png" alt="Maps and Sets logo" class="hidden-xs hidden-sm">
+                    <img src="https://www.devjoy.com/img/logo-small.png" alt="Maps and Sets logo" class="visible-xs visible-sm">
+                    <span class="sr-only">Maps and Sets - go to homepage</span>
+                </a>
+                <div class="navbar-buttons">
+                    <button type="button" class="navbar-toggle btn-template-main" data-toggle="collapse" data-target="#navigation">
+                      <span class="sr-only">Toggle Navigation</span>
+                        <i class="fa fa-align-justify"></i>
+                    </button>
+                </div>
+            </div>
+            
+
+            <div class="navbar-collapse collapse" id="navigation">
+                <ul class="nav navbar-nav navbar-right">
+                  
+                  <li class="dropdown">
+                    
+                    <a href="/">Home</a>
+                    
+                  </li>
+                  
+                  <li class="dropdown">
+                    
+                    <a href="/blog/">Blog</a>
+                    
+                  </li>
+                  
+                  <li class="dropdown">
+                    
+                    <a href="/contact/">Contact</a>
+                    
+                  </li>
+                  
+                </ul>
+            </div>
+            
+
+            <div class="collapse clearfix" id="search">
+
+                <form class="navbar-form" role="search">
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Search">
+                        <span class="input-group-btn">
+
+                    <button type="submit" class="btn btn-template-main"><i class="fa fa-search"></i></button>
+
+                </span>
+                    </div>
+                </form>
+
+            </div>
+            
+
+        </div>
+    </div>
+    
+
+</div>
+
+
+
+
+        </header>
+
+        <div id="heading-breadcrumbs">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h1>Maps and Sets</h1>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+        <div id="content">
+            <div class="container">
+
+                <div class="row">
+
+                    
+
+                    <div class="col-md-9" id="blog-post">
+
+                        <p class="text-muted text-uppercase mb-small text-right">July 21, 2014</p>
+
+                        <div id="post-content">
+                          <p>In the most recent post in this series I implemented Tic-Tac-Toe using recursion to find the best moves. The point of that post was the recursion and I took the simplest approach I could think of to represent the actual board and moves.</p>
+
+<p>I used two lists of ints, one for each player’s list of occupied squares. The board itself wasn’t explicitly represented at all, it could be inferred from the two lists.</p>
+
+<p>One problem with this is that there are only 9 possible squares, but our lists could hold any integers, or could both hold the same integer. It was not only possible but quite easy to represent an invalid state.</p>
+
+<p>For this post I’ll turn to this issue and try to use the type system to give us a more sensible model of the game.</p>
+
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fsharp" data-lang="fsharp"><span style="color:#204a87;font-weight:bold">type</span> <span style="color:#000">Player</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">X</span> <span style="color:#ce5c00;font-weight:bold">|</span> <span style="color:#000">O</span>
+
+<span style="color:#204a87;font-weight:bold">type</span> <span style="color:#000">Position</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">TopLeft</span> <span style="color:#ce5c00;font-weight:bold">|</span> <span style="color:#000">TopMiddle</span> <span style="color:#ce5c00;font-weight:bold">|</span> <span style="color:#000">TopRight</span> 
+                <span style="color:#ce5c00;font-weight:bold">|</span> <span style="color:#000">MiddleLeft</span> <span style="color:#ce5c00;font-weight:bold">|</span> <span style="color:#000">Center</span> <span style="color:#ce5c00;font-weight:bold">|</span> <span style="color:#000">MiddleRight</span> 
+                <span style="color:#ce5c00;font-weight:bold">|</span> <span style="color:#000">BottomLeft</span> <span style="color:#ce5c00;font-weight:bold">|</span> <span style="color:#000">BottomMiddle</span><span style="color:#ce5c00;font-weight:bold">|</span> <span style="color:#000">BottomRight</span>
+
+<span style="color:#204a87;font-weight:bold">type</span> <span style="color:#000">Board</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">Map</span><span style="color:#ce5c00;font-weight:bold">&lt;</span><span style="color:#000">Position</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">Player</span> <span style="color:#000">Option</span><span style="color:#ce5c00;font-weight:bold">&gt;</span></code></pre></div>
+
+<p>I’ve represented a Player as being X or O, and the Position type has nine possible values, i.e. the nine squares on the board.</p>
+
+<p>We move away from the idea in the last post of just storing each players squares and instead we use a Map from Position to a Player Option. This means that we can look at any square on the board and see if it is owned by X, O or by neither.</p>
+
+<p>This fairly simple change has immediately solved the two invalid state issues I described above. A given square can not belong to both players simultaneously, and player can only own squares on the board, we can’t just “invent” new positions as we could by putting extra integers into the lists in the earlier example.</p>
+
+<p>Let’s initialize an empty board so that we can start playing.</p>
+
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fsharp" data-lang="fsharp"><span style="color:#204a87;font-weight:bold">let</span> <span style="color:#000">NewBoard</span><span style="color:#ce5c00;font-weight:bold">:</span> <span style="color:#000">Board</span> <span style="color:#ce5c00;font-weight:bold">=</span> 
+        <span style="color:#000">Map</span> <span style="color:#ce5c00;font-weight:bold">[</span> <span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">TopLeft</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">None</span><span style="color:#ce5c00;font-weight:bold">);</span> <span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">TopMiddle</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">None</span><span style="color:#ce5c00;font-weight:bold">);</span> <span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">TopRight</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">None</span><span style="color:#ce5c00;font-weight:bold">);</span> 
+              <span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">MiddleLeft</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">None</span><span style="color:#ce5c00;font-weight:bold">);</span> <span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">Center</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">None</span><span style="color:#ce5c00;font-weight:bold">);</span> <span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">MiddleRight</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">None</span><span style="color:#ce5c00;font-weight:bold">);</span> 
+              <span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">BottomLeft</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">None</span><span style="color:#ce5c00;font-weight:bold">);</span> <span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">BottomMiddle</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">None</span><span style="color:#ce5c00;font-weight:bold">);</span> <span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">BottomRight</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">None</span><span style="color:#ce5c00;font-weight:bold">)</span> <span style="color:#ce5c00;font-weight:bold">]</span></code></pre></div>
+
+<p>I couldn’t figure out how to do a nice “For All” Positions, Map to None, other than by using Reflection which just seemed cumbersome for such a simple task.</p>
+
+<p>Wins are defined in the same way as in the last post, but it’s a little more readable now because each position is named.</p>
+
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fsharp" data-lang="fsharp"><span style="color:#204a87;font-weight:bold">let</span> <span style="color:#000">wins</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">set</span> <span style="color:#ce5c00;font-weight:bold">[</span> <span style="color:#000">set</span> <span style="color:#ce5c00;font-weight:bold">[</span> <span style="color:#000">TopLeft</span><span style="color:#ce5c00;font-weight:bold">;</span> <span style="color:#000">TopMiddle</span><span style="color:#ce5c00;font-weight:bold">;</span> <span style="color:#000">TopRight</span> <span style="color:#ce5c00;font-weight:bold">]</span> <span style="color:#ce5c00;font-weight:bold">;</span>
+                 <span style="color:#000">set</span> <span style="color:#ce5c00;font-weight:bold">[</span> <span style="color:#000">MiddleLeft</span><span style="color:#ce5c00;font-weight:bold">;</span> <span style="color:#000">Center</span><span style="color:#ce5c00;font-weight:bold">;</span> <span style="color:#000">MiddleRight</span> <span style="color:#ce5c00;font-weight:bold">]</span> <span style="color:#ce5c00;font-weight:bold">;</span>
+                 <span style="color:#000">set</span> <span style="color:#ce5c00;font-weight:bold">[</span> <span style="color:#000">BottomLeft</span><span style="color:#ce5c00;font-weight:bold">;</span> <span style="color:#000">BottomMiddle</span><span style="color:#ce5c00;font-weight:bold">;</span> <span style="color:#000">BottomRight</span> <span style="color:#ce5c00;font-weight:bold">]</span> <span style="color:#ce5c00;font-weight:bold">;</span>
+                 <span style="color:#000">set</span> <span style="color:#ce5c00;font-weight:bold">[</span> <span style="color:#000">TopLeft</span><span style="color:#ce5c00;font-weight:bold">;</span> <span style="color:#000">MiddleLeft</span><span style="color:#ce5c00;font-weight:bold">;</span> <span style="color:#000">BottomLeft</span> <span style="color:#ce5c00;font-weight:bold">]</span> <span style="color:#ce5c00;font-weight:bold">;</span>
+                 <span style="color:#000">set</span> <span style="color:#ce5c00;font-weight:bold">[</span> <span style="color:#000">TopMiddle</span><span style="color:#ce5c00;font-weight:bold">;</span> <span style="color:#000">Center</span><span style="color:#ce5c00;font-weight:bold">;</span>  <span style="color:#000">BottomMiddle</span> <span style="color:#ce5c00;font-weight:bold">]</span> <span style="color:#ce5c00;font-weight:bold">;</span>
+                 <span style="color:#000">set</span> <span style="color:#ce5c00;font-weight:bold">[</span> <span style="color:#000">TopRight</span><span style="color:#ce5c00;font-weight:bold">;</span> <span style="color:#000">MiddleRight</span><span style="color:#ce5c00;font-weight:bold">;</span> <span style="color:#000">BottomRight</span> <span style="color:#ce5c00;font-weight:bold">]</span> <span style="color:#ce5c00;font-weight:bold">;</span>
+                 <span style="color:#000">set</span> <span style="color:#ce5c00;font-weight:bold">[</span> <span style="color:#000">TopLeft</span><span style="color:#ce5c00;font-weight:bold">;</span> <span style="color:#000">Center</span><span style="color:#ce5c00;font-weight:bold">;</span> <span style="color:#000">BottomRight</span> <span style="color:#ce5c00;font-weight:bold">]</span> <span style="color:#ce5c00;font-weight:bold">;</span>
+                 <span style="color:#000">set</span> <span style="color:#ce5c00;font-weight:bold">[</span> <span style="color:#000">TopRight</span><span style="color:#ce5c00;font-weight:bold">;</span> <span style="color:#000">Center</span><span style="color:#ce5c00;font-weight:bold">;</span> <span style="color:#000">BottomLeft</span> <span style="color:#ce5c00;font-weight:bold">]</span> <span style="color:#ce5c00;font-weight:bold">;</span> <span style="color:#ce5c00;font-weight:bold">]</span></code></pre></div>
+
+<p>Now we need a little helper function that will allow us to find all the squares with particular contents, i.e. All Empty squares, all squares for X or all squares for O.</p>
+
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fsharp" data-lang="fsharp"><span style="color:#204a87;font-weight:bold">let</span> <span style="color:#000">FindPositions</span> <span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">player</span><span style="color:#ce5c00;font-weight:bold">:</span> <span style="color:#000">Player</span> <span style="color:#000">Option</span><span style="color:#ce5c00;font-weight:bold">)</span> <span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">board</span><span style="color:#ce5c00;font-weight:bold">:</span> <span style="color:#000">Board</span><span style="color:#ce5c00;font-weight:bold">)</span> <span style="color:#ce5c00;font-weight:bold">=</span>
+    <span style="color:#000">board</span>
+    <span style="color:#ce5c00;font-weight:bold">|&gt;</span> <span style="color:#000">Map</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">filter</span> <span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#204a87;font-weight:bold">fun</span> <span style="color:#ce5c00;font-weight:bold">_</span> <span style="color:#000">mark</span> <span style="color:#ce5c00;font-weight:bold">-&gt;</span> <span style="color:#000">mark</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">player</span><span style="color:#ce5c00;font-weight:bold">)</span> 
+    <span style="color:#ce5c00;font-weight:bold">|&gt;</span> <span style="color:#000">Map</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">toSeq</span>
+    <span style="color:#ce5c00;font-weight:bold">|&gt;</span> <span style="color:#000">Seq</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">map</span> <span style="color:#000">fst</span>
+    <span style="color:#ce5c00;font-weight:bold">|&gt;</span> <span style="color:#000">Set</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">ofSeq</span></code></pre></div>
+
+<p>This looks a little involved, but it’s very simple. We filter the board (which you’ll recall is a Map from Position to Player Option). We look for all squares with a mark that matches the Player we are looking for. This will work whether we pass in X, O or None.</p>
+
+<p>The filter returns another Map, we want to split the Keys (Positions) from the Values (X, O, None). We convert the Map to a Sequence of Tuples and then use fst to extract the Key part of each Tuple. Don’t let Map and map confuse you. Seq.map is just the plain old map function that you know and love.</p>
+
+<p>What we ultimately want out of this is a Set so our last step is to convert our Sequence of Positions into a Set of Positions. With all that written, we can do the following.</p>
+
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fsharp" data-lang="fsharp"><span style="color:#204a87;font-weight:bold">let</span> <span style="color:#000">Available</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">FindPositions</span> <span style="color:#000">None</span></code></pre></div>
+
+<p>Because we’re using Sets instead of Lists, our IsWin function is a little simpler than in the previous example. We no longer have to write functions to decide if a list contains another list. We can simply use the Subset behavior of Sets.</p>
+
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fsharp" data-lang="fsharp"><span style="color:#204a87;font-weight:bold">let</span> <span style="color:#000">IsWin</span> <span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">player</span><span style="color:#ce5c00;font-weight:bold">:</span> <span style="color:#000">Player</span><span style="color:#ce5c00;font-weight:bold">)</span> <span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">board</span><span style="color:#ce5c00;font-weight:bold">:</span> <span style="color:#000">Board</span><span style="color:#ce5c00;font-weight:bold">)</span> <span style="color:#ce5c00;font-weight:bold">=</span>
+    <span style="color:#204a87;font-weight:bold">let</span> <span style="color:#000">playersSquares</span> <span style="color:#ce5c00;font-weight:bold">=</span> 
+        <span style="color:#000">board</span> <span style="color:#ce5c00;font-weight:bold">|&gt;</span> <span style="color:#000">FindPositions</span> <span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">Some</span> <span style="color:#000">player</span><span style="color:#ce5c00;font-weight:bold">)</span>
+    <span style="color:#000">wins</span> 
+    <span style="color:#ce5c00;font-weight:bold">|&gt;</span> <span style="color:#000">Set</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">exists</span> <span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#204a87;font-weight:bold">fun</span> <span style="color:#000">win</span> <span style="color:#ce5c00;font-weight:bold">-&gt;</span> <span style="color:#000">win</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">IsSubsetOf</span> <span style="color:#000">playersSquares</span><span style="color:#ce5c00;font-weight:bold">)</span></code></pre></div>
+
+<p>And our IsDraw function is also simple. If a given position isn’t a win then it’s easy to check if it’s a draw, simply check if there is no where left to move. Note that both the Available and IsDraw functions use “Point-Free Syntax“.</p>
+
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fsharp" data-lang="fsharp"><span style="color:#204a87;font-weight:bold">let</span> <span style="color:#000">IsDraw</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">Available</span> <span style="color:#ce5c00;font-weight:bold">&gt;&gt;</span> <span style="color:#000">Set</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">isEmpty</span></code></pre></div>
+
+<p>Another helper function now, for a given player we need a way of knowing the opponent, this will allow us to toggle back and forth between players as we search recursively for the best move.</p>
+
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fsharp" data-lang="fsharp"><span style="color:#204a87;font-weight:bold">let</span> <span style="color:#000">Opponent</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#204a87;font-weight:bold">function</span>
+    <span style="color:#ce5c00;font-weight:bold">|</span> <span style="color:#000">X</span> <span style="color:#ce5c00;font-weight:bold">-&gt;</span> <span style="color:#000">O</span>
+    <span style="color:#ce5c00;font-weight:bold">|</span> <span style="color:#000">O</span> <span style="color:#ce5c00;font-weight:bold">-&gt;</span> <span style="color:#000">X</span></code></pre></div>
+
+<p>Actually making a move is just a matter of adding a mapping from a Position to a Player (or Some Player as Options would have us say).</p>
+
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fsharp" data-lang="fsharp"><span style="color:#204a87;font-weight:bold">let</span> <span style="color:#000">Move</span> <span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">player</span><span style="color:#ce5c00;font-weight:bold">:</span> <span style="color:#000">Player</span><span style="color:#ce5c00;font-weight:bold">)</span> <span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">position</span><span style="color:#ce5c00;font-weight:bold">:</span> <span style="color:#000">Position</span><span style="color:#ce5c00;font-weight:bold">)</span> <span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">board</span><span style="color:#ce5c00;font-weight:bold">:</span> <span style="color:#000">Board</span><span style="color:#ce5c00;font-weight:bold">)</span> <span style="color:#ce5c00;font-weight:bold">=</span>
+    <span style="color:#000">board</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">Add</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">position</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">Some</span> <span style="color:#000">player</span><span style="color:#ce5c00;font-weight:bold">)</span></code></pre></div>
+
+<p>Note that the last argument to Move is the Board, and the function also returns a board. This allows us to use the following syntax.</p>
+
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fsharp" data-lang="fsharp"><span style="color:#204a87;font-weight:bold">let</span> <span style="color:#000">pos</span> <span style="color:#ce5c00;font-weight:bold">=</span> 
+    <span style="color:#000">NewBoard</span>
+    <span style="color:#ce5c00;font-weight:bold">|&gt;</span> <span style="color:#000">Move</span> <span style="color:#000">X</span> <span style="color:#000">TopLeft</span>
+    <span style="color:#ce5c00;font-weight:bold">|&gt;</span> <span style="color:#000">Move</span> <span style="color:#000">O</span> <span style="color:#000">TopMiddle</span>
+    <span style="color:#ce5c00;font-weight:bold">|&gt;</span> <span style="color:#000">Move</span> <span style="color:#000">X</span> <span style="color:#000">Center</span>
+    <span style="color:#ce5c00;font-weight:bold">|&gt;</span> <span style="color:#000">Move</span> <span style="color:#000">O</span> <span style="color:#000">TopRight</span></code></pre></div>
+
+<p>After running the code above, pos will be a board containing X in the Top Left and Center and O in the Top Middle and Top Right. The rest of the positions will be empty.</p>
+
+<p>And now, the big step, the functions that actually do the work of funding best moves for a given Player faced with a given Board.</p>
+
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fsharp" data-lang="fsharp"><span style="color:#204a87;font-weight:bold">let</span> <span style="color:#000">rec</span> <span style="color:#000">Score</span> <span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">player</span><span style="color:#ce5c00;font-weight:bold">:</span> <span style="color:#000">Player</span><span style="color:#ce5c00;font-weight:bold">)</span> <span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">board</span><span style="color:#ce5c00;font-weight:bold">:</span> <span style="color:#000">Board</span><span style="color:#ce5c00;font-weight:bold">)</span> <span style="color:#ce5c00;font-weight:bold">=</span>
+    <span style="color:#204a87;font-weight:bold">if</span> <span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">IsWin</span> <span style="color:#000">player</span> <span style="color:#000">board</span><span style="color:#ce5c00;font-weight:bold">)</span> <span style="color:#204a87;font-weight:bold">then</span> <span style="color:#000">board</span> <span style="color:#ce5c00;font-weight:bold">|&gt;</span> <span style="color:#000">Available</span> <span style="color:#ce5c00;font-weight:bold">|&gt;</span> <span style="color:#000">Set</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">count</span> <span style="color:#ce5c00;font-weight:bold">|&gt;</span> <span style="color:#ce5c00;font-weight:bold">(+)</span> <span style="color:#000">1</span>
+    <span style="color:#204a87;font-weight:bold">else</span> <span style="color:#204a87;font-weight:bold">if</span> <span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">IsDraw</span> <span style="color:#000">board</span><span style="color:#ce5c00;font-weight:bold">)</span> <span style="color:#204a87;font-weight:bold">then</span> <span style="color:#000">0</span>
+    <span style="color:#204a87;font-weight:bold">else</span>
+        <span style="color:#204a87;font-weight:bold">let</span> <span style="color:#000">opponent</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">Opponent</span> <span style="color:#000">player</span>
+        <span style="color:#204a87;font-weight:bold">let</span> <span style="color:#000">opponentsBestMove</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">BestMove</span> <span style="color:#000">opponent</span> <span style="color:#000">board</span>
+        <span style="color:#204a87;font-weight:bold">let</span> <span style="color:#000">newBoard</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">Move</span> <span style="color:#000">opponent</span> <span style="color:#000">opponentsBestMove</span> <span style="color:#000">board</span>
+        <span style="color:#ce5c00;font-weight:bold">-</span><span style="color:#000">Score</span> <span style="color:#000">opponent</span> <span style="color:#000">newBoard</span>
+
+<span style="color:#204a87;font-weight:bold">and</span> <span style="color:#000">BestMove</span> <span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">player</span><span style="color:#ce5c00;font-weight:bold">:</span> <span style="color:#000">Player</span><span style="color:#ce5c00;font-weight:bold">)</span> <span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">board</span><span style="color:#ce5c00;font-weight:bold">:</span> <span style="color:#000">Board</span><span style="color:#ce5c00;font-weight:bold">):</span> <span style="color:#000">Position</span> <span style="color:#ce5c00;font-weight:bold">=</span>
+    <span style="color:#000">Available</span> <span style="color:#000">board</span>
+    <span style="color:#ce5c00;font-weight:bold">|&gt;</span> <span style="color:#000">Set</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">toList</span>
+    <span style="color:#ce5c00;font-weight:bold">|&gt;</span> <span style="color:#000">List</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">maxBy</span> <span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#204a87;font-weight:bold">fun</span> <span style="color:#000">m</span> <span style="color:#ce5c00;font-weight:bold">-&gt;</span> <span style="color:#000">Score</span> <span style="color:#000">player</span> <span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">board</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">Add</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">m</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">Some</span> <span style="color:#000">player</span><span style="color:#ce5c00;font-weight:bold">)))</span> </code></pre></div>
+
+<p>Apart from changes to use Sets and the new Move Syntax, this code is like that in the previous post.</p>
+
+<p>There is one small but significant change. If the earlier code had a choice between a definite win in 1 move or in 2 moves it didn’t care which it took, both were definite wins. This led to it passing up winning moves and winning on the next move instead. It looked a little odd.</p>
+
+<p>To solve this we change how we value wins. Instead of assigning a score of 1 to all wins, which we did in the last version of the code, the Score is now based on how many empty squares remain when the game ends. This makes quicker wins more valuable.</p>
+
+<p>I kind of liked the way the previous implementation sometimes seemed to toy with its victim, so I wouldn’t necessarily call this fix an improvement.</p>
+
+                        </div>
+                        
+                        
+                        <div id="comments">
+                            <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "devjoycom" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+                        </div>
+                        
+
+                    </div>
+                    
+
+                    
+
+                    
+
+                    <div class="col-md-3">
+
+                        
+
+                        
+
+<div class="panel panel-default sidebar-menu">
+
+    <div class="panel-heading">
+      <h3 class="panel-title">Search</h3>
+    </div>
+
+    <div class="panel-body">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" role="search">
+            <div class="input-group">
+                <input type="search" name="q" class="form-control" placeholder="Search">
+                <input type="hidden" name="sitesearch" value="https://www.devjoy.com/">
+                <span class="input-group-btn">
+                    <button type="submit" class="btn btn-template-main"><i class="fa fa-search"></i></button>
+                </span>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+
+
+
+
+
+<div class="panel panel-default sidebar-menu">
+
+    <div class="panel-heading">
+      <h3 class="panel-title">Categories</h3>
+    </div>
+
+    <div class="panel-body">
+        <ul class="nav nav-pills nav-stacked">
+            
+            <li><a href="https://www.devjoy.com/categories/how-to">how-to (22)</a>
+            </li>
+            
+            <li><a href="https://www.devjoy.com/categories/reviews">reviews (1)</a>
+            </li>
+            
+            <li><a href="https://www.devjoy.com/categories/thoughts">thoughts (15)</a>
+            </li>
+            
+        </ul>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+<div class="panel panel-default sidebar-menu">
+
+    <div class="panel-heading">
+      <h3 class="panel-title">Series</h3>
+    </div>
+
+    <div class="panel-body">
+        <ul class="nav nav-pills nav-stacked">
+            
+            <li><a href="https://www.devjoy.com/series/f-sharp-active-patterns">f-sharp-active-patterns (8)</a>
+            </li>
+            
+            <li><a href="https://www.devjoy.com/series/thinking-functionally">thinking-functionally (6)</a>
+            </li>
+            
+        </ul>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+<div class="panel sidebar-menu">
+    <div class="panel-heading">
+      <h3 class="panel-title">Tags</h3>
+    </div>
+
+    <div class="panel-body">
+        <ul class="tag-cloud">
+            
+            <li><a href="https://www.devjoy.com/tags/agile"><i class="fa fa-tags"></i> agile</a>
+            </li>
+            
+            <li><a href="https://www.devjoy.com/tags/c"><i class="fa fa-tags"></i> c#</a>
+            </li>
+            
+            <li><a href="https://www.devjoy.com/tags/code"><i class="fa fa-tags"></i> code</a>
+            </li>
+            
+            <li><a href="https://www.devjoy.com/tags/coding"><i class="fa fa-tags"></i> coding</a>
+            </li>
+            
+            <li><a href="https://www.devjoy.com/tags/complexity"><i class="fa fa-tags"></i> complexity</a>
+            </li>
+            
+            <li><a href="https://www.devjoy.com/tags/design"><i class="fa fa-tags"></i> design</a>
+            </li>
+            
+            <li><a href="https://www.devjoy.com/tags/f"><i class="fa fa-tags"></i> f#</a>
+            </li>
+            
+            <li><a href="https://www.devjoy.com/tags/functional-programming"><i class="fa fa-tags"></i> functional-programming</a>
+            </li>
+            
+            <li><a href="https://www.devjoy.com/tags/learning"><i class="fa fa-tags"></i> learning</a>
+            </li>
+            
+            <li><a href="https://www.devjoy.com/tags/tdd"><i class="fa fa-tags"></i> tdd</a>
+            </li>
+            
+            <li><a href="https://www.devjoy.com/tags/teams"><i class="fa fa-tags"></i> teams</a>
+            </li>
+            
+            <li><a href="https://www.devjoy.com/tags/technical-debt"><i class="fa fa-tags"></i> technical-debt</a>
+            </li>
+            
+            <li><a href="https://www.devjoy.com/tags/testing"><i class="fa fa-tags"></i> testing</a>
+            </li>
+            
+        </ul>
+    </div>
+</div>
+
+
+
+
+
+
+                        
+
+                    </div>
+                    
+
+                    
+
+                </div>
+                
+
+            </div>
+            
+        </div>
+        
+
+        
+
+
+
+
+<div id="copyright">
+    <div class="container">
+        <div class="col-md-12">
+            
+            <p class="pull-left">Copyright (c) 2018, Devjoy Ltd.</p>
+            
+            <p class="pull-right">
+              Template by <a href="http://bootstrapious.com/free-templates">Bootstrapious</a>.
+              
+
+              Ported to Hugo by <a href="https://github.com/devcows/hugo-universal-theme">DevCows</a>
+            </p>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+    </div>
+    
+
+    
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-131889453-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+
+<script src="//code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.1/jquery.waypoints.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/Counter-Up/1.0/jquery.counterup.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery-parallax/1.1.3/jquery-parallax.js"></script>
+<script src="https://www.devjoy.com/js/front.js"></script>
+
+
+<script src="https://www.devjoy.com/js/owl.carousel.min.js"></script>
+
+
+  </body>
+</html>

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Complexity on devjoy</title>
+    <link>https://www.devjoy.com/tags/complexity/</link>
+    <description>Recent content in Complexity on devjoy</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 18 Aug 2014 17:43:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://www.devjoy.com/tags/complexity/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>The Challenge Today Is Overwhelming Complexity</title>
+      <link>https://www.devjoy.com/blog/the-challenge-today-is-overwhelming-complexity/</link>
+      <pubDate>Mon, 18 Aug 2014 17:43:00 +0000</pubDate>
+      
+      <guid>https://www.devjoy.com/blog/the-challenge-today-is-overwhelming-complexity/</guid>
+      <description>Here’s a really great post by Tom Moertel on squeezing every last ounce of performance out of machines back in the day.
+It was a time when unrolling a loop to save the few clock cycles or seeing a unique way to use the registers of a chip could take a game from clunky to classic.
+Stories of making machines do the impossible are the stuff of legend. The closest we mere mortals came was rejigging our config.</description>
+    </item>
+    
+    <item>
+      <title>Simplicity</title>
+      <link>https://www.devjoy.com/blog/simplicity/</link>
+      <pubDate>Thu, 03 Oct 2013 12:00:00 +0000</pubDate>
+      
+      <guid>https://www.devjoy.com/blog/simplicity/</guid>
+      <description>Ladies and Gentlemen of the class of ‘14
+If I could offer you only one tip for the future, simplicity would be it. The long term benefits of simplicity have been proven by Rich Hickey whereas the rest of my advice has no basis more reliable than my own meandering experience. I will dispense this advice now.
+Beware the over engineered complexity of your code; oh nevermind; you will not understand the over engineered complexity of your code until it bites you in the ass.</description>
+    </item>
+    
+  </channel>
+</rss>

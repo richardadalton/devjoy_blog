@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+  <head>
+  <meta charset="utf-8">
+  <meta name="robots" content="all,follow">
+  <meta name="googlebot" content="index,follow,snippet,archive">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Reading F#</title>
+  <meta name="author" content="" />
+
+  
+  <meta name="keywords" content="devows, hugo, go">	
+  
+
+  
+  <meta name="description" content="Site template made by devcows using hugo">	
+  
+
+  <meta name="generator" content="Hugo 0.48" />
+
+  <link href='//fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300italic,500,700,800' rel='stylesheet' type='text/css'>
+
+  
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+  
+  <link href="/css/animate.css" rel="stylesheet">
+
+  
+  
+    <link href="/css/style.blue.css" rel="stylesheet" id="theme-stylesheet">
+  
+
+
+  
+  <link href="/css/custom.css" rel="stylesheet">
+
+  
+  
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  
+
+  
+  <link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon" />
+  <link rel="apple-touch-icon" href="/img/apple-touch-icon.png" />
+  
+
+  <link href="/css/owl.carousel.css" rel="stylesheet">
+  <link href="/css/owl.theme.css" rel="stylesheet">
+
+  <link rel="alternate" href="https://www.devjoy.com/index.xml" type="application/rss+xml" title="devjoy">
+
+  
+  <meta property="og:title" content="Reading F#" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="/blog/reading-fsharp//" />
+  <meta property="og:image" content="img/logo.png" />
+
+</head>
+
+
+  <body>
+    <div id="all">
+
+        <header>
+
+          <div class="navbar-affixed-top" data-spy="affix" data-offset-top="200">
+
+    <div class="navbar navbar-default yamm" role="navigation" id="navbar">
+
+        <div class="container">
+            <div class="navbar-header">
+                <a class="navbar-brand home" href="https://www.devjoy.com/">
+                    <img src="https://www.devjoy.com/img/logo.png" alt="Reading F# logo" class="hidden-xs hidden-sm">
+                    <img src="https://www.devjoy.com/img/logo-small.png" alt="Reading F# logo" class="visible-xs visible-sm">
+                    <span class="sr-only">Reading F# - go to homepage</span>
+                </a>
+                <div class="navbar-buttons">
+                    <button type="button" class="navbar-toggle btn-template-main" data-toggle="collapse" data-target="#navigation">
+                      <span class="sr-only">Toggle Navigation</span>
+                        <i class="fa fa-align-justify"></i>
+                    </button>
+                </div>
+            </div>
+            
+
+            <div class="navbar-collapse collapse" id="navigation">
+                <ul class="nav navbar-nav navbar-right">
+                  
+                  <li class="dropdown">
+                    
+                    <a href="/">Home</a>
+                    
+                  </li>
+                  
+                  <li class="dropdown">
+                    
+                    <a href="/blog/">Blog</a>
+                    
+                  </li>
+                  
+                  <li class="dropdown">
+                    
+                    <a href="/contact/">Contact</a>
+                    
+                  </li>
+                  
+                </ul>
+            </div>
+            
+
+            <div class="collapse clearfix" id="search">
+
+                <form class="navbar-form" role="search">
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Search">
+                        <span class="input-group-btn">
+
+                    <button type="submit" class="btn btn-template-main"><i class="fa fa-search"></i></button>
+
+                </span>
+                    </div>
+                </form>
+
+            </div>
+            
+
+        </div>
+    </div>
+    
+
+</div>
+
+
+
+
+        </header>
+
+        <div id="heading-breadcrumbs">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h1>Reading F#</h1>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+        <div id="content">
+            <div class="container">
+
+                <div class="row">
+
+                    
+
+                    <div class="col-md-9" id="blog-post">
+
+                        <p class="text-muted text-uppercase mb-small text-right">February 6, 2017</p>
+
+                        <div id="post-content">
+                          
+
+<p>A tweet about some C# code rewritten in F# got me interested yesterday.</p>
+
+<p><blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr">&quot;An F# rewrite of a fully refactored C# Clean Code example&quot;. Amazing. <a href="https://t.co/mplbbH1knb">https://t.co/mplbbH1knb</a></p>&mdash; Jon Harrop (@jonharrop) <a href="https://twitter.com/jonharrop/status/824320112702394368?ref_src=twsrc%5Etfw">January 25, 2017</a></blockquote>
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script></p>
+
+<p>If you know a little F# it’s easy get sucked into thinking that having much fewer lines of code, and less noise generally makes F# code automatically better, cleaner, easier to read than C#. But, of course, that’s only true for people who know enough F# to read it.</p>
+
+<p>When I see very smart C# devs unable to decipher what the F# code is doing, that gets me very interested.</p>
+
+<p><blockquote class="twitter-tweet" data-lang="en" data-conversation="none"><p lang="en" dir="ltr">got half way down and was lost but then again I don&#39;t know F# 😄</p>&mdash; Jonathan Channon (@jchannon) <a href="https://twitter.com/jchannon/status/824330128733966337?ref_src=twsrc%5Etfw">January 25, 2017</a></blockquote>
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script></p>
+
+<p><blockquote class="twitter-tweet" data-lang="en" data-conversation="none"><p lang="en" dir="ltr">I know it&#39;s because I don&#39;t know F#, but that code is unreadable</p>&mdash; Cole Markham (@cole_markham) <a href="https://twitter.com/cole_markham/status/824636240997683201?ref_src=twsrc%5Etfw">January 26, 2017</a></blockquote>
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script></p>
+
+<p>Pete Smith very kindly did his own <a href="https://gist.github.com/beyond-code-github/8711794c4d516cb6941d47274884b248">rewrite</a> of the C# version.</p>
+
+<h3 id="the-f-code">The F# Code</h3>
+
+<p>The point of this post is to explain the original F# code a little bit, for C# devs who are curious, but find it hard to follow. It’s no reflection on either C# developers or the F# language that there’s confusion. This is a new paradigm. There are concepts in F# that simply don’t exist in C#. There are also concepts that look like C#, but behave differently.</p>
+
+<h3 id="the-types">The Types</h3>
+
+<p>First we’ll look at the type definitions.</p>
+
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fsharp" data-lang="fsharp"><span style="color:#204a87;font-weight:bold">module</span> <span style="color:#000">Discount</span> <span style="color:#ce5c00;font-weight:bold">=</span>
+    <span style="color:#204a87;font-weight:bold">type</span> <span style="color:#000">Year</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">int</span>
+    <span style="color:#204a87;font-weight:bold">type</span> <span style="color:#ce5c00;font-weight:bold">[&lt;</span><span style="color:#000">Measure</span><span style="color:#ce5c00;font-weight:bold">&gt;]</span> <span style="color:#000">percent</span></code></pre></div>
+
+<p>Nothing exciting here. The code we’re writing is in a module called Discount. We’ll be able to import or ‘open’ that module when we want to use it later.</p>
+
+<p>We create an alias (or Type Abreviation) of int called Year. This let’s us use ‘Year’ when defining other types, rather than the primitive int.</p>
+
+<p>We also define percent as a unit of measure. F# can do amazing things with Units of Measure. This percentage example doesn’t necessarily show it off to full effect.</p>
+
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fsharp" data-lang="fsharp"><span style="color:#204a87;font-weight:bold">type</span> <span style="color:#000">Customer</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">Simple</span> <span style="color:#ce5c00;font-weight:bold">|</span> <span style="color:#000">Valuable</span> <span style="color:#ce5c00;font-weight:bold">|</span> <span style="color:#000">MostValuable</span></code></pre></div>
+
+<p>Customer looks enough like an enum that most devs let it slide, but it’s more than that. Customer is a type with three possible values: Simple, Valuable, and MostValuable. These are not mere labels. This isn’t some layer of text over a numeric data type like an enum. They represent the full range of values for the Customer Type. In a sense, they are to Customer what ‘true’ and ‘false’ are to bool.</p>
+
+<p>Let me repeat that, Customer can hold no other value than Simple, Valuable, or MostValuable. If you have a Customer, it can not hold an invalid value. it can not hold Null, or Nothing, or any out of range numeric value.</p>
+
+<p>What we’re trying to do here is model the domain with types that make it impossible to capture impossible states.</p>
+
+<p>AccountStatus is the first type that’s likely to completely throw a C# developer.</p>
+
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fsharp" data-lang="fsharp"><span style="color:#204a87;font-weight:bold">type</span> <span style="color:#000">AccountStatus</span> <span style="color:#ce5c00;font-weight:bold">=</span> 
+    <span style="color:#ce5c00;font-weight:bold">|</span> <span style="color:#000">Registered</span> <span style="color:#204a87;font-weight:bold">of</span> <span style="color:#000">Customer</span> <span style="color:#ce5c00;font-weight:bold">*</span> <span style="color:#000">since</span><span style="color:#ce5c00;font-weight:bold">:</span><span style="color:#000">Year</span>
+    <span style="color:#ce5c00;font-weight:bold">|</span> <span style="color:#000">UnRegistered</span></code></pre></div>
+
+<p>This is actually similar to Customer, although the layout may suggest a difference that isn’t really there. An AccountStatus can be Registered or UnRegistered, just like a Customer can be Simple, Valuable, or MostValuable. For Registered accounts there’s extra information the Customer, and the Year they registered. For UnRegistered accounts there is no additional data, just the token UnRegistered.</p>
+
+<p>This means that some valid values for the DataType AccountStatus include</p>
+
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fsharp" data-lang="fsharp"><span style="color:#000">Registered</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">MostValuable</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">1</span><span style="color:#ce5c00;font-weight:bold">)</span>
+<span style="color:#000">Registered</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">Valuable</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">6</span><span style="color:#ce5c00;font-weight:bold">)</span>
+<span style="color:#000">Registered</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">Simple</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">1</span><span style="color:#ce5c00;font-weight:bold">)</span>
+<span style="color:#000">UnRegistered</span></code></pre></div>
+
+<p>The following are invalid, they are syntax errors.</p>
+
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fsharp" data-lang="fsharp"><span style="color:#000">UnRegistered</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">MostValuable</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">1</span><span style="color:#ce5c00;font-weight:bold">)</span>
+<span style="color:#000">Registered</span>
+<span style="color:#000">Registered</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">1</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">Simple</span><span style="color:#ce5c00;font-weight:bold">)</span></code></pre></div>
+
+<p>Now, there’s a problem here. The Type definition makes Year look like a Year that an account has been active ‘since’. But later in the code it looks more like the number of years an account has been active ‘for’.</p>
+
+<p>I’m not here to review or improve the code, just explain it. So, I’m mentioning that confusion here.</p>
+
+<p>An Account Status can be UnRegistered. Or, it can be Registered with a Tuple of Customer and Year. Customer as we’ve seen can be Simple, Valuable or MostValuable. And Year is an integer.</p>
+
+<p>That’s Algebraic Data Types. Define your types, compose them and use them. It’s no different to what you’ve always done in C#, however you haven’t had Sum Types, and you can’t define a tuple as simply as ‘Customer * Year’.</p>
+
+<p>Some C# developers may like to think of AccountStatus as a BaseClass and Registered and UnRegistered as SubClasses. With Registered having additional fields. That is what’s going on under the hood, but I personally don’t give that a lot of thought.</p>
+
+<p>By the way you can delete ‘since:’ in the definition of a Registered account, it serves only to tell you what the Year indicates. It doesn’t change the type in any way.</p>
+
+<p>Those are the types we have to work with. Functional Programmers tend to lean quite heavily on types. I can definitely understand C# devs wondering whether ‘Year’ and ‘percent’ are really worth the effort in this case. Year in particular is troublesome because int isn’t necessarily the most robust way of representing a Year. If you’re going to introduce a new Type, maybe you should go all the way or don’t go at all. The confusion over what ‘Year’ actually means is troublesome.</p>
+
+<p>That’s a debate for another day. But in this example at least the concept of Year is called out. The specific implementation, and underlying type may change later.</p>
+
+<p>Let’s move on.</p>
+
+<h3 id="the-functions">The Functions</h3>
+
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fsharp" data-lang="fsharp"><span style="color:#204a87;font-weight:bold">let</span> <span style="color:#000">customerDiscount</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#204a87;font-weight:bold">function</span>
+    <span style="color:#ce5c00;font-weight:bold">|</span> <span style="color:#000">Simple</span>    <span style="color:#ce5c00;font-weight:bold">-&gt;</span> <span style="color:#000">1</span><span style="color:#ce5c00;font-weight:bold">&lt;</span><span style="color:#000">percent</span><span style="color:#ce5c00;font-weight:bold">&gt;</span>
+    <span style="color:#ce5c00;font-weight:bold">|</span> <span style="color:#000">Valuable</span>  <span style="color:#ce5c00;font-weight:bold">-&gt;</span> <span style="color:#000">3</span><span style="color:#ce5c00;font-weight:bold">&lt;</span><span style="color:#000">percent</span><span style="color:#ce5c00;font-weight:bold">&gt;</span>
+    <span style="color:#ce5c00;font-weight:bold">|</span> <span style="color:#000">MostValuable</span>  <span style="color:#ce5c00;font-weight:bold">-&gt;</span> <span style="color:#000">5</span><span style="color:#ce5c00;font-weight:bold">&lt;</span><span style="color:#000">percent</span><span style="color:#ce5c00;font-weight:bold">&gt;</span></code></pre></div>
+
+<p>customerDiscount is just a function that maps a Customer to an integer percent. How do I know? Well that’s the signature of the function.</p>
+
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fsharp" data-lang="fsharp"><span style="color:#000">Customer</span> <span style="color:#ce5c00;font-weight:bold">-&gt;</span> <span style="color:#000">int</span> </code></pre></div>
+
+<p>So, the valid inputs to this function are Simple, Valuable, and MostValuable. And the outputs you can see.</p>
+
+<p>The way this function is written probably throws C# devs more than what it actually does. Let me rewrite it slightly.</p>
+
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fsharp" data-lang="fsharp"><span style="color:#204a87;font-weight:bold">let</span> <span style="color:#000">customerDiscount</span> <span style="color:#000">customer</span> <span style="color:#ce5c00;font-weight:bold">=</span> 
+    <span style="color:#204a87;font-weight:bold">match</span> <span style="color:#000">customer</span> <span style="color:#204a87;font-weight:bold">with</span>
+    <span style="color:#ce5c00;font-weight:bold">|</span> <span style="color:#000">Simple</span>    <span style="color:#ce5c00;font-weight:bold">-&gt;</span> <span style="color:#000">1</span><span style="color:#ce5c00;font-weight:bold">&lt;</span><span style="color:#000">percent</span><span style="color:#ce5c00;font-weight:bold">&gt;</span>
+    <span style="color:#ce5c00;font-weight:bold">|</span> <span style="color:#000">Valuable</span>  <span style="color:#ce5c00;font-weight:bold">-&gt;</span> <span style="color:#000">3</span><span style="color:#ce5c00;font-weight:bold">&lt;</span><span style="color:#000">percent</span><span style="color:#ce5c00;font-weight:bold">&gt;</span>
+    <span style="color:#ce5c00;font-weight:bold">|</span> <span style="color:#000">MostValuable</span>  <span style="color:#ce5c00;font-weight:bold">-&gt;</span> <span style="color:#000">5</span><span style="color:#ce5c00;font-weight:bold">&lt;</span><span style="color:#000">percent</span><span style="color:#ce5c00;font-weight:bold">&gt;</span></code></pre></div>
+
+<p>This is exactly the same function, it just gives the argument a name, and then pattern matches on it. Because this kind of function is so common, the alternative syntax is possible.</p>
+
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fsharp" data-lang="fsharp"><span style="color:#204a87;font-weight:bold">let</span> <span style="color:#000">yearsDiscount</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#204a87;font-weight:bold">function</span>
+    <span style="color:#ce5c00;font-weight:bold">|</span> <span style="color:#000">years</span> <span style="color:#204a87;font-weight:bold">when</span> <span style="color:#000">years</span> <span style="color:#ce5c00;font-weight:bold">&gt;</span> <span style="color:#000">5</span>  <span style="color:#ce5c00;font-weight:bold">-&gt;</span> <span style="color:#000">5</span><span style="color:#ce5c00;font-weight:bold">&lt;</span><span style="color:#000">percent</span><span style="color:#ce5c00;font-weight:bold">&gt;</span>
+    <span style="color:#ce5c00;font-weight:bold">|</span> <span style="color:#000">years</span>                 <span style="color:#ce5c00;font-weight:bold">-&gt;</span> <span style="color:#000">1</span><span style="color:#ce5c00;font-weight:bold">&lt;</span><span style="color:#000">percent</span><span style="color:#ce5c00;font-weight:bold">&gt;</span> <span style="color:#ce5c00;font-weight:bold">*</span> <span style="color:#000">years</span></code></pre></div>
+
+<p>yearsDiscount is a function that maps an int to an int percent. That Year alias is getting more troubling. It seems to have vanished here in the code where it’s actually used. F# isn’t perfect, and it doesn’t write itself for you. Ambiguities can creep in.</p>
+
+<p>Let’s stick to what this function is doing. The function is in the same simplified pattern matching syntax as customerDiscount. The first clause matches when the value passed to the function is greater than 5, and returns 5 . The second clause matches any other integer value, and calculates the result. The end result, 1% discount per year, capped at 5%.</p>
+
+<p>Notice that the entire body of the functions are expressions. There’s no ‘return’ statement. A clause in the match maps to a value and that is the value if the function.</p>
+
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fsharp" data-lang="fsharp"><span style="color:#204a87;font-weight:bold">let</span> <span style="color:#000">accountDiscount</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#204a87;font-weight:bold">function</span>
+    <span style="color:#ce5c00;font-weight:bold">|</span> <span style="color:#000">Registered</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">customer</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">years</span><span style="color:#ce5c00;font-weight:bold">)</span> <span style="color:#ce5c00;font-weight:bold">-&gt;</span> <span style="color:#000">customerDiscount</span> <span style="color:#000">customer</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">yearsDiscount</span> <span style="color:#000">years</span>
+    <span style="color:#ce5c00;font-weight:bold">|</span> <span style="color:#000">UnRegistered</span>                <span style="color:#ce5c00;font-weight:bold">-&gt;</span> <span style="color:#000">0</span><span style="color:#ce5c00;font-weight:bold">&lt;</span><span style="color:#000">percent</span><span style="color:#ce5c00;font-weight:bold">&gt;</span>               <span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">0</span><span style="color:#ce5c00;font-weight:bold">&lt;</span><span style="color:#000">percent</span><span style="color:#ce5c00;font-weight:bold">&gt;</span></code></pre></div>
+
+<p>On, now things are getting interesting. The signature of accountDiscount is</p>
+
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fsharp" data-lang="fsharp"><span style="color:#000">AccountStatus</span> <span style="color:#ce5c00;font-weight:bold">-&gt;</span> <span style="color:#000">int</span><span style="color:#ce5c00;font-weight:bold">&lt;</span><span style="color:#000">percent</span><span style="color:#ce5c00;font-weight:bold">&gt;</span> <span style="color:#ce5c00;font-weight:bold">*</span> <span style="color:#000">int</span><span style="color:#ce5c00;font-weight:bold">&lt;</span><span style="color:#000">percent</span><span style="color:#ce5c00;font-weight:bold">&gt;</span></code></pre></div>
+
+<p>What does that mean?</p>
+
+<p>We can pass in either a Registered account, with a Customer and number of years,
+OR
+We pass in unRegistered.</p>
+
+<p>Those are the two possibilities for AccountStatus.</p>
+
+<p>What do we get back?</p>
+
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fsharp" data-lang="fsharp"><span style="color:#000">int</span> <span style="color:#ce5c00;font-weight:bold">*</span> <span style="color:#000">int</span></code></pre></div>
+
+<p>A tuple, containing two int percents.</p>
+
+<p>The tuple contains the results of calling the customerDiscount function, and the yearsDiscount function.</p>
+
+<p>Look again at the accountDiscount function. How does it know the types of the input, and the output values.</p>
+
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fsharp" data-lang="fsharp"><span style="color:#204a87;font-weight:bold">let</span> <span style="color:#000">accountDiscount</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#204a87;font-weight:bold">function</span>
+    <span style="color:#ce5c00;font-weight:bold">|</span> <span style="color:#000">Registered</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">customer</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">years</span><span style="color:#ce5c00;font-weight:bold">)</span> <span style="color:#ce5c00;font-weight:bold">-&gt;</span> <span style="color:#000">customerDiscount</span> <span style="color:#000">customer</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">yearsDiscount</span> <span style="color:#000">years</span>
+    <span style="color:#ce5c00;font-weight:bold">|</span> <span style="color:#000">UnRegistered</span>                <span style="color:#ce5c00;font-weight:bold">-&gt;</span> <span style="color:#000">0</span><span style="color:#ce5c00;font-weight:bold">&lt;</span><span style="color:#000">percent</span><span style="color:#ce5c00;font-weight:bold">&gt;</span>               <span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">0</span><span style="color:#ce5c00;font-weight:bold">&lt;</span><span style="color:#000">percent</span><span style="color:#ce5c00;font-weight:bold">&gt;</span></code></pre></div>
+
+<p>It pattern matches on Registered and UnRegistered, so the input must be an AccountStatus. Both match clauses evaluate to an int * int tuple. So, the function as a whole must always evaluate to that too.</p>
+
+<p>If the input to the function is UnRegistered, then the result is 0, 0. So, no discount.
+But look at the match on Registered. Remember the Registered AccountStatus has a payload of sorts. A Customer type and number of years in the form of a Customer * Year tuple.</p>
+
+<p>In the match clause we destructure that tuple into two variables customer and years.</p>
+
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fsharp" data-lang="fsharp"><span style="color:#000">Registered</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">customer</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">years</span><span style="color:#ce5c00;font-weight:bold">)</span></code></pre></div>
+
+<p>And then pass those variables to the relevant discount function to produce an output tuple.</p>
+
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fsharp" data-lang="fsharp"><span style="color:#ce5c00;font-weight:bold">-&gt;</span> <span style="color:#000">customerDiscount</span> <span style="color:#000">customer</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">yearsDiscount</span> <span style="color:#000">years</span></code></pre></div>
+
+<p>There’s a lot going on there that isn’t familiar. It takes a little time to adjust. The on the fly translation that a C# dev needs to do in their head is quite a burden when you start reading (and even harder when you start writing) F#. But it does get easy very quickly, and after a while then inherent consistency starts to shine through.</p>
+
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fsharp" data-lang="fsharp"><span style="color:#204a87;font-weight:bold">let</span> <span style="color:#000">asPercent</span> <span style="color:#000">p</span> <span style="color:#ce5c00;font-weight:bold">=</span> 
+    <span style="color:#204a87;font-weight:bold">decimal</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">p</span><span style="color:#ce5c00;font-weight:bold">)</span> <span style="color:#ce5c00;font-weight:bold">/</span> <span style="color:#000">100</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">0m</span></code></pre></div>
+
+<p>Ok, let me have another little moan here. This function takes an int, in other words a percentage in this nice format: 5, and returns it as a decimal 0.05m.</p>
+
+<p>So, asDecimal might be a better name. Having to convert back to a decimal likes this leads me to thing maybe a decimal might have done the job just as well. But I’m not here to judge, just explain.</p>
+
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fsharp" data-lang="fsharp"><span style="color:#204a87;font-weight:bold">let</span> <span style="color:#000">reducePriceBy</span> <span style="color:#000">discount</span> <span style="color:#000">price</span> <span style="color:#ce5c00;font-weight:bold">=</span> 
+    <span style="color:#000">price</span> <span style="color:#ce5c00;font-weight:bold">-</span> <span style="color:#000">price</span> <span style="color:#ce5c00;font-weight:bold">*</span> <span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">asPercent</span> <span style="color:#000">discount</span><span style="color:#ce5c00;font-weight:bold">)</span></code></pre></div>
+
+<p>This looks pretty straightforward, surely there’s no functional voodoo going on here? Well, actually there is some very cool functional voodoo going on.</p>
+
+<p>In C# land, the order of arguments for a function isn’t strictly speaking, important. Some developers come up with standards and best practices, but, basically as long as you’re consistent, it doesn’t really matter.</p>
+
+<p>In languages like F# it matters a great deal.</p>
+
+<p>On the face of it, the reducePriceBy function accepts 2 arguments, discount, and price.</p>
+
+<p>Partial Application was one of the big things that popped my C# tinted eyes, when I first encountered F#. In simple terms it means that if you pass some of the arguments to a function, you get back a function that accepts the rest of the arguments.</p>
+
+<p>So, if we pass a discount to reducePriceBy, we get back a function that accepts a price, and reduces it by that locked in discount.</p>
+
+<p>That’s why discount is the first argument and price is the second. It’s hard to see a use for a function that accepts various discounts and applies them to some locked in price.</p>
+
+<p>Through the wonder of partial application, and all the types and functions above, we get to the centrepiece of the program. If you had known F# from the start, your eye would have headed straight for this function to see what was going on.</p>
+
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fsharp" data-lang="fsharp"><span style="color:#204a87;font-weight:bold">let</span> <span style="color:#000">calculateDiscountedPrice</span> <span style="color:#000">account</span> <span style="color:#000">price</span> <span style="color:#ce5c00;font-weight:bold">=</span> 
+    <span style="color:#204a87;font-weight:bold">let</span> <span style="color:#000">customerDiscount</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">yearsDiscount</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">accountDiscount</span> <span style="color:#000">account</span>
+    <span style="color:#000">price</span>
+    <span style="color:#ce5c00;font-weight:bold">|&gt;</span> <span style="color:#000">reducePriceBy</span> <span style="color:#000">customerDiscount</span>
+    <span style="color:#ce5c00;font-weight:bold">|&gt;</span> <span style="color:#000">reducePriceBy</span> <span style="color:#000">yearsDiscount</span></code></pre></div>
+
+<p>calculateDiscountedPrice takes an AccountStatus. Which is either Registered for a particular Customer, and number of years, or UnRegistered.</p>
+
+<p>calculateDiscountedPrice also takes a price which is a decimal.</p>
+
+<p>The accountDiscountFunction takes the AccountStatus and returns a tuple containing Customer Discount and Years Discount (both in the int format). These are stored in customerDiscount and yearsDiscount respectively. There’s that destructuring again.</p>
+
+<p>So, what’s the logic of discounting a price? Here’s the important bit.</p>
+
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fsharp" data-lang="fsharp"><span style="color:#000">price</span>
+<span style="color:#ce5c00;font-weight:bold">|&gt;</span> <span style="color:#000">reducePriceBy</span> <span style="color:#000">customerDiscount</span>
+<span style="color:#ce5c00;font-weight:bold">|&gt;</span> <span style="color:#000">reducePriceBy</span> <span style="color:#000">yearsDiscount</span></code></pre></div>
+
+<p>Let me rewrite that slightly.</p>
+
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fsharp" data-lang="fsharp"><span style="color:#000">price</span>
+<span style="color:#ce5c00;font-weight:bold">|&gt;</span> <span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">reducePriceBy</span> <span style="color:#000">customerDiscount</span><span style="color:#ce5c00;font-weight:bold">)</span>
+<span style="color:#ce5c00;font-weight:bold">|&gt;</span> <span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">reducePriceBy</span> <span style="color:#000">yearsDiscount</span><span style="color:#ce5c00;font-weight:bold">)</span></code></pre></div>
+
+<p>Remember I said that passing a discount value to reducePriceBy would return a new function that accepts a price.
+Well, that’s what we’re doing. The parenthesis above aren’t necessary but they show that partial application is going to produce two functions, one that reduces a price by the customer discount amount and a second that reduces a price by the years discount amount.</p>
+
+<p>Or, to make a short story long…</p>
+
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fsharp" data-lang="fsharp"><span style="color:#204a87;font-weight:bold">let</span> <span style="color:#000">reducePriceByCustomerDiscount</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">reducePriceBy</span> <span style="color:#000">customerDiscount</span>
+<span style="color:#204a87;font-weight:bold">let</span> <span style="color:#000">reducePriceByYearsDiscount</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">reducePriceBy</span> <span style="color:#000">yearsDiscount</span>
+
+<span style="color:#000">price</span>
+<span style="color:#ce5c00;font-weight:bold">|&gt;</span> <span style="color:#000">reducePriceByCustomerDiscount</span>
+<span style="color:#ce5c00;font-weight:bold">|&gt;</span> <span style="color:#000">reducePriceByYearsDiscount</span></code></pre></div>
+
+<p>The pipe forward operator |&gt; simply takes the value on it’s left and passes it to the function on it’s right. You will occasionally hear people (like me a long time ago) say that the pipe forward operator passes a value on the left in as the ‘last argument’ to the function on the right.</p>
+
+<p>As you can hopefully see that’s a bad way to think about it. The expression on the right of the pipe forward operator is evaluated and should produce a function. That expression might just be a function, or it might be a function that needs to be partially applied. It might in fact be any expression that evaluates to a function capable of accepting the value on the left of the operator.</p>
+
+<p>And, when that value is piped into the function, the result of that can be piped on in the same way to the next function. As we see here.</p>
+
+<p>The final little gimmick in this program is the test. There’s no test framework, or assert. Just a variable tests that will either be true or false.</p>
+
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fsharp" data-lang="fsharp"><span style="color:#204a87;font-weight:bold">let</span> <span style="color:#000">tests</span> <span style="color:#ce5c00;font-weight:bold">=</span>
+    <span style="color:#ce5c00;font-weight:bold">[</span>
+        <span style="color:#000">calculateDiscountedPrice</span> <span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">Registered</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">MostValuable</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">1</span><span style="color:#ce5c00;font-weight:bold">))</span>  <span style="color:#000">100</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">0m</span>
+        <span style="color:#000">calculateDiscountedPrice</span> <span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">Registered</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">Valuable</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">6</span><span style="color:#ce5c00;font-weight:bold">))</span>      <span style="color:#000">100</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">0m</span>
+        <span style="color:#000">calculateDiscountedPrice</span> <span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">Registered</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">Simple</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">1</span><span style="color:#ce5c00;font-weight:bold">))</span>        <span style="color:#000">100</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">0m</span>
+        <span style="color:#000">calculateDiscountedPrice</span> <span style="color:#000">UnRegistered</span>                   <span style="color:#000">100</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">0m</span>
+    <span style="color:#ce5c00;font-weight:bold">]</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#ce5c00;font-weight:bold">[</span><span style="color:#000">94</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">05000M</span><span style="color:#ce5c00;font-weight:bold">;</span> <span style="color:#000">92</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">15000M</span><span style="color:#ce5c00;font-weight:bold">;</span> <span style="color:#000">98</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">01000M</span><span style="color:#ce5c00;font-weight:bold">;</span> <span style="color:#000">100</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">0M</span><span style="color:#ce5c00;font-weight:bold">]</span></code></pre></div>
+
+<p>Here are the two lists.</p>
+
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fsharp" data-lang="fsharp"><span style="color:#ce5c00;font-weight:bold">[</span>
+    <span style="color:#000">calculateDiscountedPrice</span> <span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">Registered</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">MostValuable</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">1</span><span style="color:#ce5c00;font-weight:bold">))</span>  <span style="color:#000">100</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">0m</span>
+    <span style="color:#000">calculateDiscountedPrice</span> <span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">Registered</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">Valuable</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">6</span><span style="color:#ce5c00;font-weight:bold">))</span>      <span style="color:#000">100</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">0m</span>
+    <span style="color:#000">calculateDiscountedPrice</span> <span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">Registered</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">Simple</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">1</span><span style="color:#ce5c00;font-weight:bold">))</span>        <span style="color:#000">100</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">0m</span>
+    <span style="color:#000">calculateDiscountedPrice</span> <span style="color:#000">UnRegistered</span>                   <span style="color:#000">100</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">0m</span>
+<span style="color:#ce5c00;font-weight:bold">]</span>
+
+<span style="color:#ce5c00;font-weight:bold">[</span><span style="color:#000">94</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">05000M</span><span style="color:#ce5c00;font-weight:bold">;</span> <span style="color:#000">92</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">15000M</span><span style="color:#ce5c00;font-weight:bold">;</span> <span style="color:#000">98</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">01000M</span><span style="color:#ce5c00;font-weight:bold">;</span> <span style="color:#000">100</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">0M</span><span style="color:#ce5c00;font-weight:bold">]</span></code></pre></div>
+
+<p>In all cases the price being used is 100.0m.</p>
+
+<p>The AccountStatus values are as discussed earlier, either UnRegistered, or Registered along with a tuple of a Customer and an int.</p>
+
+<p>Each of those calls to calculateDiscountedPrice will evaluate to a decimal, so we’ll end up with a list of decimals. If that list happens to match the list of decimals provided then ‘tests’ will be true, otherwise it will be false.</p>
+
+<p>As it happens, it’s true</p>
+
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fsharp" data-lang="fsharp"><span style="color:#204a87;font-weight:bold">val</span> <span style="color:#000">tests</span> <span style="color:#ce5c00;font-weight:bold">:</span> <span style="color:#204a87;font-weight:bold">bool</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#204a87;font-weight:bold">true</span></code></pre></div>
+
+                        </div>
+                        
+                        
+                        <div id="comments">
+                            <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "devjoycom" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+                        </div>
+                        
+
+                    </div>
+                    
+
+                    
+
+                    
+
+                    <div class="col-md-3">
+
+                        
+
+                        
+
+<div class="panel panel-default sidebar-menu">
+
+    <div class="panel-heading">
+      <h3 class="panel-title">Search</h3>
+    </div>
+
+    <div class="panel-body">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" role="search">
+            <div class="input-group">
+                <input type="search" name="q" class="form-control" placeholder="Search">
+                <input type="hidden" name="sitesearch" value="https://www.devjoy.com/">
+                <span class="input-group-btn">
+                    <button type="submit" class="btn btn-template-main"><i class="fa fa-search"></i></button>
+                </span>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+
+
+
+
+
+<div class="panel panel-default sidebar-menu">
+
+    <div class="panel-heading">
+      <h3 class="panel-title">Categories</h3>
+    </div>
+
+    <div class="panel-body">
+        <ul class="nav nav-pills nav-stacked">
+            
+            <li><a href="https://www.devjoy.com/categories/how-to">how-to (22)</a>
+            </li>
+            
+            <li><a href="https://www.devjoy.com/categories/reviews">reviews (1)</a>
+            </li>
+            
+            <li><a href="https://www.devjoy.com/categories/thoughts">thoughts (15)</a>
+            </li>
+            
+        </ul>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+<div class="panel panel-default sidebar-menu">
+
+    <div class="panel-heading">
+      <h3 class="panel-title">Series</h3>
+    </div>
+
+    <div class="panel-body">
+        <ul class="nav nav-pills nav-stacked">
+            
+            <li><a href="https://www.devjoy.com/series/f-sharp-active-patterns">f-sharp-active-patterns (8)</a>
+            </li>
+            
+            <li><a href="https://www.devjoy.com/series/thinking-functionally">thinking-functionally (6)</a>
+            </li>
+            
+        </ul>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+<div class="panel sidebar-menu">
+    <div class="panel-heading">
+      <h3 class="panel-title">Tags</h3>
+    </div>
+
+    <div class="panel-body">
+        <ul class="tag-cloud">
+            
+            <li><a href="https://www.devjoy.com/tags/agile"><i class="fa fa-tags"></i> agile</a>
+            </li>
+            
+            <li><a href="https://www.devjoy.com/tags/c"><i class="fa fa-tags"></i> c#</a>
+            </li>
+            
+            <li><a href="https://www.devjoy.com/tags/code"><i class="fa fa-tags"></i> code</a>
+            </li>
+            
+            <li><a href="https://www.devjoy.com/tags/coding"><i class="fa fa-tags"></i> coding</a>
+            </li>
+            
+            <li><a href="https://www.devjoy.com/tags/complexity"><i class="fa fa-tags"></i> complexity</a>
+            </li>
+            
+            <li><a href="https://www.devjoy.com/tags/design"><i class="fa fa-tags"></i> design</a>
+            </li>
+            
+            <li><a href="https://www.devjoy.com/tags/f"><i class="fa fa-tags"></i> f#</a>
+            </li>
+            
+            <li><a href="https://www.devjoy.com/tags/functional-programming"><i class="fa fa-tags"></i> functional-programming</a>
+            </li>
+            
+            <li><a href="https://www.devjoy.com/tags/learning"><i class="fa fa-tags"></i> learning</a>
+            </li>
+            
+            <li><a href="https://www.devjoy.com/tags/tdd"><i class="fa fa-tags"></i> tdd</a>
+            </li>
+            
+            <li><a href="https://www.devjoy.com/tags/teams"><i class="fa fa-tags"></i> teams</a>
+            </li>
+            
+            <li><a href="https://www.devjoy.com/tags/technical-debt"><i class="fa fa-tags"></i> technical-debt</a>
+            </li>
+            
+            <li><a href="https://www.devjoy.com/tags/testing"><i class="fa fa-tags"></i> testing</a>
+            </li>
+            
+        </ul>
+    </div>
+</div>
+
+
+
+
+
+
+                        
+
+                    </div>
+                    
+
+                    
+
+                </div>
+                
+
+            </div>
+            
+        </div>
+        
+
+        
+
+
+
+
+<div id="copyright">
+    <div class="container">
+        <div class="col-md-12">
+            
+            <p class="pull-left">Copyright (c) 2018, Devjoy Ltd.</p>
+            
+            <p class="pull-right">
+              Template by <a href="http://bootstrapious.com/free-templates">Bootstrapious</a>.
+              
+
+              Ported to Hugo by <a href="https://github.com/devcows/hugo-universal-theme">DevCows</a>
+            </p>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+    </div>
+    
+
+    
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-131889453-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+
+<script src="//code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.1/jquery.waypoints.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/Counter-Up/1.0/jquery.counterup.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery-parallax/1.1.3/jquery-parallax.js"></script>
+<script src="https://www.devjoy.com/js/front.js"></script>
+
+
+<script src="https://www.devjoy.com/js/owl.carousel.min.js"></script>
+
+
+  </body>
+</html>

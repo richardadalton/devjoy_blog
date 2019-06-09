@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Agile on devjoy</title>
+    <link>https://www.devjoy.com/tags/agile/</link>
+    <description>Recent content in Agile on devjoy</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 09 Jul 2014 17:43:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://www.devjoy.com/tags/agile/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Fly The Damn Plane</title>
+      <link>https://www.devjoy.com/blog/fly-the-damn-plane/</link>
+      <pubDate>Wed, 09 Jul 2014 17:43:00 +0000</pubDate>
+      
+      <guid>https://www.devjoy.com/blog/fly-the-damn-plane/</guid>
+      <description>Constant Learning Being a software developer means constant learning. The technical landscape is always shifting. We have to run to stand still. We know this. We accept it. For some it’s the very thing that attracts them to the profession.
+I’ve learned lots about software development in the last few years.
+How to automate builds How to automate tests Object Oriented Programming/Design Functional Programming/Design Operating Systems Programming Languages Frameworks Version Contol Systems I’ve tried to embrace Agile, hell I’m even a certified Scrum Master.</description>
+    </item>
+    
+    <item>
+      <title>The Happy Path</title>
+      <link>https://www.devjoy.com/blog/the-happy-path/</link>
+      <pubDate>Mon, 10 Feb 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.devjoy.com/blog/the-happy-path/</guid>
+      <description>Every movement needs an enemy, it galvanises followers, gives a community a sense of some shared identity. Even if Group A aspire to nothing more than to not be like Group B that is at least something to rally around.
+“The Waterfall” is increasingly becoming an Alamo for those who aren’t or don’t want to be convinced by talk of “Agile”.
+For the Agile community the designated enemy seems to be “The Waterfall Model” and the command and control project management techniques that usually go hand in hand with it.</description>
+    </item>
+    
+    <item>
+      <title>Why Do Cars Have Breaks?</title>
+      <link>https://www.devjoy.com/blog/why-do-cars-have-breaks/</link>
+      <pubDate>Tue, 12 Feb 2013 19:00:00 +0000</pubDate>
+      
+      <guid>https://www.devjoy.com/blog/why-do-cars-have-breaks/</guid>
+      <description>Why do cars have brakes?
+I noticed this question on Jon Jagger’s blog and I was delighted with myself that I managed to get the “right” answer without peeking.
+Stop reading right now, have a think about it, then head on over to Jon’s blog to see what he has to say on the topic.
+Then, if you want, read on&amp;hellip;
+How would you drive if your car didn’t have brakes?</description>
+    </item>
+    
+    <item>
+      <title>The Pilot and the Project Manager</title>
+      <link>https://www.devjoy.com/blog/the-pilot-and-the-project-manager/</link>
+      <pubDate>Fri, 09 Nov 2012 12:00:00 +0000</pubDate>
+      
+      <guid>https://www.devjoy.com/blog/the-pilot-and-the-project-manager/</guid>
+      <description>To land a plane you need to line up with the runway, figure out the right rate of descent and airspeed, then monitor and manage those, all the way down to the ground.
+Your goal is to touch down on the runway, rather than before or after it, while travelling fast enough that the plane doesn’t stall and fall out of the sky, but slow enough that the wheels stay attached when they hit the ground, and you can stop within the amount of runway you have at your disposal.</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+  <head>
+  <meta charset="utf-8">
+  <meta name="robots" content="all,follow">
+  <meta name="googlebot" content="index,follow,snippet,archive">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Choices And Nesting</title>
+  <meta name="author" content="" />
+
+  
+  <meta name="keywords" content="devows, hugo, go">	
+  
+
+  
+  <meta name="description" content="Site template made by devcows using hugo">	
+  
+
+  <meta name="generator" content="Hugo 0.48" />
+
+  <link href='//fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300italic,500,700,800' rel='stylesheet' type='text/css'>
+
+  
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+  
+  <link href="/css/animate.css" rel="stylesheet">
+
+  
+  
+    <link href="/css/style.blue.css" rel="stylesheet" id="theme-stylesheet">
+  
+
+
+  
+  <link href="/css/custom.css" rel="stylesheet">
+
+  
+  
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  
+
+  
+  <link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon" />
+  <link rel="apple-touch-icon" href="/img/apple-touch-icon.png" />
+  
+
+  <link href="/css/owl.carousel.css" rel="stylesheet">
+  <link href="/css/owl.theme.css" rel="stylesheet">
+
+  <link rel="alternate" href="https://www.devjoy.com/index.xml" type="application/rss+xml" title="devjoy">
+
+  
+  <meta property="og:title" content="Choices And Nesting" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="/blog/active-patterns/choices-and-nesting//" />
+  <meta property="og:image" content="img/logo.png" />
+
+</head>
+
+
+  <body>
+    <div id="all">
+
+        <header>
+
+          <div class="navbar-affixed-top" data-spy="affix" data-offset-top="200">
+
+    <div class="navbar navbar-default yamm" role="navigation" id="navbar">
+
+        <div class="container">
+            <div class="navbar-header">
+                <a class="navbar-brand home" href="https://www.devjoy.com/">
+                    <img src="https://www.devjoy.com/img/logo.png" alt="Choices And Nesting logo" class="hidden-xs hidden-sm">
+                    <img src="https://www.devjoy.com/img/logo-small.png" alt="Choices And Nesting logo" class="visible-xs visible-sm">
+                    <span class="sr-only">Choices And Nesting - go to homepage</span>
+                </a>
+                <div class="navbar-buttons">
+                    <button type="button" class="navbar-toggle btn-template-main" data-toggle="collapse" data-target="#navigation">
+                      <span class="sr-only">Toggle Navigation</span>
+                        <i class="fa fa-align-justify"></i>
+                    </button>
+                </div>
+            </div>
+            
+
+            <div class="navbar-collapse collapse" id="navigation">
+                <ul class="nav navbar-nav navbar-right">
+                  
+                  <li class="dropdown">
+                    
+                    <a href="/">Home</a>
+                    
+                  </li>
+                  
+                  <li class="dropdown">
+                    
+                    <a href="/blog/">Blog</a>
+                    
+                  </li>
+                  
+                  <li class="dropdown">
+                    
+                    <a href="/contact/">Contact</a>
+                    
+                  </li>
+                  
+                </ul>
+            </div>
+            
+
+            <div class="collapse clearfix" id="search">
+
+                <form class="navbar-form" role="search">
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Search">
+                        <span class="input-group-btn">
+
+                    <button type="submit" class="btn btn-template-main"><i class="fa fa-search"></i></button>
+
+                </span>
+                    </div>
+                </form>
+
+            </div>
+            
+
+        </div>
+    </div>
+    
+
+</div>
+
+
+
+
+        </header>
+
+        <div id="heading-breadcrumbs">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h1>Choices And Nesting</h1>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+        <div id="content">
+            <div class="container">
+
+                <div class="row">
+
+                    
+
+                    <div class="col-md-9" id="blog-post">
+
+                        <p class="text-muted text-uppercase mb-small text-right">August 18, 2014</p>
+
+                        <div id="post-content">
+                          
+
+<p>And so, we arrive at the last post of the series. I’ll show you the F# ‘Choice’ type and show how it relates to active patterns. I’ll explain how to add additional parameters to a multi-case active pattern, and introduce some complex pattern matching using nested active patterns.</p>
+
+<h3 id="look-ma-no-params">Look Ma! No Params</h3>
+
+<p>In the previous post I mentioned that Multi-Case active patterns can’t accept additional arguments beyond the one that all active patterns must accept. Here’s what the code might look like if they could.</p>
+
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fsharp" data-lang="fsharp"><span style="color:#204a87;font-weight:bold">let</span> <span style="color:#ce5c00;font-weight:bold">(|</span><span style="color:#000">Smaller</span><span style="color:#ce5c00;font-weight:bold">|</span><span style="color:#000">Equal</span><span style="color:#ce5c00;font-weight:bold">|</span><span style="color:#000">Bigger</span><span style="color:#ce5c00;font-weight:bold">|)</span> <span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">compareWith</span><span style="color:#ce5c00;font-weight:bold">:</span> <span style="color:#000">int</span><span style="color:#ce5c00;font-weight:bold">)</span> <span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">n</span><span style="color:#ce5c00;font-weight:bold">:</span> <span style="color:#000">int</span><span style="color:#ce5c00;font-weight:bold">)</span> <span style="color:#ce5c00;font-weight:bold">=</span>
+    <span style="color:#204a87;font-weight:bold">if</span> <span style="color:#000">n</span> <span style="color:#ce5c00;font-weight:bold">&lt;</span> <span style="color:#000">compareWith</span> <span style="color:#204a87;font-weight:bold">then</span> <span style="color:#000">Smaller</span>
+    <span style="color:#204a87;font-weight:bold">elif</span> <span style="color:#000">n</span> <span style="color:#ce5c00;font-weight:bold">&gt;</span> <span style="color:#000">compareWith</span> <span style="color:#204a87;font-weight:bold">then</span> <span style="color:#000">Bigger</span>
+    <span style="color:#204a87;font-weight:bold">else</span> <span style="color:#000">Equal</span>
+
+<span style="color:#204a87;font-weight:bold">let</span> <span style="color:#000">DescribeNumber</span> <span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">n</span><span style="color:#ce5c00;font-weight:bold">:</span> <span style="color:#000">int</span><span style="color:#ce5c00;font-weight:bold">)</span> <span style="color:#ce5c00;font-weight:bold">=</span>
+    <span style="color:#204a87;font-weight:bold">match</span> <span style="color:#000">n</span> <span style="color:#204a87;font-weight:bold">with</span>
+    <span style="color:#ce5c00;font-weight:bold">|</span> <span style="color:#000">Smaller</span> <span style="color:#000">10</span> <span style="color:#ce5c00;font-weight:bold">-&gt;</span> <span style="color:#4e9a06">&#34;Small&#34;</span>
+    <span style="color:#ce5c00;font-weight:bold">|</span> <span style="color:#000">Bigger</span> <span style="color:#000">10</span> <span style="color:#ce5c00;font-weight:bold">-&gt;</span> <span style="color:#4e9a06">&#34;Bigger&#34;</span>
+    <span style="color:#ce5c00;font-weight:bold">|</span> <span style="color:#000">Equal</span> <span style="color:#000">10</span> <span style="color:#ce5c00;font-weight:bold">-&gt;</span> <span style="color:#4e9a06">&#34;Equal&#34;</span></code></pre></div>
+
+<p>On the face of it that looks like reasonable code. To see why it’s invalid, let’s change the DescribeNumber function slightly.</p>
+
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fsharp" data-lang="fsharp"><span style="color:#204a87;font-weight:bold">let</span> <span style="color:#000">DescribeNumber</span> <span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">n</span><span style="color:#ce5c00;font-weight:bold">:</span> <span style="color:#000">int</span><span style="color:#ce5c00;font-weight:bold">)</span> <span style="color:#ce5c00;font-weight:bold">=</span>
+    <span style="color:#204a87;font-weight:bold">match</span> <span style="color:#000">n</span> <span style="color:#204a87;font-weight:bold">with</span>
+    <span style="color:#ce5c00;font-weight:bold">|</span> <span style="color:#000">Smaller</span> <span style="color:#000">5</span> <span style="color:#ce5c00;font-weight:bold">-&gt;</span> <span style="color:#4e9a06">&#34;Small&#34;</span>
+    <span style="color:#ce5c00;font-weight:bold">|</span> <span style="color:#000">Bigger</span> <span style="color:#000">10</span> <span style="color:#ce5c00;font-weight:bold">-&gt;</span> <span style="color:#4e9a06">&#34;Bigger&#34;</span>
+    <span style="color:#ce5c00;font-weight:bold">|</span> <span style="color:#000">Equal</span> <span style="color:#000">10</span> <span style="color:#ce5c00;font-weight:bold">-&gt;</span> <span style="color:#4e9a06">&#34;Equal&#34;</span></code></pre></div>
+
+<p>Assuming we could do this, what should happen if we pass the number 7 to DescribeNumber?</p>
+
+<p>The first clause won’t match, because 7 is not smaller than 5. The second and third clauses won’t match either because 7 isn’t bigger than or equal to 10. So, we’ve taken a multi-case pattern, where they whole point is the completeness of the pattern matching, and we’ve broken that completeness by parameterizing each clause separately.</p>
+
+<p>If you try this code out you’ll find that the error isn’t in the Pattern Recognizer, it’s in DescribeNumber. In other words, it’s fine to define a multi-case active pattern, as long as you don’t try to pattern match on it. That offers us a clue as to how to proceed.</p>
+
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fsharp" data-lang="fsharp"><span style="color:#204a87;font-weight:bold">let</span> <span style="color:#ce5c00;font-weight:bold">(|</span><span style="color:#000">SmallerThan10</span><span style="color:#ce5c00;font-weight:bold">|</span><span style="color:#000">EqualTo10</span><span style="color:#ce5c00;font-weight:bold">|</span><span style="color:#000">BiggerThan10</span><span style="color:#ce5c00;font-weight:bold">|)</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#ce5c00;font-weight:bold">(|</span><span style="color:#000">Smaller</span><span style="color:#ce5c00;font-weight:bold">|</span><span style="color:#000">Equal</span><span style="color:#ce5c00;font-weight:bold">|</span><span style="color:#000">Bigger</span><span style="color:#ce5c00;font-weight:bold">|)</span> <span style="color:#000">10</span></code></pre></div>
+
+<p>If we partially apply the Active Pattern, locking in a value for the additional parameter, we’re back to a multi-case active pattern with one parameter. And our pattern match now looks like this.</p>
+
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fsharp" data-lang="fsharp"><span style="color:#204a87;font-weight:bold">let</span> <span style="color:#000">DescribeNumber</span> <span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">n</span><span style="color:#ce5c00;font-weight:bold">:</span> <span style="color:#000">int</span><span style="color:#ce5c00;font-weight:bold">)</span> <span style="color:#ce5c00;font-weight:bold">=</span>
+    <span style="color:#204a87;font-weight:bold">match</span> <span style="color:#000">n</span> <span style="color:#204a87;font-weight:bold">with</span>
+    <span style="color:#ce5c00;font-weight:bold">|</span> <span style="color:#000">SmallerThan10</span> <span style="color:#ce5c00;font-weight:bold">-&gt;</span> <span style="color:#4e9a06">&#34;Small&#34;</span>
+    <span style="color:#ce5c00;font-weight:bold">|</span> <span style="color:#000">BiggerThan10</span> <span style="color:#ce5c00;font-weight:bold">-&gt;</span> <span style="color:#4e9a06">&#34;Bigger&#34;</span>
+    <span style="color:#ce5c00;font-weight:bold">|</span> <span style="color:#000">EqualTo10</span> <span style="color:#ce5c00;font-weight:bold">-&gt;</span> <span style="color:#4e9a06">&#34;Equal&#34;</span></code></pre></div>
+
+<p>The original function has the values Smaller, Equal and Bigger and the partially applied version has SmallerThan10, EqualTo10 and BiggerThan10. Which begs the question, how does one map to the other? Is it just their positions?</p>
+
+<p>Well, yes, that’s exactly how it works, but for an interesting reason that explains a lot about Multi-Case Active Patterns. Go back and take a look at the signature of the original active pattern.</p>
+
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fsharp" data-lang="fsharp"><span style="color:#204a87;font-weight:bold">val</span> <span style="color:#ce5c00;font-weight:bold">(|</span><span style="color:#000">Smaller</span><span style="color:#ce5c00;font-weight:bold">|</span><span style="color:#000">Equal</span><span style="color:#ce5c00;font-weight:bold">|</span><span style="color:#000">Bigger</span><span style="color:#ce5c00;font-weight:bold">|)</span> <span style="color:#ce5c00;font-weight:bold">:</span>
+  <span style="color:#000">compareWith</span><span style="color:#ce5c00;font-weight:bold">:</span><span style="color:#000">int</span> <span style="color:#ce5c00;font-weight:bold">-&gt;</span> <span style="color:#000">n</span><span style="color:#ce5c00;font-weight:bold">:</span><span style="color:#000">int</span> <span style="color:#ce5c00;font-weight:bold">-&gt;</span> <span style="color:#000">Choice</span><span style="color:#ce5c00;font-weight:bold">&lt;</span><span style="color:#204a87;font-weight:bold">unit</span><span style="color:#ce5c00;font-weight:bold">,</span><span style="color:#204a87;font-weight:bold">unit</span><span style="color:#ce5c00;font-weight:bold">,</span><span style="color:#204a87;font-weight:bold">unit</span><span style="color:#ce5c00;font-weight:bold">&gt;</span></code></pre></div>
+
+<p>It returns a Choice</p>
+
+<h3 id="give-me-choice">Give me Choice</h3>
+
+<p>Just as the Option type allowed us to write functions that can return either ‘Some value’ or ‘None’. The Choice type allows us to return one of up to seven values (remember that seven item limit on multi-case active patterns?).</p>
+
+<p>Forget about Active Patterns for a moment and look at this plain old function.</p>
+
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fsharp" data-lang="fsharp"><span style="color:#204a87;font-weight:bold">let</span> <span style="color:#000">Divide</span> <span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">by</span><span style="color:#ce5c00;font-weight:bold">:</span> <span style="color:#000">int</span><span style="color:#ce5c00;font-weight:bold">)</span> <span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">this</span><span style="color:#ce5c00;font-weight:bold">:</span> <span style="color:#000">int</span><span style="color:#ce5c00;font-weight:bold">)</span> <span style="color:#ce5c00;font-weight:bold">=</span>
+    <span style="color:#204a87;font-weight:bold">if</span> <span style="color:#000">by</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">0</span> <span style="color:#204a87;font-weight:bold">then</span> <span style="color:#000">Choice1Of3</span> <span style="color:#4e9a06">&#34;You can&#39;t divide by zero, are you mad?&#34;</span>
+    <span style="color:#204a87;font-weight:bold">elif</span> <span style="color:#000">this</span> <span style="color:#ce5c00;font-weight:bold">%</span> <span style="color:#000">by</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">0</span> <span style="color:#204a87;font-weight:bold">then</span> <span style="color:#000">Choice2Of3</span> <span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">this</span><span style="color:#ce5c00;font-weight:bold">/</span><span style="color:#000">by</span><span style="color:#ce5c00;font-weight:bold">)</span>
+    <span style="color:#204a87;font-weight:bold">else</span> <span style="color:#000">Choice3Of3</span> <span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#204a87;font-weight:bold">decimal</span> <span style="color:#000">this</span><span style="color:#ce5c00;font-weight:bold">/</span><span style="color:#204a87;font-weight:bold">decimal</span> <span style="color:#000">by</span><span style="color:#ce5c00;font-weight:bold">)</span></code></pre></div>
+
+<p>It’s type is as follows</p>
+
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fsharp" data-lang="fsharp"><span style="color:#204a87;font-weight:bold">val</span> <span style="color:#000">Divide</span> <span style="color:#ce5c00;font-weight:bold">:</span> <span style="color:#000">by</span><span style="color:#ce5c00;font-weight:bold">:</span><span style="color:#000">int</span> <span style="color:#ce5c00;font-weight:bold">-&gt;</span> <span style="color:#000">this</span><span style="color:#ce5c00;font-weight:bold">:</span><span style="color:#000">int</span> <span style="color:#ce5c00;font-weight:bold">-&gt;</span> <span style="color:#000">Choice</span><span style="color:#ce5c00;font-weight:bold">&lt;</span><span style="color:#204a87;font-weight:bold">string</span><span style="color:#ce5c00;font-weight:bold">,</span><span style="color:#000">int</span><span style="color:#ce5c00;font-weight:bold">,</span><span style="color:#204a87;font-weight:bold">decimal</span><span style="color:#ce5c00;font-weight:bold">&gt;</span></code></pre></div>
+
+<p>Depending on the numbers you try to divide, this function will return one of three choices. A string (an error message for divide by zero), an int (numbers divide evenly), or a decimal (doesn’t divide evenly.)
+We can pattern match on this function just like we do with Multi-Choice Active Patterns.</p>
+
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fsharp" data-lang="fsharp"><span style="color:#204a87;font-weight:bold">let</span> <span style="color:#000">DescribeDivide</span> <span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">this</span><span style="color:#ce5c00;font-weight:bold">:</span> <span style="color:#000">int</span><span style="color:#ce5c00;font-weight:bold">)</span> <span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">by</span><span style="color:#ce5c00;font-weight:bold">:</span> <span style="color:#000">int</span><span style="color:#ce5c00;font-weight:bold">)</span> <span style="color:#ce5c00;font-weight:bold">=</span>
+    <span style="color:#204a87;font-weight:bold">match</span> <span style="color:#000">Divide</span> <span style="color:#000">this</span> <span style="color:#000">by</span> <span style="color:#204a87;font-weight:bold">with</span>
+    <span style="color:#ce5c00;font-weight:bold">|</span> <span style="color:#000">Choice1Of3</span> <span style="color:#000">error</span> <span style="color:#ce5c00;font-weight:bold">-&gt;</span> <span style="color:#000">error</span>
+    <span style="color:#ce5c00;font-weight:bold">|</span> <span style="color:#000">Choice2Of3</span> <span style="color:#000">n</span> <span style="color:#ce5c00;font-weight:bold">-&gt;</span> <span style="color:#000">sprintf</span> <span style="color:#4e9a06">&#34;%d divides evenly by %d and the result is %d&#34;</span> <span style="color:#000">this</span> <span style="color:#000">by</span> <span style="color:#000">n</span>
+    <span style="color:#ce5c00;font-weight:bold">|</span> <span style="color:#000">Choice3Of3</span> <span style="color:#000">n</span> <span style="color:#ce5c00;font-weight:bold">-&gt;</span> <span style="color:#000">sprintf</span> <span style="color:#4e9a06">&#34;%d doesn&#39;t divide evenly by %d and the result is %f&#34;</span> <span style="color:#000">this</span> <span style="color:#000">by</span> <span style="color:#000">n</span></code></pre></div>
+
+<p>It may be starting to dawn on you now that the Multi-Case Active Pattern is a way of assigning names to those choices. In fact, if you take any function that takes a single argument and returns a Choice you can turn it into a Multi-Case Active Pattern, and call the various possibilities anything you like.</p>
+
+<p>The following example partially applies the Divide function, the result is a Choice which can be turned into a multi-choice active pattern, and used immediately in a pattern match, all within a single function.</p>
+
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fsharp" data-lang="fsharp"><span style="color:#204a87;font-weight:bold">let</span> <span style="color:#000">DescribeDivide</span> <span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">by</span><span style="color:#ce5c00;font-weight:bold">:</span> <span style="color:#000">int</span><span style="color:#ce5c00;font-weight:bold">)</span> <span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">this</span><span style="color:#ce5c00;font-weight:bold">:</span> <span style="color:#000">int</span><span style="color:#ce5c00;font-weight:bold">)</span> <span style="color:#ce5c00;font-weight:bold">=</span>
+    <span style="color:#204a87;font-weight:bold">let</span> <span style="color:#ce5c00;font-weight:bold">(|</span><span style="color:#000">ByZero</span><span style="color:#ce5c00;font-weight:bold">|</span><span style="color:#000">Evenly</span><span style="color:#ce5c00;font-weight:bold">|</span><span style="color:#000">NotEvenly</span><span style="color:#ce5c00;font-weight:bold">|)</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">Divide</span> <span style="color:#000">by</span>
+    <span style="color:#204a87;font-weight:bold">match</span> <span style="color:#000">this</span> <span style="color:#204a87;font-weight:bold">with</span>
+    <span style="color:#ce5c00;font-weight:bold">|</span> <span style="color:#000">ByZero</span> <span style="color:#000">error</span> <span style="color:#ce5c00;font-weight:bold">-&gt;</span> <span style="color:#000">error</span>
+    <span style="color:#ce5c00;font-weight:bold">|</span> <span style="color:#000">Evenly</span> <span style="color:#000">n</span> <span style="color:#ce5c00;font-weight:bold">-&gt;</span> <span style="color:#000">sprintf</span> <span style="color:#4e9a06">&#34;%d divides evenly by %d and the result is %d&#34;</span> <span style="color:#000">this</span> <span style="color:#000">by</span> <span style="color:#000">n</span>
+    <span style="color:#ce5c00;font-weight:bold">|</span> <span style="color:#000">NotEvenly</span> <span style="color:#000">n</span> <span style="color:#ce5c00;font-weight:bold">-&gt;</span> <span style="color:#000">sprintf</span> <span style="color:#4e9a06">&#34;%d doesn&#39;t divide evenly by %d and the result is %f&#34;</span> <span style="color:#000">this</span> <span style="color:#000">by</span> <span style="color:#000">n</span></code></pre></div>
+
+<p>With all that in mind look again at the partially applied Multi-Case Active Pattern from above.</p>
+
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fsharp" data-lang="fsharp"><span style="color:#204a87;font-weight:bold">let</span> <span style="color:#ce5c00;font-weight:bold">(|</span><span style="color:#000">SmallerThan10</span><span style="color:#ce5c00;font-weight:bold">|</span><span style="color:#000">EqualTo10</span><span style="color:#ce5c00;font-weight:bold">|</span><span style="color:#000">BiggerThan10</span><span style="color:#ce5c00;font-weight:bold">|)</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#ce5c00;font-weight:bold">(|</span><span style="color:#000">Smaller</span><span style="color:#ce5c00;font-weight:bold">|</span><span style="color:#000">Equal</span><span style="color:#ce5c00;font-weight:bold">|</span><span style="color:#000">Bigger</span><span style="color:#ce5c00;font-weight:bold">|)</span> <span style="color:#000">10</span></code></pre></div>
+
+<p>The signature of the original Active Pattern is</p>
+
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fsharp" data-lang="fsharp"><span style="color:#000">compareWith</span><span style="color:#ce5c00;font-weight:bold">:</span><span style="color:#000">int</span> <span style="color:#ce5c00;font-weight:bold">-&gt;</span> <span style="color:#000">n</span><span style="color:#ce5c00;font-weight:bold">:</span><span style="color:#000">int</span> <span style="color:#ce5c00;font-weight:bold">-&gt;</span> <span style="color:#000">Choice</span><span style="color:#ce5c00;font-weight:bold">&lt;</span><span style="color:#204a87;font-weight:bold">unit</span><span style="color:#ce5c00;font-weight:bold">,</span><span style="color:#204a87;font-weight:bold">unit</span><span style="color:#ce5c00;font-weight:bold">,</span><span style="color:#204a87;font-weight:bold">unit</span><span style="color:#ce5c00;font-weight:bold">&gt;</span></code></pre></div>
+
+<p>Partially applying it we get a new function with the following signature</p>
+
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fsharp" data-lang="fsharp"><span style="color:#000">int</span> <span style="color:#ce5c00;font-weight:bold">-&gt;</span> <span style="color:#000">Choice</span><span style="color:#ce5c00;font-weight:bold">&lt;</span><span style="color:#204a87;font-weight:bold">unit</span><span style="color:#ce5c00;font-weight:bold">,</span><span style="color:#204a87;font-weight:bold">unit</span><span style="color:#ce5c00;font-weight:bold">,</span><span style="color:#204a87;font-weight:bold">unit</span><span style="color:#ce5c00;font-weight:bold">&gt;</span></code></pre></div>
+
+<p>One input parameter, and the out put is a Choice Of 3, so we can assign this to any Multi-Case Active Pattern name as long as it has 3 cases, in our example (|SmallerThan10|EqualTo10|BiggerThan10|).</p>
+
+<h3 id="code-quotations">Code Quotations</h3>
+
+<p>For this final example I need a reasonably elaborate domain model. Instead of creating a phony one, I’m going to use F# itself. Code Quotations provide a model for working with F# code as Data. The point of this example is to convey that even after 8 posts explaining Active Patterns in detail, there is still enormous scope to combine and use Active Patterns in interesting ways.</p>
+
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fsharp" data-lang="fsharp"><span style="color:#204a87;font-weight:bold">let</span> <span style="color:#000">model</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#ce5c00;font-weight:bold">&lt;@</span> <span style="color:#204a87;font-weight:bold">fun</span> <span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">x</span><span style="color:#ce5c00;font-weight:bold">:</span> <span style="color:#000">int</span><span style="color:#ce5c00;font-weight:bold">)</span> <span style="color:#ce5c00;font-weight:bold">-&gt;</span> <span style="color:#000">x</span> <span style="color:#ce5c00;font-weight:bold">*</span> <span style="color:#000">x</span> <span style="color:#ce5c00;font-weight:bold">@&gt;</span>
+<span style="color:#204a87;font-weight:bold">val</span> <span style="color:#000">model</span> <span style="color:#ce5c00;font-weight:bold">:</span> <span style="color:#000">Expr</span><span style="color:#ce5c00;font-weight:bold">&lt;(</span><span style="color:#000">int</span> <span style="color:#ce5c00;font-weight:bold">-&gt;</span> <span style="color:#000">int</span><span style="color:#ce5c00;font-weight:bold">)&gt;</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">Lambda</span> <span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">x</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">Call</span> <span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">None</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">op_Multiply</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#ce5c00;font-weight:bold">[</span><span style="color:#000">x</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">x</span><span style="color:#ce5c00;font-weight:bold">]))</span></code></pre></div>
+
+<p>The quoted expression is a lambda that takes an integer x and squares it. The quotation determines that we have an int-&gt;int expression. Without getting too bogged down in the syntax, you should be able to see that it’s a Lambda that accepts a variable x and calls a multiply operation, passing two arguments, both of which are x.</p>
+
+<p>OK, now you’re up to speed on Code Quotations, or as up to speed as you’re going to get from this post. It might be worth having a quick read of this page before continuing.</p>
+
+<p>Here are some Namespaces we’ll make use of.</p>
+
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fsharp" data-lang="fsharp"><span style="color:#204a87;font-weight:bold">open</span> <span style="color:#000">Microsoft.FSharp.Quotations</span>
+<span style="color:#204a87;font-weight:bold">open</span> <span style="color:#000">Microsoft.FSharp.Quotations.Patterns</span>
+<span style="color:#204a87;font-weight:bold">open</span> <span style="color:#000">System.Reflection</span></code></pre></div>
+
+<p>That Patterns namespace will come in handy. Code Quotations come with a set of ready made Active Patterns. The following example uses two supplied patterns. ‘Call’ matches method calls, and ‘Value’ matches values. Both are Single Partial Active Patterns.</p>
+
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fsharp" data-lang="fsharp"><span style="color:#204a87;font-weight:bold">let</span> <span style="color:#000">rec</span> <span style="color:#000">Describe</span> <span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">expr</span><span style="color:#ce5c00;font-weight:bold">:</span> <span style="color:#000">Expr</span><span style="color:#ce5c00;font-weight:bold">)</span> <span style="color:#ce5c00;font-weight:bold">=</span>
+    <span style="color:#204a87;font-weight:bold">match</span> <span style="color:#000">expr</span> <span style="color:#204a87;font-weight:bold">with</span>
+    <span style="color:#ce5c00;font-weight:bold">|</span> <span style="color:#000">Call</span> <span style="color:#ce5c00;font-weight:bold">(_,</span><span style="color:#000">f</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">left</span> <span style="color:#ce5c00;font-weight:bold">::</span> <span style="color:#000">right</span> <span style="color:#ce5c00;font-weight:bold">::</span> <span style="color:#3465a4">[]</span><span style="color:#ce5c00;font-weight:bold">)</span> <span style="color:#ce5c00;font-weight:bold">-&gt;</span> <span style="color:#000">sprintf</span> <span style="color:#4e9a06">&#34;%s %s %s&#34;</span> <span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">Describe</span> <span style="color:#000">left</span><span style="color:#ce5c00;font-weight:bold">)</span> <span style="color:#000">f</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">Name</span> <span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">Describe</span> <span style="color:#000">right</span><span style="color:#ce5c00;font-weight:bold">)</span>
+    <span style="color:#ce5c00;font-weight:bold">|</span> <span style="color:#000">Value</span> <span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">v</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">t</span><span style="color:#ce5c00;font-weight:bold">)</span> <span style="color:#204a87;font-weight:bold">when</span> <span style="color:#000">t</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">Name</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#4e9a06">&#34;Int32&#34;</span> <span style="color:#ce5c00;font-weight:bold">-&gt;</span> <span style="color:#000">sprintf</span> <span style="color:#4e9a06">&#34;%A&#34;</span> <span style="color:#000">v</span>
+    <span style="color:#ce5c00;font-weight:bold">|</span> <span style="color:#ce5c00;font-weight:bold">_</span> <span style="color:#ce5c00;font-weight:bold">-&gt;</span> <span style="color:#4e9a06">&#34;?&#34;</span></code></pre></div>
+
+<p>This function matches on method calls and values. It will fail to match on any other expression. The Call active pattern returns a three part tuple. We don’t care about the first part, the second part is the function that is called, which we bind to the name f. The third part of the tuple contains the list of arguments. We’ll match on calls that have exactly two arguments, and we bind them to the names left and right.</p>
+
+<p>We’ll also match on values. The Value Active Pattern returns a tuple containing the value and the type. We bind the names v and t to those respectively, and we’ll only match if the type is ‘Int32’.</p>
+
+<p>We add printing of the results and we get the following.</p>
+
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fsharp" data-lang="fsharp"><span style="color:#204a87;font-weight:bold">let</span> <span style="color:#000">desc</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">Describe</span> <span style="color:#ce5c00;font-weight:bold">&lt;@</span> <span style="color:#000">2</span> <span style="color:#ce5c00;font-weight:bold">-</span> <span style="color:#000">1</span> <span style="color:#ce5c00;font-weight:bold">*</span> <span style="color:#000">5</span> <span style="color:#ce5c00;font-weight:bold">-</span> <span style="color:#000">3</span> <span style="color:#ce5c00;font-weight:bold">@&gt;</span>
+<span style="color:#204a87;font-weight:bold">val</span> <span style="color:#000">desc</span> <span style="color:#ce5c00;font-weight:bold">:</span> <span style="color:#204a87;font-weight:bold">string</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#4e9a06">&#34;2 op_Subtraction 1 op_Multiply 5 op_Subtraction 3&#34;</span></code></pre></div>
+
+<p>OK, it ain’t pretty, but hopefully you can see how the Active Patterns are working. If we throw something other than integers at it, we won’t match the values.</p>
+
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fsharp" data-lang="fsharp"><span style="color:#204a87;font-weight:bold">let</span> <span style="color:#000">desc</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">Describe</span> <span style="color:#ce5c00;font-weight:bold">&lt;@</span> <span style="color:#000">2</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">0</span> <span style="color:#ce5c00;font-weight:bold">-</span> <span style="color:#000">1</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">0</span> <span style="color:#ce5c00;font-weight:bold">*</span> <span style="color:#000">5</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">0</span> <span style="color:#ce5c00;font-weight:bold">-</span> <span style="color:#000">3</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">0</span> <span style="color:#ce5c00;font-weight:bold">@&gt;</span></code></pre></div>
+
+<p>val desc : string = &ldquo;? op_Subtraction ? op_Multiply ? op_Subtraction ?&rdquo;</p>
+
+<h3 id="nesting">Nesting</h3>
+
+<p>Now let’s have some fun. We’ll need to create two Active Patterns.</p>
+
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fsharp" data-lang="fsharp"><span style="color:#204a87;font-weight:bold">let</span> <span style="color:#ce5c00;font-weight:bold">(|</span><span style="color:#000">MethodWithName</span><span style="color:#ce5c00;font-weight:bold">|_|)</span> <span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">s</span><span style="color:#ce5c00;font-weight:bold">:</span><span style="color:#204a87;font-weight:bold">string</span><span style="color:#ce5c00;font-weight:bold">)</span> <span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">m</span><span style="color:#ce5c00;font-weight:bold">:</span> <span style="color:#000">MethodInfo</span><span style="color:#ce5c00;font-weight:bold">)</span> <span style="color:#ce5c00;font-weight:bold">=</span>
+    <span style="color:#204a87;font-weight:bold">if</span> <span style="color:#000">s</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">m</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">Name</span> <span style="color:#204a87;font-weight:bold">then</span> <span style="color:#000">Some</span><span style="color:#3465a4">()</span> <span style="color:#204a87;font-weight:bold">else</span> <span style="color:#000">None</span>
+
+<span style="color:#204a87;font-weight:bold">let</span> <span style="color:#ce5c00;font-weight:bold">(|</span><span style="color:#000">TypeWithName</span><span style="color:#ce5c00;font-weight:bold">|_|)</span> <span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">s</span><span style="color:#ce5c00;font-weight:bold">:</span><span style="color:#204a87;font-weight:bold">string</span><span style="color:#ce5c00;font-weight:bold">)</span> <span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">t</span><span style="color:#ce5c00;font-weight:bold">:</span> <span style="color:#000">System</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">Type</span><span style="color:#ce5c00;font-weight:bold">)</span> <span style="color:#ce5c00;font-weight:bold">=</span>
+    <span style="color:#204a87;font-weight:bold">if</span> <span style="color:#000">s</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">t</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">Name</span> <span style="color:#204a87;font-weight:bold">then</span> <span style="color:#000">Some</span><span style="color:#3465a4">()</span> <span style="color:#204a87;font-weight:bold">else</span> <span style="color:#000">None</span></code></pre></div>
+
+<p>The first pattern accepts a string and a MethodInfo and matches if the method has the name we provide. The second does the same, but with the name of a Type.</p>
+
+<p>Here’s where things get interesting, the second element of the Tuple returned by the Call Active Pattern is a MethodInfo, which means we can pass it to this new Active Pattern. Like this.</p>
+
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fsharp" data-lang="fsharp"><span style="color:#204a87;font-weight:bold">let</span> <span style="color:#000">rec</span> <span style="color:#000">Describe</span> <span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">expr</span><span style="color:#ce5c00;font-weight:bold">:</span> <span style="color:#000">Expr</span><span style="color:#ce5c00;font-weight:bold">)</span> <span style="color:#ce5c00;font-weight:bold">=</span>
+    <span style="color:#204a87;font-weight:bold">match</span> <span style="color:#000">expr</span> <span style="color:#204a87;font-weight:bold">with</span>
+    <span style="color:#ce5c00;font-weight:bold">|</span> <span style="color:#000">Call</span> <span style="color:#ce5c00;font-weight:bold">(_,</span><span style="color:#000">MethodWithName</span> <span style="color:#4e9a06">&#34;op_Multiply&#34;</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#ce5c00;font-weight:bold">[</span><span style="color:#000">left</span><span style="color:#ce5c00;font-weight:bold">;</span> <span style="color:#000">right</span><span style="color:#ce5c00;font-weight:bold">])</span> <span style="color:#ce5c00;font-weight:bold">-&gt;</span> 
+        <span style="color:#000">sprintf</span> <span style="color:#4e9a06">&#34;%s %s %s&#34;</span> <span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">Describe</span> <span style="color:#000">left</span><span style="color:#ce5c00;font-weight:bold">)</span> <span style="color:#4e9a06">&#34;*&#34;</span> <span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">Describe</span> <span style="color:#000">right</span><span style="color:#ce5c00;font-weight:bold">)</span>
+    <span style="color:#ce5c00;font-weight:bold">|</span> <span style="color:#000">Call</span> <span style="color:#ce5c00;font-weight:bold">(_,</span><span style="color:#000">MethodWithName</span> <span style="color:#4e9a06">&#34;op_Subtraction&#34;</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#ce5c00;font-weight:bold">[</span><span style="color:#000">left</span><span style="color:#ce5c00;font-weight:bold">;</span> <span style="color:#000">right</span><span style="color:#ce5c00;font-weight:bold">])</span> <span style="color:#ce5c00;font-weight:bold">-&gt;</span> 
+        <span style="color:#000">sprintf</span> <span style="color:#4e9a06">&#34;%s %s %s&#34;</span> <span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">Describe</span> <span style="color:#000">left</span><span style="color:#ce5c00;font-weight:bold">)</span> <span style="color:#4e9a06">&#34;-&#34;</span> <span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">Describe</span> <span style="color:#000">right</span><span style="color:#ce5c00;font-weight:bold">)</span>
+    <span style="color:#ce5c00;font-weight:bold">|</span> <span style="color:#000">Value</span> <span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">v</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">TypeWithName</span> <span style="color:#4e9a06">&#34;Int32&#34;</span><span style="color:#ce5c00;font-weight:bold">)</span> <span style="color:#ce5c00;font-weight:bold">-&gt;</span> 
+        <span style="color:#000">sprintf</span> <span style="color:#4e9a06">&#34;%A&#34;</span> <span style="color:#000">v</span>
+    <span style="color:#ce5c00;font-weight:bold">|</span> <span style="color:#ce5c00;font-weight:bold">_</span> <span style="color:#ce5c00;font-weight:bold">-&gt;</span> <span style="color:#4e9a06">&#34;?&#34;</span></code></pre></div>
+
+<p>We’ve nested a match on specific method names within matches on method Calls. This will now only match on calls to op_Multiply and op_Subtract. Knowing this we can describe the methods with their operators ‘*’ and ‘-‘ rather than the ugly full method names.</p>
+
+<p>I did the same with the ‘TypeWithName’ active pattern and removed the ‘When’ clause in the process.
+Let that sink in. You can use an active pattern to match on values returned from another active pattern. You don’t need a whole separate ‘match .. with’ expression.</p>
+
+<p>I’ve only scratched the surface of nested types, for a much more detailed discussion this talk by Ross McKinlay is heavy going in places but really showcases the power of Active Patterns.</p>
+
+<h3 id="that-s-all-folks">That’s all folks</h3>
+
+<p>That’s it for this series. I hope you found it worthwhile. We’ve covered an enormous amount of information. If you’ve managed to work through the entire series of posts you should be fully comfortable with Active Patterns. All that remains is the put them to good use.</p>
+
+<p>Thanks for reading.</p>
+
+                        </div>
+                        
+                        
+                        <div id="comments">
+                            <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "devjoycom" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+                        </div>
+                        
+
+                    </div>
+                    
+
+                    
+
+                    
+
+                    <div class="col-md-3">
+
+                        
+
+                        
+
+<div class="panel panel-default sidebar-menu">
+
+    <div class="panel-heading">
+      <h3 class="panel-title">Search</h3>
+    </div>
+
+    <div class="panel-body">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" role="search">
+            <div class="input-group">
+                <input type="search" name="q" class="form-control" placeholder="Search">
+                <input type="hidden" name="sitesearch" value="https://www.devjoy.com/">
+                <span class="input-group-btn">
+                    <button type="submit" class="btn btn-template-main"><i class="fa fa-search"></i></button>
+                </span>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+
+
+
+
+
+<div class="panel panel-default sidebar-menu">
+
+    <div class="panel-heading">
+      <h3 class="panel-title">Categories</h3>
+    </div>
+
+    <div class="panel-body">
+        <ul class="nav nav-pills nav-stacked">
+            
+            <li><a href="https://www.devjoy.com/categories/how-to">how-to (22)</a>
+            </li>
+            
+            <li><a href="https://www.devjoy.com/categories/reviews">reviews (1)</a>
+            </li>
+            
+            <li><a href="https://www.devjoy.com/categories/thoughts">thoughts (15)</a>
+            </li>
+            
+        </ul>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+<div class="panel panel-default sidebar-menu">
+
+    <div class="panel-heading">
+      <h3 class="panel-title">Series</h3>
+    </div>
+
+    <div class="panel-body">
+        <ul class="nav nav-pills nav-stacked">
+            
+            <li><a href="https://www.devjoy.com/series/f-sharp-active-patterns">f-sharp-active-patterns (8)</a>
+            </li>
+            
+            <li><a href="https://www.devjoy.com/series/thinking-functionally">thinking-functionally (6)</a>
+            </li>
+            
+        </ul>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+<div class="panel sidebar-menu">
+    <div class="panel-heading">
+      <h3 class="panel-title">Tags</h3>
+    </div>
+
+    <div class="panel-body">
+        <ul class="tag-cloud">
+            
+            <li><a href="https://www.devjoy.com/tags/agile"><i class="fa fa-tags"></i> agile</a>
+            </li>
+            
+            <li><a href="https://www.devjoy.com/tags/c"><i class="fa fa-tags"></i> c#</a>
+            </li>
+            
+            <li><a href="https://www.devjoy.com/tags/code"><i class="fa fa-tags"></i> code</a>
+            </li>
+            
+            <li><a href="https://www.devjoy.com/tags/coding"><i class="fa fa-tags"></i> coding</a>
+            </li>
+            
+            <li><a href="https://www.devjoy.com/tags/complexity"><i class="fa fa-tags"></i> complexity</a>
+            </li>
+            
+            <li><a href="https://www.devjoy.com/tags/design"><i class="fa fa-tags"></i> design</a>
+            </li>
+            
+            <li><a href="https://www.devjoy.com/tags/f"><i class="fa fa-tags"></i> f#</a>
+            </li>
+            
+            <li><a href="https://www.devjoy.com/tags/functional-programming"><i class="fa fa-tags"></i> functional-programming</a>
+            </li>
+            
+            <li><a href="https://www.devjoy.com/tags/learning"><i class="fa fa-tags"></i> learning</a>
+            </li>
+            
+            <li><a href="https://www.devjoy.com/tags/tdd"><i class="fa fa-tags"></i> tdd</a>
+            </li>
+            
+            <li><a href="https://www.devjoy.com/tags/teams"><i class="fa fa-tags"></i> teams</a>
+            </li>
+            
+            <li><a href="https://www.devjoy.com/tags/technical-debt"><i class="fa fa-tags"></i> technical-debt</a>
+            </li>
+            
+            <li><a href="https://www.devjoy.com/tags/testing"><i class="fa fa-tags"></i> testing</a>
+            </li>
+            
+        </ul>
+    </div>
+</div>
+
+
+
+
+
+
+                        
+
+                    </div>
+                    
+
+                    
+
+                </div>
+                
+
+            </div>
+            
+        </div>
+        
+
+        
+
+
+
+
+<div id="copyright">
+    <div class="container">
+        <div class="col-md-12">
+            
+            <p class="pull-left">Copyright (c) 2018, Devjoy Ltd.</p>
+            
+            <p class="pull-right">
+              Template by <a href="http://bootstrapious.com/free-templates">Bootstrapious</a>.
+              
+
+              Ported to Hugo by <a href="https://github.com/devcows/hugo-universal-theme">DevCows</a>
+            </p>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+    </div>
+    
+
+    
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-131889453-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+
+<script src="//code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.1/jquery.waypoints.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/Counter-Up/1.0/jquery.counterup.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery-parallax/1.1.3/jquery-parallax.js"></script>
+<script src="https://www.devjoy.com/js/front.js"></script>
+
+
+<script src="https://www.devjoy.com/js/owl.carousel.min.js"></script>
+
+
+  </body>
+</html>

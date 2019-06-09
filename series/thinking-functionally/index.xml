@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Thinking Functionally on devjoy</title>
+    <link>https://www.devjoy.com/series/thinking-functionally/</link>
+    <description>Recent content in Thinking Functionally on devjoy</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 27 Jan 2013 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://www.devjoy.com/series/thinking-functionally/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Partial Application</title>
+      <link>https://www.devjoy.com/blog/thinking-functionally/partial-application/</link>
+      <pubDate>Sun, 27 Jan 2013 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.devjoy.com/blog/thinking-functionally/partial-application/</guid>
+      <description>Warning, novice functional thinker here. If you know your stuff, what follows may cause distress.
+I was messing with F# last night and I got a gentle reminder that I’m still a long way from thinking functionally, it still takes a lot of effort.
+I started with this
+let evens r = List.filter (fun x -&amp;gt; x % 2 = 0) r &amp;gt; evens [0..10];; val it : int list = [0; 2; 4; 6; 8; 10] Simple enough.</description>
+    </item>
+    
+    <item>
+      <title>Iterating, Incrementing, and Accumulating</title>
+      <link>https://www.devjoy.com/blog/thinking-functionally/iterating-incrementing-accumulating/</link>
+      <pubDate>Fri, 01 Feb 2013 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.devjoy.com/blog/thinking-functionally/iterating-incrementing-accumulating/</guid>
+      <description>Another F# session this evening and some more deliberate practice of Functional Thinking. To be fair, this post isn’t really about anything new. If you’ve ever used recursion, even in non-functional languages, this will be old news. If you are new to Functional Programming and/or recursion then this may be useful.
+Here’s a really simple function. It accepts a number n and sums all the numbers from 1 to n.</description>
+    </item>
+    
+    <item>
+      <title>Unfolding Sequences</title>
+      <link>https://www.devjoy.com/blog/thinking-functionally/unfolding-sequences/</link>
+      <pubDate>Thu, 07 Feb 2013 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.devjoy.com/blog/thinking-functionally/unfolding-sequences/</guid>
+      <description>In my last post I worked through an example that finds the range of numbers that sum to a target value, or gets as close as possible without exceeding the target. I mentioned that the solution felt a little too like the loopy code I would have written in non-functional languages. I felt that there might be a more “functional” way of solving the problem, but I didn’t know what it was.</description>
+    </item>
+    
+    <item>
+      <title>Memoization</title>
+      <link>https://www.devjoy.com/blog/thinking-functionally/memoization/</link>
+      <pubDate>Tue, 14 May 2013 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.devjoy.com/blog/thinking-functionally/memoization/</guid>
+      <description>Imagine you have a long running function that you’d like to avoid running unnecessarily. For the purposes of this post you’ll have to suspend disbelief and pretend that negating a number is an expensive task. This example prints out a message so you can see when it actually gets called.
+let Negate n = printfn &amp;#34;Negating &amp;#39;%A&amp;#39; this is hard work&amp;#34; n -n val Negate : int -&amp;gt; int &amp;gt; Negate 5;; Negating &amp;#39;5&amp;#39; this is hard work val it : int = -5 Now, let’s use that function when writing another.</description>
+    </item>
+    
+    <item>
+      <title>Recursion</title>
+      <link>https://www.devjoy.com/blog/thinking-functionally/recursion/</link>
+      <pubDate>Mon, 02 Jun 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.devjoy.com/blog/thinking-functionally/recursion/</guid>
+      <description>This post looks at a hugely important part of functional programming, Recursion. In simple terms this means writing a function that calls itself.
+There are endless examples of using recursion to figure out Fibonacci numbers, or process lists. This post will be a little more complicated but hopefully is simple enough that you’ll be able to follow along.
+We’re going to teach F# to play the perfect game of Tic-Tac-Toe.</description>
+    </item>
+    
+    <item>
+      <title>Maps and Sets</title>
+      <link>https://www.devjoy.com/blog/thinking-functionally/maps-and-sets/</link>
+      <pubDate>Mon, 21 Jul 2014 17:43:00 +0000</pubDate>
+      
+      <guid>https://www.devjoy.com/blog/thinking-functionally/maps-and-sets/</guid>
+      <description>In the most recent post in this series I implemented Tic-Tac-Toe using recursion to find the best moves. The point of that post was the recursion and I took the simplest approach I could think of to represent the actual board and moves.
+I used two lists of ints, one for each player’s list of occupied squares. The board itself wasn’t explicitly represented at all, it could be inferred from the two lists.</description>
+    </item>
+    
+  </channel>
+</rss>

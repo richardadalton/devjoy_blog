@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Tdd on devjoy</title>
+    <link>https://www.devjoy.com/tags/tdd/</link>
+    <description>Recent content in Tdd on devjoy</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 11 Nov 2012 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://www.devjoy.com/tags/tdd/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>The Anagrams Kata</title>
+      <link>https://www.devjoy.com/blog/the-anagrams-kata/</link>
+      <pubDate>Sun, 11 Nov 2012 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.devjoy.com/blog/the-anagrams-kata/</guid>
+      <description>The following is my C# implementation of the Anagrams Kata as described on cyber-dojo.com
+Write a program to generate all potential anagrams of an input string.
+For example, the potential anagrams of “biro” are
+biro bior brio broi boir bori ibro ibor irbo irob iobr iorb rbio rboi ribo riob roib robi obir obri oibr oirb orbi orib Let’s write a test.
+[Test] public void NoCharacters() { var expected = new List&amp;lt;string&amp;gt; {&amp;#34;&amp;#34;}; Assert.</description>
+    </item>
+    
+  </channel>
+</rss>

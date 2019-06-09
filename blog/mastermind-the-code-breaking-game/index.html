@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+  <head>
+  <meta charset="utf-8">
+  <meta name="robots" content="all,follow">
+  <meta name="googlebot" content="index,follow,snippet,archive">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Mastermind: The Code Breaking Game</title>
+  <meta name="author" content="" />
+
+  
+  <meta name="keywords" content="devows, hugo, go">	
+  
+
+  
+  <meta name="description" content="Site template made by devcows using hugo">	
+  
+
+  <meta name="generator" content="Hugo 0.48" />
+
+  <link href='//fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300italic,500,700,800' rel='stylesheet' type='text/css'>
+
+  
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+  
+  <link href="/css/animate.css" rel="stylesheet">
+
+  
+  
+    <link href="/css/style.blue.css" rel="stylesheet" id="theme-stylesheet">
+  
+
+
+  
+  <link href="/css/custom.css" rel="stylesheet">
+
+  
+  
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  
+
+  
+  <link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon" />
+  <link rel="apple-touch-icon" href="/img/apple-touch-icon.png" />
+  
+
+  <link href="/css/owl.carousel.css" rel="stylesheet">
+  <link href="/css/owl.theme.css" rel="stylesheet">
+
+  <link rel="alternate" href="https://www.devjoy.com/index.xml" type="application/rss+xml" title="devjoy">
+
+  
+  <meta property="og:title" content="Mastermind: The Code Breaking Game" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="/blog/mastermind-the-code-breaking-game//" />
+  <meta property="og:image" content="img/logo.png" />
+
+</head>
+
+
+  <body>
+    <div id="all">
+
+        <header>
+
+          <div class="navbar-affixed-top" data-spy="affix" data-offset-top="200">
+
+    <div class="navbar navbar-default yamm" role="navigation" id="navbar">
+
+        <div class="container">
+            <div class="navbar-header">
+                <a class="navbar-brand home" href="https://www.devjoy.com/">
+                    <img src="https://www.devjoy.com/img/logo.png" alt="Mastermind: The Code Breaking Game logo" class="hidden-xs hidden-sm">
+                    <img src="https://www.devjoy.com/img/logo-small.png" alt="Mastermind: The Code Breaking Game logo" class="visible-xs visible-sm">
+                    <span class="sr-only">Mastermind: The Code Breaking Game - go to homepage</span>
+                </a>
+                <div class="navbar-buttons">
+                    <button type="button" class="navbar-toggle btn-template-main" data-toggle="collapse" data-target="#navigation">
+                      <span class="sr-only">Toggle Navigation</span>
+                        <i class="fa fa-align-justify"></i>
+                    </button>
+                </div>
+            </div>
+            
+
+            <div class="navbar-collapse collapse" id="navigation">
+                <ul class="nav navbar-nav navbar-right">
+                  
+                  <li class="dropdown">
+                    
+                    <a href="/">Home</a>
+                    
+                  </li>
+                  
+                  <li class="dropdown">
+                    
+                    <a href="/blog/">Blog</a>
+                    
+                  </li>
+                  
+                  <li class="dropdown">
+                    
+                    <a href="/contact/">Contact</a>
+                    
+                  </li>
+                  
+                </ul>
+            </div>
+            
+
+            <div class="collapse clearfix" id="search">
+
+                <form class="navbar-form" role="search">
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Search">
+                        <span class="input-group-btn">
+
+                    <button type="submit" class="btn btn-template-main"><i class="fa fa-search"></i></button>
+
+                </span>
+                    </div>
+                </form>
+
+            </div>
+            
+
+        </div>
+    </div>
+    
+
+</div>
+
+
+
+
+        </header>
+
+        <div id="heading-breadcrumbs">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h1>Mastermind: The Code Breaking Game</h1>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+        <div id="content">
+            <div class="container">
+
+                <div class="row">
+
+                    
+
+                    <div class="col-md-9" id="blog-post">
+
+                        <p class="text-muted text-uppercase mb-small text-right">January 7, 2015</p>
+
+                        <div id="post-content">
+                          
+
+<p>Mastermind, is a code breaking game for two players.</p>
+
+<p>A “Code Maker” creates a secret sequence of colour pegs. A “Code Breaker” must break the code by taking guesses and working with the feedback from the Code Maker. Feedback is given using Black and White Pegs.</p>
+
+<p>A correct colour in the correct position is acknowledged with a Black Peg
+A correct colour in the wrong position is acknowledged with a White Peg
+The position of these pegs is not significant. So, a black peg indicates that one of the guessed pegs is correct, but not which one.
+See here for a detailed description of the game.</p>
+
+<p>For a programmer both the Code Maker and Code Breaker roles are interesting challenges.</p>
+
+<p>The Code Maker role most compare a guess and a secret code and generate the correct feedback.</p>
+
+<p>The Code Breaker role must issue guesses and figure out the secret code based on the feedback.</p>
+
+<p>Before we look at either role, lets create some types that we can work with.</p>
+
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fsharp" data-lang="fsharp"><span style="color:#204a87;font-weight:bold">type</span> <span style="color:#000">Colour</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">Red</span><span style="color:#ce5c00;font-weight:bold">|</span><span style="color:#000">Orange</span><span style="color:#ce5c00;font-weight:bold">|</span><span style="color:#000">Yellow</span><span style="color:#ce5c00;font-weight:bold">|</span><span style="color:#000">Green</span><span style="color:#ce5c00;font-weight:bold">|</span><span style="color:#000">Blue</span>
+<span style="color:#204a87;font-weight:bold">type</span> <span style="color:#000">Answer</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#ce5c00;font-weight:bold">{</span><span style="color:#000">Black</span><span style="color:#ce5c00;font-weight:bold">:</span> <span style="color:#000">int</span><span style="color:#ce5c00;font-weight:bold">;</span> <span style="color:#000">White</span><span style="color:#ce5c00;font-weight:bold">:</span> <span style="color:#000">int</span><span style="color:#ce5c00;font-weight:bold">}</span></code></pre></div>
+
+<p>The Colours are a discriminated union of the 5 colours that can be used in the code. We also have an Answer that contains a certain number of Black and White pegs.</p>
+
+<p>Each code consists of 4 pegs and colours can be duplicated. We don’t enforce that with types, in fact it’s quite easy to make the code work for arbitrary code lengths. There is one function in the current code that locks us into a code length of 4. I’ll discuss that towards the end of this post.</p>
+
+<h3 id="the-code-maker">The Code Maker</h3>
+
+<p>Let’s start with a function that can compare a secret code with a guess and return the black/white pegs answer. I’ve put a worked example in the comments so you can follow what’s happening.</p>
+
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fsharp" data-lang="fsharp"><span style="color:#8f5902;font-style:italic">// E.g.
+</span><span style="color:#8f5902;font-style:italic">// code     = Red, Orange, Yellow, Blue
+</span><span style="color:#8f5902;font-style:italic">// guess    = Yellow, Yellow, Green, Blue
+</span><span style="color:#8f5902;font-style:italic">// expected = {Black = 1 (Blue); White = 1 (Yellow)}
+</span><span style="color:#8f5902;font-style:italic"></span><span style="color:#204a87;font-weight:bold">let</span> <span style="color:#000">check</span> <span style="color:#000">code</span> <span style="color:#000">guess</span> <span style="color:#ce5c00;font-weight:bold">=</span>
+    <span style="color:#204a87;font-weight:bold">let</span> <span style="color:#000">IsMatch</span> <span style="color:#000">t</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">fst</span> <span style="color:#000">t</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">snd</span> <span style="color:#000">t</span>
+
+    <span style="color:#8f5902;font-style:italic">// right = [(Blue, Blue)]
+</span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// wrong = [(Red, Yellow); (Orange, Yellow); (Yellow, Green)]
+</span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#204a87;font-weight:bold">let</span> <span style="color:#000">right</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">wrong</span> <span style="color:#ce5c00;font-weight:bold">=</span>
+        <span style="color:#000">List</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">zip</span> <span style="color:#000">code</span> <span style="color:#000">guess</span>
+        <span style="color:#ce5c00;font-weight:bold">|&gt;</span> <span style="color:#000">List</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">partition</span> <span style="color:#000">IsMatch</span>
+ 
+    <span style="color:#8f5902;font-style:italic">// Number of Black Pegs
+</span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// 1 (Blue, Blue)
+</span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#204a87;font-weight:bold">let</span> <span style="color:#000">rightColourRightPosition</span> <span style="color:#ce5c00;font-weight:bold">=</span>
+        <span style="color:#000">List</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">length</span> <span style="color:#000">right</span>
+
+    <span style="color:#8f5902;font-style:italic">// Number of White Pegs
+</span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// wrongCode  = [Red; Orange; Yellow]
+</span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// wrongGuess = [Yellow; Yellow; Green]
+</span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#204a87;font-weight:bold">let</span> <span style="color:#000">wrongCode</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">wrongGuess</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">List</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">unzip</span> <span style="color:#000">wrong</span> 
+
+    <span style="color:#8f5902;font-style:italic">// E.g. when colour = Yellow, result = 2
+</span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#204a87;font-weight:bold">let</span> <span style="color:#000">howManyOfThisColourOutOfPlace</span> <span style="color:#000">colour</span> <span style="color:#ce5c00;font-weight:bold">=</span>
+        <span style="color:#000">wrongGuess</span>
+        <span style="color:#ce5c00;font-weight:bold">|&gt;</span> <span style="color:#000">List</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">filter</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#204a87;font-weight:bold">fun</span> <span style="color:#000">c</span> <span style="color:#ce5c00;font-weight:bold">-&gt;</span> <span style="color:#000">c</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">colour</span><span style="color:#ce5c00;font-weight:bold">)</span>
+        <span style="color:#ce5c00;font-weight:bold">|&gt;</span> <span style="color:#000">List</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">length</span>
+
+    <span style="color:#8f5902;font-style:italic">// Number of White Pegs
+</span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// 1 (Yellow) Although Yellow is guessed twice, there is only one Yellow in the code, so result is 1
+</span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#204a87;font-weight:bold">let</span> <span style="color:#000">rightColourWrongPosition</span> <span style="color:#ce5c00;font-weight:bold">=</span>
+        <span style="color:#000">wrongCode</span>                                                                          <span style="color:#8f5902;font-style:italic">// [Red; Orange; Yellow]
+</span><span style="color:#8f5902;font-style:italic"></span>        <span style="color:#ce5c00;font-weight:bold">|&gt;</span> <span style="color:#000">Seq</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">countBy</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">id</span><span style="color:#ce5c00;font-weight:bold">)</span>                                                                 <span style="color:#8f5902;font-style:italic">// seq [(Red, 1); (Orange, 1); (Yellow, 1)]
+</span><span style="color:#8f5902;font-style:italic"></span>        <span style="color:#ce5c00;font-weight:bold">|&gt;</span> <span style="color:#000">Seq</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">map</span> <span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#204a87;font-weight:bold">fun</span> <span style="color:#000">group</span> <span style="color:#ce5c00;font-weight:bold">-&gt;</span> <span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">snd</span> <span style="color:#000">group</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">howManyOfThisColourOutOfPlace</span> <span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">fst</span> <span style="color:#000">group</span><span style="color:#ce5c00;font-weight:bold">)))</span>   <span style="color:#8f5902;font-style:italic">// seq [(1, 1); (1, 0); (1, 2)] (fst is occurences in code, snd is occurences in guess)
+</span><span style="color:#8f5902;font-style:italic"></span>        <span style="color:#ce5c00;font-weight:bold">|&gt;</span> <span style="color:#000">Seq</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">sumBy</span> <span style="color:#000">Math</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">Min</span>                                                              <span style="color:#8f5902;font-style:italic">// For each colour, sum the lesser of occurences in code and in guess
+</span><span style="color:#8f5902;font-style:italic"></span>
+    <span style="color:#ce5c00;font-weight:bold">{</span><span style="color:#000">Black</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">rightColourRightPosition</span><span style="color:#ce5c00;font-weight:bold">;</span> <span style="color:#000">White</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">rightColourWrongPosition</span><span style="color:#ce5c00;font-weight:bold">}</span></code></pre></div>
+
+<p>The Code Maker has visibility of the Secret Code (because it create it) and the guess (because the Code Breaker asks to have a guess checked). This will be more interesting when we look at the signature for the solve function.</p>
+
+<p>Let’s not get ahead of ourselves. How to we check a guess against a secret code and calculate the number of Black and White pegs?</p>
+
+<p>We zip the secret code and the guess (which are both lists of colours) this gives us a list of tuples, where each tuple represents the colour of the two pegs at the same position in the code and the guess.</p>
+
+<p>We then partition that list into tuples where the fst and snd match (same colour, same position) and where fst and snd don’t match.</p>
+
+<p>The number of Black pegs is simply the length of the list of tuples that matched.</p>
+
+<p>The number of white pegs is calculated by taking the colours from the list of non-matching tuples and figuring out how many of the colours in the code are also in the guess. Since we partitioned the list, none of the pegs that were in the right place will get in the way of this calculation.</p>
+
+<p>Follow along with the comments in the code and it should be clear.</p>
+
+<h3 id="the-code-breaker">The Code Breaker</h3>
+
+<p>On the face of it writing the code for the Code Breaker seems like it would be harder than for the Code Maker. It has to come up with guesses and then correlate the feedback from all the guesses to crack the code. We also can’t pass our secret code to the Code Breaker because that’s not information that it should have.</p>
+
+<p>What should we pass to the solve function? It should be able to come up with guesses by itself. The only thing it needs is a way of asking the Code Maker to check a guess against the code. So, it needs a way of calling the check function. But it can’t pass the secret code to the check function, it can only pass the guess.</p>
+
+<h3 id="enter-partial-application">Enter Partial Application.</h3>
+
+<p>We can wrap a secret code up in a closure by partially applying the check function. This gives us a function that just accepts a guess and returns an answer. From the Code Breaker’s point of view that’s exactly how the Code Maker should work.</p>
+
+<p>let secretCodeChecker = check [Red; Orange; Yellow; Blue]
+Armed with that function the logic of the code breaker is pretty simple.</p>
+
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fsharp" data-lang="fsharp"><span style="color:#204a87;font-weight:bold">let</span> <span style="color:#000">solve</span> <span style="color:#000">checkFunction</span> <span style="color:#ce5c00;font-weight:bold">=</span>
+    <span style="color:#204a87;font-weight:bold">let</span> <span style="color:#000">filterPossibilities</span> <span style="color:#000">possibilities</span> <span style="color:#000">guess</span> <span style="color:#ce5c00;font-weight:bold">=</span>
+        <span style="color:#204a87;font-weight:bold">let</span> <span style="color:#000">answer</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">checkFunction</span> <span style="color:#000">guess</span>
+        <span style="color:#000">possibilities</span>
+        <span style="color:#ce5c00;font-weight:bold">|&gt;</span> <span style="color:#000">List</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">filter</span> <span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#204a87;font-weight:bold">fun</span> <span style="color:#000">potential</span> <span style="color:#ce5c00;font-weight:bold">-&gt;</span> <span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">check</span> <span style="color:#000">guess</span> <span style="color:#000">potential</span><span style="color:#ce5c00;font-weight:bold">)</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">answer</span><span style="color:#ce5c00;font-weight:bold">)</span>
+
+    <span style="color:#204a87;font-weight:bold">let</span> <span style="color:#000">rec</span> <span style="color:#000">solve_iter</span> <span style="color:#000">possible</span> <span style="color:#ce5c00;font-weight:bold">=</span>
+        <span style="color:#204a87;font-weight:bold">match</span> <span style="color:#000">possible</span> <span style="color:#204a87;font-weight:bold">with</span>
+        <span style="color:#ce5c00;font-weight:bold">|</span> <span style="color:#000">head</span><span style="color:#ce5c00;font-weight:bold">::</span><span style="color:#3465a4">[]</span> <span style="color:#ce5c00;font-weight:bold">-&gt;</span> <span style="color:#000">head</span>
+        <span style="color:#ce5c00;font-weight:bold">|</span> <span style="color:#000">head</span><span style="color:#ce5c00;font-weight:bold">::_</span> <span style="color:#ce5c00;font-weight:bold">-&gt;</span> <span style="color:#000">solve_iter</span> <span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">filterPossibilities</span> <span style="color:#000">possible</span> <span style="color:#000">head</span><span style="color:#ce5c00;font-weight:bold">)</span>
+        <span style="color:#ce5c00;font-weight:bold">|</span> <span style="color:#ce5c00;font-weight:bold">_</span> <span style="color:#ce5c00;font-weight:bold">-&gt;</span> <span style="color:#000">raise</span> <span style="color:#000">CanNotBeSolved</span>
+
+    <span style="color:#000">solve_iter</span> <span style="color:#000">possibleCodes</span></code></pre></div>
+
+<p>Start with all possibleCodes, take the first of them and guess it. Use the response from the Code Maker to filter out codes that are no longer possible. Repeat until there’s only one possibility left.</p>
+
+<p>There’s a quick and easy way to generate all possible codes</p>
+
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fsharp" data-lang="fsharp"><span style="color:#204a87;font-weight:bold">let</span> <span style="color:#000">possibleCodes</span> <span style="color:#ce5c00;font-weight:bold">=</span>
+    <span style="color:#000">seq</span> <span style="color:#ce5c00;font-weight:bold">{</span>
+            <span style="color:#204a87;font-weight:bold">for</span> <span style="color:#000">i</span> <span style="color:#204a87;font-weight:bold">in</span> <span style="color:#000">ColourList</span> <span style="color:#204a87;font-weight:bold">do</span>
+                <span style="color:#204a87;font-weight:bold">for</span> <span style="color:#000">j</span> <span style="color:#204a87;font-weight:bold">in</span> <span style="color:#000">ColourList</span> <span style="color:#204a87;font-weight:bold">do</span>
+                    <span style="color:#204a87;font-weight:bold">for</span> <span style="color:#000">k</span> <span style="color:#204a87;font-weight:bold">in</span> <span style="color:#000">ColourList</span> <span style="color:#204a87;font-weight:bold">do</span>
+                        <span style="color:#204a87;font-weight:bold">for</span> <span style="color:#000">l</span> <span style="color:#204a87;font-weight:bold">in</span> <span style="color:#000">ColourList</span> <span style="color:#204a87;font-weight:bold">do</span>
+                            <span style="color:#204a87;font-weight:bold">yield</span> <span style="color:#ce5c00;font-weight:bold">[</span><span style="color:#000">i</span><span style="color:#ce5c00;font-weight:bold">;</span><span style="color:#000">j</span><span style="color:#ce5c00;font-weight:bold">;</span><span style="color:#000">k</span><span style="color:#ce5c00;font-weight:bold">;</span><span style="color:#000">l</span><span style="color:#ce5c00;font-weight:bold">]</span>
+    <span style="color:#ce5c00;font-weight:bold">}</span>
+    <span style="color:#ce5c00;font-weight:bold">|&gt;</span> <span style="color:#000">List</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">ofSeq</span></code></pre></div>
+
+<p>The problem with this is that it locks us into codes of length 4 even though nothing else in our solution has that restriction. A more general recursive function would be nice here, but let’s not waste time on that right now. Let’s get our Code Breaker working.</p>
+
+<p>The most intersting part of breaking the code is filtering out potential codes based on feedback from a guess.</p>
+
+<p>This ridiculously simple to do. We supply a guess to the Code Maker and get back an answer. We then take all of the remaining possible secret codes and we check our guess against each (using the non-partially applied check function) and we keep only the codes that result in the same answer that the Code Maker gave us.</p>
+
+<p>To figure out the secret code that’s wrapped up in the secretCodeChecker function, we just pass it to solve</p>
+
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fsharp" data-lang="fsharp"><span style="color:#ce5c00;font-weight:bold">&gt;</span> <span style="color:#000">solve</span> <span style="color:#000">secretCodeChecker</span><span style="color:#ce5c00;font-weight:bold">;;</span>
+<span style="color:#204a87;font-weight:bold">val</span> <span style="color:#000">it</span> <span style="color:#ce5c00;font-weight:bold">:</span> <span style="color:#000">Colour</span> <span style="color:#204a87;font-weight:bold">list</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#ce5c00;font-weight:bold">[</span><span style="color:#000">Red</span><span style="color:#ce5c00;font-weight:bold">;</span> <span style="color:#000">Orange</span><span style="color:#ce5c00;font-weight:bold">;</span> <span style="color:#000">Yellow</span><span style="color:#ce5c00;font-weight:bold">;</span> <span style="color:#000">Yellow</span><span style="color:#ce5c00;font-weight:bold">]</span></code></pre></div>
+
+<p>And what about those nested loops that produce all possible codes. How can be turn that into a more general recursive function?</p>
+
+<p>I’ll leave that for you as an exercise. If you look up the <a href="https://mitpress.mit.edu/sicp/full-text/book/book-Z-H-11.html#%_sec_1.2.2">‘Making Change’ example in Structure and Interpretation of Computer Programs</a> here you’ll be in the right area, however instead of simply counting the number of possibilities, you need to actually capture and return them.</p>
+
+<h3 id="recommended-reading">Recommended Reading</h3>
+
+<p><a href="https://mitpress.mit.edu/sicp/full-text/book/book.html">The Structure and Interpretation of Computer Programs</a></p>
+
+                        </div>
+                        
+                        
+                        <div id="comments">
+                            <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "devjoycom" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+                        </div>
+                        
+
+                    </div>
+                    
+
+                    
+
+                    
+
+                    <div class="col-md-3">
+
+                        
+
+                        
+
+<div class="panel panel-default sidebar-menu">
+
+    <div class="panel-heading">
+      <h3 class="panel-title">Search</h3>
+    </div>
+
+    <div class="panel-body">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" role="search">
+            <div class="input-group">
+                <input type="search" name="q" class="form-control" placeholder="Search">
+                <input type="hidden" name="sitesearch" value="https://www.devjoy.com/">
+                <span class="input-group-btn">
+                    <button type="submit" class="btn btn-template-main"><i class="fa fa-search"></i></button>
+                </span>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+
+
+
+
+
+<div class="panel panel-default sidebar-menu">
+
+    <div class="panel-heading">
+      <h3 class="panel-title">Categories</h3>
+    </div>
+
+    <div class="panel-body">
+        <ul class="nav nav-pills nav-stacked">
+            
+            <li><a href="https://www.devjoy.com/categories/how-to">how-to (22)</a>
+            </li>
+            
+            <li><a href="https://www.devjoy.com/categories/reviews">reviews (1)</a>
+            </li>
+            
+            <li><a href="https://www.devjoy.com/categories/thoughts">thoughts (15)</a>
+            </li>
+            
+        </ul>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+<div class="panel panel-default sidebar-menu">
+
+    <div class="panel-heading">
+      <h3 class="panel-title">Series</h3>
+    </div>
+
+    <div class="panel-body">
+        <ul class="nav nav-pills nav-stacked">
+            
+            <li><a href="https://www.devjoy.com/series/f-sharp-active-patterns">f-sharp-active-patterns (8)</a>
+            </li>
+            
+            <li><a href="https://www.devjoy.com/series/thinking-functionally">thinking-functionally (6)</a>
+            </li>
+            
+        </ul>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+<div class="panel sidebar-menu">
+    <div class="panel-heading">
+      <h3 class="panel-title">Tags</h3>
+    </div>
+
+    <div class="panel-body">
+        <ul class="tag-cloud">
+            
+            <li><a href="https://www.devjoy.com/tags/agile"><i class="fa fa-tags"></i> agile</a>
+            </li>
+            
+            <li><a href="https://www.devjoy.com/tags/c"><i class="fa fa-tags"></i> c#</a>
+            </li>
+            
+            <li><a href="https://www.devjoy.com/tags/code"><i class="fa fa-tags"></i> code</a>
+            </li>
+            
+            <li><a href="https://www.devjoy.com/tags/coding"><i class="fa fa-tags"></i> coding</a>
+            </li>
+            
+            <li><a href="https://www.devjoy.com/tags/complexity"><i class="fa fa-tags"></i> complexity</a>
+            </li>
+            
+            <li><a href="https://www.devjoy.com/tags/design"><i class="fa fa-tags"></i> design</a>
+            </li>
+            
+            <li><a href="https://www.devjoy.com/tags/f"><i class="fa fa-tags"></i> f#</a>
+            </li>
+            
+            <li><a href="https://www.devjoy.com/tags/functional-programming"><i class="fa fa-tags"></i> functional-programming</a>
+            </li>
+            
+            <li><a href="https://www.devjoy.com/tags/learning"><i class="fa fa-tags"></i> learning</a>
+            </li>
+            
+            <li><a href="https://www.devjoy.com/tags/tdd"><i class="fa fa-tags"></i> tdd</a>
+            </li>
+            
+            <li><a href="https://www.devjoy.com/tags/teams"><i class="fa fa-tags"></i> teams</a>
+            </li>
+            
+            <li><a href="https://www.devjoy.com/tags/technical-debt"><i class="fa fa-tags"></i> technical-debt</a>
+            </li>
+            
+            <li><a href="https://www.devjoy.com/tags/testing"><i class="fa fa-tags"></i> testing</a>
+            </li>
+            
+        </ul>
+    </div>
+</div>
+
+
+
+
+
+
+                        
+
+                    </div>
+                    
+
+                    
+
+                </div>
+                
+
+            </div>
+            
+        </div>
+        
+
+        
+
+
+
+
+<div id="copyright">
+    <div class="container">
+        <div class="col-md-12">
+            
+            <p class="pull-left">Copyright (c) 2018, Devjoy Ltd.</p>
+            
+            <p class="pull-right">
+              Template by <a href="http://bootstrapious.com/free-templates">Bootstrapious</a>.
+              
+
+              Ported to Hugo by <a href="https://github.com/devcows/hugo-universal-theme">DevCows</a>
+            </p>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+    </div>
+    
+
+    
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-131889453-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+
+<script src="//code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.1/jquery.waypoints.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/Counter-Up/1.0/jquery.counterup.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery-parallax/1.1.3/jquery-parallax.js"></script>
+<script src="https://www.devjoy.com/js/front.js"></script>
+
+
+<script src="https://www.devjoy.com/js/owl.carousel.min.js"></script>
+
+
+  </body>
+</html>

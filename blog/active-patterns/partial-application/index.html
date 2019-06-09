@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+  <head>
+  <meta charset="utf-8">
+  <meta name="robots" content="all,follow">
+  <meta name="googlebot" content="index,follow,snippet,archive">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Partial Application</title>
+  <meta name="author" content="" />
+
+  
+  <meta name="keywords" content="devows, hugo, go">	
+  
+
+  
+  <meta name="description" content="Site template made by devcows using hugo">	
+  
+
+  <meta name="generator" content="Hugo 0.48" />
+
+  <link href='//fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300italic,500,700,800' rel='stylesheet' type='text/css'>
+
+  
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+  
+  <link href="/css/animate.css" rel="stylesheet">
+
+  
+  
+    <link href="/css/style.blue.css" rel="stylesheet" id="theme-stylesheet">
+  
+
+
+  
+  <link href="/css/custom.css" rel="stylesheet">
+
+  
+  
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  
+
+  
+  <link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon" />
+  <link rel="apple-touch-icon" href="/img/apple-touch-icon.png" />
+  
+
+  <link href="/css/owl.carousel.css" rel="stylesheet">
+  <link href="/css/owl.theme.css" rel="stylesheet">
+
+  <link rel="alternate" href="https://www.devjoy.com/index.xml" type="application/rss+xml" title="devjoy">
+
+  
+  <meta property="og:title" content="Partial Application" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="/blog/active-patterns/partial-application//" />
+  <meta property="og:image" content="img/logo.png" />
+
+</head>
+
+
+  <body>
+    <div id="all">
+
+        <header>
+
+          <div class="navbar-affixed-top" data-spy="affix" data-offset-top="200">
+
+    <div class="navbar navbar-default yamm" role="navigation" id="navbar">
+
+        <div class="container">
+            <div class="navbar-header">
+                <a class="navbar-brand home" href="https://www.devjoy.com/">
+                    <img src="https://www.devjoy.com/img/logo.png" alt="Partial Application logo" class="hidden-xs hidden-sm">
+                    <img src="https://www.devjoy.com/img/logo-small.png" alt="Partial Application logo" class="visible-xs visible-sm">
+                    <span class="sr-only">Partial Application - go to homepage</span>
+                </a>
+                <div class="navbar-buttons">
+                    <button type="button" class="navbar-toggle btn-template-main" data-toggle="collapse" data-target="#navigation">
+                      <span class="sr-only">Toggle Navigation</span>
+                        <i class="fa fa-align-justify"></i>
+                    </button>
+                </div>
+            </div>
+            
+
+            <div class="navbar-collapse collapse" id="navigation">
+                <ul class="nav navbar-nav navbar-right">
+                  
+                  <li class="dropdown">
+                    
+                    <a href="/">Home</a>
+                    
+                  </li>
+                  
+                  <li class="dropdown">
+                    
+                    <a href="/blog/">Blog</a>
+                    
+                  </li>
+                  
+                  <li class="dropdown">
+                    
+                    <a href="/contact/">Contact</a>
+                    
+                  </li>
+                  
+                </ul>
+            </div>
+            
+
+            <div class="collapse clearfix" id="search">
+
+                <form class="navbar-form" role="search">
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Search">
+                        <span class="input-group-btn">
+
+                    <button type="submit" class="btn btn-template-main"><i class="fa fa-search"></i></button>
+
+                </span>
+                    </div>
+                </form>
+
+            </div>
+            
+
+        </div>
+    </div>
+    
+
+</div>
+
+
+
+
+        </header>
+
+        <div id="heading-breadcrumbs">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h1>Partial Application</h1>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+        <div id="content">
+            <div class="container">
+
+                <div class="row">
+
+                    
+
+                    <div class="col-md-9" id="blog-post">
+
+                        <p class="text-muted text-uppercase mb-small text-right">August 9, 2014</p>
+
+                        <div id="post-content">
+                          
+
+<p>This post was supposed to be about Partial Active Patterns, but before we get to that, I want to take a small diversion to cover Partial Application of Active Patterns (which is a completely different thing). Confused? Don’t worry. Read on.</p>
+
+<h3 id="partial-application">Partial Application</h3>
+
+<p>I’ve described Partial Application in detail here and here, so I’m going to assume that you know how it works for regular functions. Please read those two posts if you are in any doubt.</p>
+
+<p>Partial Application was raised in a question from Shawn Martin.</p>
+
+<blockquote>
+<p>what might be the best way(s) to turn SpecialCharacterCount in this post into the hard-coded SpecialCharacterCount from the previous post? In other words, do partial application.</p>
+</blockquote>
+
+<p>Coincidentally Anthony Brown (@bruinbrown93) had tweeted on the same topic.</p>
+
+<blockquote>
+<p>You can also partially apply your active patterns.
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fsharp" data-lang="fsharp"><span style="color:#000">E</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">g</span><span style="color:#ce5c00;font-weight:bold">.</span> <span style="color:#204a87;font-weight:bold">let</span> <span style="color:#ce5c00;font-weight:bold">(|</span><span style="color:#000">ExclamationMarkCount</span><span style="color:#ce5c00;font-weight:bold">|)</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#ce5c00;font-weight:bold">(|</span><span style="color:#000">SpecialCharacterCount</span><span style="color:#ce5c00;font-weight:bold">|)</span> <span style="color:#a40000">“</span><span style="color:#ce5c00;font-weight:bold">!</span><span style="color:#a40000">”</span></code></pre></div></p>
+</blockquote>
+
+<p>So, let’s cover partial application of active patterns.</p>
+
+<p>Recall our active pattern for counting occurrences of characters in a string.</p>
+
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fsharp" data-lang="fsharp"><span style="color:#204a87;font-weight:bold">let</span> <span style="color:#ce5c00;font-weight:bold">(|</span><span style="color:#000">SpecialCharacterCount</span><span style="color:#ce5c00;font-weight:bold">|)</span> <span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">characters</span><span style="color:#ce5c00;font-weight:bold">:</span> <span style="color:#204a87;font-weight:bold">string</span><span style="color:#ce5c00;font-weight:bold">)</span> <span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">str</span><span style="color:#ce5c00;font-weight:bold">:</span> <span style="color:#204a87;font-weight:bold">string</span><span style="color:#ce5c00;font-weight:bold">)</span> <span style="color:#ce5c00;font-weight:bold">=</span>
+    <span style="color:#000">str</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">ToCharArray</span><span style="color:#3465a4">()</span>
+    <span style="color:#ce5c00;font-weight:bold">|&gt;</span> <span style="color:#000">Array</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">filter</span> <span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#204a87;font-weight:bold">fun</span> <span style="color:#000">c</span> <span style="color:#ce5c00;font-weight:bold">-&gt;</span> <span style="color:#000">characters</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">Contains</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">c</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">ToString</span><span style="color:#3465a4">()</span><span style="color:#ce5c00;font-weight:bold">))</span>
+    <span style="color:#ce5c00;font-weight:bold">|&gt;</span> <span style="color:#000">Array</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">length</span></code></pre></div>
+
+<p>In addition to the parameter ‘str’ for the string that we’ll search, we have a parameter ‘characters’ containing the characters that we’ll search for. We can use this, and the magic of partial application to create other Active Patterns that have the characters baked in, so we don’t need to provide them as an extra argument.</p>
+
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fsharp" data-lang="fsharp"><span style="color:#204a87;font-weight:bold">let</span> <span style="color:#ce5c00;font-weight:bold">(|</span><span style="color:#000">CountDollars</span><span style="color:#ce5c00;font-weight:bold">|)</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#ce5c00;font-weight:bold">(|</span><span style="color:#000">SpecialCharacterCount</span><span style="color:#ce5c00;font-weight:bold">|)</span> <span style="color:#a40000">“</span><span style="color:#ce5c00;font-weight:bold">$</span><span style="color:#a40000">”</span></code></pre></div>
+
+<p>We can use CountDollars just like any Active Pattern, but it’s hardwired to search for the ‘$’.</p>
+
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fsharp" data-lang="fsharp"><span style="color:#204a87;font-weight:bold">let</span> <span style="color:#000">describeString</span> <span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">s</span><span style="color:#ce5c00;font-weight:bold">:</span> <span style="color:#204a87;font-weight:bold">string</span><span style="color:#ce5c00;font-weight:bold">)</span> <span style="color:#ce5c00;font-weight:bold">=</span>
+    <span style="color:#204a87;font-weight:bold">match</span> <span style="color:#000">s</span> <span style="color:#204a87;font-weight:bold">with</span>
+    <span style="color:#ce5c00;font-weight:bold">|</span> <span style="color:#000">CountDollars</span> <span style="color:#000">d</span> <span style="color:#204a87;font-weight:bold">when</span> <span style="color:#000">d</span> <span style="color:#ce5c00;font-weight:bold">&gt;</span> <span style="color:#000">5</span> <span style="color:#ce5c00;font-weight:bold">-&gt;</span> <span style="color:#4e9a06">&#34;%d is more than 5 Bucks&#34;</span>
+    <span style="color:#ce5c00;font-weight:bold">|</span> <span style="color:#000">CountDollars</span> <span style="color:#000">4</span> <span style="color:#ce5c00;font-weight:bold">-&gt;</span> <span style="color:#4e9a06">&#34;That&#39;s 4 Bucks&#34;</span>
+    <span style="color:#ce5c00;font-weight:bold">|</span> <span style="color:#000">CountDollars</span> <span style="color:#000">d</span> <span style="color:#ce5c00;font-weight:bold">-&gt;</span> <span style="color:#4e9a06">&#34;Just %d Dollars&#34;</span> <span style="color:#000">d</span> </code></pre></div>
+
+<p>Creating more patterns that search for different characters is trivial</p>
+
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fsharp" data-lang="fsharp"><span style="color:#204a87;font-weight:bold">let</span> <span style="color:#ce5c00;font-weight:bold">(|</span><span style="color:#000">CountStars</span><span style="color:#ce5c00;font-weight:bold">|)</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#ce5c00;font-weight:bold">(|</span><span style="color:#000">SpecialCharacterCount</span><span style="color:#ce5c00;font-weight:bold">|)</span> <span style="color:#4e9a06">&#34;*&#34;</span></code></pre></div>
+
+<p>Now instead of counting dollars, we’ll be counting stars.
+Yeah, I went there. Don’t judge me.</p>
+
+<p>And, of course the argument to the original Active Pattern can contain multiple characters, and that still applies.</p>
+
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fsharp" data-lang="fsharp"><span style="color:#204a87;font-weight:bold">let</span> <span style="color:#ce5c00;font-weight:bold">(|</span><span style="color:#000">CountCurrencies</span><span style="color:#ce5c00;font-weight:bold">|)</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#ce5c00;font-weight:bold">(|</span><span style="color:#000">SpecialCharacterCount</span><span style="color:#ce5c00;font-weight:bold">|)</span> <span style="color:#4e9a06">&#34;£$&#34;</span></code></pre></div>
+
+<p>We can mix and match our original and newly minted patterns.</p>
+
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fsharp" data-lang="fsharp"><span style="color:#204a87;font-weight:bold">let</span> <span style="color:#000">describeString</span> <span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">str</span><span style="color:#ce5c00;font-weight:bold">:</span> <span style="color:#204a87;font-weight:bold">string</span><span style="color:#ce5c00;font-weight:bold">)</span> <span style="color:#ce5c00;font-weight:bold">=</span>
+    <span style="color:#204a87;font-weight:bold">match</span> <span style="color:#000">str</span> <span style="color:#204a87;font-weight:bold">with</span>
+    <span style="color:#ce5c00;font-weight:bold">|</span> <span style="color:#000">CountCurrency</span> <span style="color:#000">c</span> <span style="color:#204a87;font-weight:bold">when</span> <span style="color:#000">c</span> <span style="color:#ce5c00;font-weight:bold">&gt;</span> <span style="color:#000">3</span> <span style="color:#ce5c00;font-weight:bold">-&gt;</span> <span style="color:#4e9a06">&#34;More than three currency symbols&#34;</span>
+    <span style="color:#ce5c00;font-weight:bold">|</span> <span style="color:#000">CountDollars</span> <span style="color:#000">d</span> <span style="color:#204a87;font-weight:bold">when</span> <span style="color:#000">d</span> <span style="color:#ce5c00;font-weight:bold">&gt;</span> <span style="color:#000">0</span> <span style="color:#ce5c00;font-weight:bold">-&gt;</span> <span style="color:#4e9a06">&#34;There&#39;s at least one Dollar&#34;</span>
+    <span style="color:#ce5c00;font-weight:bold">|</span> <span style="color:#000">CountStars</span> <span style="color:#000">2</span> <span style="color:#ce5c00;font-weight:bold">-&gt;</span> <span style="color:#4e9a06">&#34;There are exactly two Stars &#34;</span>
+    <span style="color:#ce5c00;font-weight:bold">|</span> <span style="color:#000">SpecialCharacterCount</span> <span style="color:#4e9a06">&#34;!%^&amp;&#34;</span> <span style="color:#000">s</span> <span style="color:#ce5c00;font-weight:bold">-&gt;</span> <span style="color:#000">sprintf</span> <span style="color:#4e9a06">&#34;I found %d special characters&#34;</span> <span style="color:#000">s</span>
+    <span style="color:#ce5c00;font-weight:bold">|</span> <span style="color:#ce5c00;font-weight:bold">_</span> <span style="color:#ce5c00;font-weight:bold">-&gt;</span> <span style="color:#000">str</span> </code></pre></div>
+
+<h3 id="patterns">Patterns</h3>
+
+<p>The second topic I wanted to touch on before moving forward is Patterns. In the first post in the series I gave an introduction to Pattern Matching which has served us well in understanding the examples. It was however just the briefest of introductions, let’s dig a little deeper.</p>
+
+<p>In the (|IsValid|) active pattern in this post I quietly slipped in something a little unusual. I used multiple Patterns within the same clause.</p>
+
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fsharp" data-lang="fsharp"><span style="color:#ce5c00;font-weight:bold">|</span> <span style="color:#000">UpperCaseCount</span> <span style="color:#000">u</span> <span style="color:#ce5c00;font-weight:bold">&amp;</span> <span style="color:#000">LowerCaseCount</span> <span style="color:#000">l</span> <span style="color:#ce5c00;font-weight:bold">&amp;</span> <span style="color:#000">SpecialCharacterCount</span> <span style="color:#000">s</span> <span style="color:#ce5c00;font-weight:bold">-&gt;</span> <span style="color:#ce5c00;font-weight:bold">...</span></code></pre></div>
+
+<p>For that clause to match all three of those patterns need to match. This makes sense, the ‘&amp;’ represents ‘and’.</p>
+
+<p>All of the patterns that you can use are described here so I won’t go into each in detail. I will briefly mention the ‘or’ pattern denoted by the ‘|’ operator, to give you a sense of what these patterns can do.</p>
+
+<p>Take a look at this function.</p>
+
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fsharp" data-lang="fsharp"><span style="color:#204a87;font-weight:bold">let</span> <span style="color:#000">describeString</span> <span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">str</span><span style="color:#ce5c00;font-weight:bold">:</span> <span style="color:#204a87;font-weight:bold">string</span><span style="color:#ce5c00;font-weight:bold">)</span> <span style="color:#ce5c00;font-weight:bold">=</span>
+    <span style="color:#204a87;font-weight:bold">match</span> <span style="color:#000">str</span> <span style="color:#204a87;font-weight:bold">with</span>
+    <span style="color:#ce5c00;font-weight:bold">|</span> <span style="color:#000">CountDollars</span> <span style="color:#000">c</span> <span style="color:#ce5c00;font-weight:bold">|</span> <span style="color:#000">CountStars</span> <span style="color:#000">c</span> <span style="color:#204a87;font-weight:bold">when</span> <span style="color:#000">c</span> <span style="color:#ce5c00;font-weight:bold">&gt;</span> <span style="color:#000">5</span> <span style="color:#ce5c00;font-weight:bold">-&gt;</span> <span style="color:#000">sprintf</span> <span style="color:#4e9a06">&#34;%d is more than 5 Dollars or Stars&#34;</span> <span style="color:#000">c</span>
+    <span style="color:#ce5c00;font-weight:bold">|</span> <span style="color:#ce5c00;font-weight:bold">_</span> <span style="color:#ce5c00;font-weight:bold">-&gt;</span> <span style="color:#000">str</span> </code></pre></div>
+
+<p>If either CountDollars or CountStars returns a count of more than 5 then the first clause will match. If CountDollars returns more than 5 then c will hold it’s value. If not then there’s still the chance that CountStars will set the value of c. If neither are above 5 the clause in it’s entirety will fail. Note we’re not talking about the total of Dollars and Stars exceeding 5. Either Dollars or Stars must exceed 5 in it’s own right.</p>
+
+<p>Literals can be used on both sides of the ‘|’ operator, but if a variable is used, it must be the same on both sides.</p>
+
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fsharp" data-lang="fsharp"><span style="color:#204a87;font-weight:bold">let</span> <span style="color:#000">describeString</span> <span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">str</span><span style="color:#ce5c00;font-weight:bold">:</span> <span style="color:#204a87;font-weight:bold">string</span><span style="color:#ce5c00;font-weight:bold">)</span> <span style="color:#ce5c00;font-weight:bold">=</span>
+    <span style="color:#204a87;font-weight:bold">match</span> <span style="color:#000">str</span> <span style="color:#204a87;font-weight:bold">with</span>
+    <span style="color:#ce5c00;font-weight:bold">|</span> <span style="color:#000">CountDollars</span> <span style="color:#000">c</span> <span style="color:#ce5c00;font-weight:bold">|</span> <span style="color:#000">CountStars</span> <span style="color:#000">c</span> <span style="color:#204a87;font-weight:bold">when</span> <span style="color:#000">c</span> <span style="color:#ce5c00;font-weight:bold">&gt;</span> <span style="color:#000">5</span> <span style="color:#ce5c00;font-weight:bold">-&gt;</span> <span style="color:#000">sprintf</span> <span style="color:#4e9a06">&#34;%d Dollars or Stars, that&#39;s more than 5&#34;</span> <span style="color:#000">c</span>
+    <span style="color:#ce5c00;font-weight:bold">|</span> <span style="color:#000">CountDollars</span> <span style="color:#000">2</span> <span style="color:#ce5c00;font-weight:bold">|</span> <span style="color:#000">CountStars</span> <span style="color:#000">10</span> <span style="color:#ce5c00;font-weight:bold">-&gt;</span> <span style="color:#4e9a06">&#34;2 Dollars and 10 Stars&#34;</span>
+    <span style="color:#ce5c00;font-weight:bold">|</span> <span style="color:#ce5c00;font-weight:bold">_</span> <span style="color:#ce5c00;font-weight:bold">-&gt;</span> <span style="color:#000">str</span> </code></pre></div>
+
+<p>The following is not valid for the ‘or’ pattern.</p>
+
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fsharp" data-lang="fsharp"><span style="color:#ce5c00;font-weight:bold">|</span> <span style="color:#000">CountDollars</span> <span style="color:#000">2</span> <span style="color:#ce5c00;font-weight:bold">|</span> <span style="color:#000">CountStars</span> <span style="color:#000">s</span> <span style="color:#ce5c00;font-weight:bold">-&gt;</span> <span style="color:#000">sprintf</span> <span style="color:#4e9a06">&#34;2 Dollars and %s Stars&#34;</span> <span style="color:#000">s</span></code></pre></div>
+
+<p>I’ll leave you to play with the other patterns. In the <a href="https://www.devjoy.com/blog/active-patterns/single-partial/">next post</a> we’ll get back to describing the different forms of Active Pattern.</p>
+
+                        </div>
+                        
+                        
+                        <div id="comments">
+                            <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "devjoycom" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+                        </div>
+                        
+
+                    </div>
+                    
+
+                    
+
+                    
+
+                    <div class="col-md-3">
+
+                        
+
+                        
+
+<div class="panel panel-default sidebar-menu">
+
+    <div class="panel-heading">
+      <h3 class="panel-title">Search</h3>
+    </div>
+
+    <div class="panel-body">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" role="search">
+            <div class="input-group">
+                <input type="search" name="q" class="form-control" placeholder="Search">
+                <input type="hidden" name="sitesearch" value="https://www.devjoy.com/">
+                <span class="input-group-btn">
+                    <button type="submit" class="btn btn-template-main"><i class="fa fa-search"></i></button>
+                </span>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+
+
+
+
+
+<div class="panel panel-default sidebar-menu">
+
+    <div class="panel-heading">
+      <h3 class="panel-title">Categories</h3>
+    </div>
+
+    <div class="panel-body">
+        <ul class="nav nav-pills nav-stacked">
+            
+            <li><a href="https://www.devjoy.com/categories/how-to">how-to (22)</a>
+            </li>
+            
+            <li><a href="https://www.devjoy.com/categories/reviews">reviews (1)</a>
+            </li>
+            
+            <li><a href="https://www.devjoy.com/categories/thoughts">thoughts (15)</a>
+            </li>
+            
+        </ul>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+<div class="panel panel-default sidebar-menu">
+
+    <div class="panel-heading">
+      <h3 class="panel-title">Series</h3>
+    </div>
+
+    <div class="panel-body">
+        <ul class="nav nav-pills nav-stacked">
+            
+            <li><a href="https://www.devjoy.com/series/f-sharp-active-patterns">f-sharp-active-patterns (8)</a>
+            </li>
+            
+            <li><a href="https://www.devjoy.com/series/thinking-functionally">thinking-functionally (6)</a>
+            </li>
+            
+        </ul>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+<div class="panel sidebar-menu">
+    <div class="panel-heading">
+      <h3 class="panel-title">Tags</h3>
+    </div>
+
+    <div class="panel-body">
+        <ul class="tag-cloud">
+            
+            <li><a href="https://www.devjoy.com/tags/agile"><i class="fa fa-tags"></i> agile</a>
+            </li>
+            
+            <li><a href="https://www.devjoy.com/tags/c"><i class="fa fa-tags"></i> c#</a>
+            </li>
+            
+            <li><a href="https://www.devjoy.com/tags/code"><i class="fa fa-tags"></i> code</a>
+            </li>
+            
+            <li><a href="https://www.devjoy.com/tags/coding"><i class="fa fa-tags"></i> coding</a>
+            </li>
+            
+            <li><a href="https://www.devjoy.com/tags/complexity"><i class="fa fa-tags"></i> complexity</a>
+            </li>
+            
+            <li><a href="https://www.devjoy.com/tags/design"><i class="fa fa-tags"></i> design</a>
+            </li>
+            
+            <li><a href="https://www.devjoy.com/tags/f"><i class="fa fa-tags"></i> f#</a>
+            </li>
+            
+            <li><a href="https://www.devjoy.com/tags/functional-programming"><i class="fa fa-tags"></i> functional-programming</a>
+            </li>
+            
+            <li><a href="https://www.devjoy.com/tags/learning"><i class="fa fa-tags"></i> learning</a>
+            </li>
+            
+            <li><a href="https://www.devjoy.com/tags/tdd"><i class="fa fa-tags"></i> tdd</a>
+            </li>
+            
+            <li><a href="https://www.devjoy.com/tags/teams"><i class="fa fa-tags"></i> teams</a>
+            </li>
+            
+            <li><a href="https://www.devjoy.com/tags/technical-debt"><i class="fa fa-tags"></i> technical-debt</a>
+            </li>
+            
+            <li><a href="https://www.devjoy.com/tags/testing"><i class="fa fa-tags"></i> testing</a>
+            </li>
+            
+        </ul>
+    </div>
+</div>
+
+
+
+
+
+
+                        
+
+                    </div>
+                    
+
+                    
+
+                </div>
+                
+
+            </div>
+            
+        </div>
+        
+
+        
+
+
+
+
+<div id="copyright">
+    <div class="container">
+        <div class="col-md-12">
+            
+            <p class="pull-left">Copyright (c) 2018, Devjoy Ltd.</p>
+            
+            <p class="pull-right">
+              Template by <a href="http://bootstrapious.com/free-templates">Bootstrapious</a>.
+              
+
+              Ported to Hugo by <a href="https://github.com/devcows/hugo-universal-theme">DevCows</a>
+            </p>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+    </div>
+    
+
+    
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-131889453-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+
+<script src="//code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.1/jquery.waypoints.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/Counter-Up/1.0/jquery.counterup.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery-parallax/1.1.3/jquery-parallax.js"></script>
+<script src="https://www.devjoy.com/js/front.js"></script>
+
+
+<script src="https://www.devjoy.com/js/owl.carousel.min.js"></script>
+
+
+  </body>
+</html>

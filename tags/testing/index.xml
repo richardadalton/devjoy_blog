@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Testing on devjoy</title>
+    <link>https://www.devjoy.com/tags/testing/</link>
+    <description>Recent content in Testing on devjoy</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 07 Aug 2015 17:43:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://www.devjoy.com/tags/testing/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Unit Testing Events And Callbacks In C#</title>
+      <link>https://www.devjoy.com/blog/unit-testing-events-and-callbacks-in-csharp/</link>
+      <pubDate>Fri, 07 Aug 2015 17:43:00 +0000</pubDate>
+      
+      <guid>https://www.devjoy.com/blog/unit-testing-events-and-callbacks-in-csharp/</guid>
+      <description>The Problem When you want to unit test a method it’s usually pretty simple. Call the method, pass it it’s parameters and assert against it’s return value, or some other property of the object that may have changed.
+What happens when a method doesn’t return a value, or update some property? What happens when it leads (perhaps after some delay) to an event firing, or a callback getting called?</description>
+    </item>
+    
+    <item>
+      <title>Legacy Code Katas</title>
+      <link>https://www.devjoy.com/blog/legacy-code-katas/</link>
+      <pubDate>Fri, 18 Jan 2013 12:00:00 +0000</pubDate>
+      
+      <guid>https://www.devjoy.com/blog/legacy-code-katas/</guid>
+      <description>I like Kata’s, I’ve get a lot out of them, but if I’m truly honest, they don’t really address one area of programming where I think I need practice, and that is in working with Legacy Code. In pondering this problem I came to the conclusion that I need a way of doing deliberate practice for legacy code work, and some variation of the Kata idea seems like it might work.</description>
+    </item>
+    
+    <item>
+      <title>The Anagrams Kata</title>
+      <link>https://www.devjoy.com/blog/the-anagrams-kata/</link>
+      <pubDate>Sun, 11 Nov 2012 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.devjoy.com/blog/the-anagrams-kata/</guid>
+      <description>The following is my C# implementation of the Anagrams Kata as described on cyber-dojo.com
+Write a program to generate all potential anagrams of an input string.
+For example, the potential anagrams of “biro” are
+biro bior brio broi boir bori ibro ibor irbo irob iobr iorb rbio rboi ribo riob roib robi obir obri oibr oirb orbi orib Let’s write a test.
+[Test] public void NoCharacters() { var expected = new List&amp;lt;string&amp;gt; {&amp;#34;&amp;#34;}; Assert.</description>
+    </item>
+    
+    <item>
+      <title>Are Unit Tests the new Comments?</title>
+      <link>https://www.devjoy.com/blog/are-unit-tests-the-new-comments/</link>
+      <pubDate>Sun, 28 Oct 2012 17:43:00 +0000</pubDate>
+      
+      <guid>https://www.devjoy.com/blog/are-unit-tests-the-new-comments/</guid>
+      <description>It’s verging on heresy to even talk of Unit Tests and Comments as being in any way related. They serve different purposes, work in different ways, and have nothing in common.
+Except
+Comments  Document Interfaces, API’s etc. Can drive development by writing pseudo code comments first. Mark outstanding work using TODO comments. Explain particularly complicated pieces of code. Context to help future developers avoid breaking the code. Document expectations, side-effects etc.</description>
+    </item>
+    
+    <item>
+      <title>Fluent Mocking</title>
+      <link>https://www.devjoy.com/blog/fluent-mocking/</link>
+      <pubDate>Wed, 22 Jun 2011 17:43:00 +0000</pubDate>
+      
+      <guid>https://www.devjoy.com/blog/fluent-mocking/</guid>
+      <description>Here’s a scenario (for once not a hypothetical scenario, this is a real system I worked on). I was building a wizard based app. To be more accurate I was building lots of wizard based apps.
+After a couple of wizards the functionality became clear and I extracted it to it&amp;rsquo;s own framework. My apps could then focus on actual bread and butter functionality.
+Two of the objects in my framework are ‘Wizard’ and ‘WizardStep’.</description>
+    </item>
+    
+    <item>
+      <title>Retrofitting Tests To Legacy Code</title>
+      <link>https://www.devjoy.com/blog/retrofitting-tests-to-legacy-code/</link>
+      <pubDate>Mon, 13 Jun 2011 12:00:00 +0000</pubDate>
+      
+      <guid>https://www.devjoy.com/blog/retrofitting-tests-to-legacy-code/</guid>
+      <description>One problem with TDD is that those who try it, often begin by writing a few trivial tests to get the lie of the land. Then instead of using TDD to write new code they do something much much harder.
+They do what I did, they start out by trying to write some unit tests for existing code. Either a past project, or more likely the project they are currently working on.</description>
+    </item>
+    
+  </channel>
+</rss>
