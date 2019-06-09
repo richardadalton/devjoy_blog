@@ -3,7 +3,7 @@ date = "2013-01-18T12:00:00Z"
 title = "Legacy Code Katas"
 tags = ["technical-debt", "code", "testing"]
 categories = ["thoughts"]
-banner = "img/banners/banner-1.jpg"
+banner = "img/banners/mess.png"
 aliases = [
     "/2013/01/legacy-code-katas/",
 ]
@@ -19,7 +19,7 @@ Legacy Kata’s will likely require us to provide starting code, which immediate
 
 To get the ball rolling, or illustrate the idea, I’m including here some code, that could form the basis of an exercise/kata. Along with some tasks that should be accomplished with the code. If you have any feedback as to whether there is any potential here for any kind of useful learning/practice then let me know your thoughts.
 
-# Legacy Code Kata
+### Security Manager Kata
 
 {{< highlight csharp "style=tango" >}}
 public class SecurityManager
